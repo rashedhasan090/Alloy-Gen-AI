@@ -1,0 +1,25 @@
+The specification checks properties of a binary tree data structure. The Alloy model has three parts. The first part ensures that all nodes are reachable from the root node. The second part enforces acyclicity, that is, no directed cycles in the tree. The third part contains three predicates that check the sorting, the balance, and the maximum number of children of each node in the tree.
+
+For the assertion repair_assert_1, we want to check if the tree is sorted, i.e., the elements in the left subtree are smaller than the element in the node, and the elements in the right subtree are bigger than the element in the node. The assertion is satisfied if and only if the predicate Sorted is true. We can check the assertion using the check command:
+
+sql
+Copy code
+assert repair_assert_1{
+    Sorted <=>
+     all n: Node { {all nl: n.left.*(left + right) | nl.elem < n.elem}
+               and {all nr: n.right.*(left + right) | nr.elem > n.elem}
+}}
+check repair_assert_1
+The Alloy Analyzer returns the message "repair_assert_1 is consistent", which means the assertion is true. There is no counterexample.
+
+For the predicate repair_pred_1, we want to check if the tree is sorted using the same condition as repair_assert_1. The predicate is true if and only if the condition in the assertion is satisfied. We can check the predicate using the run command:
+
+sql
+Copy code
+pred repair_pred_1{
+    Sorted <=>
+     all n: Node { {all nl: n.left.*(left + right) | nl.elem < n.elem}
+               and {all nr: n.right.*(left + right) | nr.elem > n.elem}
+}}
+run repair_pred_1
+The Alloy Analyzer returns the message "No counterexample found. Assertion may be valid.", which means the predicate is true. There is no counterexample.
