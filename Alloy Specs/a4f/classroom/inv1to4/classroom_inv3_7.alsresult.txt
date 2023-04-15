@@ -1,0 +1,5 @@
+The bug is in predicate inv3: the negation is missing in the only line of the predicate. It should be "no Student & Teacher" instead of "no Student & Teacher --correct". The correct code is:
+
+pred inv3 {
+    no Student & Teacher
+}

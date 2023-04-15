@@ -1,0 +1,8 @@
+There is a comment indicating a bug in the inv4 predicate. The commented line should be corrected by replacing "Student + Teacher" with "Person". Here is the fixed code:
+
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+  Person in (Student + Teacher)
+}
+
+The rest of the code remains unchanged.
