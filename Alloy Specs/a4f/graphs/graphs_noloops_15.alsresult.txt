@@ -1,0 +1,7 @@
+The bug is in the "complete" predicate which should check if every node is connected to every other node but it currently only checks if every node is connected to "Node". The fixed code is:
+
+```
+pred complete {
+  all n1, n2:Node | n2 in n1.*(adj+~adj)
+}
+```

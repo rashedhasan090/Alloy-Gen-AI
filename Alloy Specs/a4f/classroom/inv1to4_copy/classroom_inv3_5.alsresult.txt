@@ -1,0 +1,1 @@
+There is a comment that a bug exists in the specification, but the bug is not explicitly stated. Therefore, I cannot provide a fixed code without additional information.

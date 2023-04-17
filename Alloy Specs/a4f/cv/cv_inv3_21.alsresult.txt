@@ -1,0 +1,5 @@
+The bug is in the inv2 predicate. The correct version of the inv2 predicate is:
+
+pred inv2 {
+    all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i = w.source) --fixed
+}

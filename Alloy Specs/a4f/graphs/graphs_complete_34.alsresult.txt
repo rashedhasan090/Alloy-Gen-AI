@@ -1,0 +1,7 @@
+The bug in this specification is in the "complete" predicate. The correct code is:
+
+pred complete {
+   all n:Node | n.adj = Node   --fixed
+}
+
+The updated code sets the outgoing edges of every node to be the set of all nodes in the system. This ensures that every node has a direct edge to every other node and makes the graph complete.

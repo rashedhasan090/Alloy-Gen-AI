@@ -1,0 +1,8 @@
+The bug in the specification is in the inv5 predicate, where the commented-out line should actually be present. The fixed code is given below.
+
+```
+/* There are some classes assigned to teachers. */
+pred inv5 {
+    some Teacher.Teaches
+}
+```

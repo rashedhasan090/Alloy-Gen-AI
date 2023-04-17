@@ -1,0 +1,6 @@
+The bug is in inv5. The correct assertion should be that some classes have teachers assigned to them, i.e., "some c:Class | some c.Teaches.Teacher". The correct fixed code is:
+
+/* There are some classes assigned to teachers. */ 
+pred inv5 { 
+  some c:Class | some c.Teaches.Teacher 
+}

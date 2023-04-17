@@ -1,0 +1,8 @@
+The bug is in the predicate inv5. It is commented out, which means it is not being checked for validity. To fix this, simply uncomment the predicate.
+
+```
+/* There are some classes assigned to teachers. */
+pred inv5 {
+    some Teacher.Teaches 
+}
+```

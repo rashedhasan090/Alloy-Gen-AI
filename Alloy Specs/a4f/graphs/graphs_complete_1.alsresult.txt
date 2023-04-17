@@ -1,0 +1,5 @@
+The bug in the specification is in the "complete" predicate. The correct version is:
+
+pred complete {
+ all n1,n2:Node | (n1!=n2) implies (n1 in n2.*(adj) and n2 in n1.*(adj))
+}

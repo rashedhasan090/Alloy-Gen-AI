@@ -1,0 +1,6 @@
+The bug in this specification is in the complete predicate where it contains a comment and no code. It should contain the following code: 
+```
+pred complete {
+  all n1,n2:Node | n1 != n2 => n1->n2 in adj
+}
+```

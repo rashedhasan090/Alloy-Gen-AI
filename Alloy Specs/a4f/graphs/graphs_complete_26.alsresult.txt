@@ -1,0 +1,5 @@
+The bug in the code is in the "complete" predicate. The correct version is:
+
+pred complete {
+   all n:Node | n.adj = Node    -- fixed
+}

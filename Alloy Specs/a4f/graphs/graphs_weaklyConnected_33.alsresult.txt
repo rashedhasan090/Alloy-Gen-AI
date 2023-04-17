@@ -1,0 +1,9 @@
+The bug in this specification is in the pred weaklyConnected. The correct code for it should be:
+
+```
+pred weaklyConnected {
+   all n1, n2:Node | Node in n1.*(adj+~adj) & Node in n2.*(adj+~adj)
+}
+```
+
+This correctly checks that it is possible to reach every node from every other node ignoring edge direction.

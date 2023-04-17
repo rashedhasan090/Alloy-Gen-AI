@@ -1,0 +1,7 @@
+The bug in this code is in the "complete" predicate. The correct code should be:
+
+pred complete {
+  all n1, n2:Node | n1 != n2 => n2 in n1.*(adj)
+}
+
+The corrected code ensures that for any two distinct nodes, there exists a path from one to the other.

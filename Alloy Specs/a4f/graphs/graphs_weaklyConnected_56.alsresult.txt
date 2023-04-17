@@ -1,0 +1,1 @@
+This is not a valid Alloy specification. It contains multiple syntax errors and inconsistencies, making it impossible to determine what the intended behavior should be. Please check the source of the specification and ensure that it is complete and correctly formatted before attempting to fix any bugs.

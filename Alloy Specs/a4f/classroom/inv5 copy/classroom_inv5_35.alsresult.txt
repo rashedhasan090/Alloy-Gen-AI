@@ -1,0 +1,5 @@
+The bug is in the predicate inv5. It is commented out but it should not be. The fixed code is:
+
+pred inv5 {
+  some Teacher.Teaches 
+}

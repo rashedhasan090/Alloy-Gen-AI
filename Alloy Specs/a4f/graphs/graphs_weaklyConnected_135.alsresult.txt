@@ -1,0 +1,8 @@
+The bug in this specification is in the "weaklyConnected" predicate where the comment mentions using the ".*" operator, which is the transitive closure, instead of using the "+" operator, which is the reflexive and transitive closure. The fixed code is:
+
+/*The graph is weakly connected, ie, it is possible to reach every node from every node ignoring edge direction.
+http://mathworld.wolfram.com/WeaklyConnectedDigraph.html
+*/
+pred weaklyConnected {
+    all n:Node | Node in n.+(adj+~adj)
+}

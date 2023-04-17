@@ -1,0 +1,9 @@
+The bug in the specification is in the inv2_OK predicate, where the variable "w" is not properly quantified. The fixed code is as follows:
+
+pred inv2_OK {
+    all u:User, w:Work | w in u.profile implies (
+        u in w.source or some i:Institution | i in w.source
+    )
+}
+
+All the check and run commands will remain unchanged.

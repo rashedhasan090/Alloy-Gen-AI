@@ -1,0 +1,6 @@
+The bug in this specification is in the predicate inv13. It should use "Person" instead of "Tutors.Person" and "Student" instead of "Person.Tutors". The fixed code is:
+
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+    Person in Teacher and Student in Person.Tutors
+}

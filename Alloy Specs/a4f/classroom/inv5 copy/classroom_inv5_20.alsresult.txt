@@ -1,0 +1,13 @@
+The bug in the specification is in the pred inv5. The commented line "--some Teacher.Teaches" should be changed to "some Teacher.Teaches" so that the assertion inv5_Repaired is satisfied.
+
+```
+pred inv5 {
+   some Teacher.Teaches 
+}
+```
+fixed:
+```
+pred inv5 {
+   some t: Teacher | some t.Teaches 
+}
+```

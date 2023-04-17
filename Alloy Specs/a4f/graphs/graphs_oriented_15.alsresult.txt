@@ -1,0 +1,5 @@
+The bug in this specification is in the 'oriented' predicate. The correct code is:
+
+pred oriented {
+    no adj & ~(~adj)
+}

@@ -1,0 +1,17 @@
+The bug in the specification is in the second invariant `inv2`. The correct fixed code is:
+
+```
+pred inv2 {
+    all u:User, w:Work | w in u.profile implies (u.source = w.source or some i:Institution | i in w.source)
+}
+
+pred inv2_OK {
+    all u:User, w:Work | w in u.profile implies (u.source = w.source or some i:Institution | i in w.source)
+}
+
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+check inv2_Repaired expect 0
+```

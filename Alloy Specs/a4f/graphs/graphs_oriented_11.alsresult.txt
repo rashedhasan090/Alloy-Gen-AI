@@ -1,0 +1,7 @@
+The bug occurs in the pred complete where it wrongly uses Node instead of n as a variable. The corrected code is as follows:
+
+```
+pred complete {
+  all n:Node | n in n.adj
+}
+```
