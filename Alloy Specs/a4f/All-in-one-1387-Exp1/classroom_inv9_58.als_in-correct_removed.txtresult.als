@@ -1,0 +1,1 @@
+pred inv9_OK {\n', '\tall c:Class | lone Teaches[c] & Teacher --correct\n', '}\n'

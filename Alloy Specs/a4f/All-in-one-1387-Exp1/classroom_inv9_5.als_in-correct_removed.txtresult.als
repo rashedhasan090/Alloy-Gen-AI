@@ -1,0 +1,9 @@
+pred inv9_OK {
+  all c:Class | lone (Teaches & Teacher).c
+}
+
+assert inv9_Repaired {
+  inv9[] iff inv9_OK[]
+}
+
+check inv9_Repaired expect 0

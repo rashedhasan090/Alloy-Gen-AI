@@ -1,0 +1,1 @@
+pred inv9_OK {\n', '\tall c:Class | lone c.Teaches & Teacher --fixed\n', '}\n', 'assert inv9_Repaired {\n', '\tinv9[] iff inv9_OK[]\n', '}\n', '\n', '...']
