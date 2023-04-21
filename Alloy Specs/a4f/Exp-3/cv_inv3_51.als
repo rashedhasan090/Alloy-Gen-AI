@@ -1,120 +1,24 @@
-
 abstract sig Source {}
 sig User extends Source {
     profile : set Work,
     visible : set Work
 }
 sig Institution extends Source {}
-
 sig Id {}
 sig Work {
- 
     ids : some Id,
- 
     source : one Source
 }
-
 // Specify the following invariants!
 // You can check their correctness with the different commands and
 // specifying a given invariant you can assume the others to be true.
-
 pred inv1 { // The works publicly visible in a curriculum must be part of its profile
 	all u:User | u.visible in u.profile 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
 pred inv2 { // A user profile can only have works added by himself or some external institution
  all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i in w.source) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
 pred inv3 { // The works added to a profile by a given source cannot have common identifiers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
   all u:User , s:Source| lone (u.profile.source & s).ids }
 pred inv1_OK {
 	all u:User | u.visible in u.profile 
@@ -134,8 +38,6 @@ pred inv3_OK {
 assert inv3_Repaired {
     inv3[] iff inv3_OK[]
 }
-
-
  check inv1_Repaired expect 0
  check inv2_Repaired expect 0
  check inv3_Repaired expect 0 

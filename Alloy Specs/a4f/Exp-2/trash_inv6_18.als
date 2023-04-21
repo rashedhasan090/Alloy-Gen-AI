@@ -1,175 +1,38 @@
-
-
 sig File {
 	link : set File
 }
 sig Trash extends File {}
 sig Protected extends File {}
-
 pred inv1 {
 	no Trash 
-
-
-
-
-
-
-
-
 }
-
 pred inv2 {
 	File in Trash 
-
 }
-
 pred inv3 {
 	some Trash 
-
 }
-
 pred inv4 {
 	no Protected & Trash 
-
-
-
-
-
-
-
 }
-
 pred inv5 {
 	File - Protected in Trash 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
 //Bug 
 pred inv6 {
-
-
-
-
-
-
-
-
-
  all f1,f2,f3 : File | (f1 -> f3 in link and f2 -> f3 in link) implies f2 = f3 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
 pred inv7 {
 	no link.Trash 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
 pred inv8 {
 	no link 
-
-
-
-
 }
-
 pred inv9 {
 	no link.link 
-
-
-
-
-
 }
-
 pred inv10 {
 	Trash.link in Trash 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 pred inv1_OK {
 	no Trash 
@@ -231,8 +94,6 @@ pred inv10_OK {
 assert inv10_Repaired {
     inv10[] iff inv10_OK[]
 }
-
-
  check inv1_Repaired expect 0
  check inv2_Repaired expect 0
  check inv3_Repaired expect 0 
