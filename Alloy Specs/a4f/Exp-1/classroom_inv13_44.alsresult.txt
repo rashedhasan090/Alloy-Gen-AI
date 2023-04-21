@@ -1,0 +1,7 @@
+There is a bug on line 114 where the condition for the predicate inv13_OK is not correctly specified. The correct condition is "Tutors.Person in Teacher and Person.Tutors in Student" instead of "Teacher in Tutors.Teacher". Here is the fixed code:
+
+pred inv13_OK {
+  Tutors.Person in Teacher and Person.Tutors in Student --correct
+}
+
+assert inv13_Repaired {

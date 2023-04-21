@@ -1,0 +1,59 @@
+The bug in the code is in the definition of inv4. The correct definition is:
+
+pred inv4 {
+  let tr = { s1, s2 : State , e : Event | s1->e->s2 in trans } |
+  State in Init.^tr
+}
+
+The corrected code is:
+
+sig State {
+        trans : set Event -> set State
+}
+
+sig Init in State {}
+
+sig Event {}
+
+pred inv1 {
+    all s:State | some s.trans
+}
+
+pred inv2 {
+    one Init
+}
+
+pred inv3 {
+    all s:State, e:Event |
+       lone e.(s.trans)
+}
+
+pred inv4 {
+  let tr = { s1, s2 : State , e : Event | s1->e->s2 in trans } |
+  State in Init.^tr
+}
+
+pred inv5 {
+    all s1,s2:State |
+      s1.trans.State = s2.trans.State
+}
+
+pred inv6 {
+    all e:Event | some s1,s2:State | s1->e->s2 in trans
+}
+
+pred inv7 {
+    let tr = { s1, s2 : State , e : Event | s1->e->s2 in trans } |
+    all s : Init.^tr |
+       some i : Init | i in s.^tr
+}
+
+run {} for exactly 5 State, exactly 3 Event, exactly 1 Init , exactly 8 trans 
+
+check inv1 expect 1
+check inv2 expect 1
+check inv3 expect 1
+check inv4 expect 1
+check inv5 expect 1
+check inv6 expect 1
+check inv7 expect 1

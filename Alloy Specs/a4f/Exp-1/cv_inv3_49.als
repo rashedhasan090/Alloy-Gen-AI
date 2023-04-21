@@ -114,7 +114,6 @@ pred inv3 { // The works added to a profile by a given source cannot have common
   all w1, w2:Work, u:User | ((w1 in u.profile and w2 in u.profile) and (w1.source = w2.source)) implies (w1.ids != w2.ids) 
 
 }
-/*======== IFF PERFECT ORACLE ===============*/
 pred inv1_OK {
 	all u:User | u.visible in u.profile --correct
 }

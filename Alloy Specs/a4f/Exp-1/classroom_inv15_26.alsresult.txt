@@ -1,0 +1,5 @@
+The bug in the code is in predicate inv15_OK. The existing line 'all s : Person | some Teacher & ^Tutors.s' should be replaced with 'all p:Person | some t:Teacher | t in p.*Tutors'. 
+
+Fixed code for predicate inv15_OK:
+pred inv15_OK {
+  all p:Person | some

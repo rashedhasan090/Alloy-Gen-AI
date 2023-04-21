@@ -1,0 +1,5 @@
+The bug is in the commented out section of the code, specifically in the predicate inv11. The correct version is as follows:
+
+pred inv11 {
+  all c : Class | (some c.Groups) implies some t : Teacher | t.Teaches = c
+}

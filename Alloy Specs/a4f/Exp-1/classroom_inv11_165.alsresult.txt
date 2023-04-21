@@ -1,0 +1,1 @@
+The bug in the code is that the predicate inv11 is incomplete and has been commented out with a "--" at the beginning of the line. Hence, the predicate inv11_OK is not being checked for correctness. To fix the bug, the comment sign "--" should be removed from the beginning of the line that

@@ -1,0 +1,4 @@
+The bug in the specification is in the commented-out predicate inv11. It is incomplete and contains only the comment symbol "--" at the beginning. To fix the bug, the commented-out portion should be removed and replaced with the corrected predicate:
+
+pred inv11 {
+    all c : Class | (some c

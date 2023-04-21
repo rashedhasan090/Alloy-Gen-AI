@@ -1,0 +1,13 @@
+The bug in the specification is in the predicate inv15, where the quantified variable s is incorrectly used as a predicate instead of a variable. 
+
+Fixed code:
+
+pred inv15_OK {
+  all s : Person | some Teacher & ^Tutors.s --correct
+}
+
+assert inv15_Repaired {
+  inv15[] iff inv15_OK[]
+}
+
+check inv15_Repaired

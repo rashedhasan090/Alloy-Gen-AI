@@ -1,0 +1,5 @@
+The bug in the specification is in the "complete" predicate. The correct code is:
+
+pred complete {
+   all n:Node | Node in n.^adj
+}

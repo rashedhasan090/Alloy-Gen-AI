@@ -1,0 +1,10 @@
+The bug in the specification is in the following predicate:
+
+pred inv11 {
+--    all c : Class | (some c.Groups) implies some Teacher & Teaches.c --buggy
+}
+
+To fix it, one can replace it with the following:
+
+pred inv11 {
+    all c : Class | (

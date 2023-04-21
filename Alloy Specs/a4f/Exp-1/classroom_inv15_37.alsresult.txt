@@ -1,0 +1,6 @@
+The bug is in the predicate inv13, change 'Tutors.Person in Teacher' to 'Teacher in Tutors'. 
+
+Fixed code:
+pred inv13 {
+    Teacher in Tutors and Person.Tutors in Student
+}

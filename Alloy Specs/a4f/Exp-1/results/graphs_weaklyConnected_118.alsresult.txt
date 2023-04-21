@@ -1,0 +1,11 @@
+The bug in this specification is in the "weaklyConnected" predicate. There is a commented out line that is meant to define the predicate correctly, but it is mistakenly commented out. 
+
+Here is the fixed code:
+
+pred weaklyConnected {
+    all n:Node | Node in n.*(adj+~adj)
+}
+
+assert weaklyConnectedRepaired {
+    weaklyConnected[] iff weaklyConnectedOK[]
+}

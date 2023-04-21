@@ -1,0 +1,25 @@
+sig Node {
+    adj: set Node
+} {
+    no iden & adj
+    adj = ~adj
+    no adj & ~adj
+    all a: Node | a not in a.^adj
+    all n: Node | Node in n.adj
+    Node in n.*(adj+~adj)
+    Node in n.*adj
+    adj.adj in adj
+}
+
+run{} for exactly 1 Node, 3 Node, 4 Node, 5 Node, 6 Node, 7 Node
+
+check {
+    no iden & adj
+    adj = ~adj
+    no adj & ~adj
+    all a: Node | a not in a.^adj
+    all n: Node | Node in n.adj
+    Node in n.*(adj+~adj)
+    Node in n.*adj
+    adj.adj in adj
+} for exactly 1 Node, 3 Node, 4 Node, 5 Node, 6 Node, 7 Node

@@ -1,0 +1,15 @@
+The bug is in the predicate inv12. The correct version of inv12 is:
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups & Group
+}
+
+The repaired version of the specification is:
+
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+

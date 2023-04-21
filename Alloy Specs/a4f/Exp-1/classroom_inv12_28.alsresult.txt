@@ -1,0 +1,6 @@
+The bug is in the predicate inv12. The original code is:
+
+```
+pred inv12 {
+   -- all t : Teacher | some (t.Teaches).Groups
+   all t : Teacher | some c : Class, g : Group | t->c in Teaches implies c

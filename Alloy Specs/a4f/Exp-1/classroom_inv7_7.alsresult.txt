@@ -1,0 +1,10 @@
+The bug in the specification is in the predicate inv7. The commented line "Class in Teacher.Teaches" should be removed and replaced with the assertion "all c : Class | Teaches.c in Teacher". 
+
+The corrected code for predicate inv7 is:
+
+pred inv7 {
+    all c : Class | Teaches.c in Teacher 
+}
+
+assert inv7_Repaired {
+    inv

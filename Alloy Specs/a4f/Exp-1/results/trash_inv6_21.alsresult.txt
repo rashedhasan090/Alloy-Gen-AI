@@ -1,0 +1,109 @@
+sig File {
+    link : set File
+}
+sig Trash extends File {}
+sig Protected extends File {}
+
+pred inv1 {
+    no Trash
+}
+
+pred inv2 {
+    Trash in File
+}
+
+pred inv3 {
+    some Trash
+}
+
+pred inv4 {
+    no (Protected & Trash)
+}
+
+pred inv5 {
+    (File - Protected) in Trash
+}
+
+pred inv6 {
+    no (link & iden)
+}
+
+pred inv7 {
+    no link.Trash
+}
+
+pred inv8 {
+    no link
+}
+
+pred inv9 {
+    no link.link
+}
+
+pred inv10 {
+    Trash.link in Trash
+}
+
+run inv1 for 10
+run inv2 for 10
+run inv3 for 10
+run inv4 for 10
+run inv5 for 10
+run inv6 for 10
+run inv7 for 10
+run inv8 for 10
+run inv9 for 10
+run inv10 for 10
+
+assert inv1_OK {
+    no Trash
+}
+
+assert inv2_OK {
+    Trash in File
+}
+
+assert inv3_OK {
+    some Trash
+}
+
+assert inv4_OK {
+    no (Protected & Trash)
+}
+
+assert inv5_OK {
+    (File - Protected) in Trash
+}
+
+assert inv6_OK {
+    no (link & iden)
+}
+
+assert inv7_OK {
+    no link.Trash
+}
+
+assert inv8_OK {
+    no link
+}
+
+assert inv9_OK {
+    no link.link
+}
+
+assert inv10_OK {
+    Trash.link in Trash
+}
+
+check inv1_OK, inv2_OK, inv3_OK, inv4_OK, inv5_OK, inv6_OK, inv7_OK, inv8_OK, inv9_OK, inv10_OK for 10
+
+pred repair_pred_1{
+    inv6[] iff inv6_OK[]
+}
+run repair_pred_1
+
+assert repair_assert_1{
+    inv6[] iff inv6_OK[]
+}
+
+check repair_assert_1

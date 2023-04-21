@@ -1,0 +1,12 @@
+There are formatting issues with the Alloy specification and comments provided, but assuming the sigs and predicates are written correctly, the bug in the specification appears to be in Predicate inv15. 
+
+Original Predicate:
+
+pred inv15 {
+    all s : Person | some Teacher & ^Tutors.s
+}
+
+Fixed Predicate:
+
+pred inv15 {
+    all s : Person | some t : Teacher

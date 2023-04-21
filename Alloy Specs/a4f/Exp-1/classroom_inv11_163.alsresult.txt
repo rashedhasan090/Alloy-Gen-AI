@@ -1,0 +1,4 @@
+The bug in the specification is in the line marked with "--" in pred inv11, where the comment is not terminated properly, causing a syntax error. The corrected code is:
+
+pred inv11 {
+  all c : Class | (some c.Groups) implies some Teacher & Teaches.c --correct

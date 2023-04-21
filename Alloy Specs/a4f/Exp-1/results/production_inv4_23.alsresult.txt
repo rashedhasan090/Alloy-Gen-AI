@@ -1,0 +1,7 @@
+The bug in the specification is in inv4 predicate. The correct version is:
+
+pred inv4 { // The parts required by a component cannot be assembled in a later position
+    all c:Component, p:c.parts | p.cposition in c.cposition.*next
+}
+
+The corrected code includes replacing ".nexts" with ".*next" in the inv4 predicate.

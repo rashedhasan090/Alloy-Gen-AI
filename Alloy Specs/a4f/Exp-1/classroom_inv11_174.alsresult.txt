@@ -1,0 +1,6 @@
+The bug is in the predicate inv11, as it is currently commented out. Therefore, it is not being checked for correctness. To fix this, we can remove the comment and add the correct implementation of inv11. 
+
+Here is the fixed code:
+
+pred inv11 {
+    all c

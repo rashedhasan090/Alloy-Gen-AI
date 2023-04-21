@@ -1,0 +1,16 @@
+The bug in the specification is in the definition of the "Groups" relation in the "Class" signature. It should be "Groups : Person -> lone Group" instead of "Groups : Person -> Group". 
+
+Fixed code:
+```
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> lone Group
+}
+
+sig Teacher extends

@@ -1,0 +1,75 @@
+The bug in the specification is in the `complete` predicate. The correct version of the `complete` predicate is:
+
+pred complete {
+    all n:Node | Node in n.adj
+}
+
+Fixed Code:
+
+sig Node {
+    adj: set Node
+}
+
+pred undirected {
+    adj = ~adj
+}
+
+pred oriented {
+    no adj & ~adj
+}
+
+pred acyclic {
+    all a: Node | a not in a.^adj
+}
+
+pred complete {
+    all n: Node | Node in n.adj
+}
+
+pred noLoops {
+    no (iden & adj)
+}
+
+pred weaklyConnected {
+    all n: Node | Node in n.*(adj+~adj)
+}
+
+pred stronglyConnected {
+    all n: Node | Node in n.*adj
+}
+
+pred transitive {
+    adj.adj in adj
+}
+
+assert UndirectedRepaired {
+    undirected[] iff adj = ~adj
+}
+
+assert OrientedRepaired {
+    oriented[] iff no adj & ~adj
+}
+
+assert AcyclicRepaired {
+    acyclic[] iff all a: Node | a not in a.^adj
+}
+
+assert CompleteRepaired {
+    complete[] iff all n: Node | Node in n.adj
+}
+
+assert NoLoopsRepaired {
+    noLoops[] iff no (iden & adj)
+}
+
+assert WeaklyConnectedRepaired {
+    weaklyConnected[] iff all n: Node | Node in n.*(adj+~adj)
+}
+
+assert StronglyConnectedRepaired {
+    stronglyConnected[] iff all n: Node | Node in n.*adj
+}
+
+assert TransitiveRepaired {
+    transitive[] iff adj.adj in adj
+}

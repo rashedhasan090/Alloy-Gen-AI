@@ -1,0 +1,5 @@
+There is an error in the comment for inv7. The correct predicate for inv7 should be as follows:
+
+pred inv7 {
+  no link & Trash --correct
+}

@@ -1,0 +1,12 @@
+The bug in the specification is in the "complete" predicate. The correct version is:
+
+pred completeOK {
+all n:Node | n.adj = Node // all nodes are connected to every other node
+}
+
+assert completeRepaired {
+complete[] iff completeOK[]
+}
+```
+
+The bug was that the original predicate checked if "Node" is in "n.adj", which is incorrect. Instead, we should check if the set of all nodes is equal to "n.adj", meaning that all nodes are connected to every other node.

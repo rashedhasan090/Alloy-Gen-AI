@@ -1,0 +1,9 @@
+The bug in the specification is in the `oriented` predicate. The line `no adj & ~adj` should be `no adj & adj~`. The fixed code is:
+
+pred oriented {
+  no adj & adj~
+  
+  all n:Node | n.adj not in adj.n
+}
+
+Note: This fix changes the order of the set difference operation.

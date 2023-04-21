@@ -1,0 +1,6 @@
+The bug in the specification is in predicate inv11 where the commented line is incomplete and has an unmatched 'iff' keyword. The correct implementation of predicate inv11 is:
+
+pred inv11 {
+  all c : Class | (some c.Groups) implies some Teacher & Teaches.c
+}
+

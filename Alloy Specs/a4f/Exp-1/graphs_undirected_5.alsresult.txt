@@ -1,0 +1,10 @@
+The bug is in the 'complete' predicate. It should be 'all n: Node | n.adj = Node'. 
+
+Fixed code:
+
+pred completeOK {
+    all n:Node | n.adj = Node
+}
+assert completeRepaired {
+    complete[] iff completeOK[]
+}

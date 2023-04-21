@@ -1,0 +1,11 @@
+The bug in the specification is in the inv10 predicate. The original predicate was:
+
+pred inv10 {
+-- all c:Class, s:Student | some s.(c.Groups) --incorrect
+all s : Student, c : Class | s in Teaches.Class --correct
+}
+
+The fixed predicate is:
+
+pred inv10 {
+all c:Class, s:

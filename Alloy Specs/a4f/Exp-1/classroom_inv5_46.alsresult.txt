@@ -1,0 +1,5 @@
+The bug is in predicate inv13. The correct version of the predicate is:
+
+pred inv13 {
+  Tutors.Person in Teacher and Person.Tutors in Teacher -> Student
+}

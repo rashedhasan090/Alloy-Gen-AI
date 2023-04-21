@@ -1,0 +1,52 @@
+The bug in the specification is that there is an extra "--correct" at the end of the predicate definitions, which causes a syntax error. The fixed code is:
+
+pred undirected {
+    adj = ~adj
+}
+
+pred oriented {
+    no adj & ~adj
+}
+
+pred acyclic {
+    all a:Node | a not in a.^adj
+}
+
+pred complete {
+    all n:Node | Node in n.adj
+}
+
+pred noLoops {
+    no (iden & adj)
+}
+
+pred weaklyConnected {
+    all n:Node | Node in n.*(adj+~adj)
+}
+
+pred stonglyConnected {
+    all n:Node | Node in n.*adj
+}
+
+pred transitive {
+    adj.adj in adj
+}
+
+check undirected expect 0
+check oriented expect 0
+check acyclic expect 0
+check complete expect 0
+check noLoops expect 0
+check weaklyConnected expect 0
+check stonglyConnected expect 0
+check transitive expect 0
+
+pred repair_pred_1{
+    weaklyConnected[] iff weaklyConnectedOK[] 
+}
+run repair_pred_1
+
+assert repair_assert_1{
+    weaklyConnected[] iff weaklyConnectedOK[] 
+}
+check repair_assert_1

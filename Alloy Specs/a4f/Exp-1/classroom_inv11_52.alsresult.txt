@@ -1,0 +1,11 @@
+The bug in the specification is in the predicate inv11. The commented out line is incorrect and needs to be replaced with the following line:
+
+'all c : Class | (some c.Groups) implies some Teaches.c.Groups'
+
+Here is the fixed code:
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some Teaches.c.Groups
+}
+
+No other changes are

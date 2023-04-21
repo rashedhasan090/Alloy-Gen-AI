@@ -1,0 +1,24 @@
+The original code is missing the definition for the Class signature, so I assumed it meant to include the definition of Class from the previous exercise.
+
+Fixed code:
+
+sig Person {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Person in Student
+}
+
+pred inv2

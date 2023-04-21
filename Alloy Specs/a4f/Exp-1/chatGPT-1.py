@@ -7,7 +7,7 @@ openai.api_key = "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"
 
 i = 0
 
-for root, dirs, files in os.walk('/Users/rashedhasan/Downloads/atmprep-master/benchmark/arepair'):
+for root, dirs, files in os.walk('/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark/a4f/Exp-1'):
     for file in files:
         #each file
 

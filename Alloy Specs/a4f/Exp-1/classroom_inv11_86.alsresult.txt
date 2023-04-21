@@ -1,0 +1,16 @@
+The bug is in the following assertion:
+
+```
+pred inv11_OK {
+  all c : Class | (some c.Groups) implies some Teacher & Teaches.c --correct
+}
+assert inv11_Repaired {
+  inv11[] iff inv11_OK[]
+}
+```
+
+The corrected code for `inv11_OK` is:
+
+```
+pred inv11_OK {
+  all

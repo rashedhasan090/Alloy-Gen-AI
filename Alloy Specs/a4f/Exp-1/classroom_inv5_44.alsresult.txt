@@ -1,0 +1,17 @@
+The bug in the specification is that the sig Class should have a relation Teaches : set Teacher instead of Teaches : set Class. Here is the corrected version of the specification:
+
+sig Person {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups : Person -> Group,
+    Teaches : set Teacher
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person

@@ -1,4 +1,3 @@
-/**
  * Relational logic revision exercises based on a simple model of a 
  * file system trash can.
  * 
@@ -13,19 +12,13 @@
  *	- binary relational operators '.', '->', '&', '+', '-', ':>' and '<:' 
  *	- unary relational operators '~', '^' and '*'
  *	- definition of relations by comprehension
- **/
 
-/* The set of files in the file system. */
 sig File {
-  	/* A file is potentially a link to other files. */
 	link : set File
 }
-/* The set of files in the trash. */
 sig Trash extends File {}
-/* The set of protected files. */
 sig Protected extends File {}
 
-/* The trash is empty. */
 pred inv1 {
 	no Trash --correct
 
@@ -38,19 +31,16 @@ pred inv1 {
 
 }
 
-/* All files are deleted. */
 pred inv2 {
 	File in Trash --correct
 
 }
 
-/* Some file is deleted. */
 pred inv3 {
 	some Trash --correct
 
 }
 
-/* Protected files cannot be deleted. */
 pred inv4 {
 	no Protected & Trash --correct
 
@@ -62,7 +52,6 @@ pred inv4 {
 
 }
 
-/* All unprotected files are deleted.. */
 pred inv5 {
 	File - Protected in Trash --correct
 
@@ -87,7 +76,6 @@ pred inv5 {
 
 }
 
-/* A file links to at most one file. */
 pred inv6 {
 	~link . link in iden --correct
 
@@ -119,7 +107,6 @@ pred inv6 {
 
 }
 
-/* There is no deleted link. */
 pred inv7 {
 	no link.Trash --correct
 
@@ -160,7 +147,6 @@ pred inv7 {
 
 }
 
-/* There are no links. */
 pred inv8 {
 	no link --correct
 
@@ -169,7 +155,6 @@ pred inv8 {
 
 }
 
-/* A link does not link to another link. */
 pred inv9 {
 	no link.link --correct
 
@@ -179,7 +164,6 @@ pred inv9 {
 
 }
 
-/* If a link is deleted, so is the file it links to. */
 pred inv10 {
 	Trash.link in Trash --correct
 
@@ -201,7 +185,6 @@ pred inv10 {
 
 
 }
-/*======== IFF PERFECT ORACLE ===============*/
 pred inv1_OK {
 	no Trash --correct
 }

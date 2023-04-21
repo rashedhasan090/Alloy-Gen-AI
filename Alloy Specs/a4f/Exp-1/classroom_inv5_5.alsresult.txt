@@ -1,0 +1,6 @@
+The bug in this specification is in the pred inv5. It is commented out with "--" but should not be, and the predicate expression ends prematurely with an incomplete line "all p:Person | some c: Class |p in Person" before any condition is specified. 
+
+The fixed code is:
+```
+pred inv5 {
+  some Teacher.Teaches

@@ -1,0 +1,7 @@
+The bug is in the pred weaklyConnected. The correct code is:
+
+pred weaklyConnected {
+    all n:Node | Node in n.(*(adj+~adj))
+}
+
+Note the change in the star closure, which includes the empty sequence.

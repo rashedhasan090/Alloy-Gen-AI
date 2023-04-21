@@ -1,0 +1,13 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person lone -> Group //change set to lone
+}
+
+sig Teacher extends Person  {}
+

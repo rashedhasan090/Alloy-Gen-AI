@@ -1,0 +1,12 @@
+Fixed code with the bug fixed in inv11 predicate:
+
+pred inv11 {
+  all c : Class | (some c.Groups) implies some Teacher & Teaches.c
+}
+
+pred inv11_OK {
+  all c : Class | (no c.Groups) or (some Teacher & Teaches.c)
+}
+
+assert inv11_Repaired {
+ 

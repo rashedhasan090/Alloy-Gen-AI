@@ -1,0 +1,92 @@
+sig File {
+    link : set File
+}
+sig Trash extends File {}
+sig Protected extends File {}
+
+pred inv1 {
+    no Trash
+}
+
+pred inv2 {
+    all f : File | f in Trash implies some t : Trash | t.link = f
+    -- corrected to all f
+}
+
+pred inv3 {
+    some Trash
+}
+
+pred inv4 {
+    no Protected & Trash
+}
+
+pred inv5 {
+    (File - Protected) in Trash
+}
+
+pred inv6 {
+    no link.*(link & iden)
+}
+
+pred inv7 {
+    no link.Trash
+}
+
+pred inv8 {
+    no link
+}
+
+pred inv9 {
+    no link.link
+}
+
+pred inv10 {
+    Trash.link in Trash
+}
+
+run inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10 for 5 but exactly 1 Trash, exactly 1 Protected, exactly 4 File, exactly 2 int
+
+check inv1_OK, inv2_OK, inv3_OK, inv4_OK, inv5_OK, inv6_OK, inv7_OK, inv8_OK, inv9_OK, inv10_OK for 5 but exactly 1 Trash, exactly 1 Protected, exactly 4 File, exactly 2 int
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}
+
+assert inv5_Repaired {
+    inv5[] iff inv5_OK[]
+}
+
+assert inv6_Repaired {
+    inv6[] iff inv6_OK[]
+}
+
+assert inv7_Repaired {
+    inv7[] iff inv7_OK[]
+}
+
+assert inv8_Repaired {
+    inv8[] iff inv8_OK[]
+}
+
+assert inv9_Repaired {
+    inv9[] iff inv9_OK[]
+}
+
+assert inv10_Repaired {
+    inv10[] iff inv10_OK[]
+}
+
+check inv1_Repaired, inv2_Repaired, inv3_Repaired, inv4_Repaired, inv5_Repaired, inv6_Repaired, inv7_Repaired, inv8_Repaired, inv9_Repaired, inv10_Repaired for 5 but exactly 1 Trash, exactly 1 Protected, exactly 4 File, exactly 2 int
