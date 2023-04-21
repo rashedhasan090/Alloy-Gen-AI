@@ -13,19 +13,13 @@
  *	- binary relational operators '.', '->', '&', '+', '-', ':>' and '<:' 
  *	- unary relational operators '~', '^' and '*'
  *	- definition of relations by comprehension
- **/
 
-/* The set of files in the file system. */
 sig File {
-  	/* A file is potentially a link to other files. */
 	link : set File
 }
-/* The set of files in the trash. */
 sig Trash extends File {}
-/* The set of protected files. */
 sig Protected extends File {}
 
-/* The trash is empty. */
 pred inv1 {
 	no Trash 
 
@@ -38,19 +32,16 @@ pred inv1 {
 
 }
 
-/* All files are deleted. */
 pred inv2 {
 	File in Trash 
 
 }
 
-/* Some file is deleted. */
 pred inv3 {
 	some Trash 
 
 }
 
-/* Protected files cannot be deleted. */
 pred inv4 {
 	no Protected & Trash 
 
@@ -62,7 +53,6 @@ pred inv4 {
 
 }
 
-/* All unprotected files are deleted.. */
 pred inv5 {
 	File - Protected in Trash 
 
@@ -88,7 +78,6 @@ pred inv5 {
 }
 
 //Bug 
-/* A file links to at most one file. */
 pred inv6 {
 	~link . link in iden 
 
@@ -120,7 +109,6 @@ pred inv6 {
 
 }
 
-/* There is no deleted link. */
 pred inv7 {
 	no link.Trash 
 
@@ -161,7 +149,6 @@ pred inv7 {
 
 }
 
-/* There are no links. */
 pred inv8 {
 	no link 
 
@@ -170,7 +157,6 @@ pred inv8 {
 
 }
 
-/* A link does not link to another link. */
 pred inv9 {
 	no link.link 
 
@@ -180,7 +166,6 @@ pred inv9 {
 
 }
 
-/* If a link is deleted, so is the file it links to. */
 pred inv10 {
 	Trash.link in Trash 
 
@@ -202,7 +187,6 @@ pred inv10 {
 
 
 }
-/*======== IFF PERFECT ORACLE ===============*/
 pred inv1_OK {
 	no Trash 
 }

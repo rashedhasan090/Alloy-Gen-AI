@@ -3,11 +3,9 @@ Test Suite Details:
 Tests generated over: GRAPHS_templateAllCorrect.als
 Number Valuations: 8
 Number Tests: 38
-Scope used: 5*/
 
 /* 
 Each node as a set of outgoing edges, representing a directed graph without multiple edged.
-*/
 
 sig Node {
 	adj : set Node
@@ -16,7 +14,6 @@ sig Node {
 /*
 The graph is undirected, ie, edges are symmetric.
 http://mathworld.wolfram.com/UndirectedGraph.html
-*/
 pred undirected {
  	adj = ~adj  
 
@@ -30,7 +27,6 @@ pred undirected {
 /*
 The graph is oriented, ie, contains no symmetric edges.
 http://mathworld.wolfram.com/OrientedGraph.html
-*/
 pred oriented {
    no adj & ~adj 
 
@@ -48,7 +44,6 @@ pred oriented {
 /*
 The graph is acyclic, ie, contains no directed cycles.
 http://mathworld.wolfram.com/AcyclicDigraph.html
-*/
 pred acyclic {
 //Bug 
  all a:Node | a not in a.^adj 
@@ -68,7 +63,6 @@ pred acyclic {
 /*
 The graph is complete, ie, every node is connected to every other node.
 http://mathworld.wolfram.com/CompleteDigraph.html
-*/
 pred complete {
 //Bug 
   all n:Node | Node in n.adj 
@@ -103,7 +97,6 @@ pred complete {
 /*
 The graph contains no loops, ie, nodes have no transitions to themselves.
 http://mathworld.wolfram.com/GraphLoop.html
-*/
 pred noLoops {
 
 //Bug 
@@ -122,7 +115,6 @@ pred noLoops {
 /*
 The graph is weakly connected, ie, it is possible to reach every node from every node ignoring edge direction.
 http://mathworld.wolfram.com/WeaklyConnectedDigraph.html
-*/
 pred weaklyConnected {
  	all n:Node | Node in n.*(adj+~adj) 
  
@@ -265,7 +257,6 @@ pred weaklyConnected {
 /*
 The graph is strongly connected, ie, it is possible to reach every node from every node considering edge direction.
 http://mathworld.wolfram.com/StronglyConnectedDigraph.html
-*/
 pred stonglyConnected {
  	all n:Node | Node in n.*adj  
  
@@ -296,7 +287,6 @@ pred stonglyConnected {
 /*
 The graph is transitive, ie, if two nodes are connected through a third node, they also are connected directly.
 http://mathworld.wolfram.com/TransitiveDigraph.html
-*/
 pred transitive {
  	adj.adj in adj 
  
@@ -307,7 +297,6 @@ pred transitive {
 
 
 
-/*======== IFF PERFECT ORACLE ===============*/
 pred undirectedOK {
 	adj = ~adj
 }

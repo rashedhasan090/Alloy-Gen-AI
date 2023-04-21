@@ -95,7 +95,6 @@ pred inv4 { // The parts required by a component cannot be assembled in a later 
 
 
 
-/*======== IFF PERFECT ORACLE ===============*/
 pred inv1_OK {
 	all c:Component | some c.parts 
 }

@@ -117,7 +117,6 @@ pred inv3 { // The works added to a profile by a given source cannot have common
 
 
 }
-/*======== IFF PERFECT ORACLE ===============*/
 pred inv1_OK {
 	all u:User | u.visible in u.profile 
 }
