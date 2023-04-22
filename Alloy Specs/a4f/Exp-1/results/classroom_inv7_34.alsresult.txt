@@ -1,0 +1,82 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person lone -> lone Group
+}
+sig Teacher extends Person  {}
+sig Student extends Person  {}
+pred inv1 {
+    all p: Person | p in Student
+}
+pred inv2 {
+    no Teacher
+}
+pred inv3 {
+    no Student & Teacher
+}
+pred inv4 {
+    Person = Student + Teacher
+}
+pred inv5 {
+    some Teacher.Teaches
+}
+pred inv6 {
+    Teacher.Teaches = Class
+}
+pred inv7 {
+    Class in Teacher.Teaches
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+pred inv9 {
+    all c:Class | lone Teaches[c] & Teacher
+}
+pred inv10 {
+    all c:Class, s:Student | some g:Group | (s,g) in c.Groups
+}
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t:Teacher | t.Teaches = c
+}
+pred inv12 {
+    all t : Teacher | some c:Class, g:Group | (t,c,g) in Teaches & (t,g) in Teaches.c.Groups
+}
+pred inv13 {
+    all p:Person | (p in Teacher.Tutors) iff (p in Student)
+}
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c,s,g) in Class.Groups & (t,c) in Teacher.Teaches implies (t,s) in Person.Tutors[g]
+}
+pred inv15 {
+    all s : Student | some t : Teacher | s in t.Tutors
+}
+pred inv16 {
+    all c : Class | some g : Group | g in c.Groups
+}
+pred inv17 {
+    all t : Teacher | some c : Class | t.Teaches = c
+}
+pred inv18 {
+    all s : Student | some g : Group | (s,g) in (Class.Groups).Person
+}
+run { some p:Person | p in Student}
+run { no Teacher}
+run { no Student & Teacher}
+run { Person = Student + Teacher}
+run { some Teacher.Teaches}
+run { Teacher.Teaches = Class}
+check { Class in Teacher.Teaches} expect 0
+run { all t:Teacher | lone t.Teaches}
+run { all c:Class | lone Teaches[c] & Teacher}
+run { all c:Class, s:Student | some g:Group | (s,g) in c.Groups}
+run { all c : Class | (some c.Groups) implies some t:Teacher | t.Teaches = c}
+run { all t : Teacher | some c:Class, g:Group | (t,c,g) in Teaches & (t,g) in Teaches.c.Groups}
+run { all p:Person | (p in Teacher.Tutors) iff (p in Student)}
+run { all s : Person, c : Class, t : Teacher, g : Group | (c,s,g) in Class.Groups & (t,c) in Teacher.Teaches implies (t,s) in Person.Tutors[g]}
+run { all s : Student | some t : Teacher | s in t.Tutors}
+run { all c : Class | some g : Group | g in c.Groups}
+run { all t : Teacher | some c : Class | t.Teaches = c}
+run { all s : Student | some g : Group | (s,g) in (Class.Groups).Person}

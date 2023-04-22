@@ -1,5 +1,0 @@
-The provided code does not contain any syntax errors or type mismatches, but there is a problem with the specification itself. The problematic line is:
-
-' all s : Student | some s.(Class.Groups) and some Teacher.Teaches implies some (Teacher<:Tutors).s\n'
-
-This line

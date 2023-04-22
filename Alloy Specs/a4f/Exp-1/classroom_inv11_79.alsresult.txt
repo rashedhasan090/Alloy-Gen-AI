@@ -1,1 +1,0 @@
-['sig Person  {\n', '\tTutors : set Person,\n', '\tTeaches : set Class\n', '}\n', '\n', 'sig Group {}\n', '\n', 'sig Class  {\n', '\tGroups : Person -> Group\n

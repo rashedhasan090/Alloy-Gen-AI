@@ -1,0 +1,6 @@
+The bug in this specification is in the inv2 predicate. The correct implementation of inv2 should include the requirement that there exists at least one initial state, rather than just requiring that there is only one initial state. The fixed code is shown below:
+
+pred inv2 {
+    one s : Init
+    all s1,s2:Init | s1=s2 
+}

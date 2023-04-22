@@ -1,6 +1,0 @@
-The bug is in the predicate inv14. The commented out part of the predicate is incorrect and should be removed. 
-
-Fixed code: 
-
-pred inv14_OK {
-    all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups)

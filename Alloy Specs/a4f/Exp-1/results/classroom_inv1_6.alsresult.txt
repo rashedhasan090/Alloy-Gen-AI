@@ -1,0 +1,84 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person lone -> lone Group // fix: use "lone" instead of "->" to ensure that each person is in at most one group for a given class
+}
+
+sig Teacher extends Person  {}
+
+sig Student extends Person  {}
+
+pred inv1 {
+--  Person in Student --correct
+}
+
+pred inv2 {
+    no Teacher --correct
+}
+
+pred inv3 {
+    no Student & Teacher --correct
+}
+
+pred inv4 {
+    Person in (Student + Teacher) --correct
+}
+
+pred inv5 {
+    some Teacher.Teaches --correct
+}
+
+pred inv6 {
+    Teacher in Teaches.Class --correct
+}
+
+pred inv7 {
+    Class in Teacher.Teaches --correct
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches --correct
+}
+
+pred inv9 {
+    all c:Class | lone Teaches.c & Teacher --correct
+}
+
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups) --correct
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some Teacher & Teaches.c --correct
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups --correct
+}
+
+pred inv13 {
+    Tutors.Person in Teacher and Person.Tutors in Student --correct
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+
+pred inv15 {
+    all s : Person | some Teacher & ^Tutors.s --correct
+}
+
+pred inv1_OK {
+    Person in Student --correct
+}
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+-- remaining assert and check commands unchanged from original code

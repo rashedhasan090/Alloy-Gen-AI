@@ -1,4 +1,0 @@
-The bug in this specification is that the predicate inv11 is incomplete and does not make sense, while the repaired version is complete and meaningful. The repaired version of inv11 is:
-
-pred inv11 {
-  all c : Class | (some c.Groups) implies some t

@@ -1,0 +1,1 @@
+There is no obvious bug in this specification. All of the predicates and assertions seem to be correctly defined.

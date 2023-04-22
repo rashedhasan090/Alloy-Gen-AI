@@ -1,0 +1,74 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no (Student & Teacher)
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teacher.Teaches in Class
+}
+
+pred inv7 {
+    Class in Teacher.Teaches
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c:Class | lone Teaches[c] & Teacher
+}
+
+pred inv10 {
+    all c:Class, s:Student | some g:Group | c->s->g in Class.Groups
+}
+
+pred inv11 {
+    all c:Class, g:Group | some t:Teacher | c->t->g in Class.Groups implies g in Person.Tutors[t] and t in g.Teachers
+}
+
+pred inv12 {
+    all t : Teacher | some c:Class | some g:Group | c->t->g in Teaches and g in Class.Groups[t]
+}
+
+pred inv13 {
+    all s:Student, t:Teacher | s in t.Tutors implies t in s.Teachers
+}
+
+-- inv14 remains the same
+
+pred inv15 {
+    all s:Student | some t:Teacher & t in s.Tutors
+}
+
+-- PerfectOracleCommands remain the same

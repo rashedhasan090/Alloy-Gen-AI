@@ -1,3 +1,0 @@
-The bug in the specification is in the comment for inv14. The original comment is incomplete and the corrected comment is too long to be included in this answer. Here is the corrected inv14 predicate with its inline comment:
-
-pred inv14

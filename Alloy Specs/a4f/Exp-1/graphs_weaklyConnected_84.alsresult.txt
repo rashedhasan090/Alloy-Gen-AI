@@ -1,7 +1,0 @@
-The bug in this specification is in the predicate weaklyConnected, where the correct code should be as follows:
-
-pred weaklyConnected {
-    all n:Node | Node in n.*(adj+~adj)
-}
-
-The extra "--correct" statement is unnecessary and causes a syntax error.

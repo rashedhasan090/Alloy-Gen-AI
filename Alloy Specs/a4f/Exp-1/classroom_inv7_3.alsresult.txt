@@ -1,4 +1,0 @@
-There is a comment in pred inv7 that indicates that the code is incorrect and is commented out. However, the repaired version in inv7_OK implements a different constraint than the original intent of the comment. Therefore, the bug is that the repaired version of inv7 does not match the original intent of the comment.
-
-Here is the fixed code for inv7 where the original constraint is implemented:
-

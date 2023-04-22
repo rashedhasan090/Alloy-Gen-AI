@@ -1,0 +1,12 @@
+The bug in the specification is in the predicate inv3. The original predicate is:
+
+pred inv3 {
+    -- all s : State, e : Event | lone e.(s.trans) --incorrect
+    all s:State, s1:State, e:Event | lone e->s1
+}
+
+The correct predicate is:
+
+pred inv3 {
+    all s : State, e : Event | lone e.(s.trans[s]) --corrected
+}

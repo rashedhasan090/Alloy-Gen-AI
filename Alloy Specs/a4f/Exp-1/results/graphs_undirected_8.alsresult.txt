@@ -1,0 +1,98 @@
+```
+// Fixed Alloy specification without the bug
+
+sig Node {
+    adj: set Node
+}
+
+pred undirected {
+    adj = ~adj
+}
+
+pred oriented {
+    all n: Node | no n.adj & ~n.adj
+}
+
+pred acyclic {
+    no (Node.*adj & iden)
+}
+
+pred complete {
+    all n: Node | n.adj = Node - n
+}
+
+pred noLoops {
+    no (iden & adj)
+}
+
+pred weaklyConnected {
+    all n, m: Node | Node in n.*(adj+~adj)*m
+}
+
+pred stronglyConnected {
+    all n: Node | Node in n.*adj and Node in adj.n
+}
+
+pred transitive {
+    all n1, n2, n3: Node | n1 -> n2 in adj and n2 -> n3 in adj implies n1 -> n3 in adj
+}
+
+run {
+    undirected
+    oriented
+    acyclic
+    complete
+    noLoops
+    weaklyConnected
+    stronglyConnected
+    transitive
+}
+
+pred repair_pred_1 {
+    undirected[] iff adj = ~adj
+}
+
+run repair_pred_1 for 1
+
+assert repair_assert_1 {
+    oriented[] iff no n: Node | n.adj & ~n.adj
+}
+
+check repair_assert_1 for 1
+
+pred repair_pred_2 {
+    acyclic[] iff no (Node.*adj & iden)
+}
+
+run repair_pred_2 for 1
+
+assert repair_assert_2 {
+    complete[] iff all n: Node | n.adj = Node - n
+}
+
+check repair_assert_2 for 1
+
+pred repair_pred_3 {
+    noLoops[] iff no (iden & adj)
+}
+
+run repair_pred_3 for 1
+
+assert repair_assert_3 {
+    weaklyConnected[] iff all n, m: Node | Node in n.*(adj+~adj)*m
+}
+
+check repair_assert_3 for 1
+
+pred repair_pred_4 {
+    stronglyConnected[] iff all n: Node | Node in n.*adj and Node in adj.n
+}
+
+run repair_pred_4 for 1
+
+assert repair_assert_4 {
+    transitive[] iff all n1, n2, n3: Node | n1 -> n2 in adj and n2 -> n3 in adj implies n1 -> n3 in adj
+}
+
+check repair_assert_4 for 1
+```

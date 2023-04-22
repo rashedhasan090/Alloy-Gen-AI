@@ -1,6 +1,0 @@
-The bug in the specification is in the "oriented" predicate. The correct code is as follows:
-
-pred oriented {
- no n: Node | n -> n in adj -- corrected
- all n1, n2: Node | n1 -> n2 in adj implies no n2 -> n1 in adj -- corrected
-}

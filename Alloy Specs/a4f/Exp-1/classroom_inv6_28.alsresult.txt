@@ -1,9 +1,0 @@
-The bug is in predicate inv6, where the comment is incorrect. The correct version is:
-
-pred inv6 {
-  Teacher in Teaches.Person
-}
-
-Here is the fixed code:
-
-['sig Person  {\n', '\tTutors : set Person,\n', '\tTeaches : set Class\n', '}\n', '\n', 'sig Group {}\n', '\n', 'sig Class 

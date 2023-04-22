@@ -1,0 +1,7 @@
+The bug in the specification is in the predicate inv5. The correct predicate is:
+
+pred inv5 {
+    all s1,s2:State | s1.trans.Event = s2.trans.Event
+    -- s2.trans is equivalent to s2's transitions, 
+    -- and s1.trans is equivalent to s1's transitions
+}

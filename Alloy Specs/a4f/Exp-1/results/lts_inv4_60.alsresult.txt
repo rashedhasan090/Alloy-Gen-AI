@@ -1,0 +1,64 @@
+A possible fixed version of the Alloy specification is:
+
+// A labeled transition system (LTS) is comprised of States, a sub-set
+// of which are Initial, connected by transitions, here represented by 
+// Events.
+sig State {
+    trans : Event -> State
+}
+sig Init in State {}
+sig Event {}
+
+// The LTS does not contain deadlocks, i.e., each state has at least a transition.
+pred inv1 {
+  all s: State | some s.trans
+}
+
+// There is a single initial state.
+pred inv2 {
+  one Init
+}
+
+// The LTS is deterministic, i.e., each state has at most a transition for each event.
+pred inv3 {
+  all s : State, e : Event | lone e.(s.trans)
+}
+
+// All states are reachable from an initial state.
+// The definition below is equivalent to:
+//   all s: State | some (Init.*(trans)) & s
+// but uses an implicit quantification instead of a let expression.
+pred inv4 {
+  no s: State | (s !in Init.*(trans))
+}
+
+// All the states have the same events available.
+pred inv5 {
+  all s1,s2: State | s1.trans.Event = s2.trans.Event
+}
+
+// Each event is available in at least one state.
+pred inv6 {
+  all e:Event | some s:State | e in s.trans.Event
+}
+
+// The LTS is reversible, i.e., from a reachable state it is always
+// possible to return to an initial state.
+pred inv7 {
+  all s : Init.*(trans) | some i : Init | i in s.*(~trans)
+}
+
+// Check that each predicate is true (0 = success).
+check inv1, inv2, inv3, inv4, inv5, inv6, inv7 expect 0
+
+// Repair any violation of predicate inv4 (if any).
+pred repair_pred_1 {
+  inv4[] iff (let tr = { s1, s2 : State, e : Event | s1->e->s2 in trans } |
+               State in Init.*(tr))
+}
+run repair_pred_1
+assert repair_assert_1 {
+  inv4[] iff (let tr = { s1, s2 : State, e : Event | s1->e->s2 in trans } |
+              State in Init.*(tr))
+}
+check repair_assert_1

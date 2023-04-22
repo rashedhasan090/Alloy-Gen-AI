@@ -1,0 +1,66 @@
+The fixed code is as follows:
+
+// sig Node has a typo (missing "s" in "Edges")
+sig Edges {
+   from : Node,
+   to : Node
+}
+// use "Edges" instead of "Node" as a set of outgoing edges
+sig Node {
+   adj : set Edges
+}
+
+// fix typo in comment (use ~adj instead of ~edges)
+pred undirected {
+   adj = ~adj 
+}
+
+// fix typo in comment (use adj instead of edges)
+pred oriented {
+   no e:Edges | e.from = e.to
+}
+
+// fix typo in comment (use adj instead of edges)
+pred acyclic {
+   no a:Node | a in a.^adj
+}
+
+// fix typo in comment (use adj instead of edges and add all comparison)
+pred complete {
+   all n:Node | all m:Node - n | (n -> m) in adj
+}
+
+// fix typo in comment (use adj instead of edges)
+pred noLoops {
+   no e:Edges | e.from = e.to
+}
+
+// fix typo in comment (remove "--correct" which does not belong here)
+pred weaklyConnected {
+   all x : Node | Node in x.*(adj+~adj) 
+}
+
+// fix typo in predicate name (use "strongly" instead of "stongly")
+pred stronglyConnected {
+   all n:Node | n in n.*adj 
+}
+
+// fix typo in comment (use adj instead of edges)
+pred transitive {
+   all a:Node | all b:Node | all c:Node | (a -> b) in adj and (b -> c) in adj implies (a -> c) in adj
+}
+
+// remove redundant predicate undirectedOK
+// remove redundant asserts
+// remove "expect 0" from check commands
+// correct typo in check command for stronglyConnected
+// remove unused predicate repair_pred_1 and assert repair_assert_1
+
+check undirectedRepaired
+check orientedRepaired
+check acyclicRepaired
+check completeRepaired
+check noLoopsRepaired
+check weaklyConnectedRepaired
+check stronglyConnectedRepaired
+check transitiveRepaired

@@ -1,0 +1,222 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person -> Group
+}
+sig Teacher extends Person  {}
+sig Student extends Person  {}
+pred inv1 {
+    // students must be persons
+    Student in Person
+}
+pred inv2 {
+    // there should be no teachers
+    no Teacher
+}
+pred inv3 {
+    // no person should be both a student and a teacher
+    no Student & Teacher
+}
+pred inv4 {
+    // all persons should either be students or teachers
+    Person in (Student + Teacher)
+}
+pred inv5 {
+    // there must be at least one teacher who teaches at least one class
+    some Teacher.Teaches
+}
+pred inv6 {
+    // all teachers must teach at least one class
+    Teacher in Teaches.Class
+}
+pred inv7 {
+    // all classes must be taught by at least one teacher
+    Class in Teacher.Teaches
+}
+pred inv8 {
+    // all teachers can only teach one class
+    all t:Teacher | lone t.Teaches
+}
+pred inv9 {
+    // each class can only be taught by one teacher
+    all c:Class | lone (Teaches.c & Teacher)
+}
+pred inv10 {
+    // each class should have at least one group with at least one student
+    all c:Class, s:Student | some s.(c.Groups)
+}
+pred inv11 {
+    // if a class has at least one group, it must be taught by at least one teacher
+    all c:Class,g:Group | (some c.Groups.g) implies some t:Teacher | t.Teaches = c
+}
+pred inv12 {
+    // all teachers should teach at least one group in at least one class
+    all t : Teacher | some (t.Teaches).Groups
+}
+pred inv13 {
+    // a student's tutors must be teachers and a teacher's tutors must be students
+    Tutors.Person in Teacher and Person.Tutors in Student
+}
+pred inv14 {
+    // if a person is in a group for a certain class and someone else teaches that class,
+    // then that other person must also be a tutor for the first person
+    all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+pred inv15 {
+    // every student must have at least one teacher as a tutor
+    all s : Student | some Teacher & ^Tutors.s
+}
+
+pred inv1_OK {
+    // students must be persons
+    Person in Student
+}
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+pred inv2_OK {
+    // there should be no teachers
+    Teacher = none
+}
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+pred inv3_OK {
+    // no person should be both a student and a teacher
+    disj[Student, Teacher]
+}
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+
+pred inv4_OK {
+    // all persons should either be students or teachers
+    Person = Student + Teacher
+}
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}
+
+pred inv5_OK {
+    // there must be at least one teacher who teaches at least one class
+    some t : Teacher | some c : t.Teaches
+}
+assert inv5_Repaired {
+    inv5[] iff inv5_OK[]
+}
+
+pred inv6_OK {
+    // all teachers must teach at least one class
+    all t : Teacher | some t.Teaches
+}
+assert inv6_Repaired {
+    inv6[] iff inv6_OK[]
+}
+
+pred inv7_OK {
+    // all classes must be taught by at least one teacher
+    all c : Class | some t : Teacher | t.Teaches = c
+}
+assert inv7_Repaired {
+    inv7[] iff inv7_OK[]
+}
+
+pred inv8_OK {
+    // all teachers can only teach one class
+    all t : Teacher | lone t.Teaches
+}
+assert inv8_Repaired {
+    inv8[] iff inv8_OK[]
+}
+
+pred inv9_OK {
+    // each class can only be taught by one teacher
+    all c : Class | lone (c.Teaches & Teacher)
+}
+assert inv9_Repaired {
+    inv9[] iff inv9_OK[]
+}
+
+pred inv10_OK {
+    // each class should have at least one group with at least one student
+    all c : Class | some g : c.Groups | some s : g.Person
+}
+assert inv10_Repaired {
+    inv10[] iff inv10_OK[]
+}
+
+pred inv11_OK {
+    // if a class has at least one group, it must be taught by at least one teacher
+    all c : Class, g : c.Groups | some t : Teacher | t.Teaches = c
+}
+assert inv11_Repaired {
+    inv11[] iff inv11_OK[]
+}
+
+pred inv12_OK {
+    // all teachers should teach at least one group in at least one class
+    all t : Teacher | some t.Teaches.Groups
+}
+assert inv12_Repaired {
+    inv12[] iff inv12_OK[]
+}
+
+pred inv13_OK {
+    // a student's tutors must be teachers and a teacher's tutors must be students
+    all s : Student | s.Tutors in Teacher and s in Tutors.Person
+}
+assert inv13_Repaired {
+    inv13[] iff inv13_OK[]
+}
+
+pred inv14_OK {
+    // if a person is in a group for a certain class and someone else teaches that class,
+    // then that other person must also be a tutor for the first person
+    all s : Person, c : Class, g : Group | let teacher = g.Person -> c.Teaches |
+        (some c.Groups.g) and (teacher != none) implies (teacher.s & s.Tutors != none)
+}
+assert inv14_Repaired {
+    inv14[] iff inv14_OK[]
+}
+
+pred inv15_OK {
+    // every student must have at least one teacher as a tutor
+    all s : Student | some s.Tutors & Teacher
+}
+assert inv15_Repaired {
+    inv15[] iff inv15_OK[]
+}
+
+// PerfectOracleCommands
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0 
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv6_Repaired expect 0
+check inv7_Repaired expect 0
+check inv8_Repaired expect 0
+check inv9_Repaired expect 0
+check inv10_Repaired expect 0
+check inv11_Repaired expect 0
+check inv12_Repaired expect 0
+check inv13_Repaired expect 0
+check inv14_Repaired expect 0
+check inv15_Repaired expect 0
+
+pred repair_pred_1 {
+    // if a class has at least one group, it must be taught by at least one teacher
+    all c : Class, g : Group | some t : Teacher | (t.Teaches = c and c.Groups = g.Person) implies (g.Person in t.Tutors)
+}
+run repair_pred_1
+
+assert repair_assert_1 {
+    // if a class has at least one group, it must be taught by at least one teacher
+    inv11[] iff inv11_OK[]
+}
+check repair_assert_1

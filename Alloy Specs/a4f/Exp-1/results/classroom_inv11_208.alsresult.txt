@@ -1,0 +1,82 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teacher.Teaches in Class
+}
+
+pred inv7 {
+    all c:Class | c in Teacher.Teaches
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c:Class | lone (Teaches.c & Teacher)
+}
+
+pred inv10 {
+    all c:Class, s:Student | some g:Group | c->s->g in Class.Groups
+}
+
+pred inv11 {
+    all c:Class | some t:Teacher | t.Teaches = c
+}
+
+pred inv12 {
+    all t:Teacher | some g:Group | g in (t.Teaches).Groups
+}
+
+pred inv13 {
+    all p:Person | p.Tutors in Student and p in Teacher
+}
+
+pred inv14 {
+    all c:Class, s:Student, g:Group | c->s->g in Class.Groups implies some t:Teacher | t->c in Teaches and t->s in Tutors
+}
+
+pred inv15 {
+    all s:Student | some t:Teacher & s.Tutors=t
+}
+
+pred ok {
+    inv1 and inv2 and inv3 and inv4 and inv5 and inv6 and inv7 and inv8 and inv9 and inv10 and inv11 and inv12 and inv13 and inv14 and inv15
+}
+
+run ok for 10 but 1 inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15
+
+check ok for 10 but 1 inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15

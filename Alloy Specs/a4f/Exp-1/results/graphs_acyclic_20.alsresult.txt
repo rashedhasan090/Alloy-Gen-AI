@@ -1,0 +1,31 @@
+sig Node{
+    adj: set Node
+}{
+    no iden & adj
+}{
+    adj = ~adj
+}{
+    all n:Node | Node in n.adj
+}{
+    no (iden & adj)
+}{
+    all n:Node | Node in n.*(adj+~adj)
+}{
+    all n:Node | Node in n.*adj
+}{
+    adj.adj in adj
+}
+
+pred repair_pred_1{
+    acyclic[] iff all a:Node | a not in a.^adj
+}
+
+run repair_pred_1
+
+assert repair_assert_1{
+    acyclic[] iff all a:Node | a not in a.^adj
+}
+
+check repair_assert_1
+
+check adj = ~adj and no adj & ~adj and all n:Node | Node in n.adj and no (iden & adj) and all n:Node | Node in n.*(adj+~adj) and all n:Node | Node in n.*adj and adj.adj in adj and all a:Node | a not in a.^adj expect 0

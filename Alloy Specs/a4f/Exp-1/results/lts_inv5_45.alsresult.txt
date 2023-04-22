@@ -1,0 +1,8 @@
+// Fixed code
+// The bug was in the inv5 predicate, where State.trans was compared to x.trans, which is not valid
+// The correct comparison is between x.trans and State.trans
+// Fixed version:
+// All the states have the same events available.
+pred inv5 {
+    all x : State | x.trans = State.trans
+}

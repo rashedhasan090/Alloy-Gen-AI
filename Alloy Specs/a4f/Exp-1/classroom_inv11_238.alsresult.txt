@@ -1,5 +1,0 @@
-The bug in the specification is in predicate inv11. The correct version should be:
-
-pred inv11 {
-  all c : Class | (some c.Groups) implies some t : Teacher | t.Teaches = c
-}

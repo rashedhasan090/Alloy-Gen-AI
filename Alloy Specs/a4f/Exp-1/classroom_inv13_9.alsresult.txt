@@ -1,4 +1,0 @@
-The bug is in inv13 where the code is trying to use `Person.Tutors` instead of `s.Tutors`, where `s` is a variable representing a person. Here is the fixed code:
-
-pred inv13_OK {
-  all s:Student, t:Teacher |

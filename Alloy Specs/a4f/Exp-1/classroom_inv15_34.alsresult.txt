@@ -1,5 +1,0 @@
-The bug in the specification is in the pred inv15. The correct version is:
-
-pred inv15 {
-    all s : Person | some Teacher & s.*Tutors 
-}

@@ -1,0 +1,7 @@
+The bug in this specification is in the `inv4` predicate. The correct version is as follows:
+
+pred inv4 {
+    all s : State | some Init.*(s.trans)
+}
+
+Note that the commented out code is incorrect and has been removed. The corrected version simply checks that for each state s, there exists a path of transitions from an initial state to s.

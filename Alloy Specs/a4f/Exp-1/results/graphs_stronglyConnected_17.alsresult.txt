@@ -1,0 +1,8 @@
+The bug in the specification is in the predicate stonglyConnected, where the first line should be commented out instead of the second line. The corrected predicate is as follows:
+
+pred stonglyConnectedOK {
+   all n:Node | Node in n.*adj
+}
+assert stonglyConnectedRepaired {
+   stonglyConnected[]  iff stonglyConnectedOK[]
+}

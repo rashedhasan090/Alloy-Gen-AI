@@ -1,7 +1,0 @@
-There is a typo in the predicate inv6, where there is an extra "--" at the beginning of the line. To fix it, remove the two dashes so that the line reads "Teacher in Teaches.Class". 
-
-The fixed code is:
-
-pred inv6 {
-  Teacher in Teaches.Class --correct
-}

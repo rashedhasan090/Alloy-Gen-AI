@@ -1,0 +1,5 @@
+The bug in the specification is in the predicate inv8. The corrected code for the predicate inv8 is:
+
+pred inv8 { 
+  all c : Class | lone Teacher & Teaches.c --> lone c.Groups 
+}

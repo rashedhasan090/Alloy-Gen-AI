@@ -1,0 +1,5 @@
+The bug in this specification is in inv6 predicate. It should be corrected to:
+
+pred inv6 {
+    all e:Event | some s:State | some s':State | s->e->s' in trans
+}

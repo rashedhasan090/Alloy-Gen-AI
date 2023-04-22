@@ -1,0 +1,6 @@
+There is a commented out line in inv7 that was meant to be active but isn't. To fix the bug, remove the comment symbol '--' at the beginning of line 28. The fixed code is:
+
+pred inv7 {
+  let tr = { s1, s2 : State | some e : Event | s1->e->s2 in trans } |
+  all s : Init.^tr | some i : Init | i in s.^tr --fixed
+}

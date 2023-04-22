@@ -1,3 +1,0 @@
-The bug in the specification is in the predicate inv13:
-
-'pred inv13 {\n', '\tTutors.Person in Teacher and Person.Tutors in Student --incorrect\n', '\n', '\n', '\n', '\n', '\n', '\n', '\n', '\n', '\n', '\n', '\n', '\n', '\n',

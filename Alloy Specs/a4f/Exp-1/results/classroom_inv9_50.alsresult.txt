@@ -1,0 +1,76 @@
+sig Person {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class {
+    Groups : Person -> Group
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+pred inv1 {
+    all p : Person | p in Student implies p !in Teacher
+}
+pred inv2 {
+    no Teacher
+}
+pred inv3 {
+    no Student & Teacher
+}
+pred inv4 {
+    Person = Student + Teacher
+}
+pred inv5 {
+    some t : Teacher | some c : t.Teaches
+}
+pred inv6 {
+    Teacher.Teaches = Teaches.Class
+}
+pred inv7 {
+    all c : Class | c in Teacher.Teaches
+}
+pred inv8 {
+    all t : Teacher | lone t.Teaches
+}
+pred inv9 {
+    all c : Class | lone (Teaches.c & Teacher)
+}
+pred inv10 {
+    all c : Class | all s : Student | some g : c.Groups | s -> g in c.Groups
+}
+pred inv11 {
+    all c : Class | some g : c.Groups implies some t : Teacher | t.Teaches = c
+}
+pred inv12 {
+    all t : Teacher | some c : t.Teaches | some g : c.Groups
+}
+pred inv13 {
+    all p : Person | p.Tutors in Student and p in Teacher.Teaches
+}
+pred inv14 {
+    all s : Person, c : Class, g : Group | c.Groups.s = g implies some t : Person | t -> c in Teaches and t -> s in Tutors and c -> s -> g in Groups
+}
+pred inv15 {
+    all s : Person | s in ^Tutors.Teacher
+}
+pred inv16 {
+    all c : Class | all s : Student | c.Groups.s != none
+}
+run check {
+    assert inv1_repaired { inv1[] iff inv1_OK[] }
+    assert inv2_repaired { inv2[] iff inv2_OK[] }
+    assert inv3_repaired { inv3[] iff inv3_OK[] }
+    assert inv4_repaired { inv4[] iff inv4_OK[] }
+    assert inv5_repaired { inv5[] iff inv5_OK[] }
+    assert inv6_repaired { inv6[] iff inv6_OK[] }
+    assert inv7_repaired { inv7[] iff inv7_OK[] }
+    assert inv8_repaired { inv8[] iff inv8_OK[] }
+    assert inv9_repaired { inv9[] iff inv9_OK[] }
+    assert inv10_repaired { inv10[] iff inv10_OK[] }
+    assert inv11_repaired { inv11[] iff inv11_OK[] }
+    assert inv12_repaired { inv12[] iff inv12_OK[] }
+    assert inv13_repaired { inv13[] iff inv13_OK[] }
+    assert inv14_repaired { inv14[] iff inv14_OK[] }
+    assert inv15_repaired { inv15[] iff inv15_OK[] }
+    assert inv16_repaired { inv16[] }
+} for 10 but exactly 6 Teacher, 6 Student, 6 Group, 6 Class, 6 Person, 6 ^Person, 6 ^Teacher, 6 ^Student, 6 ^Group, 6 Student.Tutors, 6 Teacher.Teaches, 6 Class.Groups

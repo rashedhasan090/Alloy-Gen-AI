@@ -1,0 +1,9 @@
+sig State {
+    trans : Event -> lone State // Fix: Change "Event -> State" to "Event -> lone State"
+}
+
+pred inv5 {
+    all x, y : State | x.trans in State.trans
+}
+
+run inv5 // Test the fixed predicate inv5

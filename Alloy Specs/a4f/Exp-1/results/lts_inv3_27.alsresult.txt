@@ -1,0 +1,5 @@
+The bug in the specification is in inv3 predicate. The correct predicate should be as follows:
+
+pred inv3 {
+  all s: State | lone trans[s]
+}

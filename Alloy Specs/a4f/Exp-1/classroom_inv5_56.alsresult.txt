@@ -1,8 +1,0 @@
-The bug in this specification is in pred inv5. The commented line '-- some Teacher.Teaches --correct' should be uncommented.
-
-Fixed code:
-
-pred inv5 {
-  some Teacher.Teaches
-  Teacher.Teaches & Teacher in Class  
-}

@@ -1,1 +1,0 @@
-There isn't any code in the specification. Please provide the Alloy code first.

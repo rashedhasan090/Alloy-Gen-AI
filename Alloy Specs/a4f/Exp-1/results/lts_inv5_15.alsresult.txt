@@ -1,0 +1,5 @@
+The bug in the specification is in the definition of the predicate inv5. The commented out line should be removed, and replaced with the corrected line:
+
+pred inv5 {
+  all s,s1:State,e:Event|some s2:State | s->e->s2 in trans and s2->e->s1 in trans implies s->e->s1 in trans
+}

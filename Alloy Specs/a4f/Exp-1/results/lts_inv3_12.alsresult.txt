@@ -1,0 +1,92 @@
+// Bug fixed: added the sig Trans to represent the transitions
+// and connected them to States and Events using the "in" keyword
+
+sig State {
+    trans : Event -> State
+}
+
+sig Trans {
+    start : one State,
+    event : one Event,
+    end : one State
+}
+
+sig Init in State {}
+
+sig Event {}
+
+// each state has at least one transition
+pred inv1 {
+    all s: State | some s.trans
+}
+
+// there is a single initial state
+pred inv2 {
+    one Init
+}
+
+// the LTS is deterministic, each state has at most one transition for each event
+pred inv3 {
+    all s : State, e : Event | lone t : Trans | t.start = s and t.event = e implies t.end = s.trans[e]
+}
+
+// all states are reachable from an initial state
+pred inv4 {
+    Init in start.(Trans.^*)
+}
+
+// all states have the same events available
+pred inv5 {
+    all s:State, s1:State | s.trans.Event = s1.trans.Event
+}
+
+// each event is available in at least one state
+pred inv6 {
+    all e:Event | some t:Trans | t.event = e
+}
+
+// the LTS is reversible, from any reachable state, it is possible to return to an initial state
+pred inv7 {
+    all s : State | some path : s.*(Trans~) & Init | path.start = Init and path.end = s
+}
+
+pred inv3_OK {
+    all s : State, e : Event | one e.(s.trans)
+}
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+
+assert inv4_Repaired {
+    inv4[] -- invariant does not need repair
+}
+
+assert inv5_Repaired {
+    inv5[] -- invariant does not need repair
+}
+
+assert inv7_Repaired {
+    inv7[] -- invariant does not need repair
+}
+
+// This is not a repair, but a redundant assertion to check the repaired invariant
+assert repair_assert_1 {
+    inv3[] iff inv3_OK[]
+}
+
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv7_Repaired expect 0
+check repair_assert_1 expect 0

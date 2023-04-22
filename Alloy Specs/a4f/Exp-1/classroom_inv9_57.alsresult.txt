@@ -1,7 +1,0 @@
-One of the predicates is incomplete and commented out. It looks like some text was accidentally deleted. The fixed code should be:
-
-pred inv9 {
-    all c:Class | lone Teaches.c & Teacher
-}
-
-The text "Teaches . ~Teaches in iden" should also be removed as it is not part of any predicate.

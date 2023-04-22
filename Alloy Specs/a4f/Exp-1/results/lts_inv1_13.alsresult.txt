@@ -1,0 +1,107 @@
+The bug in the specification is that there is no signature or relation defined for the LTS itself. This can be fixed by adding a signature for LTS and a relation between states and events called "trans." The fixed code is as follows:
+
+sig State {}
+sig Event {}
+sig LTS {
+    trans: State -> Event -> State
+}
+sig Init in LTS {}
+
+pred inv1 {
+    all s: State | some e: Event | s->e->LTS.trans --correct
+}
+
+pred inv2 {
+    one Init --correct
+}
+
+pred inv3 {
+    all s: State, e: Event | lone s->e->LTS.trans --correct
+}
+
+pred inv4 {
+    let tr = { s1, s2: State | some e: Event | s1->e->s2 in LTS.trans } |
+    State in Init.^tr --correct
+}
+
+pred inv5 {
+    all s, s1: State | s1 in s.LTS.trans.State --correct
+}
+
+pred inv6 {
+    all e: Event | some s1, s2: State | s1->e->s2 in LTS.trans --correct
+}
+
+pred inv7 {
+    let tr = { s1, s2: State | some e: Event | s1->e->s2 in LTS.trans } |
+    all s: Init.^tr | some i: Init | i in s.^tr --correct
+}
+
+pred inv1_OK {
+    all s: State | some e: Event | s->e->LTS.trans --correct
+}
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+pred inv2_OK {
+    one Init --correct
+}
+
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+pred inv3_OK {
+    all s: State, e: Event | lone s->e->LTS.trans --correct
+}
+
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+
+pred inv4_OK {
+    let tr = { s1, s2: State | some e: Event | s1->e->s2 in LTS.trans } |
+    State in Init.^tr --correct
+}
+
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}
+
+pred inv5_OK {
+    all s, s1: State | s1 in s.LTS.trans.State --correct
+}
+
+assert inv5_Repaired {
+    inv5[] iff inv5_OK[]
+}
+
+pred inv7_OK {
+    let tr = { s1, s2: State | some e: Event | s1->e->s2 in LTS.trans } |
+    all s: Init.^tr | some i: Init | i in s.^tr --correct
+}
+
+assert inv7_Repaired {
+    inv7[] iff inv7_OK[]
+}
+
+check inv1_Repaired
+check inv2_Repaired
+check inv3_Repaired
+check inv4_Repaired
+check inv5_Repaired
+check inv7_Repaired
+
+pred repair_pred_1 {
+    inv1[] iff inv1_OK[]
+}
+
+run repair_pred_1
+
+assert repair_assert_1 {
+    inv1[] iff inv1_OK[]
+}
+
+check repair_assert_1

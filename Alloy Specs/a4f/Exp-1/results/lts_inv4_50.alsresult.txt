@@ -1,0 +1,7 @@
+//Bug fix: added "sig" keyword before "Event" and "State"
+sig State {
+       trans : Event -> State
+}
+sig Init in State {}
+sig Event {}
+//rest of the Alloy specification remains the same

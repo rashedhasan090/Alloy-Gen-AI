@@ -1,0 +1,17 @@
+The bug in the specification is:
+
+```
+pred inv15 {
+--  all s : Person | some Teacher & ^Tutors.s
+    all p:Person | some t:Teacher | t in p.^~Teaches 
+}
+```
+
+The intended line `all s : Person | some Teacher & ^Tutors.s` is commented out and instead a line that is unrelated to the intended constraint is used.
+
+Repaired code:
+```
+pred inv15 {
+    all s : Person | some Teacher & ^s.Tutors
+}
+```

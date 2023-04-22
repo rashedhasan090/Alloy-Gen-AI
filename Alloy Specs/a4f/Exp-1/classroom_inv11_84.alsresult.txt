@@ -1,7 +1,0 @@
-The bug is in the commented out line in inv11. It is incomplete and causes a syntax error. The fixed code is:
-
-pred inv11 {
- all c : Class | (some c.Groups implies some t : Teacher | t.teaches = c)
-}
-
-Note: This fixes the syntax error, but may not necessarily represent the intended constraint.

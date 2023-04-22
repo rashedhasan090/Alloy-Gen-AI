@@ -1,0 +1,5 @@
+The bug in the specification is in the pred inv14. The correct predicate is:
+
+pred inv14 {
+   all s : Student, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}

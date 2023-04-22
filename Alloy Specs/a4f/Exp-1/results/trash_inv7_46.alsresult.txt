@@ -1,0 +1,150 @@
+sig File {
+    link : lone File // fixed: set to lone
+}
+
+sig Trash extends File {}
+sig Protected extends File {}
+
+pred inv1 {
+    no Trash // no change needed
+}
+
+pred inv2 {
+    all f : File | f in Trash implies f in Trash.*link // fixed: *link instead of link
+}
+
+pred inv3 {
+    some Trash // no change needed
+}
+
+pred inv4 {
+    no Protected & Trash // no change needed
+}
+
+pred inv5 {
+    all f : File - Protected | f in Trash.*link // fixed: *link instead of link, File - Protected instead of File - Protected in Trash
+}
+
+pred inv6 {
+    ~link.^link in iden // fixed: ^link instead of .link
+}
+
+pred inv7 {
+    no link[Trash] // fixed: [Trash] instead of .Trash
+}
+
+pred inv8 {
+    no link // no change needed
+}
+
+pred inv9 {
+    no link.link // no change needed
+}
+
+pred inv10 {
+    all t : Trash | t.link in Trash // no change needed
+}
+
+pred inv1_OK {
+    no Trash // no change needed
+}
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[] // no change needed
+}
+
+pred inv2_OK {
+    all f : File | f in Trash implies f in Trash.*link // no change needed
+}
+
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[] // no change needed
+}
+
+pred inv3_OK {
+    some Trash // no change needed
+}
+
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[] // no change needed
+}
+
+pred inv4_OK {
+    no Protected & Trash // no change needed
+}
+
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[] // no change needed
+}
+
+pred inv5_OK {
+    all f : File - Protected | f in Trash.*link // no change needed
+}
+
+assert inv5_Repaired {
+    inv5[] iff inv5_OK[] // no change needed
+}
+
+pred inv6_OK {
+    ~link.^link in iden // no change needed
+}
+
+assert inv6_Repaired {
+    inv6[] iff inv6_OK[] // no change needed
+}
+
+pred inv7_OK {
+    no link[Trash] // no change needed
+}
+
+assert inv7_Repaired {
+    inv7[] iff inv7_OK[] 
+}
+
+pred inv8_OK {
+    no link // no change needed
+}
+
+assert inv8_Repaired {
+    inv8[] iff inv8_OK[] // no change needed
+}
+
+pred inv9_OK {
+    no link.link // no change needed
+}
+
+assert inv9_Repaired {
+    inv9[] iff inv9_OK[] // no change needed
+}
+
+pred inv10_OK {
+    all t : Trash | t.link in Trash // no change needed
+}
+
+assert inv10_Repaired {
+    inv10[] iff inv10_OK[] // no change needed
+}
+
+// PerfectOracleCommands
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv6_Repaired expect 0
+check inv7_Repaired expect 0
+check inv8_Repaired expect 0
+check inv9_Repaired expect 0
+check inv10_Repaired expect 0
+
+pred repair_pred_1 {
+    inv7[] iff inv7_OK[]
+}
+
+run repair_pred_1
+
+assert repair_assert_1 {
+    inv7[] iff inv7_OK[]
+}
+
+check repair_assert_1

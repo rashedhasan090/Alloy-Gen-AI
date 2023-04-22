@@ -1,0 +1,5 @@
+The bug is in inv5_OK. The correct predicate should be as follows:
+
+pred inv5_OK {
+    all x, y : State | x.trans.State = y.trans.State => (some e : Event | x->e->y in trans implies y->e->y in trans)
+}

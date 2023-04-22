@@ -1,0 +1,10 @@
+The bug in the specification is in inv4_OK. 
+
+The fixed code is:
+
+pred inv4_OK {
+  let tr = { s1, s2 : State, e : Event | s1->e->s2 in trans } |
+  State in Init.^tr
+}
+
+The change is replacing "some" with "," in line 44 in the definition of tr.

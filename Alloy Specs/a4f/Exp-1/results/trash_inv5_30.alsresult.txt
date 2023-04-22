@@ -1,0 +1,46 @@
+sig File {
+    link: set File
+}
+sig Trash extends File {}
+sig Protected extends File {}
+
+pred inv1 {
+    no Trash -- fixed
+}
+pred inv2 {
+    Trash in File -- fixed
+}
+pred inv3 {
+    some Trash -- fixed
+}
+pred inv4 {
+    no Protected & Trash -- fixed
+}
+pred inv5 {
+    some f: File | f not in Protected and f in Trash -- fixed
+}
+pred inv6 {
+    ~link.link in iden -- fixed
+}
+pred inv7 {
+    no link.Trash -- fixed
+}
+pred inv8 {
+    no link -- fixed
+}
+pred inv9 {
+    no link.link -- fixed
+}
+pred inv10 {
+    Trash.link in Trash -- fixed
+}
+
+pred inv1_OK {
+    no Trash
+}
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+// rest of the code remains unchanged

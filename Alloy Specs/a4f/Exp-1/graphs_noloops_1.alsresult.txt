@@ -1,9 +1,0 @@
-The bug is in the pred stonglyConnected definition where `n.*adj` should be replaced with `n.^adj`. The fixed code is:
-
-pred stonglyConnectedOK {
-    all n:Node | Node in n.^adj
-}
-
-assert stonglyConnectedRepaired {
-    stonglyConnected[]  iff stonglyConnectedOK[]
-}

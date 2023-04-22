@@ -1,0 +1,15 @@
+The bug in the specification is in inv2, where the set of possible sources for a work should include Institution instead of (u + Institution). 
+The fixed code is:
+
+'pred inv2 { // A user profile can only have works added by himself or some external institution
+	all u:User, w:(u.profile + u.visible) | w in (u.source + Institution) 
+}
+
+pred inv2_OK {
+	all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i in w.source)
+}
+
+assert inv2_Repaired {
+	inv2[] iff inv2_OK[]
+}
+').

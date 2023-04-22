@@ -1,5 +1,0 @@
-The bug in the specification is the commented out line in pred inv6. It should be removed as it is not a valid predicate and causing a syntax error.
-
-Fixed code:
-
-['sig Person  {\n', '\tTutors : set Person,\n', '\tTeaches : set Class\n', '}\n', '\n', 'sig Group {}\n', '\n', 'sig Class  {\n', '\t

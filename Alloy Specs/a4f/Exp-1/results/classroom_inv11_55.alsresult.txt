@@ -1,0 +1,18 @@
+The bug in the specification is in the following line of code:
+
+```
+pred inv11 {
+--  all c : Class | (some c.Groups) implies some Teacher & Teaches.c --correct
+  all c : Class, s : Student, g : Group | c->s->g in Groups implies (some t : Teacher | t->c in Teaches) 
+}
+```
+
+The commented out line is the correct statement, but it is not being executed because it is commented out. The line above it is incorrect.
+
+The fixed code is:
+
+```
+pred inv11 {
+  all c : Class | (some c.Groups) implies some Teacher & Teaches.c 
+}
+```

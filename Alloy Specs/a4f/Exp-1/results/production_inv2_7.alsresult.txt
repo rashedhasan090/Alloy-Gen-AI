@@ -1,0 +1,5 @@
+The bug in this specification is in the inv2 predicate. The correct code for inv2 predicate is provided below:
+
+pred inv2 { // A component cannot be a part of itself
+    all c : Component | c not in c.^parts
+}

@@ -1,0 +1,90 @@
+One possible fixed code is:
+
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person lone->lone Group // fix: use lone->lone instead of -> to allow each person to belong to at most one group of the class
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+pred inv1 {
+    Person in Student
+}
+pred inv2 {
+    no Teacher
+}
+pred inv3 {
+    no Student & Teacher
+}
+pred inv4 {
+    Person in (Student + Teacher)
+}
+pred inv5 {
+    some Teacher.Teaches
+}
+pred inv6 {
+    Teacher in Teaches.Class
+}
+pred inv7 {
+    Class in Teacher.Teaches
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+pred inv9 {
+    all c : Class | lone (c.Groups & Teacher.Teaches)
+}
+pred inv10 {
+    all c : Class, s : Student | some s.(c.Groups)
+}
+pred inv11 {
+    all c : Class | (some c.Groups) implies some Teacher & Teaches.c
+}
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups 
+}
+pred inv13 {
+    Tutors.Person in Teacher and Person.Tutors in Student
+}
+pred inv14 {
+    all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+pred inv15 {
+    all s : Person | some Teacher & ^Tutors.s
+}
+
+pred inv9_OK {
+    all c : Class | lone Teacher.Teaches & c.Groups
+}
+assert inv9_Repaired {
+    inv9[] iff inv9_OK[]
+}
+
+--- PerfectOracleCommands
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0 
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv6_Repaired expect 0
+check inv7_Repaired expect 0
+check inv8_Repaired expect 0
+check inv9_Repaired expect 0
+check inv10_Repaired expect 0
+check inv11_Repaired expect 0
+check inv12_Repaired expect 0
+check inv13_Repaired expect 0
+check inv14_Repaired expect 0
+check inv15_Repaired expect 0
+
+pred repair_pred_1{
+    inv9[] iff inv9_OK[]
+}
+run repair_pred_1
+assert repair_assert_1{
+    inv9[] iff inv9_OK[]
+}
+check repair_assert_1

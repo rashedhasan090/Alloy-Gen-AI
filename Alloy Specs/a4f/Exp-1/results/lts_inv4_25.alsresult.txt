@@ -1,0 +1,8 @@
+The bug in this specification is in the predicate inv4. The correct code is: 
+
+pred inv4 {
+  let tr = { s1, e, s2 : State | s1->e->s2 in trans } | State in Init.^tr 
+  all s : State | some i : Init | i -> s in tr
+}
+
+The corrected inv4 predicate ensures that all states can be reached from an initial state, by checking that for every state there exists a path from an initial state to that state.

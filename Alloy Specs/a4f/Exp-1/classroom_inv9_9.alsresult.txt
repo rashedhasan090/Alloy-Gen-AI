@@ -1,5 +1,0 @@
-The bug in this specification is in the predicate inv9. The correct predicate is:
-
-pred inv9 {
-  all c : Class | one t : Teacher | t->c in Teaches
-}

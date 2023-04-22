@@ -1,0 +1,6 @@
+The bug is in pred inv14, where the comment symbol "--" is missing. Here is the fixed code:
+
+pred inv14 {
+  -- all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+  all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}

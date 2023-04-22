@@ -1,0 +1,5 @@
+The bug in this specification is in the predicate inv5. The correct code for inv5 is as follows:
+
+pred inv5 {
+    all s1, s2 : State, e : Event | (s1->e->s2 in trans) implies (s1.trans.State = s2.trans.State)
+}

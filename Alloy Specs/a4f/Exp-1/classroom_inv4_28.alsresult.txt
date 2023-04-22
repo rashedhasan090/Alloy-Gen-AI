@@ -1,5 +1,0 @@
-The bug in the code is in the pred inv1 declaration, where "Person in Student" is correct, but the inline comment says "correct" instead of providing an explanation like the other pred declarations. To fix it, update the comment to provide an explanation:
-
-pred inv1 {
-    Person in Student -- every person in the system is either a student or a teacher
-}

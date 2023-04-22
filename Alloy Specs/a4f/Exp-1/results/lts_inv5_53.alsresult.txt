@@ -1,0 +1,5 @@
+The bug in the specification is in inv6. The correct predicate is:
+
+pred inv6 {
+    all e : Event | some s1, s2 : State | s1->e->s2 or s2->e->s1 in trans --fixed
+}

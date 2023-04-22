@@ -1,0 +1,5 @@
+The bug in this specification is in the predicate inv6. The correct version is:
+
+pred inv6 {
+    all e:Event | some s1,s2:State | s1.e->s2 in trans --correct
+}

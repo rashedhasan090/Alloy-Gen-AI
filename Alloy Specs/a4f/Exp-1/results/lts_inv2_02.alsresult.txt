@@ -1,0 +1,8 @@
+The bug in the specification is in the predicate inv2. The correct predicate should check that there exists exactly one Initial state, instead of checking that there exists at least one Initial state. The fixed code is:
+
+pred inv2 {
+    one i: Init |
+    all s: State | s not in Init implies no s.trans[i]
+}
+
+The fixed code ensures that there is exactly one Initial state by checking that there exists one Initial state such that all other states are not Initial states.

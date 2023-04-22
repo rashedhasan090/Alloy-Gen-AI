@@ -1,0 +1,92 @@
+sig Person {
+    Tutors: set Person,
+    Teaches: set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups: Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    all p: Person | p in Student implies p not in Teacher
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person = Student + Teacher
+}
+
+pred inv5 {
+    some t: Teacher | some c: t.Teaches
+}
+
+pred inv6 {
+    Teacher = Teaches.Teacher
+}
+
+pred inv7 {
+    Class = Teacher.Teaches
+}
+
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c: Class | lone c.Teaches & Teacher
+}
+
+pred inv10 {
+    all c: Class, s: Student | some g: Group | (s -> g) in c.Groups
+}
+
+pred inv11 {
+    all c: Class | (some c.Groups) implies some t: Teacher | t teaches c
+}
+
+pred inv12 {
+    all t: Teacher | some g: t.Teaches.Groups
+}
+
+pred inv13 {
+    all p: Person | p.Tutors.Teacher & p in Student or p.Tutors = none
+}
+
+pred inv14 {
+    all s: Person, c: Class | some g: Group | (c -> s -> g) in Class.Groups implies
+        all t: Person, g2: Group | t teaches c & (t -> g2) in Teaches implies
+            (t -> s) in Tutors[g2]
+}
+
+pred inv15 {
+    all s: Person | some t: Teacher | t in s.Tutors
+}
+
+run inv1 for 3
+run inv2 for 3
+run inv3 for 3
+run inv4 for 3
+run inv5 for 3
+run inv6 for 3
+run inv7 for 3
+run inv8 for 3
+run inv9 for 3
+run inv10 for 3
+run inv11 for 3
+run inv12 for 3
+run inv13 for 3
+run inv14 for 3
+run inv15 for 3

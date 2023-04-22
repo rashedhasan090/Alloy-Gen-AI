@@ -1,8 +1,0 @@
-The bug in the specification is in the commented out line of pred inv11. The correct line should be:
-
-all c : Class | (some c.Groups) implies some Teacher & Teaches.c
-
-Note the "&" instead of "and". Here's the corrected code:
-
-pred inv11 {
-  all c : Class | (some c.Groups)

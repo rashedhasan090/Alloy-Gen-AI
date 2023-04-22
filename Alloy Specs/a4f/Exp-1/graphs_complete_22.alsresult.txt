@@ -1,7 +1,0 @@
-The bug in the code is in the "complete" predicate. The correct code is:
-
-pred complete {
-    all n:Node | n in adj.*Node //fixed
-}
-
-Note: The original predicate was attempting to use a commented-out line of code.

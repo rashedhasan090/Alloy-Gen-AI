@@ -1,0 +1,79 @@
+// Fixed code:
+
+// Node sig represents a directed graph without multiple edges.
+sig Node {
+    adj: set Node
+}
+
+// pred undirected ensures the graph is undirected, i.e., edges are symmetric.
+pred undirected {
+    adj = ~adj
+}
+
+// pred oriented ensures the graph is oriented, i.e., contains no symmetric edges.
+pred oriented {
+    no adj & adj~
+}
+
+// pred acyclic ensures the graph is acyclic, i.e., contains no directed cycles.
+pred acyclic {
+    no a: Node | a in a.^adj
+}
+
+// pred complete ensures the graph is complete, i.e., every node is connected to every other node.
+pred complete {
+    all n1, n2: Node | n1 != n2 => n2 in n1.adj
+}
+
+// pred noLoops ensures the graph contains no loops, i.e., nodes have no transitions to themselves.
+pred noLoops {
+    no iden & adj
+}
+
+// pred weaklyConnected ensures the graph is weakly connected, i.e., it is possible to reach every node from every node ignoring edge direction.
+pred weaklyConnected {
+    all n1, n2: Node | n1 in n2.*(adj + adj~)
+}
+
+// pred stonglyConnected ensures the graph is strongly connected, i.e., it is possible to reach every node from every node considering edge direction.
+pred stronglyConnected {
+    all n: Node | n in n.*adj
+}
+
+// pred transitive ensures the graph is transitive, i.e., if two nodes are connected through a third node, they also are connected directly.
+pred transitive {
+    adj.adj in adj
+}
+
+// Repair of predicates that ensure the desired properties of the graph.
+
+pred weaklyConnectedOK {
+    all n1, n2: Node | n2 in n1.*(adj + adj~) || n1 in n2.*(adj + adj~)
+}
+
+assert weaklyConnectedRepaired {
+    weaklyConnected iff weaklyConnectedOK
+}
+
+run check weaklyConnectedRepaired for 0
+
+pred stronglyConnectedOK {
+    all n: Node | n in n.*adj + n.*adj~
+}
+
+assert stronglyConnectedRepaired {
+    stronglyConnected iff stronglyConnectedOK
+}
+
+run check stronglyConnectedRepaired for 0
+
+// Assertion repairs are not necessary as the predicates are repaired.
+
+check undirected for 0
+check oriented for 0
+check acyclic for 0
+check complete for 0
+check noLoops for 0
+check weaklyConnected for 0
+check stronglyConnected for 0
+check transitive for 0

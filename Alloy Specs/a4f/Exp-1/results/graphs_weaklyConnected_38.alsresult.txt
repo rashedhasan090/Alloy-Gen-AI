@@ -1,0 +1,80 @@
+// Fixed code:
+
+sig Node {
+    adj: set Node
+}
+
+pred undirected {
+    adj = ~adj
+}
+
+pred oriented {
+    no (adj & ~adj)
+}
+
+pred acyclic {
+    no a: Node | a in a.^adj
+}
+
+pred complete {
+    all n: Node | n.adj = Node - n
+}
+
+pred noLoops {
+    no (iden & adj)
+}
+
+pred weaklyConnected {
+    all n, m: Node | n in m.*(adj+~adj)
+}
+
+pred stronglyConnected {
+    all n: Node | n in n.*adj
+}
+
+pred transitive {
+    all n, m, k: Node | n -> m -> k in adj implies n -> k in adj
+}
+
+assert undirectedRepaired {
+    undirected[] iff adj = ~adj
+}
+
+assert orientedRepaired {
+    oriented[] iff no (adj & ~adj)
+}
+
+assert acyclicRepaired {
+    acyclic[] iff no a: Node | a in a.^adj
+}
+
+assert completeRepaired {
+    complete[] iff all n: Node | n.adj = Node - n
+}
+
+assert noLoopsRepaired {
+    noLoops[] iff no (iden & adj)
+}
+
+assert weaklyConnectedRepaired {
+    weaklyConnected[] iff all n, m: Node | n in m.*(adj+~adj)
+}
+
+assert stronglyConnectedRepaired {
+    stronglyConnected[] iff all n: Node | n in n.*adj
+}
+
+assert transitiveRepaired {
+    transitive[] iff all n, m, k: Node | n -> m -> k in adj implies n -> k in adj
+}
+
+run {} for 8
+
+check undirectedRepaired expect 0
+check orientedRepaired expect 0
+check acyclicRepaired expect 0
+check completeRepaired expect 0
+check noLoopsRepaired expect 0
+check weaklyConnectedRepaired expect 0
+check stronglyConnectedRepaired expect 0
+check transitiveRepaired expect 0

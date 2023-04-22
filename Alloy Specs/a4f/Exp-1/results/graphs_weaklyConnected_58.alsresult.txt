@@ -1,0 +1,7 @@
+The bug in this specification is in the pred weaklyConnected. The correct code is:
+
+pred weaklyConnected {
+  all n:Node | Node in n.*(adj+~adj)
+}
+
+Please note that the difference is in the use of parentheses around adj+~adj, which is required to ensure the proper order of operations.

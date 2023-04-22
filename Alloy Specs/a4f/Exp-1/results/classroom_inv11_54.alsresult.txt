@@ -1,0 +1,7 @@
+There is a bug in inv11. The correct version is provided below.
+
+```
+pred inv11 {
+  all c : Class, s : Student | some g : Group | c->s->g in Groups implies some t : Teacher | t->c in Teaches 
+}
+```

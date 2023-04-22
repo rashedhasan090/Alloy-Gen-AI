@@ -1,0 +1,1 @@
+All of the predicates and assertions are correct, there is no bug to fix.

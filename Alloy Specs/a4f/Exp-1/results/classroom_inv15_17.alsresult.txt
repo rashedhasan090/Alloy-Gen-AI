@@ -1,0 +1,122 @@
+sig Person {
+    Tutors: set Person,
+    Teachers: lone Teacher,
+    Students: lone Student
+}
+
+sig Group {}
+
+sig Class {
+    Groups: Person -> Group
+}
+
+sig Teacher extends Person {
+    Teaches: set Class,
+    Tutors: set Student
+}
+
+sig Student extends Person {
+    Group: lone Group,
+    Tutors: set Teacher
+}
+
+pred inv1 {
+    Person in Student
+}
+pred inv2 {
+    no Teacher
+}
+pred inv3 {
+    no Student & Teacher
+}
+pred inv4 {
+    Person in (Student + Teacher)
+}
+pred inv5 {
+    some Teacher.Teaches
+}
+pred inv6 {
+    Teacher in Teaches.Teacher
+}
+pred inv7 {
+    Class in Teacher.Teaches
+}
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+pred inv9 {
+    all c: Class | lone Teaches[c]
+}
+pred inv10 {
+    all c: Class, s: Student | some s.[c].Groups
+}
+pred inv11 {
+    all c: Class | (some c.Groups) implies some Teacher & c.Teaches
+}
+pred inv12 {
+    all t: Teacher | some t.Teaches.Groups
+}
+pred inv13 {
+    all t: Teacher, s: Student | s in t.Tutors and t in s.Tutors
+}
+pred inv14 {
+    all s: Student, c: Class, t: Teacher, g: Group | (c -> s -> g in Groups) and (t in c.Teaches) implies t in s.Tutors
+}
+pred inv15 {
+    all s: Student | some (Teacher & s.Tutors)
+}
+
+run {
+    #Person = 20
+    #Class = 10
+    #Teacher = 5
+    #Student = 15
+
+    all disj p, q: Person | p != q implies p.Tutors != q.Tutors
+    all c: Class | c.Groups.Person = Student
+    all t: Teacher | t.Teaches.Class = Class
+    all s: Student | s.Group in s.Tutors.Teaches.Groups
+}
+
+pred check_inv {
+    all i: int | (i >= 1 and i <= 15) implies eval("inv" + i + "_OK") implies eval("inv" + i)[]
+}
+
+assert no_violation {
+    check check_inv
+    run {}
+} for 10
+
+# Repairing inv15:
+
+pred inv15_fix {
+    all s: Student | some (Teacher & s.Tutors) or no s.Tutors
+}
+
+assert inv15_fixed {
+    inv15_fix[]
+}
+
+check inv15_fixed
+
+run {
+    #Person = 20
+    #Class = 10
+    #Teacher = 5
+    #Student = 15
+
+    all disj p, q: Person | p != q implies p.Tutors != q.Tutors
+    all c: Class | c.Groups.Person = Student
+    all t: Teacher | t.Teaches.Class = Class
+    all s: Student | s.Group in s.Tutors.Teaches.Groups
+}
+
+pred check_inv_repaired {
+    all i: int | (i >= 1 and i <= 15 and i != 15) implies eval("inv" + i + "_OK") implies eval("inv" + i)[]
+    eval("inv15_fix") iff eval("inv15_OK")
+}
+
+assert no_violation_repaired {
+    check check_inv_repaired
+    run {}
+} for 10

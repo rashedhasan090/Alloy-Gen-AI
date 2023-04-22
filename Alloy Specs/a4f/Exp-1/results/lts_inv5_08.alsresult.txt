@@ -1,0 +1,7 @@
+The bug in the specification is in pred inv5. The correct code is as follows:
+
+pred inv5 {
+  all s1, s2 : State | s1.trans.Event = s2.trans.Event
+}
+
+We need to check if all states have the same set of events available, not if all the states lead to another with the same set of events available.

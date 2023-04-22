@@ -1,0 +1,47 @@
+//Fixed code:
+
+sig Node {
+    adj: set Node
+}
+
+pred undirected {
+    adj = ~adj
+}
+
+pred oriented {
+    no adj & adj~
+}
+
+pred acyclic {
+    no cycle
+    where cycle = some n:Node | n in n.^adj
+}
+
+pred complete {
+    all n:Node | n.adj = Node - n
+}
+
+pred noLoops {
+    no iden & adj
+}
+
+pred weaklyConnected {
+    all n1,n2:Node | some path: n1.*(adj + adj~) n2
+}
+
+pred stonglyConnected {
+    all n1,n2:Node | some path: n1.*adj n2 and some path: n2.*adj n1
+}
+
+pred transitive {
+    adj.adj in adj
+}
+
+check undirected
+check oriented
+check acyclic
+check complete
+check noLoops
+check weaklyConnected
+check stonglyConnected
+check transitive

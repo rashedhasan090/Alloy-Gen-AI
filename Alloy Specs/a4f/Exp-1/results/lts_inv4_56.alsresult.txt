@@ -1,0 +1,8 @@
+The bug in this specification is in the definition of inv4. The correct version of inv4 should be:
+
+pred inv4 {
+  let tr = { s1, s2 : State, e : Event | s1->e->s2 in trans } |
+    State in Init.^tr
+}
+
+The only change is adding the e variable to the let expression and the definition of tr to ensure that all events are considered in the relationship between states.

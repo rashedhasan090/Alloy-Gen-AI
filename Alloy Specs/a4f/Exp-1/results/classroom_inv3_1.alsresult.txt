@@ -1,0 +1,80 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    all p: Person | p in Student XOR p in Teacher
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person = Student + Teacher
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teaches.Class = Teacher
+}
+
+pred inv7 {
+    Teacher.Teaches = Class
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c:Class | lone Teaches[c] & Teacher
+}
+
+pred inv10 {
+    all c:Class, s:Student | some c.Groups[s]
+}
+
+pred inv11 {
+    all c:Class | (some c.Groups) implies some t:Teacher | t.Teaches = c
+}
+
+pred inv12 {
+    all t:Teacher | some g:Group, c:Class | g = c.Groups[t] and t.Teaches = c
+}
+
+pred inv13 {
+    all p: Person | p.Tutors in Student and p in Teacher implies p.Tutors in Teacher
+}
+
+pred inv14 {
+    all s: Student, c: Class, g: Group | c.Groups[s] = g implies some t: Teacher | t -> c in Teaches and t -> s in Tutors
+}
+
+pred inv15 {
+    all s: Person | some t: Teacher | t in s.Tutors
+}
+
+run check_inv for 15
+
+pred check_inv {
+    inv1 and inv2 and inv3 and inv4 and inv5 and inv6 and inv7 and inv8 and inv9 and inv10 and inv11 and inv12 and inv13 and inv14 and inv15
+}

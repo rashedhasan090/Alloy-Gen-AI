@@ -1,0 +1,126 @@
+//Fixed code:
+
+sig Node {
+    adj: set Node
+}
+
+pred undirected {
+    adj = ~adj
+}
+
+pred oriented {
+    no (adj & ~adj)
+}
+
+pred acyclic {
+    no a: Node | a in a.^adj
+}
+
+pred complete {
+    all n1, n2: Node | n1 != n2 => (n1 in n2.^adj)
+}
+
+pred noLoops {
+    no (iden & adj)
+}
+
+pred weaklyConnected {
+    all n1, n2: Node | n1 in n2.*adj or n2 in n1.*adj
+}
+
+pred stronglyConnected {
+    all n1, n2: Node | n1 in n2.*adj and n2 in n1.*adj
+}
+
+pred transitive {
+    all n1, n2, n3: Node | (n1->n2 in adj and n2->n3 in adj) => n1->n3 in adj
+}
+
+pred undirectedOK {
+    adj = ~adj
+}
+
+assert undirectedRepaired {
+    undirected[] iff undirectedOK[]
+}
+
+pred orientedOK {
+    no (adj & ~adj)
+}
+
+assert orientedRepaired {
+    oriented[] iff orientedOK[]
+}
+
+pred acyclicOK {
+    no a: Node | a in a.^adj
+}
+
+assert acyclicRepaired {
+    acyclic[] iff acyclicOK[]
+}
+
+pred completeOK {
+    all n1, n2: Node | n1 != n2 => (n1 in n2.^adj)
+}
+
+assert completeRepaired {
+    complete[] iff completeOK[]
+}
+
+pred noLoopsOK {
+    no (iden & adj)
+}
+
+assert noLoopsRepaired {
+    noLoops[] iff noLoopsOK[]
+}
+
+pred weaklyConnectedOK {
+    all n1, n2: Node | n1 in n2.*adj or n2 in n1.*adj
+}
+
+assert weaklyConnectedRepaired {
+    weaklyConnected[] iff weaklyConnectedOK[]
+}
+
+pred stronglyConnectedOK {
+    all n1, n2: Node | n1 in n2.*adj and n2 in n1.*adj
+}
+
+assert stronglyConnectedRepaired {
+    stronglyConnected[] iff stronglyConnectedOK[]
+}
+
+pred transitiveOK {
+    all n1, n2, n3: Node | (n1->n2 in adj and n2->n3 in adj) => n1->n3 in adj
+}
+
+assert transitiveRepaired {
+    transitive[] iff transitiveOK[]
+}
+
+// PerfectOracleCommands
+
+check undirectedRepaired expect 0
+check orientedRepaired expect 0
+check acyclicRepaired expect 0
+check completeRepaired expect 0
+check noLoopsRepaired expect 0
+check weaklyConnectedRepaired expect 0
+check stronglyConnectedRepaired expect 0
+check transitiveRepaired expect 0
+
+//Repair Commands
+
+pred repair_pred_1 {
+    complete[] iff completeOK[]
+}
+
+run repair_pred_1
+
+assert repair_assert_1 {
+    complete[] iff completeOK[]
+}
+
+check repair_assert_1

@@ -1,9 +1,0 @@
-The bug in the specification is the misspelling of the word "strongly" in the predicate stonglyConnectedOK. The corrected code is as follows:
-
-pred stonglyConnectedOK {
-    all n:Node | Node in n.*adj
-}
-
-assert stonglyConnectedRepaired {
-    stonglyConnected[] iff stonglyConnectedOK[]
-}

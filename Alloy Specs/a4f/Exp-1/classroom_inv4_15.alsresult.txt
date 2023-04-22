@@ -1,9 +1,0 @@
-The bug is in pred inv4. The commented out line does not correctly describe the intended constraint. Instead, the correct constraint is: "Person = Student + Teacher". 
-
-Below is the correct code: 
-
-```
-pred inv4 {
-   Person = Student + Teacher
-}
-```

@@ -1,0 +1,7 @@
+The bug in the specification is in inv3 predicate. The corrected predicate is as follows:
+
+pred inv3 {
+  all s:State, e:Event | lone s.trans.e
+}
+
+The fix is to use "lone s.trans.e" instead of "lone e.(s.trans)" in the predicate.

@@ -1,5 +1,0 @@
-The bug in this specification is in the pred weaklyConnected. The correct predicate is:
-
-pred weaklyConnected {
-  all n1, n2: Node | some n1.*(adj+~adj) & n2.*(adj+~adj)
-}

@@ -1,1 +1,0 @@
-The bug in the specification is in the `pred inv15` and `pred inv15_OK`. The original `pred inv15` should be commented out and replaced by `all p:Person | some t:Teacher | t in (p.^Tutors)`, which is the corrected version of the same invariant. The corrected `pred inv15
