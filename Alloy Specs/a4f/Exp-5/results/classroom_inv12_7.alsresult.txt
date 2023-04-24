@@ -1,0 +1,140 @@
+sig Person {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no (Student & Teacher)
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teacher.Teaches in Class
+}
+
+pred inv7 {
+    all t: Teacher | t.Teaches in Class
+}
+
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c: Class | lone (c.Groups & Teacher)
+}
+
+pred inv10 {
+    all c: Class, s: Student | some s.(c.Groups)
+}
+
+pred inv11 {
+    all c: Class | (some c.Groups) implies some (Teacher & c.Teaches)
+}
+
+pred inv12 {
+    all t: Teacher, c: Class | one c.Groups.t
+}
+
+pred inv13 {
+    Teacher.Tutors in Teacher and Student.Tutors in Teacher
+}
+
+pred inv14 {
+    all s: Person, c: Class, t: Person, g: Group |
+        (c -> s -> g in Class.Groups) and (t -> c in Teacher.Teaches) implies (t -> s in s.Tutors)
+}
+
+pred inv15 {
+    all s: Person | some (Teacher & ^s.Tutors)
+}
+
+run inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15
+
+assert inv1_fixed {
+    inv1[] iff Student in Person
+}
+
+assert inv2_fixed {
+    inv2[] iff no Teacher
+}
+
+assert inv3_fixed {
+    inv3[] iff no (Student & Teacher)
+}
+
+assert inv4_fixed {
+    inv4[] iff Person in (Student + Teacher)
+}
+
+assert inv5_fixed {
+    inv5[] iff some Teacher.Teaches
+}
+
+assert inv6_fixed {
+    inv6[] iff Teacher.Teaches in Class
+}
+
+assert inv7_fixed {
+    inv7[] iff all t: Teacher | t.Teaches in Class
+}
+
+assert inv8_fixed {
+    inv8[] iff all t: Teacher | lone t.Teaches
+}
+
+assert inv9_fixed {
+    inv9[] iff all c: Class | lone (c.Groups & Teacher)
+}
+
+assert inv10_fixed {
+    inv10[] iff all c: Class, s: Student | some s.(c.Groups)
+}
+
+assert inv11_fixed {
+    inv11[] iff all c: Class | (some c.Groups) implies some (Teacher & c.Teaches)
+}
+
+assert inv12_fixed {
+    inv12[] iff all t: Teacher | some c: Class | one c.Groups.t
+}
+
+assert inv13_fixed {
+    inv13[] iff Teacher.Tutors in Teacher and Student.Tutors in Teacher
+}
+
+assert inv14_fixed {
+    inv14[] iff all s: Person, c: Class, t: Person, g: Group |
+        (c -> s -> g in Class.Groups) and (t -> c in Teacher.Teaches) implies (t -> s in s.Tutors)
+}
+
+assert inv15_fixed {
+    inv15[] iff all s: Person | some (Teacher & ^s.Tutors)
+}
+
+run inv1_fixed, inv2_fixed, inv3_fixed, inv4_fixed, inv5_fixed, inv6_fixed, inv7_fixed, inv8_fixed, inv9_fixed, inv10_fixed, inv11_fixed, inv12_fixed, inv13_fixed, inv14_fixed, inv15_fixed

@@ -1,0 +1,92 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no (Student & Teacher)
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    all t : Teacher | t in t.Teaches
+}
+
+pred inv7 {
+    all c : Class | Teacher in c.Teaches
+}
+
+pred inv8 {
+    all t : Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c : Class | one teaches.c
+}
+
+pred inv10 {
+    all c : Class, s : Student | some s.(c.Groups)
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t : Teacher | t in t.Teaches.c
+}
+
+pred inv12 {
+    all t : Teacher | some t.Teaches.Groups
+}
+
+pred inv13 {
+    all t : Teacher, s : Student | s in t.Tutors implies t in s.Teaches
+}
+
+pred inv14 {
+    all c : Class, s : Student, g : Group | (c -> s -> g) in Class.Groups and all t : Teacher | t -> c in t.Teaches implies some t -> s in t.Tutors
+}
+
+pred inv15 {
+    all s : Person | some t : Teacher | t in s.^Tutors
+}
+
+run inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group
+
+check inv1 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv2 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv3 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv4 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv5 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv6 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv7 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv8 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv9 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv10 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv11 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv12 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv13 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv14 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0
+check inv15 for 5 but 1 Teacher, 4 Student, 6 Class, 8 Group expect 0

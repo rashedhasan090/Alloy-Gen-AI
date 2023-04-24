@@ -1,0 +1,79 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person -> Group   //inverse of the Groups relation in Person
+}
+sig Teacher extends Person  {}
+sig Student extends Person  {}
+pred inv1 {
+    Person in Student     // Person is a subset of Student
+}
+pred inv2 {
+    no Teacher      //there are no Teachers
+}
+pred inv3 {
+    no Student & Teacher   //there are no Students who are also Teachers
+}
+pred inv4 {
+    Person in (Student + Teacher)   //Person is a union of Student and Teacher
+}
+pred inv5 {
+    some Teacher.Teaches      //there is at least one Teacher who teaches
+}
+pred inv6 {
+    Teacher.Teaches in Class   //all Teachers are associated with a class they teach
+}
+pred inv7 {
+    all c:Class | Teach in c.Teaches   //all classes are associated with a Teacher who teaches that class
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches   //each Teacher teaches only one class
+}
+pred inv9 {
+    all c:Class | lone (Teaches.c & Teacher)   //each class is taught by only one Teacher
+}
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups)   //every Student belongs to at least one group
+}
+pred inv11 {
+    all c : Class | (some c.Groups) implies some Teacher & Teaches.c   //each class has at least one Teacher who teaches it, and each Teacher teaches at least one class
+}
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups   //each Teacher has at least one group he/she teaches
+}
+pred inv13 {
+    Tutors.Person in Teacher and Person.Tutors in Student   //each Teacher has at least one Student as a Tutor, and each Student has at least one Teacher as a Tutor
+}
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors   //if a Student belongs to a group associated with a class, and a Teacher teaches that class, then the Teacher is a Tutor of that Student
+}
+pred inv15 {
+    all s : Person | some Teacher & ^Tutors.s   //every Student has at least one Teacher as a Tutor
+}
+
+pred inv7_OK {
+    all c:Class | c.Teaches in Teacher   //each class is associated with at least one Teacher who teaches that class
+}
+
+assert inv7_Repaired {
+    inv7[] iff inv7_OK[]
+}
+
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv6_Repaired expect 0
+check inv7_Repaired expect 0
+check inv8_Repaired expect 0
+check inv9_Repaired expect 0
+check inv10_Repaired expect 0
+check inv11_Repaired expect 0
+check inv12_Repaired expect 0
+check inv13_Repaired expect 0
+check inv14_Repaired expect 0
+check inv15_Repaired expect 0

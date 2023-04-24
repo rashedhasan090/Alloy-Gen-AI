@@ -1,0 +1,93 @@
+sig Person {
+  Tutors: set Person,
+  Teaches: set Class,
+  Groups: set Group
+}
+
+sig Group {}
+
+sig Class {
+  Groups: set Group,
+  Students: set Person
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+  Student in Person
+}
+
+pred inv2 {
+  no Teacher
+}
+
+pred inv3 {
+  no Student & Teacher
+}
+
+pred inv4 {
+  Person in (Student + Teacher)
+}
+
+pred inv5 {
+  some Teacher.Teaches
+}
+
+pred inv6 {
+  all t: Teacher | t in t.Teaches.Students
+}
+
+pred inv7 {
+  all c: Class | c in Teacher.Teaches.Groups
+}
+
+pred inv8 {
+  all t: Teacher | lone t.Teaches
+}
+
+pred inv9 {
+  all c: Class | lone c.Groups & Teacher.Teaches[c]
+}
+
+pred inv10 {
+  all c: Class | some c.Groups & Student
+}
+
+pred inv11 {
+  all c: Class | some c.Groups implies some t: Teacher | t.Teaches[c]
+}
+
+pred inv12 {
+  all t: Teacher | some g: t.Groups | g in (t.Teaches).Groups
+}
+
+pred inv13 {
+  all t: Teacher, s: Student | s in t.Tutors => t in s.Tutors
+}
+
+pred inv14 {
+  all s: Student, c: Class, g: Group | (c.Students = s) => g in c.Groups => some t: Teacher | t.Teaches[c] && t in g
+}
+
+pred inv15 {
+  all s: Student | some t: Teacher & t in s.Tutors
+}
+
+// Check all invariants are satisfied
+check inv1
+check inv2
+check inv3
+check inv4
+check inv5
+check inv6
+check inv7
+check inv8
+check inv9
+check inv10
+check inv11
+check inv12
+check inv13
+check inv14
+check inv15

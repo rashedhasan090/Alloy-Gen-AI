@@ -1,0 +1,80 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    all p:Person | not (p in Student => p in Teacher)
+}
+
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+
+pred inv7 {
+    all t:Teacher | t.Teaches in Class 
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c:Class | lone Teaches[c] & Teacher 
+}
+
+pred inv10 {
+    all c:Class, s:Student | some g:Group | (s -> g) in c.Groups 
+}
+
+pred inv11 {
+    all c:Class | (some c.Groups) implies some t:Teacher | t.Teaches = c 
+}
+
+pred inv12 {
+    all t:Teacher | some c:Class | c.Groups.Tutors = t 
+}
+
+pred inv13 {
+    all t:Teacher, s:Student | s in t.Tutors => s.Teaches = t.Teaches  
+}
+
+pred inv14 {
+    all s:Student, c:Class, g:Group | g = c.Groups[s] => (some t:Teacher | t.Teaches = c and t.Tutors = s.Tutors)
+}
+
+pred inv15 {
+    all s:Student | some t:Teacher | t.Tutors = s.Tutors
+}
+
+pred inv16 {
+    all c:Class | all s,t:Person | t in c.Groups[s].Tutors => s in c.Groups[t]
+}
+
+run {inv1 && inv2 && inv3 && inv4 && inv5 && inv6 && inv7 && inv8 && inv9 && inv10 && inv11 && inv12 && inv13 && inv14 && inv15 && inv16 } for 5
+```

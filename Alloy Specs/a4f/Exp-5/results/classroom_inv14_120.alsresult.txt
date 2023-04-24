@@ -1,0 +1,143 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    Teacher !in Person 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    all t:Teacher | t in t.Teaches
+}
+
+pred inv7 {
+    all t:Teacher | t.Teaches in Class
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c:Class | lone c.Teaches & Teacher
+}
+
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups)
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t:Teacher | t in Teaches.c
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups
+}
+
+pred inv13 {
+    all t:Teacher, s:Student | s in t.Tutors implies t in s.Teaches
+}
+
+pred inv14 {
+    all s : Person, c : Class, g : Group {
+        (c -> s -> g) in Groups 
+    } implies some t : Teacher | t -> c in Teaches and t -> s in Tutors
+}
+
+pred inv15 {
+    all s : Person | some t : Teacher | t in ^s.Tutors
+}
+
+// Ensure that all the invariants hold
+run {inv1 and inv2 and inv3 and inv4 and inv5 and inv6 and inv7 and inv8 and inv9 and inv10 and inv11 and inv12 and inv13 and inv14 and inv15}
+
+// Ensure that the repaired invariants hold
+assert inv1_repaired {
+    inv1[] iff Student in Person
+}
+
+assert inv2_repaired {
+    inv2[] iff Teacher !in Person
+}
+
+assert inv3_repaired {
+    inv3[] iff no Student & Teacher
+}
+
+assert inv4_repaired {
+    inv4[] iff Person in (Student + Teacher)
+}
+
+assert inv5_repaired {
+    inv5[] iff some Teacher.Teaches
+}
+
+assert inv6_repaired {
+    inv6[] iff all t:Teacher | t in t.Teaches.Class
+}
+
+assert inv7_repaired {
+    inv7[] iff all t:Teacher | t.Teaches in Class
+}
+
+assert inv8_repaired {
+    inv8[] iff all t:Teacher | lone t.Teaches
+}
+
+assert inv9_repaired {
+    inv9[] iff all c:Class | lone c.Teaches & Teacher
+}
+
+assert inv10_repaired {
+    inv10[] iff all c:Class, s:Student | some s.(c.Groups)
+}
+
+assert inv11_repaired {
+    inv11[] iff all c : Class | (some c.Groups) implies some t:Teacher | t in Teaches.c
+}
+
+assert inv12_repaired {
+    inv12[] iff all t : Teacher | some (t.Teaches).Groups
+}
+
+assert inv13_repaired {
+    inv13[] iff all t:Teacher, s:Student | s in t.Tutors implies t in s.Teaches
+}
+
+assert inv14_repaired {
+    inv14[] iff all s : Person, c : Class, g : Group {
+        (c -> s -> g) in Groups 
+    } implies some t : Teacher | t -> c in Teaches and t -> s in Tutors
+}
+
+assert inv15_repaired {
+    inv15[] iff all s : Person | some t : Teacher | t in ^s.Tutors
+}
+
+// Ensure that the repaired invariants hold
+run {inv1_repaired and inv2_repaired and inv3_repaired and inv4_repaired and inv5_repaired and inv6_repaired and inv7_repaired and inv8_repaired and inv9_repaired and inv10_repaired and inv11_repaired and inv12_repaired and inv13_repaired and inv14_repaired and inv15_repaired}

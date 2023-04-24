@@ -1,0 +1,64 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : set Person -> Group
+}
+sig Teacher extends Person  {}
+sig Student extends Person  {}
+pred inv1 {
+    Student in Person 
+}
+pred inv2 {
+    Teacher not in Person 
+}
+pred inv3 {
+    no (Student & Teacher) 
+}
+pred inv4 {
+    Person = Student + Teacher
+}
+pred inv5 {
+    some Teacher.Teaches 
+}
+pred inv6 {
+    Teacher.Teaches = Class 
+}
+pred inv7 {
+    all c: Class | some Teacher & c.Teaches 
+}
+pred inv8 {
+    all t: Teacher | lone t.Teaches 
+}
+pred inv9 {
+    all c:Class | lone (c.Teaches & Teacher)
+}
+pred inv10 {
+    all c:Class, s:Student | some c.Groups.s
+}
+pred inv11 {
+    all c:Class | (some c.Groups) implies some Teacher & c.Teaches 
+}
+pred inv12 {
+    all t:Teacher | some t.Teaches.Groups 
+}
+pred inv13 {
+    all t:Teacher | all p:t.Tutors | p in Student 
+}
+pred inv14 {
+    all s:Person, c:Class, g:Group | (c.Groups[s] = g) implies (some t:Teacher | (t.Teaches = c) and (g in t.Tutors) and (s in g))
+}
+pred inv15 {
+    all s:Person | some t:Teacher & t.Tutors.s
+}
+
+// Check that all repaired invariants hold
+pred checkRepairedInvariants {
+    inv1_Repaired and inv2_Repaired and inv3_Repaired and inv4_Repaired and
+    inv5_Repaired and inv6_Repaired and inv7_Repaired and inv8_Repaired and
+    inv9_Repaired and inv10_Repaired and inv11_Repaired and inv12_Repaired and
+    inv13_Repaired and inv14_Repaired and inv15_Repaired
+}
+check checkRepairedInvariants expect 0

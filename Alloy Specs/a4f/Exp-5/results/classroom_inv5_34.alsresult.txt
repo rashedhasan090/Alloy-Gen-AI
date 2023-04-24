@@ -1,0 +1,65 @@
+sig Person  {
+    Tutors: set Person,
+    Teaches: set Class
+}
+sig Group {}
+sig Class  {
+    Groups: Person -> Group
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+pred inv1 {
+    Student in Person 
+}
+pred inv2 {
+    Teacher = none
+}
+pred inv3 {
+    (Student & Teacher) = none
+}
+pred inv4 {
+    Person = Student + Teacher
+}
+pred inv5 {
+    some t: Teacher | t.Teaches != none
+}
+pred inv6 {
+    Teacher.Teaches = Class
+}
+pred inv7 {
+    Teacher.Teaches = Class
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+pred inv9 {
+    all c:Class | lone (c.Teaches & Teacher)
+}
+pred inv10 {
+    all c:Class, s:Student | some g:Group | g = c.Groups[s]
+}
+pred inv11 {
+    all c:Class | (some g:Group | g in c.Groups) implies (some t:Teacher | t.Teaches = c)
+}
+pred inv12 {
+    all t:Teacher | some c:Class | c in t.Teaches.Teaches
+}
+pred inv13 {
+    all p:Person | p.Tutors in Student and p in Teacher implies p.Teaches != none
+}
+pred inv14 {
+    all s:Person, c:Class, t:Teacher, g:Group | c.Groups[s] = g and t.Teaches = c implies t.Tutors = s
+}
+pred inv15 {
+    all s:Person | (s.Tutors != none) implies (some t:Teacher | t in s.Tutors)
+}
+
+pred inv5_OK {
+    some t: Teacher | t.Teaches != none
+}
+
+assert inv5_Repaired {
+    inv5[] iff inv5_OK[]
+}
+
+check inv5_Repaired expect 0

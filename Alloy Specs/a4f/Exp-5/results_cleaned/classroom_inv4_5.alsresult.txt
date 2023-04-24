@@ -1,0 +1,81 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : set Person -> Group //fix
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+pred inv1 {
+    Person in Student
+}
+pred inv2 {
+    no Teacher
+}
+pred inv3 {
+    no Student & Teacher
+}
+pred inv4 {
+ all p : Person | (p in Student) xor (p in Teacher) //fix
+}
+pred inv5 {
+    some Teacher.Teaches
+}
+pred inv6 {
+    all t : Teacher | t.Teaches in Class //fix
+}
+pred inv7 {
+    all c : Class | c in Teacher.Teaches //fix
+}
+pred inv8 {
+    all t : Teacher | lone t.Teaches
+}
+pred inv9 {
+    all c : Class | lone (Teacher & Teaches.c) //fix
+}
+pred inv10 {
+    all c : Class, s : Student | some s.(c.Groups)
+}
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t : Teacher | t.Teaches = c
+}
+pred inv12 {
+    all t : Teacher | some g : t.Teaches.Groups //fix
+}
+pred inv13 {
+    all t : Teacher, s : Student | t in s.Tutors implies t in Teacher and s in Student //fix
+}
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group |
+        (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+pred inv15 {
+    all s : Person | some t : Teacher & ^s.Tutors
+}
+
+pred inv4_OK {
+ Person in (Student + Teacher)
+}
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}
+
+pred inv9_OK {
+  all c:Class | lone (Teacher & Teaches.c)
+}
+assert inv9_Repaired {
+    inv9[] iff inv9_OK[]
+}
+
+pred inv14_OK {
+  all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+assert inv14_Repaired {
+    inv14[] iff inv14_OK[]
+}
+
+check inv4_Repaired expect 0
+check inv9_Repaired expect 0
+check inv14_Repaired expect 0

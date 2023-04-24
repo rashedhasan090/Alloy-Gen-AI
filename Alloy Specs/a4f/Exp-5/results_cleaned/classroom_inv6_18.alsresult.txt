@@ -1,0 +1,96 @@
+sig Person {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups : set Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no (Student & Teacher)
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teacher in Teaches.TeacherTeachesClass
+}
+
+pred inv7 {
+    Teacher.Teaches in Class
+}
+
+pred inv8 {
+    all t : Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c : Class | lone Teaches.c & Teacher
+}
+
+pred inv10 {
+    all c : Class, s : Student | some c.Groups.s
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies (some Teacher & c.TeacherTeaches)
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups
+}
+
+pred inv13 {
+    Tutors.Person in Teacher and Person.Tutors in Student
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c.Groups[s] = g and t.Teaches.c) implies t.Tutors.s
+}
+
+pred inv15 {
+    all s : Person | some Teacher & ^s.Tutors
+}
+
+run {
+    assert inv1
+    assert inv2
+    assert inv3
+    assert inv4
+    assert inv5
+    assert inv6
+    assert inv7
+    assert inv8
+    assert inv9
+    assert inv10
+    assert inv11
+    assert inv12
+    assert inv13
+    assert inv14
+    assert inv15
+} for 3 but 1 Teacher, 2 Student, 3 Group, 3 Class, 3 Person
+
+check {
+    inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15
+} for 4 but 1 Teacher, 2 Student, 3 Group, 3 Class, 3 Person

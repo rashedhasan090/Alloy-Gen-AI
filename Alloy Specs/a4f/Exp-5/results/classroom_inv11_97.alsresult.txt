@@ -1,0 +1,106 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person -> Group
+}
+sig Teacher extends Person  {}
+sig Student extends Person  {}
+
+pred inv1 {
+    Student in Person 
+}
+pred inv2 {
+    no Teacher 
+}
+pred inv3 {
+    no Student & Teacher 
+}
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+pred inv5 {
+    some Teacher.Teaches 
+}
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+pred inv7 {
+    all t:Teacher | t.Teaches in Class 
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+pred inv9 {
+    all c:Class | (lone Teaches.c) implies Teacher in c.Groups 
+}
+pred inv10 {
+    all c:Class, s:Student | some g: c.Groups | s in g
+}
+pred inv11 {
+    all c:Class | (some c.Groups) implies some t:Teacher | t.Teaches = c
+}
+pred inv12 {
+    all t : Teacher | some g: t.Teaches.Groups 
+}
+pred inv13 {
+    all t: Teacher, s: Student | s in t.Tutors implies t in s.Teaches
+}
+pred inv14 {
+    all s : Person, c : Class, g : Group | (c.Groups.s = g) implies some t : Teacher | t.Teaches = c and t in g.Tutors
+}
+pred inv15 {
+    all s : Person | some t : Teacher & ^s.Tutors | t in s.Tutors
+}
+
+run check inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15 for 5 but 3 Person, 3 Group, 3 Class, 3 Student, 3 Teacher, 10 Group Person, 10 Class Group, 10 Teacher Class, exactly 20 Person Class, exactly 20 teacher Student, exactly 20 Student Tutors, exactly 20 Teacher Tutors
+
+assert inv1_Repaired {
+    inv1[] iff Person in Student 
+}
+assert inv2_Repaired {
+    inv2[] iff no Teacher 
+}
+assert inv3_Repaired {
+    inv3[] iff no Student & no Teacher 
+}
+assert inv4_Repaired {
+    inv4[] iff Person in (Student + Teacher) 
+}
+assert inv5_Repaired {
+    inv5[] iff some Teacher.Teaches 
+}
+assert inv6_Repaired {
+    inv6[] iff Teacher.Teaches in Class 
+}
+assert inv7_Repaired {
+    inv7[] iff all t:Teacher | t.Teaches in Class 
+}
+assert inv8_Repaired {
+    inv8[] iff all t:Teacher | lone t.Teaches 
+}
+assert inv9_Repaired {
+    inv9[] iff all c:Class | (lone Teaches.c) implies Teacher in c.Groups 
+}
+assert inv10_Repaired {
+    inv10[] iff all c:Class, s:Student | some g: c.Groups | s in g
+}
+assert inv11_Repaired {
+    inv11[] iff all c:Class | (some c.Groups) implies some t:Teacher | t.Teaches = c
+}
+assert inv12_Repaired {
+    inv12[] iff all t : Teacher | some g: t.Teaches.Groups 
+}
+assert inv13_Repaired {
+    inv13[] iff all t: Teacher, s: Student | s in t.Tutors implies t in s.Teaches
+}
+assert inv14_Repaired {
+    inv14[] iff all s : Person, c : Class, g : Group | (c.Groups.s = g) implies some t : Teacher | t.Teaches = c and t in g.Tutors
+}
+assert inv15_Repaired {
+    inv15[] iff all s : Person | some t : Teacher & ^s.Tutors | t in s.Tutors
+}
+
+check inv1_Repaired, inv2_Repaired, inv3_Repaired, inv4_Repaired, inv5_Repaired, inv6_Repaired, inv7_Repaired, inv8_Repaired, inv9_Repaired, inv10_Repaired, inv11_Repaired, inv12_Repaired, inv13_Repaired, inv14_Repaired, inv15_Repaired for 5 but 3 Person, 3 Group, 3 Class, 3 Student, 3 Teacher, 10 Group Person, 10 Class Group, 10 Teacher Class, exactly 20 Person Class, exactly 20 teacher Student, exactly 20 Student Tutors, exactly 20 Teacher Tutors.

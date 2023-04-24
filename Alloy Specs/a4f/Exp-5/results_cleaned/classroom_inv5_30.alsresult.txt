@@ -1,0 +1,92 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person  {}
+
+sig Student extends Person  {}
+
+pred inv1 {
+    Person in Student 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+
+pred inv7 {
+    Class in Teacher.Teaches 
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c:Class | lone (c.Group & Teacher) 
+}
+
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups) 
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some Teacher & Teaches.c 
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups 
+}
+
+pred inv13 {
+    Tutors.Person in Teacher and Person.Tutors in Student 
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+
+pred inv15 {
+    all s : Person | some Teacher & ^Tutors.s
+}
+ 
+run check {
+    assert inv1
+    assert inv2
+    assert inv3
+    assert inv4
+    assert inv5
+    assert inv6
+    assert inv7
+    assert inv8
+    assert inv9
+    assert inv10
+    assert inv11
+    assert inv12
+    assert inv13
+    assert inv14
+    assert inv15
+} for 5 but 4 Int, 4 Bool, 4 set Person, 4 Person->Person, 4 Person->Group, 4 Class->Person, 4 Class->Group

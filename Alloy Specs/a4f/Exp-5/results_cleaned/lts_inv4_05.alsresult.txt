@@ -1,0 +1,20 @@
+sig State {
+       trans : Event -> lone State //fixed by changing -> to -> lone
+}
+
+pred inv1 {
+    all s: State | some s.trans 
+}
+
+pred inv4 {
+    let tr = { s1, s2 : State | some e : Event | s1->e->s2 in trans } |
+    State in Init.^tr 
+}
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}

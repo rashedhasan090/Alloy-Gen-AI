@@ -1,0 +1,96 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person lone -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Person in Student 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in Student + Teacher 
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+
+pred inv7 {
+    Class in Teacher.Teaches 
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+   all c:Class | lone(c.Groups & Teacher) 
+}
+
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups) 
+}
+
+pred inv11 {
+    all c:Class | (some c.Groups) implies some Teacher & Teacher.Teaches = c 
+}
+
+pred inv12 {
+    all t:Teacher | some t.Teaches.Groups 
+}
+
+pred inv13 {
+    all p: Person | (p.Tutors in Teacher) implies (p in Student)
+}
+
+pred inv14 {
+    all s: Student, c: Class, g: Group | (c.Groups[s] = g) implies
+    some t: Teacher |
+        (t.Teaches = c) and (t in g.Tutors)
+}
+
+pred inv15 {
+    all s: Person | (s in Teacher.Tutors) implies some Teacher
+}
+
+pred all_invariants{
+    inv1
+    inv2
+    inv3
+    inv4
+    inv5
+    inv6
+    inv7
+    inv8
+    inv9
+    inv10
+    inv11
+    inv12
+    inv13
+    inv14
+    inv15
+}
+
+run all_invariants expect 0

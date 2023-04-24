@@ -1,0 +1,109 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+
+pred inv7 {
+    all c:Class | c in Teacher.Teaches 
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c:Class | lone (c -> Teacher) in Teaches 
+}
+
+pred inv10 {
+    all c:Class, s:Student | some g:Group | g = c.Groups[s]
+}
+
+pred inv11 {
+    all c:Class | (some c.Groups) implies (some t:Teacher | t.Teaches = c) 
+}
+
+pred inv12 {
+    all t:Teacher | some g:Group | g in (t.Teaches).Groups 
+}
+
+pred inv13 {
+    all t:Teacher, s:Student | s in t.Tutors implies t in s.Teaches
+}
+
+pred inv14 {
+    all s:Student, c:Class, g:Group | (c.Groups[s] = g) and (c in Teaches.t) implies t in g.Person.Teaches 
+}
+
+pred inv15 {
+    all s:Person | s in Teacher.Tutors implies some t:Teacher | t in s.Teaches
+}
+
+pred inv16 {
+    all t:Teacher | t.Tutors = {}
+}
+
+run inv1 for 3 but exactly 2 Student
+run inv2 for 3 but exactly 1 no Teacher
+run inv3 for 3 but exactly 1 no Teacher and no Student
+run inv4 for 3 but exactly 2 Student and 1 Teacher
+run inv5 for 3 but exactly 1 Teacher who Teaches some Class
+run inv6 for 3 but exactly 1 Teacher who Teaches some Class
+run inv7 for 3 but exactly 1 Teacher who Teaches some Class
+run inv8 for 3 but exactly 1 Teacher who Teaches some Class
+run inv9 for 3 but exactly 1 Class Teaches by some Teacher
+run inv10 for 3 but exactly 1 Student in some Group of some Class
+run inv11 for 3 but exactly 1 Class with some Group implies some Teacher who Teaches that Class
+run inv12 for 3 but exactly 1 Teacher who Teaches some Class has some Group
+run inv13 for 3 but exactly 1 Teacher Tutors some Student implies that Student is taught by that Teacher
+run inv14 for 3 but exactly 1 Class with some Group taught by some Teacher implies all Students in that Group are taught by that Teacher
+run inv15 for 3 but exactly 1 Teacher teaches all the Students he/she tutors
+
+check inv1 for 3 but exactly 2 Student
+check inv2 for 3 but exactly 1 no Teacher
+check inv3 for 3 but exactly 1 no Teacher and no Student
+check inv4 for 3 but exactly 2 Student and 1 Teacher
+check inv5 for 3 but exactly 1 Teacher who Teaches some Class
+check inv6 for 3 but exactly 1 Teacher who Teaches some Class
+check inv7 for 3 but exactly 1 Teacher who Teaches some Class
+check inv8 for 3 but exactly 1 Teacher who Teaches some Class
+check inv9 for 3 but exactly 1 Class Teaches by some Teacher
+check inv10 for 3 but exactly 1 Student in some Group of some Class
+check inv11 for 3 but exactly 1 Class with some Group implies some Teacher who Teaches that Class
+check inv12 for 3 but exactly 1 Teacher who Teaches some Class has some Group
+check inv13 for 3 but exactly 1 Teacher Tutors some Student implies that Student is taught by that Teacher
+check inv14 for 3 but exactly 1 Class with some Group taught by some Teacher implies all Students in that Group are taught by that Teacher
+check inv15 for 3 but exactly 1 Teacher teaches all the Students he/she tutors

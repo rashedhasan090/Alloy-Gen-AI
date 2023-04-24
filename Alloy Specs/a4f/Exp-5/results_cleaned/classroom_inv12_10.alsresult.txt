@@ -1,0 +1,152 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person lone -> lone Group
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teacher.Teaches in Class
+}
+
+pred inv7 {
+    Class in Teacher.Teaches
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c:Class | lone (c.Teaches & Teacher)
+}
+
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups)
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some Teacher & Teaches.c
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches & Class.Groups)
+}
+
+pred inv13 {
+    all p : Person, t : Teacher | p in t.Tutors implies p in Student
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group |
+        (c -> s -> g in Class.Groups) and
+        (t -> c in Teacher.Teaches) implies
+        t -> s in Person.Tutors
+}
+
+pred inv15 {
+    all s : Person | some (Teacher & s.^Tutors)
+}
+
+assert inv1_Repaired {
+    Student in Person
+}
+
+assert inv2_Repaired {
+    no Teacher
+}
+
+assert inv3_Repaired {
+    no Student & Teacher
+}
+
+assert inv4_Repaired {
+    Person in (Student + Teacher)
+}
+
+assert inv5_Repaired {
+    some Teacher.Teaches
+}
+
+assert inv6_Repaired {
+    Teacher.Teaches in Class
+}
+
+assert inv7_Repaired {
+    Class in Teacher.Teaches
+}
+
+assert inv8_Repaired {
+    all t:Teacher | lone t.Teaches
+}
+
+assert inv9_Repaired {
+    all c:Class | lone (c.Teaches & Teacher)
+}
+
+assert inv10_Repaired {
+    all c:Class, s:Student | some s.(c.Groups)
+}
+
+assert inv11_Repaired {
+    all c : Class | (some c.Groups) implies some Teacher & Teaches.c
+}
+
+assert inv12_Repaired {
+    all t : Teacher | some (t.Teaches & Class.Groups)
+}
+
+assert inv13_Repaired {
+    all p : Person, t : Teacher | p in t.Tutors implies p in Student
+}
+
+assert inv14_Repaired {
+    all s : Person, c : Class, t : Teacher, g : Group |
+        (c -> s -> g in Class.Groups) and
+        (t -> c in Teacher.Teaches) implies
+        t -> s in Person.Tutors
+}
+
+assert inv15_Repaired {
+    all s : Person | some (Teacher & s.^Tutors)
+}
+
+check inv1_Repaired
+check inv2_Repaired
+check inv3_Repaired
+check inv4_Repaired
+check inv5_Repaired
+check inv6_Repaired
+check inv7_Repaired
+check inv8_Repaired
+check inv9_Repaired
+check inv10_Repaired
+check inv11_Repaired
+check inv12_Repaired
+check inv13_Repaired
+check inv14_Repaired
+check inv15_Repaired

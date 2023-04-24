@@ -1,0 +1,85 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person -> Group
+}
+sig Teacher extends Person  {}
+sig Student extends Person  {}
+
+pred inv1 {
+    Person in Student 
+}
+pred inv2 {
+    no Teacher 
+}
+pred inv3 {
+    no Student & Teacher 
+}
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+pred inv5 {
+    some c:Class | some t:Teacher | c in t.Teaches 
+}
+pred inv6 {
+    Teacher in Teaches.Class 
+}
+pred inv7 {
+    all t:Teacher | all c:t.Teaches | c in Group.Person.Groups 
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+pred inv9 {
+    all c:Class | lone (Teaches.c & Teacher) 
+}
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups) 
+}
+pred inv11 {
+    all c:Class | (some c.Groups) implies some t:Teacher | t teaches c 
+}
+pred inv12 {
+    all t:Teacher | some g:(t.Teaches).Groups 
+}
+pred inv13 {
+    Tutors.Person in Teacher and Person.Tutors in Student 
+}
+pred inv14 {
+    all s:Person, c:Class, g:Group | (c->s->g in Groups) implies some t:Person | t->s in Tutors and t teaches c 
+}
+pred inv15 {
+    all s:Person | some t:Teacher & ^Tutors.s 
+}
+
+pred inv5_OK {
+    some t:Teacher | some c:Class | c in t.Teaches
+}
+
+pred inv9_OK {
+    all c:Class | lone (Teaches.c & Teacher)
+}
+
+check inv1 expect 0
+check inv2 expect 0
+check inv3 expect 0
+check inv4 expect 0
+check inv5_Repaired expect 0
+check inv6 expect 0
+check inv7 expect 0
+check inv8 expect 0
+check inv9_Repaired expect 0
+check inv10 expect 0
+check inv11 expect 0
+check inv12 expect 0
+check inv13 expect 0
+check inv14_Repaired expect 0
+check inv15 expect 0
+
+pred repair_pred_1{inv5[] iff inv5_OK[] }
+run repair_pred_1
+assert repair_assert_1{inv5[] iff inv5_OK[] }
+check repair_assert_1

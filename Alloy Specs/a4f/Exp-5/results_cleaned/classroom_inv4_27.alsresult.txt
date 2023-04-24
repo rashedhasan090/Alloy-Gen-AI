@@ -1,0 +1,84 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person  {}
+
+sig Student extends Person  {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+
+pred inv7 {
+    all c : Class | c.Groups.Person in Teacher.Teaches 
+}
+
+pred inv8 {
+    all t : Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c : Class | lone (c.Groups.Person & Teacher) in Teaches 
+}
+
+pred inv10 {
+    all c : Class, s : Person | some s.(c.Groups)
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t : Teacher | t.Teaches = c
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups 
+}
+
+pred inv13 {
+    all t : Teacher, s : Student | t.Tutors = s and s.Tutors = t
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Teacher | (c -> s -> _) in Groups and t.Teaches = c implies (t -> s) in t.Tutors
+}
+
+pred inv15 {
+    all s : Person | some t : Teacher | s in ^t.Tutors
+}
+
+pred inv4_OK {
+    Person in (Student + Teacher) 
+}
+
+assert inv4_Repaired {
+    inv4 iff inv4_OK
+}
+
+check inv4_Repaired expect 0

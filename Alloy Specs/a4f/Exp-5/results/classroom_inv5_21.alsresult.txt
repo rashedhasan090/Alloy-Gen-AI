@@ -1,0 +1,128 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person  {}
+
+sig Student extends Person  {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no (Student & Teacher) 
+}
+
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+
+pred inv5 {
+    some t: Teacher | t.Teaches != none and Class.t.Teaches->t->Group in Groups 
+}
+
+pred inv6 {
+    all t: Teacher | t.Teaches in Class.Teaches and t in Teaches.Class 
+}
+
+pred inv7 {
+    all t: Teacher, c: Class | c in t.Teaches iff t in Teaches.c 
+}
+
+pred inv8 {
+    all t: Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c:Class | lone (Teaches.c&Teacher) 
+}
+
+pred inv10 {
+    all c:Class, s:Student | some g:Group | g = c.Groups.s 
+}
+
+pred inv11 {
+    all c:Class | (some c.Groups) implies (some t: Teacher | t.Teaches = c) 
+}
+
+pred inv12 {
+    all t: Teacher | some g: Group, c:Class | g = c.Groups.t and c in t.Teaches 
+}
+
+pred inv13 {
+    all t: Teacher, s:Student | s in t.Tutors implies t in Teaches.s 
+}
+
+pred inv14 {
+    all s:Person, c:Class, g:Group | (c->s->g in Groups) implies (some t: Teacher | t->c in Teaches and t->s in Tutors) 
+}
+
+pred inv15 {
+    all s:Person | some t:Teacher | t in ^s.Tutors 
+}
+
+pred inv16 {
+    all c:Class | all s:Student | (one g: Group | g = c.Groups.s) implies (some t: Teacher | t->c in Teaches and t in ^s.Tutors) 
+}
+
+pred inv17 {
+    all c: Class, t: Teacher | t -> c.Teaches implies (some g: Group | g = c.Groups.t) 
+}
+
+pred inv18 {
+    all c: Class, s:Student, t: Teacher | t -> c.Teaches and c -> s -> g in Groups implies (t -> s in Tutors and t -> g in ^s.Tutors) 
+}
+
+pred inv19 {
+    all p: Person | p.Teaches = none implies p in Student 
+}
+
+run inv1_Repaired for 3
+
+run inv2_Repaired for 3
+
+run inv3_Repaired for 3
+
+run inv4_Repaired for 3
+
+run inv5_Repaired for 3
+
+run inv6_Repaired for 3
+
+run inv7_Repaired for 3
+
+run inv8_Repaired for 3
+
+run inv9_Repaired for 3
+
+run inv10_Repaired for 3
+
+run inv11_Repaired for 3
+
+run inv12_Repaired for 3
+
+run inv13_Repaired for 3
+
+run inv14_Repaired for 3
+
+run inv15_Repaired for 3
+
+run inv16 for 3
+
+run inv17 for 3
+
+run inv18 for 3
+
+run inv19 for 3

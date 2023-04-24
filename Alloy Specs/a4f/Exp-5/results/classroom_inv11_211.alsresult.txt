@@ -1,0 +1,184 @@
+sig Person {
+    Tutors: set Person,
+    Teaches: set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups: Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in Student + Teacher 
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teacher.Teaches in Class
+}
+
+pred inv7 {
+    all t : Teacher | t.Teaches in Class
+}
+
+pred inv8 {
+    all t : Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c : Class | lone (Teacher & Teaches.c)
+}
+
+pred inv10 {
+    all c : Class, s : Student | some g : Group | c -> s -> g in Groups
+}
+
+pred inv11 {
+    all c : Class, t : Teacher, s : Student |
+        some g : Group |
+            (c -> s -> g in Groups) and (t -> c in Teaches) implies t -> s in Tutors
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups
+}
+
+pred inv13 {
+    all t : Teacher, s : Student |
+        (s in t.Tutors) implies (s.Tutors in Teacher)
+}
+
+pred inv14 {
+    all c : Class, s : Person, g : Group | 
+        (c -> s -> g in Groups) and 
+        some t : Teacher | t -> c in Teaches implies t -> s in Tutors
+}
+
+pred inv15 {
+    all s : Person | some t : Teacher | ^s.Tutors = t
+}
+
+pred isTutor[p: Person, t: Teacher] {
+    p in t.Tutors
+}
+
+run { 
+    // Test case
+    // Create some people and classes
+    some p1, p2, p3 : Person |
+        some c1, c2 : Class |
+            // Assign people to classes 
+            p1 -> (some g1, g2 : Group) in c1.Groups &&
+            p2 -> (some g3 : Group) in c1.Groups &&
+            p3 -> (some g4 : Group) in c2.Groups &&
+            // Assign teachers to classes
+            some t1, t2 : Teacher |
+                t1 -> c1 in Teaches &&
+                t2 -> c2 in Teaches && 
+                // Assign tutors to people
+                p1 in t1.Tutors && 
+                p3 in t1.Tutors &&
+                p2 in t2.Tutors
+} for 5 but exactly 2 Teacher, 3 Person, 2 Class, 4 Group
+
+// Assert that all invariants hold
+assert inv1_repaired {
+    inv1[] iff all p : Person | p in Student
+}
+
+assert inv2_repaired {
+    inv2[] iff no Teacher
+}
+
+assert inv3_repaired {
+    inv3[] iff no Student & Teacher
+}
+
+assert inv4_repaired {
+    inv4[] iff all p : Person | p in Student + Teacher
+}
+
+assert inv5_repaired {
+    inv5[] iff some t : Teacher | some c : t.Teaches
+}
+
+assert inv6_repaired {
+    inv6[] iff all t : Teacher | t.Teaches in Class
+}
+
+assert inv7_repaired {
+    inv7[] iff all t : Teacher | all c : t.Teaches | c in Class
+}
+
+assert inv8_repaired {
+    inv8[] iff all t : Teacher | lone t.Teaches
+}
+
+assert inv9_repaired {
+    inv9[] iff all c : Class | lone (Teacher & Teaches.c)
+}
+
+assert inv10_repaired {
+    inv10[] iff all c : Class, s : Student | some g : c.Groups | s in g
+}
+
+assert inv11_repaired {
+    inv11[] iff 
+        all c : Class, t : Teacher, s : Student |
+            (some g : c.Groups | s in g) and (t -> c in Teaches) implies some p : t.Tutors | c -> s -> p in Groups 
+}
+
+assert inv12_repaired {
+    inv12[] iff all t : Teacher | some c : t.Teaches | some g : c.Groups
+}
+
+assert inv13_repaired {
+    inv13[] iff all t : Teacher, s : Student | isTutor[s.Tutors, t]
+}
+
+assert inv14_repaired {
+    inv14[] iff 
+        all c : Class, s : Person, g : Group | 
+            c -> s -> g in Groups and 
+            some t : Teacher | t -> c in Teaches implies some p : t.Tutors | c -> p -> s in Groups
+}
+
+assert inv15_repaired {
+    inv15[] iff all s : Person | some t : Teacher | isTutor[^(s.Tutors), t]
+}
+
+check inv1_repaired
+check inv2_repaired
+check inv3_repaired
+check inv4_repaired
+check inv5_repaired
+check inv6_repaired
+check inv7_repaired
+check inv8_repaired
+check inv9_repaired
+check inv10_repaired
+check inv11_repaired
+check inv12_repaired
+check inv13_repaired
+check inv14_repaired
+check inv15_repaired

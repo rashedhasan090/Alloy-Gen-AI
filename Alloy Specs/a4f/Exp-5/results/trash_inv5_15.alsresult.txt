@@ -1,0 +1,125 @@
+sig File {
+    link: set File
+}
+
+sig Trash extends File {}
+
+sig Protected extends File {}
+
+// No Trash files in the system
+pred inv1 {
+    no Trash
+}
+
+// All files in Trash
+pred inv2 {
+    File in Trash
+}
+
+// At least one file is in Trash
+pred inv3 {
+    some Trash
+}
+
+// No file is both Protected and Trash
+pred inv4 {
+    no Protected & Trash
+}
+
+// All files that are not Protected are in Trash
+pred inv5 {
+    File - Protected in Trash
+}
+
+// All links are acyclic
+pred inv6 {
+    no link.^(link & iden)
+}
+
+// No Trash files are linked
+pred inv7 {
+    no link.Trash
+}
+
+// No links in the system
+pred inv8 {
+    no link
+}
+
+// No link connects to another link
+pred inv9 {
+    no link.link
+}
+
+// All Trash files are only linked to other Trash files
+pred inv10 {
+    Trash.link in Trash
+}
+
+// Repairing inv5, so that all files are either in Trash or Protected
+pred repair_inv5 {
+    all f: File | f in Trash or f in Protected
+}
+
+assert inv1_Repaired {
+    inv1 iff no Trash
+}
+
+assert inv2_Repaired {
+    inv2 iff File in Trash
+}
+
+assert inv3_Repaired {
+    inv3 iff some Trash
+}
+
+assert inv4_Repaired {
+    inv4 iff no Proteted & Trash
+}
+
+assert inv5_Repaired {
+    inv5 iff File - Protected in Trash
+}
+
+assert inv6_Repaired {
+    inv6 iff no link.^(link & iden)
+}
+
+assert inv7_Repaired {
+    inv7 iff no link.Trash
+}
+
+assert inv8_Repaired {
+    inv8 iff no link
+}
+
+assert inv9_Repaired {
+    inv9 iff no link.link
+}
+
+assert inv10_Repaired {
+    inv10 iff Trash.link in Trash
+}
+
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv6_Repaired expect 0
+check inv7_Repaired expect 0
+check inv8_Repaired expect 0
+check inv9_Repaired expect 0
+check inv10_Repaired expect 0
+
+pred repair_pred_1 {
+    repair_inv5
+}
+
+run repair_pred_1
+
+assert repair_assert_1 {
+    inv5 iff File - Protected in Trash
+}
+
+check repair_assert_1

@@ -1,0 +1,87 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups : Person -> Group,
+    Teachers : set Teacher
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Person in Student 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    Teacher in Class.Teachers 
+}
+
+pred inv7 {
+    all t : Teacher | t.Teaches in Class 
+}
+
+pred inv8 {
+    all t : Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c : Class | lone c.Teachers & Teacher 
+}
+
+pred inv10 {
+    all c : Class, s : Student | s in c.Groups 
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t : Teacher | t.Teaches = c 
+}
+
+pred inv12 {
+    all t : Teacher | some c : t.Teaches | some g : c.Groups
+}
+
+pred inv13 {
+    all t : Teacher, s : Student | s in t.Tutors implies t in s.Teaches
+}
+
+pred inv14 {
+    all s : Person, c : Class, g : Group | (c.Groups.s = g) implies some t : c.Teachers | t.Teaches = c and t.Tutors = g
+}
+
+pred inv15 {
+    all s : Person | some t : Teacher | t in s.Tutors
+}
+
+pred repair_pred_1 {
+    inv15[] iff inv15_OK[]
+}
+
+run repair_pred_1
+
+assert repair_assert_1 {
+    inv15[] iff inv15_OK[]
+}
+
+check repair_assert_1

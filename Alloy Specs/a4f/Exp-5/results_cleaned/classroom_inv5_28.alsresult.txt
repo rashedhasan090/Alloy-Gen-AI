@@ -1,0 +1,71 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    groups : set Group,
+    teacher : one Teacher
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+pred inv1 {
+    Person in Student 
+}
+pred inv2 {
+    no Teacher 
+}
+pred inv3 {
+    no Student & Teacher 
+}
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+pred inv5 {
+    some c:Class | c.teacher = some Teacher 
+}
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+pred inv7 {
+    all c:Class | c.teacher.Teaches = c 
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+pred inv9 {
+    all c:Class | lone c.teacher and lone c.groups 
+}
+pred inv10 {
+    all c:Class, s:Student | some g:c.groups | s in g.Person 
+}
+pred inv11 {
+    all c:Class | some g:c.groups | g.teacher in Teacher and g.teacher.Teaches = c 
+}
+pred inv12 {
+    all t:Teacher | some c:t.Teaches.groups 
+}
+pred inv13 {
+    all s:Student, t:Teacher | s in t.Tutors implies t in s.Teaches 
+}
+pred inv14 {
+    all s:Student, c:Class | some g:c.groups | s in g.Person and g.teacher in s.Teaches implies s in c.groups.Person 
+}
+pred inv15 {
+    all s:Person | some Teacher & s.Tutors 
+}
+check inv1 expect 0
+check inv2 expect 0
+check inv3 expect 0 
+check inv4 expect 0
+check inv5 expect 0
+check inv6 expect 0
+check inv7 expect 0
+check inv8 expect 0
+check inv9 expect 0
+check inv10 expect 0
+check inv11 expect 0
+check inv12 expect 0
+check inv13 expect 0
+check inv14 expect 0
+check inv15 expect 0

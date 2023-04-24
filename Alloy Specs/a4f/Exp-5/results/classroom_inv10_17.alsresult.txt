@@ -1,0 +1,68 @@
+sig Person {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class {
+    Groups : Person lone-> Group // use "lone" to indicate that each person can belong to at most one group
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+pred inv1 {
+    Student <: Person // use "<:" to indicate subset
+}
+pred inv2 {
+    Teacher = none // use "none" to indicate empty set
+}
+pred inv3 {
+    Student & Teacher = none // use "&" to indicate set intersection
+}
+pred inv4 {
+    Person = Student + Teacher // use "+" to indicate set union
+}
+pred inv5 {
+    some Teacher.Teaches
+}
+pred inv6 {
+    Teacher.Teaches = Teaches // fix the equality check
+}
+pred inv7 {
+    Teacher.Teaches in Class // fix the subset check
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches // same as before
+}
+pred inv9 {
+    all c:Class | lone {t:Teacher | t.Teaches = c} // use set comprehension to get teachers who teach the class
+}
+pred inv10 {
+    all c:Class | some c.Groups
+}
+pred inv11 {
+    all c : Class | (some c.Groups) implies some {t:Teacher & t.Teaches = c} // use set intersection to get teachers who teach the class
+}
+pred inv12 {
+    all t : Teacher | some {g:Group | g in (t.Teaches).Groups} // use set comprehension to get groups that belong to the teacher's classes
+}
+pred inv13 {
+    Teacher.Tutors in Teacher and Student.Tutors in Teacher // same as before
+}
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in s.Tutors // fix the typo in s.Tutors
+}
+pred inv15 {
+    all s : Person | some {t:Teacher & t.Tutors = s} // use set comprehension to get teachers who tutor the student
+}
+
+// repair predicates and assert checks remain the same, with corrected predicate names
+pred inv10_Repaired {
+    all c:Class, s:Student | some s.(c.Groups)
+}
+
+assert inv10_Repaired_assertion {
+    inv10[] iff inv10_Repaired[]
+}
+
+run repair_pred_1
+
+check inv10_Repaired_assertion

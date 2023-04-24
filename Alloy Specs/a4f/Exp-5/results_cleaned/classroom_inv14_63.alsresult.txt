@@ -1,0 +1,142 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    all t:Teacher | t in t.Teaches.Class 
+}
+
+pred inv7 {
+    all t:Teacher | Teacher in t.Teaches 
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c:Class | lone (c.Groups.Intersect[Tutor.Teaches] & Teacher)
+}
+
+pred inv10 {
+    all c:Class, s:Student | some g:Person | (c.Groups)[s] = g
+}
+
+pred inv11 {
+    all c:Class | (some c.Groups) implies some t:Teacher | t.Teaches = c
+}
+
+pred inv12 {
+    all t : Teacher | some g:Group | g in (t.Teaches).Groups
+}
+
+pred inv13 {
+    all s:Student | s.Tutors.Intersect[Teacher] != none
+}
+
+pred inv14 {
+    all s:Student, t:Teacher | (t.Tutors).Groups[s] in s.Groups
+}
+
+pred inv15 {
+    all s:Person | some t:Teacher | t in ^s.Tutors
+}
+
+assert inv1_Repaired {
+    all p: Person | p in Student implies p in Person
+}
+assert inv2_Repaired {
+    no Teacher 
+}
+assert inv3_Repaired {
+    no Student & Teacher 
+}
+assert inv4_Repaired {
+    all p: Person | p in Person implies (p in Student or p in Teacher)
+}
+assert inv5_Repaired {
+    some Teacher.Teaches 
+}
+assert inv6_Repaired {
+    all t:Teacher | t in Teacher implies all c:Class | c in t.Teaches implies t in c.Groups.Teachers
+}
+assert inv7_Repaired {
+    all t:Teacher | t in Teacher implies all c:Class | c in t.Teaches implies t in c.Groups.Teachers
+}
+assert inv8_Repaired {
+    all t:Teacher | all c,d:Class | t in c.Teachers & t in d.Teachers implies c=d
+}
+assert inv9_Repaired {
+    all c:Class | lone (c.Groups.Intersect[Teacher.Teaches] & Teacher)
+}
+assert inv10_Repaired {
+    all c:Class, s:Student | some g:Group | (c.Groups)[s] = g
+}
+assert inv11_Repaired {
+    all c:Class | (some c.Groups) implies some t:Teacher | t.Teaches = c
+}
+assert inv12_Repaired {
+    all t : Teacher | some g:Group | g in (t.Teaches).Groups
+}
+assert inv13_Repaired {
+    all s:Student | s.Tutors.Intersect[Teacher] != none
+}
+assert inv14_Repaired {
+    all s:Student, c:Class | some t:Teacher | t.Teaches=c & t.Tutors=s implies (c.Groups)[s] in t.Tutors.Groups
+}
+assert inv15_Repaired {
+    all s:Person | some t:Teacher | t in ^s.Tutors
+}
+
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv6_Repaired expect 0
+check inv7_Repaired expect 0
+check inv8_Repaired expect 0
+check inv9_Repaired expect 0
+check inv10_Repaired expect 0
+check inv11_Repaired expect 0
+check inv12_Repaired expect 0
+check inv13_Repaired expect 0
+check inv14_Repaired expect 0
+check inv15_Repaired expect 0
+
+run { }
+assert { } for 5 but 6 Class, 4 Teacher, 6 Student, 7 Group, 10 Person 
+
+run inv14
+check inv14_Repaired

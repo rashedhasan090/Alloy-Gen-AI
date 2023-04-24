@@ -1,0 +1,105 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person  {}
+
+sig Student extends Person  {}
+
+//inv1: All persons are students
+pred inv1 {
+    Student in Person
+}
+
+//inv2: No person is a teacher
+pred inv2 {
+    no Teacher
+}
+
+//inv3: No person is both a student and a teacher
+pred inv3 {
+    no Student & Teacher
+}
+
+//inv4: Every person is either a student or a teacher
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+//inv5: Some teacher teaches at least one class
+pred inv5 {
+    some t : Teacher | some c : t.Teaches
+}
+
+//inv6: All teachers teach at least one class
+pred inv6 {
+    all t : Teacher | some c : t.Teaches
+}
+
+//inv7: Every class is taught by at least one teacher
+pred inv7 {
+    all c : Class | some t : Teacher | c in t.Teaches
+}
+
+//inv8: Every teacher teaches at most one class
+pred inv8 {
+    all t : Teacher | lone c : t.Teaches
+}
+
+//inv9: Every class is taught by at most one teacher
+pred inv9 {
+    all c : Class | lone t : Teacher | c in t.Teaches
+}
+
+//inv10: Every class has at least one student in a group
+pred inv10 {
+    all c : Class | some s : Student | some g : c.Groups | s -> g in c.Groups
+}
+
+//inv11: If a class has at least one group, then it is taught by at least one teacher
+pred inv11 {
+    all c : Class | no c.Groups or some t : Teacher | t.Teaches = c
+}
+
+//inv12: Every teacher teaches at least one group in a class
+pred inv12 {
+    all t : Teacher | some c : t.Teaches | some g : c.Groups | g in t.Tutors
+}
+
+//inv13: Only students can be tutored by teachers
+pred inv13 {
+    all t : Teacher, s : Student | s in t.Tutors.Person implies t in s.Teaches
+}
+
+//inv14: If a person is in a group for a class, and a teacher teaches the class, then the teacher tutors the person
+pred inv14 {
+    all s : Person, c : Class, g : Group | g in c.Groups.s and c in g.Class.Teacher.Teaches implies s.Tutors = c.Teacher
+}
+
+//inv15: Every person is tutored by at least one teacher
+pred inv15 {
+    all s : Student | some t : Teacher | t in s.Tutors
+}
+
+check inv1 expect 0
+check inv2 expect 0
+check inv3 expect 0
+check inv4 expect 0
+check inv5 expect 0
+check inv6 expect 0
+check inv7 expect 0
+check inv8 expect 0
+check inv9 expect 0
+check inv10 expect 0
+check inv11 expect 0
+check inv12 expect 0
+check inv13 expect 0
+check inv14 expect 0
+check inv15 expect 0

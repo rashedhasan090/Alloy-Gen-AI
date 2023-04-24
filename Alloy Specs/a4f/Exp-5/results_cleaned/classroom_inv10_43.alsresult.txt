@@ -1,0 +1,91 @@
+sig Person {
+    Tutors: set Person,
+    Teaches: set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups: Person -> Group
+}
+
+sig Teacher extends Person {}
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in Student + Teacher
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    all t: Teacher | t in t.Teaches
+}
+
+pred inv7 {
+    all c: Class | c in Teacher.Teaches
+}
+
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c: Class | lone Teaches[c] & Teacher
+}
+
+pred inv10 {
+    all c: Class, s: Student | some c.Groups[s]
+}
+
+pred inv11 {
+    all c: Class | (some c.Groups) implies some Teacher & Teaches[c]
+}
+
+pred inv12 {
+    all t: Teacher | some (t.Teaches).Groups
+}
+
+pred inv13 {
+    all p: Person | (p in Teacher implies p.Tutors in Student) and (p in Student implies p.Tutors in Teacher)
+}
+
+pred inv14 {
+    all s: Person, c: Class, g: Group | (c -> s -> g in Class.Groups) implies some t: Teacher | t.Teaches = c and t -> s in Tutors
+}
+
+pred inv15 {
+    all s: Student | some Teacher & (s in Teacher.Tutors)
+}
+
+/* Check that all invariants are initially satisfied */
+assert init {
+    all i: int | eval "inv" + i + "()"
+}
+
+/* Check that all invariants hold after an operation that satisfies inv10 */
+pred repair {
+    inv10_OK[]
+    /* operation that satisfies inv10 */
+}
+assert repaired {
+    all i: int | eval "inv" + i + "()"
+}
+
+check repaired
+run repair for 1
+```

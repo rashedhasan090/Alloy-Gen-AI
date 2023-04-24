@@ -1,0 +1,108 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : set (Person -> Group)
+}
+
+sig Teacher extends Person  {}
+
+sig Student extends Person  {}
+
+// inv1: Every person is either a student or a teacher, but not both
+pred inv1 {
+    Person = Student + Teacher 
+}
+
+// inv2: There are no teachers
+pred inv2 {
+    Teacher = none 
+}
+
+// inv3: There are no students who are also teachers
+pred inv3 {
+    no Student & Teacher 
+}
+
+// inv4: Every person is either a student or a teacher
+pred inv4 {
+    Person = Student + Teacher 
+}
+
+// inv5: There is at least one teacher who teaches a class
+pred inv5 {
+    some t: Teacher | some c: t.Teaches 
+}
+
+// inv6: Every teacher teaches at least one class
+pred inv6 {
+    all t: Teacher | some c: t.Teaches 
+}
+
+// inv7: Every class is taught by at least one teacher
+pred inv7 {
+    all c: Class | some t : Teacher | t.Teaches = c
+}
+
+// inv8: Every teacher teaches at most one class
+pred inv8 {
+    all t: Teacher | lone t.Teaches 
+}
+
+// inv9: Every class is taught by at most one teacher
+pred inv9 {
+    all c: Class | lone t : Teacher | t.Teaches = c
+}
+
+// inv10: Every class has at least one student in a group
+pred inv10 {
+    all c: Class | some s: Student | some g: c.Groups | g[s] = g
+}
+
+// inv11: If at least one group exists for a class, then that class is taught by at least one teacher
+pred inv11 {
+    all c: Class | (some g: c.Groups) implies some t: Teacher | t.Teaches = c
+}
+
+// inv12: Every teacher teaches at least one group
+pred inv12 {
+    all t: Teacher | some g: (t.Teaches).Groups 
+}
+
+// inv13: Tutors are always teachers and students are always tutored
+pred inv13 {
+    all p: Person | (p in Student implies p.Tutors in Teacher) and (p in Teacher implies p.Tutors in Student)
+}
+
+// inv14: If a teacher teaches a class and a student is in a group of that class, then the teacher is the tutor of the student
+pred inv14 {
+    all s: Student, t: Teacher, c: Class | (some g: c.Groups | g[s] = g) and (t.Teaches = c) implies (t.Tutors = s)
+}
+
+// inv15: Every student has at least one teacher as tutor
+pred inv15 {
+    all s: Student | some t: Tutors.s and t in Teacher
+}
+
+run {
+    // Check all invariants
+    assert inv1_check { inv1 }
+    assert inv2_check { inv2 }
+    assert inv3_check { inv3 }
+    assert inv4_check { inv4 }
+    assert inv5_check { inv5 }
+    assert inv6_check { inv6 }
+    assert inv7_check { inv7 }
+    assert inv8_check { inv8 }
+    assert inv9_check { inv9 }
+    assert inv10_check { inv10 }
+    assert inv11_check { inv11 }
+    assert inv12_check { inv12 }
+    assert inv13_check { inv13 }
+    assert inv14_check { inv14 }
+    assert inv15_check { inv15 }
+} expect 0

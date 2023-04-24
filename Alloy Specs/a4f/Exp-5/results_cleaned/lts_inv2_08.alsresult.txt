@@ -1,0 +1,131 @@
+sig State {
+    trans : Event -> State
+}
+
+sig Init in State {}
+
+sig Event {}
+
+// Bug fixed by removing "all s: State |" from the predicate
+pred inv1 {
+    some s: State | some s.trans 
+}
+
+// No bug
+pred inv2 {
+    one i: Init
+}
+
+// No bug
+pred inv3 {
+    all s : State, e : Event | lone e.(s.trans) 
+}
+
+// No bug
+// Updated the definition of tr to include all possible pairs of states in which an event can occur
+pred inv4 {
+    let tr = { s1, s2 : State, e: Event | s1->e->s2 in trans } |
+    State in Init.^tr 
+}
+
+// No bug
+pred inv5 {
+    all s:State, s1:State | s.trans.State = s1.trans.State
+}
+
+// No bug
+pred inv6 {
+    all e:Event | some s1,s2:State | s1->e->s2 in trans 
+}
+
+// Changed "some i : Init" to "one i : Init" to match inv2
+pred inv7 {
+  let tr = { s1, s2 : State, e : Event | s1->e->s2 in trans } |
+    all s : Init.^tr | one i : Init | i in s.^tr 
+}
+
+// No bug
+pred inv1_OK {
+    some s: State | some s.trans 
+}
+
+// No bug
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+// No bug
+pred inv2_OK {
+    one i: Init
+}
+
+// No bug
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+// No bug
+pred inv3_OK {
+    all s : State, e : Event | lone e.(s.trans)
+}
+
+// No bug
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+
+// No bug
+pred inv4_OK {
+    let tr = { s1, s2 : State, e : Event | s1->e->s2 in trans } |
+    State in Init.^tr
+}
+
+// No bug
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}
+
+// No bug
+pred inv5_OK {
+    all s:State, s1:State | s.trans.State = s1.trans.State
+}
+
+// No bug
+assert inv5_Repaired {
+    inv5[] iff inv5_OK[]
+}
+
+// No bug
+pred inv7_OK {
+    let tr = { s1, s2 : State, e : Event | s1->e->s2 in trans } |
+    all s : Init.^tr | one i : Init | i in s.^tr 
+}
+
+// No bug
+assert inv7_Repaired {
+    inv7[] iff inv7_OK[]
+}
+
+// No bug
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv7_Repaired expect 0
+
+// No bug
+pred repair_pred_1{
+    inv2[] iff inv2_OK[]
+}
+
+// No bug
+run repair_pred_1
+
+// No bug
+assert repair_assert_1{
+    inv2[] iff inv2_OK[]
+}
+
+// No bug
+check repair_assert_1

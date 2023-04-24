@@ -1,0 +1,90 @@
+sig Person {
+    Tutors: set Person,
+    Teaches: set Class
+}
+
+sig Group {}
+sig Class {
+    Groups: Person -> Group
+}
+
+sig Teacher extends Person {}
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    all t: Teacher | t in t.Teaches
+}
+
+pred inv7 {
+    all c: Class | c in c.Groups.Person.Teaches
+}
+
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c: Class | lone c.Groups.Person & Teacher
+}
+
+pred inv10 {
+    all c: Class, s: Student | some c.Groups[s]
+}
+
+pred inv11 {
+    all c: Class | (some c.Groups) implies some Teacher & c.Teaches
+}
+
+pred inv12 {
+    all t: Teacher | some t.Teaches.Groups.Person
+}
+
+pred inv13 {
+    all p: Person, t: Teacher | p in t.Tutors implies p in t.Teaches.Person
+}
+
+pred inv14 {
+    all s: Student, c: Class, t: Teacher | (c,s) -> lone c.Groups.Person implies (t,c) in t.Teaches implies (t,s) in t.Tutors
+}
+
+pred inv15 {
+    all s: Person | some Teacher & s.^Tutors
+}
+
+run inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15 for 5 but exactly 3 Person, exactly 2 Teacher, exactly 2 Student, exactly 2 Class, exactly 2 Group
+
+check inv1
+check inv2
+check inv3
+check inv4
+check inv5
+check inv6
+check inv7
+check inv8
+check inv9
+check inv10
+check inv11
+check inv12
+check inv13
+check inv14
+check inv15

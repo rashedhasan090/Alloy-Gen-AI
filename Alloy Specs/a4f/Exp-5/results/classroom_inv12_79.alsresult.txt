@@ -1,0 +1,84 @@
+sig Person {
+    Tutors: set Person,
+    Teaches: set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups: Person lone -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Person in Student
+}
+
+pred inv2 {
+    Teacher = none
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    all t: Teacher | t in t.Teaches
+}
+
+pred inv7 {
+    Teacher.Teaches = Class
+}
+
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c: Class | lone(c.Teaches & Teacher)
+}
+
+pred inv10 {
+    all c: Class, s: Student | s in c.Groups
+}
+
+pred inv11 {
+    all c: Class | (some c.Groups) implies (some t: Teacher | t.Teaches = c)
+}
+
+pred inv12 {
+    all t: Teacher | some g: Group | g in t.Teaches.Groups
+}
+
+pred inv13 {
+    all t: Teacher, s: Student | s in t.Tutors implies t in s.Teaches
+}
+
+pred inv14 {
+    all s: Student, c: Class, g: Group | (c->s->g in Class.Groups) implies (some t: Teacher | t.Teaches = c and t in s.Tutors)
+}
+
+pred inv15 {
+    all s: Student | some t: Teacher | t in s.Tutors
+}
+
+// Check that all invariants hold
+check inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15 for 0 but 15 Person, 20 Class, 10 Group
+
+// Alternatively, check each invariant separately
+run { inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15 } for 0
+
+// Check that repaired invariant inv12_OK holds
+assert inv12_Repaired { all t: Teacher | some g: Group | g in t.Teaches.Groups }
+check inv12_Repaired for 0

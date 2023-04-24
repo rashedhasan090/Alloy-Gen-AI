@@ -1,0 +1,88 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : set Person -> set Group
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+pred inv1 {
+    Student in Person 
+}
+pred inv2 {
+    no Teacher 
+}
+pred inv3 {
+    no Student & Teacher 
+}
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+pred inv5 {
+    some Teacher.Teaches 
+}
+pred inv6 {
+    Teacher in Teach
+}
+pred inv7 {
+    all t: Teacher | all c: t.Teaches | c in Class
+}
+pred inv8 {
+    all c: Class | lone Teaches.c & Teacher 
+}
+pred inv9 {
+    all c: Class | lone c.Groups.Teacher 
+}
+pred inv10 {
+    all c: Class, s: Student | some g: c.Groups.s | g in c.Groups.Teacher 
+}
+pred inv11 {
+    all c: Class | (some c.Groups) implies some Teacher & Teaches.c 
+}
+pred inv12 {
+    all t: Teacher | some c: t.Teaches | some g: c.Groups | some s: g.Person | s in t.Tutors 
+}
+pred inv13 {
+    all t: Teacher | all s: t.Tutors | some g: s.Teaches.Groups | g in t.Teaches 
+}
+pred inv14 {
+    all s: Person, c: Class, g: Group | (c.Groups.s & g) implies some t: Teacher | (t.Teaches.c & g in t.Tutors) 
+}
+pred inv15 {
+    all s: Person | some t: Teacher & ^s.Tutors.t
+}
+
+run inv1_OK for 5 but exactly 1 Student, 1 Teacher, 1 Class, 1 Group
+run inv2_OK for 5 but exactly 1 Student, 1 Class, 1 Group
+run inv3_OK for 5 but exactly 1 Teacher, 1 Class, 1 Group
+run inv4_OK for 5 but exactly 1 Student, 1 Teacher, 1 Class, 1 Group
+run inv5_OK for 5 but exactly 1 Teacher with non-empty Teaches set and 1 Class
+run inv6_OK for 5 but exactly 1 Teacher with non-empty Teaches set and 1 Class
+run inv7_OK for 5 but exactly 1 Teacher with non-empty Teaches set and 1 Class with non-empty Groups set
+run inv8_OK for 5 but exactly 1 Teacher with non-empty Teaches set and 1 Class with lone Teaches set and 1 Group
+run inv9_OK for 5 but exactly 1 Teacher with non-empty Teaches set and 1 Class with 1 Group and 1 person in the group
+run inv10_OK for 5 but exactly 1 Teacher with non-empty Teaches set, 1 Student, and 1 Class with 1 Group that includes the student
+run inv11_OK for 5 but exactly 1 Teacher with non-empty Teaches set and 1 Class with non-empty Groups set
+run inv12_OK for 5 but exactly 1 Teacher with non-empty Teaches set, 1 Class with non-empty Groups set, and 1 person in the group
+run inv13_OK for 5 but exactly 1 Teacher with non-empty Teaches set and at least 2 students with the same tutor and in the same group in the class
+run inv14_OK for 5 but exactly 1 Teacher with non-empty Teaches set, 1 Class with 1 Group, 1 Student, and 1 Person who is not the student or the teacher
+run inv15_OK for 5 but exactly 1 Teacher with non-empty Teaches set, 1 Student, and 1 Person who is not the student or the teacher
+
+
+check inv1_OK expect 5
+check inv2_OK expect 5
+check inv3_OK expect 5
+check inv4_OK expect 5
+check inv5_OK expect 5
+check inv6_OK expect 5
+check inv7_OK expect 5
+check inv8_OK expect 5
+check inv9_OK expect 5
+check inv10_OK expect 5
+check inv11_OK expect 5
+check inv12_OK expect 5
+check inv13_OK expect 5
+check inv14_OK expect 5
+check inv15_OK expect 5

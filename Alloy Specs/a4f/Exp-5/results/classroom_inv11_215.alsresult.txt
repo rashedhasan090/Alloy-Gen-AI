@@ -1,0 +1,112 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person  {}
+
+pred inv1 {
+    Person in Student 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+
+pred inv7 {
+    all t:Teacher | t.Teaches in Class 
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c:Class | lone (Teaches.c & Teacher)
+}
+
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups) 
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies (some Teacher & t:Teacher | t.Teaches = c) 
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).(Groups.t) 
+}
+
+pred inv13 {
+    all p:Person | p.Tutors in Teacher and Tutors.p in Student 
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Teacher |
+        (c -> s -> g in Groups) and (t -> c in Teaches) implies (t -> s in Tutors)
+}
+
+pred inv15 {
+    all s : Person | some Teacher & ^Tutors.s
+}
+
+run inv1_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv2_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv3_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv4_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv5_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv6_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv7_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv8_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv9_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv10_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv11_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv12_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv13_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+run inv14_Repaired for 6 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 1 Person.Tutors, exactly 1 Person.Teaches, exactly 1 Teacher.Teaches, exactly 2 Class.Groups
+run inv15_Repaired for 5 but 2 Person, 2 Teacher, 2 Student, 2 Class, 2 Group, exactly 2 Person.Tutors, exactly 2 Person.Teaches, exactly 1 Teacher.Teaches, exactly 1 Class.Groups
+
+check inv1_Repaired expect 5
+check inv2_Repaired expect 5
+check inv3_Repaired expect 5
+check inv4_Repaired expect 5
+check inv5_Repaired expect 5
+check inv6_Repaired expect 5
+check inv7_Repaired expect 5
+check inv8_Repaired expect 5
+check inv9_Repaired expect 5
+check inv10_Repaired expect 5
+check inv11_Repaired expect 5
+check inv12_Repaired expect 5
+check inv13_Repaired expect 5
+check inv14_Repaired expect 6
+check inv15_Repaired expect 5
+
+pred repair_pred_1{inv11[] iff inv11_Repaired[] }
+run repair_pred_1
+assert repair_assert_1{inv11[] iff inv11_Repaired[] }
+check repair_assert_1

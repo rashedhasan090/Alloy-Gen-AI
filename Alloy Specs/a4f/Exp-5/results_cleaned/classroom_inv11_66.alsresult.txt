@@ -1,0 +1,81 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+
+pred inv7 {
+    all t: Teacher | t.Teaches in Class
+}
+
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c: Class | lone (Teaches.c & Teacher)
+}
+
+pred inv10 {
+    //All students belong to at least one group for the class they are in
+    all c: Class, s: Student | some s.(c.Groups)
+}
+
+pred inv11 {
+    //All groups in a class are associated with a teacher who teaches that class
+    all c: Class, g: Group | some (Teaches.c & Teacher).Groups[g]
+}
+
+pred inv12 {
+    //All teachers teach at least one class and at least one group in that class
+    all t: Teacher | some t.Teaches && some g: (t.Teaches).Groups | g in (t.Tutors)
+}
+
+pred inv13 {
+    Tutors in Teacher && Tutors.Person in Student 
+}
+
+pred inv14 {
+    //If a student belongs to a group for a class and a teacher teaches that class, then the teacher tutors that student for that class
+    all c: Class, s: Person, g: Group | (c -> s -> g in Groups) and some t: Teacher | t -> c in Teaches implies t -> s in t.Tutors
+}
+
+pred inv15 {
+    all s: Person | some (Teacher & ^Tutors.s)
+}
+
+// Assertion check
+check inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14, inv15

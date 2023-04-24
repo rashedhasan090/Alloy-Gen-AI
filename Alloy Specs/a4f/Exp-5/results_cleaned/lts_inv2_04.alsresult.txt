@@ -1,0 +1,5 @@
+The bug is in the pred inv2, which should have "one" instead of "all" in the predicate. The fixed code is:
+
+pred inv2 {
+    one x: Init | some y : Init | x = y
+}

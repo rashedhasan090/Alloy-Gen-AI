@@ -1,0 +1,109 @@
+sig Person {
+    Tutors: set Person,
+    Teaches: set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups: Person lone -> lone Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in Student + Teacher
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teacher.Teaches in Class
+}
+
+pred inv7 {
+    Teacher.Teaches in Class
+}
+
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c: Class | lone (c.Teaches & Teacher)
+}
+
+pred inv10 {
+    all c: Class, s: Student | some c.Groups[s]
+}
+
+pred inv11 {
+    all c: Class | (some c.Groups) implies (some t: Teacher | t.Teaches = c)
+}
+
+pred inv12 {
+    all t: Teacher | some (t.Teaches).Groups
+}
+
+pred inv13 {
+    all p: Person | p.Tutors in Teacher => p in Student
+}
+
+pred inv14 {
+    all s: Student, c: Class, g: Group, t: Teacher |
+        t in s.Tutors.Teaches => c in t.Teaches && c -> s -> g in Class.Groups => t -> s in Tutors
+}
+
+pred inv15 {
+    all s: Person | some t: Teacher | t in s.^Tutors
+}
+
+run {
+    assert inv1
+    assert inv2
+    assert inv3
+    assert inv4
+    assert inv5
+    assert inv6
+    assert inv7
+    assert inv8
+    assert inv9
+    assert inv10
+    assert inv11
+    assert inv12
+    assert inv13
+    assert inv14
+    assert inv15
+} for 5 but 6 Int, 6 Group, 6 Class, 6 Teacher, 6 Student, 6 Person, exactly 6 Group <-> 6 Person, exactly 6 Group <-> 6 Student, exactly 6 Group <-> 6 Teacher, exactly 6 Group <-> 6 Class, exactly 6 Teacher -> 6 Class, exactly 6 Class -> 6 Group -> 6 Person, exactly 6 Person -> 6 Person, exactly 6 Person -> 6 Class, exactly 6 Teacher -> 6 Person, exactly 6 Person -> 6 Group, exactly 6 Person -> 6 Teacher, exactly 6 Student -> 6 Group, exactly 6 Student -> 6 Person, exactly 6 Student -> 6 Class, exactly 6 Teacher -> 6 Teacher, exactly 6 Teacher -> 6 Student, exactly 6 Class -> 6 Class, exactly 6 Student -> 6 Student, exactly 6 Class -> 6 Person, exactly 6 Group -> 6 Group, exactly 6 Person one -> lone Group, exactly 6 Teacher one -> lone Group, exactly 6 Student one -> lone Group, exactly 6 Class one -> lone Person, exactly 6 Group one -> lone Class, exactly 6 Group one -> lone Teacher, exactly 6 Group one -> lone Student, exactly 6 Person disj 6 Group, exactly 6 Teacher disj 6 Group, exactly 6 Student disj 6 Group, exactly 6 Class disj 6 Group, exactly 6 Teacher disj 6 Person, exactly 6 Student disj 6 Person, exactly 6 Class disj 6 Person, exactly 6 Teacher disj 6 Student, exactly 6 Class disj 6 Student, exactly 6 Group disj 6 Student, exactly 6 Person disj 6 Teacher, exactly 6 Class disj 6 Teacher, exactly 6 Group disj 6 Teacher, exactly 6 Person disj 6 Student, exactly 6 Class disj 6 student, exactly 6 Group disj 6 student
+
+check inv1 expect 1
+check inv2 expect 1
+check inv3 expect 1
+check inv4 expect 1
+check inv5 expect 1
+check inv6 expect 1
+check inv7 expect 1
+check inv8 expect 1
+check inv9 expect 1
+check inv10 expect 1
+check inv11 expect 1
+check inv12 expect 1
+check inv13 expect 1
+check inv14 expect 1
+check inv15 expect 1

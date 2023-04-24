@@ -1,0 +1,111 @@
+sig State {
+    trans : Event -> State
+}
+
+sig Init in State {}
+
+sig Event {}
+
+//Bug: replaced some with lone
+pred inv1 {
+    lone s: State | some s.trans 
+}
+
+//Added: defined the initial state
+pred inv2 {
+    one s: State | s in Init
+}
+
+//No change to inv3
+pred inv3 {
+    all s : State, e : Event | lone e.(s.trans) 
+}
+
+//Added: defined reachability
+pred inv4 {
+    all s: State | some Init.*s 
+}
+
+//No change to inv5
+pred inv5 {
+    all s:State, s1:State | s.trans.State = s1.trans.State 
+}
+
+//No change to inv6
+pred inv6 {
+    all e:Event | some s1,s2:State | s1->e->s2 in trans 
+}
+
+//No change to inv7
+pred inv7 {
+    let tr = { s1, s2 : State | some e : Event | s1->e->s2 in trans } |
+    all s : Init.^tr | some i : Init | i in s.^tr 
+}
+
+//No change to inv1_OK
+pred inv1_OK {
+    all s: State | some s.trans 
+}
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+//No change to inv2_OK
+pred inv2_OK {
+    one Init 
+}
+
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+//No change to inv3_OK
+pred inv3_OK {
+    all s : State, e : Event | lone e.(s.trans) 
+}
+
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+
+//No change to inv5_OK
+pred inv5_OK {
+    all s:State, s1:State | s.trans.State = s1.trans.State 
+}
+
+assert inv5_Repaired {
+    inv5[] iff inv5_OK[]
+}
+
+//No change to inv7_OK
+pred inv7_OK {
+    let tr = { s1, s2 : State | some e : Event | s1->e->s2 in trans } |
+    all s : Init.^tr | some i : Init | i in s.^tr 
+}
+
+assert inv7_Repaired {
+    inv7[] iff inv7_OK[]
+}
+
+//No change to check statements
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0 
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv7_Repaired expect 0
+
+//Added: repair predicate
+pred repair_pred_1{
+    inv4[] iff inv4_OK[] 
+}
+
+run repair_pred_1
+
+//Added: repair assertion
+assert repair_assert_1{
+    inv4[] iff inv4_OK[] 
+}
+
+check repair_assert_1

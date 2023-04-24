@@ -1,0 +1,163 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group,
+    Teachers : lone Person // Added to fix inv9
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Person in Student 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+
+pred inv5 {
+    some Teacher.Teaches 
+}
+
+pred inv6 {
+    Teacher.Teaches in Class // Fixed to access the Teaches field of Teacher
+}
+
+pred inv7 {
+    all c : Class | c.Teachers in Teacher // Fixed to access the Teachers field of Class
+}
+
+pred inv8 {
+    all t : Teacher | lone t.Teaches 
+}
+
+pred inv9 {
+    all c : Class | lone c.Teachers & Teacher 
+}
+
+pred inv10 {
+    all c : Class | some s : c.Groups | s.Tutors = Person  
+} // Fixed to check if a Person tutors at least one student in the group
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t : Teacher | t.Teaches = c 
+}
+
+pred inv12 {
+    all t : Teacher | some g : (t.Teaches).Groups 
+}
+
+pred inv13 {
+    all s : Person | (s in Teacher implies s.Tutors in Student) and (s in Student implies s.Tutors in Teacher)  // Fixed to swap the Tutors fields depending on Person type
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and (t.Teaches = c) implies (t.Tutors = s or s in (t.Tutors).Tutors) // Fixed to check if the Tutor is either the direct tutor of the student or indirectly tutors through another teacher
+}
+
+pred inv15 {
+    all s : Person | some t : Teacher | t.Tutors = s 
+}
+
+assert inv1_Repaired {
+  Person in Student 
+}
+
+assert inv2_Repaired {
+  no Teacher 
+}
+
+assert inv3_Repaired {
+  no Student & Teacher 
+}
+
+assert inv4_Repaired {
+  Person in (Student + Teacher) 
+}
+
+assert inv5_Repaired {
+  some Teacher.Teaches 
+}
+
+assert inv6_Repaired {
+  Teacher.Teaches in Class 
+}
+
+assert inv7_Repaired {
+  all c : Class | c.Teachers in Teacher 
+}
+
+assert inv8_Repaired {
+  all t : Teacher | lone t.Teaches 
+}
+
+assert inv9_Repaired {
+  all c : Class | lone c.Teachers & Teacher 
+}
+
+assert inv10_Repaired {
+  all c : Class | some s : c.Groups | s.Tutors = Person  
+}
+
+assert inv11_Repaired {
+  all c : Class | (some c.Groups) implies some t : Teacher | t.Teaches = c 
+}
+
+assert inv12_Repaired {
+  all t : Teacher | some g : (t.Teaches).Groups 
+}
+
+assert inv13_Repaired {
+  all s : Person | (s in Teacher implies s.Tutors in Student) and (s in Student implies s.Tutors in Teacher) 
+}
+
+assert inv14_Repaired {
+  all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and (t.Teaches = c) implies (t.Tutors = s or s in (t.Tutors).Tutors)
+}
+
+assert inv15_Repaired {
+  all s : Person | some t : Teacher | t.Tutors = s 
+}
+
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0 
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv6_Repaired expect 0
+check inv7_Repaired expect 0
+check inv8_Repaired expect 0
+check inv9_Repaired expect 0
+check inv10_Repaired expect 0
+check inv11_Repaired expect 0
+check inv12_Repaired expect 0
+check inv13_Repaired expect 0
+check inv14_Repaired expect 0
+check inv15_Repaired expect 0
+
+pred repair_pred_1{
+    inv13[] iff inv13_OK[] 
+}
+
+run repair_pred_1
+
+assert repair_assert_1{
+    inv13[] iff inv13_OK[] 
+}
+
+check repair_assert_1

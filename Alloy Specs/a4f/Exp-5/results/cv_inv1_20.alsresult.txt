@@ -1,0 +1,46 @@
+abstract sig Source {}
+sig User extends Source {
+    profile: set Work,
+    visible: set Work
+}
+sig Institution extends Source {}
+sig Id {}
+sig Work {
+    ids: some Id,
+    source: one Source
+}
+pred inv1 {
+    all u: User |
+    all w: u.visible |
+    w in u.profile
+}
+run inv1 for 5
+pred inv2 {
+    all u: User |
+    all w: u.profile |
+    u in w.source or
+    some i: Institution | i in w.source
+}
+run inv2 for 5
+pred inv3 {
+    all u: User |
+    no disj w1, w2: u.profile | w1.source = w2.source and w1.ids & w2.ids
+}
+run inv3 for 5
+assert inv1Fixed {
+    all u: User | all w: u.visible | w in u.profile
+}
+assert inv2Fixed {
+    all u: User |
+    all w: u.profile |
+    u in w.source or
+    some i: Institution | i in i.source
+}
+assert inv3Fixed {
+    all u:User |
+    no disj w1, w2: u.profile |
+    w1.source = w2.source and w1.ids & w2.ids
+}
+check inv1Fixed
+check inv2Fixed
+check inv3Fixed

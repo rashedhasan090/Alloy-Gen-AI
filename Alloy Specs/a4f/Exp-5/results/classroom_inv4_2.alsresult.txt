@@ -1,0 +1,98 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : set Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in Student + Teacher
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    Teaching: Teacher -> set Class,
+    Teaching = Teaches,
+    Teacher in Teaching.Class
+}
+
+pred inv7 {
+    all t: Teacher | all c: t.Teaches | c in Class
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c:Class | lone (Teaches.c & Teacher)
+}
+
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups)
+}
+
+pred inv11 {
+    all c:Class | (some c.Groups) implies some t:(Teacher & t.Teaches = c)
+}
+
+pred inv12 {
+    all t:Teacher | some c:t.Teaches | some g:c.Groups
+}
+
+pred inv13 {
+    all t:Teacher | all s:(t.Tutors & Student) | Person in s.Tutors
+}
+
+pred inv14 {
+    all s:Person, c:Class, t:Teacher, g:Group | (t -> c in Teaches) and (c -> s -> g in Groups) implies t -> s in Tutors
+}
+
+pred inv15 {
+    all s:Person | some t:(Teacher & t.Tutors = s.Tutors)
+}
+
+pred inv4_OK {
+    Person in (Student + Teacher)
+}
+
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}
+
+check inv4_Repaired for 5
+
+pred repair_pred_1 {
+    inv4[] iff inv4_OK[]
+}
+
+run repair_pred_1 for 5
+
+assert repair_assert_1{
+    inv4[] iff inv4_OK[]
+}
+
+check repair_assert_1 for 5

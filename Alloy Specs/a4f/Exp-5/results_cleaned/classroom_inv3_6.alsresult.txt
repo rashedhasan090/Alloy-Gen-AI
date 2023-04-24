@@ -1,0 +1,149 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person -> Group
+}
+sig Teacher extends Person {}
+sig Student extends Person {}
+
+pred inv1 {
+    Person in Student
+}
+pred inv2 {
+    no Teacher
+}
+pred inv3 {
+    #Teacher = 0 and #Student = 0
+}
+pred inv4 {
+    Person in (Student + Teacher)
+}
+pred inv5 {
+    some Teacher.Teaches
+}
+pred inv6 {
+    Teacher.Teaches in Class
+}
+pred inv7 {
+    all c : Class | c.Teachers in Teacher
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+pred inv9 {
+    all c:Class | lone c.Teachers & Teacher
+}
+pred inv10 {
+    all c:Class, s:Student | some s.(c.Groups)
+}
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t:Teacher | t.Teaches = c
+}
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups
+}
+pred inv13 {
+    Tutors.Person in Teacher and Person.Tutors in Student
+}
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+pred inv15 {
+    all s : Person | some t : Teacher | s in t.Tutors
+}
+
+run inv1 for 3
+run inv2 for 3
+run inv3 for 3
+run inv4 for 3
+run inv5 for 3
+run inv6 for 3
+run inv7 for 3
+run inv8 for 3
+run inv9 for 3
+run inv10 for 3
+run inv11 for 3
+run inv12 for 3
+run inv13 for 3
+run inv14 for 3
+run inv15 for 3
+
+assert inv1_repaired {
+    inv1[] iff Person in Student
+}
+
+assert inv2_repaired {
+    inv2[] iff no Teacher
+}
+
+assert inv3_repaired {
+    inv3[] iff #Teacher = 0 and #Student = 0
+}
+
+assert inv4_repaired {
+    inv4[] iff Person in (Student + Teacher)
+}
+
+assert inv5_repaired {
+    inv5[] iff some Teacher.Teaches
+}
+
+assert inv6_repaired {
+    inv6[] iff Teacher.Teaches in Class
+}
+
+assert inv7_repaired {
+    inv7[] iff all c : Class | c.Teachers in Teacher
+}
+
+assert inv8_repaired {
+    inv8[] iff all t:Teacher | lone t.Teaches
+}
+
+assert inv9_repaired {
+    inv9[] iff all c:Class | lone c.Teachers & Teacher
+}
+
+assert inv10_repaired {
+    inv10[] iff all c:Class, s:Student | some s.(c.Groups)
+}
+
+assert inv11_repaired {
+    inv11[] iff all c : Class | (some c.Groups) implies some t:Teacher | t.Teaches = c
+}
+
+assert inv12_repaired {
+    inv12[] iff all t : Teacher | some (t.Teaches).Groups
+}
+
+assert inv13_repaired {
+    inv13[] iff Tutors.Person in Teacher and Person.Tutors in Student
+}
+
+assert inv14_repaired {
+    inv14[] iff all s : Person, c : Class, t : Teacher, g : Group |
+        (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+
+assert inv15_repaired {
+    inv15[] iff all s : Person | some t : Teacher | s in t.Tutors
+}
+
+check inv1_repaired
+check inv2_repaired
+check inv3_repaired
+check inv4_repaired
+check inv5_repaired
+check inv6_repaired
+check inv7_repaired
+check inv8_repaired
+check inv9_repaired
+check inv10_repaired
+check inv11_repaired
+check inv12_repaired
+check inv13_repaired
+check inv14_repaired
+check inv15_repaired

@@ -1,0 +1,122 @@
+sig Person {
+    Tutors: set Person,
+    Teaches: set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups: Person -> Group
+}
+
+sig Teacher extends Person {}
+sig Student extends Person {}
+
+// Person must be a subset of Student and Teacher
+pred inv1 {
+    Person in Student + Teacher
+}
+
+// There should be no Teacher
+pred inv2 {
+    no Teacher
+}
+
+// There should be no Person that is both a Student and a Teacher
+pred inv3 {
+    no Student & Teacher
+}
+
+// Person must be a subset of Student or Teacher
+pred inv4 {
+    Person in Student + Teacher
+}
+
+// At least one Teacher must teach a class
+pred inv5 {
+    some Teacher.Teaches
+}
+
+// A Teacher must teach a class if they are in the Teaches relation
+pred inv6 {
+    all t: Teacher | t in t.Teaches.Class
+}
+
+// A Class must be taught by a Teacher if there are any groups in the class
+pred inv7 {
+    all c: Class | no c.Groups or some Teacher & Teaches.c
+}
+
+// Each Teacher can only teach one class
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+
+// Each class can only be taught by one Teacher
+pred inv9 {
+    all c: Class | lone Teaches.c & Teacher
+}
+
+// Each class must have at least one group with a student in it
+pred inv10 {
+    all c: Class, s: Student | some s.(c.Groups)
+}
+
+// If a class has groups, it must be taught by a Teacher
+pred inv11 {
+    all c: Class | no c.Groups or some Teacher & Teaches.c
+}
+
+// Each Teacher must have at least one group they tutor
+pred inv12 {
+    all t: Teacher | some (t.Teaches).Groups
+}
+
+// Tutors relation connects a Teacher to a Student
+pred inv13 {
+    Tutors.Person in Teacher and Person.Tutors in Student
+}
+
+// If a person is in a group, then the person's teacher must also be in the same group
+pred inv14 {
+    all s:Person, c:Class, t:Teacher, g:Group | (c->s->g in Groups) and (t->c in Teaches) implies (t->s in Tutors)
+}
+
+// Every Student must have at least one Teacher as a Tutor
+pred inv15 {
+    all s: Student | some Teacher & ^Tutors.s
+}
+
+// Check if all the repaired invariants hold
+run checkRepairedInvariants {
+    check inv1 expect 0
+    check inv2 expect 0
+    check inv3 expect 0
+    check inv4 expect 0
+    check inv5 expect 0
+    check inv6 expect 0
+    check inv7 expect 0
+    check inv8 expect 0
+    check inv9 expect 0
+    check inv10 expect 0
+    check inv11 expect 0
+    check inv12 expect 0
+    check inv13 expect 0
+    check inv14 expect 0
+    check inv15 expect 0
+}
+
+// Check if the repair of inv9 holds
+pred repair_pred_1 {
+    inv9[] iff inv9_OK[]
+}
+
+run repair_pred_1_check {
+    run repair_pred_1
+}
+
+assert repair_assert_1 {
+    inv9[] iff inv9_OK[]
+}
+
+check repair_assert_1

@@ -1,0 +1,110 @@
+sig Person {
+    Tutors: set Person,
+    Teaches: set Class
+}
+
+sig Group {}
+
+sig Class {
+    Groups: Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no Student & Teacher
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teach | Teach in Teacher.Teaches
+}
+
+pred inv6 {
+    all Teach: Teacher.Teaches | Teach in Teach.Class.Teaches
+}
+
+pred inv7 {
+    all Teach: Teacher.Teaches | Teach in Class
+}
+
+pred inv8 {
+    some t: Teacher | one c: t.Teaches | c in Teaches
+}
+
+pred inv9 {
+    all c: Class | lone t: Teacher | t in Teaches.c
+}
+
+pred inv10 {
+    all s: Student, c: Class | some g: c.Groups | s in g.Person
+}
+
+pred inv11 {
+    all c: Class | (some g: c.Groups | some t: Teacher | t.Teaches = c)
+}
+
+pred inv12 {
+    all t: Teacher | (some c: t.Teaches | some p: Person | p in c.Groups)
+}
+
+pred inv13 {
+    all t: Teacher, s: Student | s in t.Tutors implies t in s.Teaches
+}
+
+pred inv14 {
+    all s: Person, c: Class, t: Person, g: Group | (c -> s -> g in Groups) and (t -> c in Teaches) implies (t -> s in Tutors)
+}
+
+pred inv15 {
+    all s: Person | some t: Teacher & s in t.Tutors
+}
+
+run {
+    assert inv1
+    assert inv2
+    assert inv3
+    assert inv4
+    assert inv5
+    assert inv6
+    assert inv7
+    assert inv8
+    assert inv9
+    assert inv10
+    assert inv11
+    assert inv12
+    assert inv13
+    assert inv14
+    assert inv15
+} for 5 but exactly 15 Person, 5 Teacher, 10 Student, 10 Group, 20 Class, 50 Person->Group, 50 Class->Person
+
+check {
+    assert inv1
+    assert inv2
+    assert inv3
+    assert inv4
+    assert inv5
+    assert inv6
+    assert inv7
+    assert inv8
+    assert inv9
+    assert inv10
+    assert inv11
+    assert inv12
+    assert inv13
+    assert inv14
+    assert inv15
+} for 5 but exactly 15 Person, 5 Teacher, 10 Student, 10 Group, 20 Class, 50 Person->Group, 50 Class->Person

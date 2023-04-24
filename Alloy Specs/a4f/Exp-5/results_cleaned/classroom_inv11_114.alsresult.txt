@@ -1,0 +1,91 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    Student in Person
+}
+
+pred inv2 {
+    no Teacher
+}
+
+pred inv3 {
+    no (Student & Teacher)
+}
+
+pred inv4 {
+    Person in (Student + Teacher)
+}
+
+pred inv5 {
+    some Teacher.Teaches
+}
+
+pred inv6 {
+    all t:Teacher | t in t.Teaches.TeachedBy
+}
+
+pred inv7 {
+    all c:Class | c in c.Teaches.Teacher.Teaches
+}
+
+pred inv8 {
+    all t:Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c:Class | lone Teaches[c] & Teacher
+}
+
+pred inv10 {
+    all c:Class, s:Student | some c.Groups[s]
+}
+
+pred inv11 {
+    all c:Class, p:Person, g:Group | (c->p->g in Groups) implies p in Teacher               
+}
+
+pred inv12 {
+    all t : Teacher | some (t.Teaches).Groups
+}
+
+pred inv13 {
+    all p:Person | (p in Teacher and Tutors.p in Student) or (p in Student and p.Tutors in Teacher)
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+
+pred inv15 {
+    all s : Person | some Teacher & ^Tutors.s
+}
+
+run {} for 5
+check inv1 for 5
+check inv2 for 5
+check inv3 for 5
+check inv4 for 5
+check inv5 for 5
+check inv6 for 5
+check inv7 for 5
+check inv8 for 5
+check inv9 for 5
+check inv10 for 5
+check inv11 for 5
+check inv12 for 5
+check inv13 for 5
+check inv14 for 5
+check inv15 for 5

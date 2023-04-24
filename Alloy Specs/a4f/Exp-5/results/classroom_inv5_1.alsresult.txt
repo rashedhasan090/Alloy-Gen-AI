@@ -1,0 +1,82 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group
+}
+
+sig Teacher extends Person  {}
+
+sig Student extends Person  {}
+
+pred inv1 {
+    Student in Person 
+}
+
+pred inv2 {
+    no Teacher 
+}
+
+pred inv3 {
+    no Student & Teacher 
+}
+
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+
+pred inv5 {
+    all c : Class | some t : Teacher | t->c in Teaches  
+}
+
+pred inv6 {
+    Teacher.Teaches in Class 
+}
+
+pred inv7 {
+    all t : Teacher | all c : t.Teaches | c in Class
+}
+
+pred inv8 {
+    all t : Teacher | lone t.Teaches
+}
+
+pred inv9 {
+    all c : Class | lone Teaches[c] & Teacher
+}
+
+pred inv10 {
+    all c : Class, s : Student | some g : c.Groups | s in g.Person
+}
+
+pred inv11 {
+    all c : Class | (some c.Groups) implies some t : Teacher | t in Teaches[c]
+}
+
+pred inv12 {
+    all t : Teacher | some c : t.Teaches | some g : c.Groups
+}
+
+pred inv13 {
+    all p : Person | (p.Tutors in Student and (p in Teacher implies p.Tutors in Teacher))
+}
+
+pred inv14 {
+    all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Class.Groups) and (t -> c in Teaches) implies t -> s in Tutors[c]  
+}
+
+pred inv15 {
+    all s : Person | some t : Teacher | s in t.^Tutors
+}
+
+fact AllGroupsHavePerson {
+    all c : Class | all g : c.Groups | one p : g.Person
+}
+
+fact AllTeachersTeachClass {
+    all c : Class | all t : Teaches[c] | t in Teacher
+}

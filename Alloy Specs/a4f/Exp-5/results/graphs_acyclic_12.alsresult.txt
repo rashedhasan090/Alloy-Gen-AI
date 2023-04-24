@@ -1,0 +1,1 @@
+This Alloy specification does not define any sig or field. Please provide a complete Alloy specification with the necessary sig and field definitions.

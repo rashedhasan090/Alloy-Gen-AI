@@ -1,0 +1,113 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+
+sig Group {}
+
+sig Class  {
+    Groups : Person -> Group,
+    Teachers: set Teacher,
+    Students: set Student
+}
+
+sig Teacher extends Person {}
+
+sig Student extends Person {}
+
+pred inv1 {
+    no Student & Teacher
+}
+
+pred inv2 {
+    all c: Class | some g: Group | g in c.Groups
+}
+
+pred inv3 {
+    all c: Class, s: Student | some c.Groups[s]
+}
+
+pred inv4 {
+    all c: Class | all g: c.Groups | one t: c.Teachers | 
+        g in c.Groups.t.Groups
+}
+
+pred inv5 {
+    all s: Student | lone s.Tutors
+}
+
+pred inv6 {
+    all t: Teacher | lone t.Teaches
+}
+
+pred inv7 {
+    all c: Class | #c.Teachers >= 1
+}
+
+pred inv8 {
+    all c: Class | all s: c.Students | some c.Groups[s]
+}
+
+pred inv9 {
+    all c: Class, t: Teacher | t in c.Teachers implies 
+        all s: c.Students | some s.Tutors[t]
+}
+
+pred inv10 {
+    all s: Student | #s.Tutors >= 1
+}
+
+run {} for 5
+
+assert inv1_Repaired {
+    no Student & Teacher
+}
+
+assert inv2_Repaired {
+    all c: Class | some g: Group | g in c.Groups
+}
+
+assert inv3_Repaired {
+    all c: Class, s: Student | some c.Groups[s]
+}
+
+assert inv4_Repaired {
+    all c: Class | all g: c.Groups | one t: c.Teachers | 
+        g in c.Groups.t.Groups
+}
+
+assert inv5_Repaired {
+    all s: Student | lone s.Tutors
+}
+
+assert inv6_Repaired {
+    all t: Teacher | lone t.Teaches
+}
+
+assert inv7_Repaired {
+    all c: Class | #c.Teachers >= 1
+}
+
+assert inv8_Repaired {
+    all c: Class | all s: c.Students | some c.Groups[s]
+}
+
+assert inv9_Repaired {
+    all c: Class, t: Teacher | t in c.Teachers implies 
+        all s: c.Students | some s.Tutors[t]
+}
+
+assert inv10_Repaired {
+    all s: Student | #s.Tutors >= 1
+}
+
+check inv1_Repaired
+check inv2_Repaired
+check inv3_Repaired
+check inv4_Repaired
+check inv5_Repaired
+check inv6_Repaired
+check inv7_Repaired
+check inv8_Repaired
+check inv9_Repaired
+check inv10_Repaired

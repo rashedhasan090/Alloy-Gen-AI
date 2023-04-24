@@ -1,0 +1,90 @@
+sig Person  {
+    Tutors : set Person,
+    Teaches : set Class
+}
+sig Group {}
+sig Class  {
+    Groups : Person -> Group
+}
+sig Teacher extends Person  {}
+sig Student extends Person  {}
+pred inv1 {
+    Student in Person 
+}
+pred inv2 {
+    no Teacher 
+}
+pred inv3 {
+    no Student & Teacher 
+}
+pred inv4 {
+    Person in (Student + Teacher) 
+}
+pred inv5 {
+    some Teacher.Teaches 
+}
+pred inv6 {
+    all t:Teacher | t.Teaches in Class 
+}
+pred inv7 {
+    all c:Class | c in Teacher.Teaches 
+}
+pred inv8 {
+    all t:Teacher | lone t.Teaches 
+}
+pred inv9 {
+    all c:Class | lone (c.Teaches & Teacher) 
+}
+pred inv10 {
+    all c:Class, s:Student | some g:Group | (s,g) in c.Groups 
+}
+pred inv11 {
+    all c:Class | (some c.Groups) implies some t:Teacher | t.Teaches = c 
+}
+pred inv12 {
+    all t:Teacher | some g:Group | g in (t.Teaches).Groups 
+}
+pred inv13 {
+    all p:Person | p.Tutors in Teacher and p in Student implies p.Tutors != none
+}
+pred inv14 {
+    all s:Student, c:Class, g:Group | (c.Groups & s) = g implies some t : Teacher | t.Teaches = c and t -> s in Tutors 
+}
+pred inv15 {
+    all s:Person | some t : Teacher | t in s.^Tutors 
+}
+
+run inv1_repaired for 3 but exactly 1 inv1_OK
+run inv2_repaired for 3 but exactly 1 inv2_OK
+run inv3_repaired for 3 but exactly 1 inv3_OK
+run inv4_repaired for 3 but exactly 1 inv4_OK
+run inv5_repaired for 3 but exactly 1 inv5_OK
+run inv6_repaired for 3 but exactly 1 inv6_OK
+run inv7_repaired for 3 but exactly 1 inv7_OK
+run inv8_repaired for 3 but exactly 1 inv8_OK
+run inv9_repaired for 3 but exactly 1 inv9_OK
+run inv10_repaired for 3 but exactly 1 inv10_OK
+run inv11_repaired for 3 but exactly 1 inv11_OK
+run inv12_repaired for 3 but exactly 1 inv12_OK
+run inv13_repaired for 3 but exactly 1 inv13_OK
+run inv14_repaired for 3 but exactly 1 inv14_OK
+run inv15_repaired for 3 but exactly 1 inv15_OK
+
+check inv1_repaired
+check inv2_repaired
+check inv3_repaired
+check inv4_repaired
+check inv5_repaired
+check inv6_repaired
+check inv7_repaired
+check inv8_repaired
+check inv9_repaired
+check inv10_repaired
+check inv11_repaired
+check inv12_repaired
+check inv13_repaired
+check inv14_repaired
+check inv15_repaired
+
+check repair_assert_1 for 3
+```
