@@ -1,8 +1,0 @@
-The bug in this specification is in the pred weaklyConnected.
-
-The correct code for the pred weaklyConnected should be:
-```
-pred weaklyConnected {
-  all n1, n2: Node | some path: n1.*(adj+~adj)| path.ends = n1 + n2
-}
-```

@@ -1,9 +1,0 @@
-The bug in the specification is in the "weaklyConnected" predicate. The comment indicates that it should be possible to reach every node from every other node, but the predicate itself is not correctly formulated to capture this property. Specifically, the line "all n:Node | Node in n.*(adj+~adj)" does not correctly express the desired property.
-
-The fixed code is:
-
-pred weaklyConnected {
-  all n1,n2:Node | (n1 in n2.*(adj+~adj) or n2 in n1.*(adj+~adj))
-}
-
-The corrected predicate ensures that every node is reachable from every other node not only by following directed edges (adj), but also by following symmetric edges (~adj).

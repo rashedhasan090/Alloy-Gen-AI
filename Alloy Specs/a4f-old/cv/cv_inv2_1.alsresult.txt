@@ -1,7 +1,0 @@
-The bug in the specification is in the inv2 predicate. The correct version is provided below:
-
-pred inv2 {
-    all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i in w.source or i in w.source.^source)
-}
-
-Note that the institution is added to the user's profile only if the user or the institution is the direct source of the work, or the institution is an indirect source of the work through some other source connected to the work. This ensures that only works added by the user or an institution connected to the user can be in the user's profile. The repaired assertions and repair command remain the same.

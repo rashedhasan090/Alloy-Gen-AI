@@ -1,7 +1,0 @@
-The bug in the code is in the pred weaklyConnected. The correct code would be:
-
-pred weaklyConnected {
-    all n:Node | n in n.*(adj+~adj)  --fixed
-}
-
-The updated code ensures that all nodes are reachable from any node ignoring the direction of the edge.

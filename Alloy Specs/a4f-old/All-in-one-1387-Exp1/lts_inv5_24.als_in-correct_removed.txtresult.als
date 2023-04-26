@@ -1,1 +1,0 @@
-There is no bug in the given Alloy specification. Therefore, no changes are needed.

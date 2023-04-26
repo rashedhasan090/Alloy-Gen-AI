@@ -1,8 +1,0 @@
-The bug is in `inv5` where `--` is used instead of `not` to comment out the assertion. The fixed code is:
-
-```
-/* There are some classes assigned to teachers. */
-pred inv5 {
-    not Teacher.Teaches.isEmpty()
-}
-```

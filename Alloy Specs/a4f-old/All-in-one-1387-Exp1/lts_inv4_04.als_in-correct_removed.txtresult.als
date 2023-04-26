@@ -1,1 +1,0 @@
-This specification does not have any bugs.

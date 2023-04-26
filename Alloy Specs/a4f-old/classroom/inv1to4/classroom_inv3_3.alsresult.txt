@@ -1,9 +1,0 @@
-There is a bug in the following line:
-
-'pred inv3 {\n', '--\tno Student & Teacher --correct\n', '}\n',
-
-The commented-out line should be removed to fix the bug.
-
-Fixed code:
-
-'pred inv3 {\n', '\tno Student & Teacher --correct\n', '}\n',

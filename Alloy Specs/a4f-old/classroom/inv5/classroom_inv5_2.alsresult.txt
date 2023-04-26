@@ -1,5 +1,0 @@
-The bug in this specification is in the inv5 predicate. It is checking if there exists some teacher who teaches a class, but it should be checking if there exists some class that is taught by a teacher. The fixed code is:
-
-pred inv5 {
-    some c: Class | some Teacher & c.Teaches
-}

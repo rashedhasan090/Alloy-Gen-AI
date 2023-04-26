@@ -1,1 +1,0 @@
-There is no visible bug in this specification. Therefore, the fixed code is the same as the original code.

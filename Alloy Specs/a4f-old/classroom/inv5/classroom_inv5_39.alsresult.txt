@@ -1,1 +1,0 @@
-The bug in the specification is in the pred inv5 where the comment marks a line that is missing. The line should be: some Teacher.Teaches.Group

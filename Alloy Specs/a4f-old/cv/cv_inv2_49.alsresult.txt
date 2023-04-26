@@ -1,7 +1,0 @@
-The bug in the specification is in the second invariant (inv2), where the quantifiers are not correctly scoped. The fixed code is:
-
-pred inv2 { // A user profile can only have works added by himself or some external institution
-    all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i = w.source) --fixed
-}
-
-The fixed code uses an equality comparison between an institution (i) and the source of the work (w.source). The rest of the code remains unchanged.

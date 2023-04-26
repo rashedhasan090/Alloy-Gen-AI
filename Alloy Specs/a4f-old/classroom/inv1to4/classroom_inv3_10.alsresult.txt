@@ -1,5 +1,0 @@
-The bug is in the predicate inv13. The correct code is:
-
-pred inv13 {
-    all p:Person | (p.Tutors in Teacher) and (p.Teaches in Student) -- corrected
-}

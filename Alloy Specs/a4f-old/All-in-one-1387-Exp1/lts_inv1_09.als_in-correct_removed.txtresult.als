@@ -1,1 +1,0 @@
-There is no bug in the code, so no need for fixing.

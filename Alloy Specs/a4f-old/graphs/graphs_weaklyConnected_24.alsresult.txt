@@ -1,5 +1,0 @@
-The bug in this specification is in the "complete" predicate. The correct code is:
-
-pred complete {
-  all n:Node | n.adj = Node - n --fixed
-}

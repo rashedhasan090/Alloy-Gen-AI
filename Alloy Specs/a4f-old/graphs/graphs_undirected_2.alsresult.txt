@@ -1,1 +1,0 @@
-The code provided is not a valid Alloy specification and contains inline comments that are not relevant to the Alloy syntax or semantics. Please provide a valid Alloy specification for review.

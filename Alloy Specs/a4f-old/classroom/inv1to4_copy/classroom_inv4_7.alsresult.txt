@@ -1,6 +1,0 @@
-The bug in the code is in the predicate inv4, where the Person set is commented out. The correct code is:
-
-/* No person is neither a student nor a teacher. */
-pred inv4 {
-    Person in (Student + Teacher)
-}

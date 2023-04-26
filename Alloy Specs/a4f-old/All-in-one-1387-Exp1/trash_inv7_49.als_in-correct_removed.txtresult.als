@@ -1,1 +1,0 @@
-There seems to be no errors in the given specification code.

@@ -1,5 +1,0 @@
-The bug in the specification is in the predicate inv5. The commented line should be uncommented to ensure that there exists at least one Teacher who teaches classes. Fixed code:
-
-pred inv5 {
-  some Teacher.Teaches 
-}

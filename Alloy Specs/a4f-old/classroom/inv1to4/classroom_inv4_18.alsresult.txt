@@ -1,7 +1,0 @@
-The bug in this specification is in the "inv4" predicate. The commented line should be corrected by removing the "--" symbol from the beginning of the line. 
-
-Fixed code:
-
-pred inv4 {
-  Person in (Student + Teacher) --correct
-}

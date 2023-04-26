@@ -1,1 +1,0 @@
-There is no bug present in the given Alloy specification.The provided code seems to be correct and there is no bug.

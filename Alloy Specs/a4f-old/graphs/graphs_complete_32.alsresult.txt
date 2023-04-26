@@ -1,8 +1,0 @@
-The bug in this code is in the "complete" predicate. The correct code for that predicate is:
-
-/* The graph is complete, ie, every node is connected to every other node.
-   http://mathworld.wolfram.com/CompleteDigraph.html
-*/
-pred complete {
-  all n:Node | all m:Node - n | n->m in adj --fixed
-}

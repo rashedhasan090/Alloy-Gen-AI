@@ -1,6 +1,0 @@
-The bug in the specification is in the predicate inv5. The commented out line should be removed and replaced with the correct predicate as follows:
-
-/* There are some classes assigned to teachers. */
-pred inv5 {
-    some c:Class | some Teacher & c.Teaches --correct
-}

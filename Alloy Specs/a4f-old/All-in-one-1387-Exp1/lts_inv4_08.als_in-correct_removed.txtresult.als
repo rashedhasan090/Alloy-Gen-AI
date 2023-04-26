@@ -1,1 +1,0 @@
-There are no errors in the provided Alloy specification.

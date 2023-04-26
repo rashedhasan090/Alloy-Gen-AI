@@ -1,1 +1,0 @@
-The original specification and its inline comments are not provided.

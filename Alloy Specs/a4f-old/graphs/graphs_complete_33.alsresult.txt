@@ -1,7 +1,0 @@
-The bug in the specification is in the "complete" predicate. The correct code is:
-
-```
-pred complete {
-    all n1,n2:Node | n1 != n2 => n2 in n1.^adj 
-}
-```

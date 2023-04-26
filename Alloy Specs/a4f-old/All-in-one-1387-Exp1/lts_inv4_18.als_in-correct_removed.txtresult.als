@@ -1,1 +1,0 @@
-There is no bug in the given specification. Thus, no fixed code is provided.

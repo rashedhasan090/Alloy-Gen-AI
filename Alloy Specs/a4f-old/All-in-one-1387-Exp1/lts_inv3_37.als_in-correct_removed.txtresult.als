@@ -1,1 +1,0 @@
-The original code seems to be correct. There is no bug found.

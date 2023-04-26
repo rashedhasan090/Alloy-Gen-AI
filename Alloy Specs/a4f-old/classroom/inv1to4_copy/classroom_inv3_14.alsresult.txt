@@ -1,5 +1,0 @@
-The bug in the specification is in the inv13 predicate. The Tutors relation should be restricted to Teacher, and the Person.Tutors relation should be restricted to Student. The repaired code is shown below:
-
-pred inv13 {
-   Tutors.Person in Teacher and Student in Person.Tutors
-}

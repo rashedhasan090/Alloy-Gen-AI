@@ -1,5 +1,0 @@
-There is a bug in the inv4 predicate. The fixed code should be:
-
-pred inv4 {
-  Person in Student + Teacher --fixed
-}

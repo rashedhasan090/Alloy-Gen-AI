@@ -1,1 +1,0 @@
-The Alloy specification and comments provided in the question are corrupted and do not form a valid Alloy specification. Please provide a valid Alloy specification to review.

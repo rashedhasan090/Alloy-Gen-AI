@@ -1,1 +1,0 @@
-The code provided is not a proper Alloy specification and cannot be executed as is. Please provide a valid Alloy specification for us to review.

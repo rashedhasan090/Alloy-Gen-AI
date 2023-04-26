@@ -1,7 +1,0 @@
-The bug in this specification is in the pred weaklyConnected. The correct version is:
-
-```Alloy
-pred weaklyConnected {
-    all n:Node | n in n.*(adj+~adj) -- fix: replace Node with n
-}
-```
