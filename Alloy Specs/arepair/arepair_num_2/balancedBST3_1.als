@@ -33,7 +33,7 @@ pred Sorted() {
     // Bug:
     all n2:n.^left | n2.elem < n.elem
     // All elements in the n's right subtree are bigger than the n's elem.
-    // Bug: 
+    // Bug:
     all n2:n.^right | n2.elem > n.elem
   }
 }
@@ -54,7 +54,7 @@ pred Balanced() {
   // Multiplying depth differences by the signum to get rid of negatives.
   // Is there an absolute value in alloy?
   all n1, n2: Node {
-    // Bug: replace "<=>" with "=>".
+    // Bug: 
     (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) <=> (mul[signum[minus[Depth[n1], Depth[n2]]], minus[Depth[n1], Depth[n2]]] <= 1)
   }
 }

@@ -52,7 +52,7 @@ pred HasAtMostOneChild(n: Node) {
 fun Depth(n: Node): one Int {
   // The number of nodes from the tree's root to n.
   -- TODO: Your code starts here.
-  // Fix: 
+  // Bug: 
 	#(n.^~(left + right))
 }
 

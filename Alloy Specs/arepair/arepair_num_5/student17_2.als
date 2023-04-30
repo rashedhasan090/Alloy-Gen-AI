@@ -17,7 +17,7 @@ fact CardinalityConstraints {
 
 // Overconstraint.  Should allow no header
 pred Loop(This: List) {
-    // Fix: 
+    // Bug:
     one n: This.header.*link | n.link = n
 }
 

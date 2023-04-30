@@ -21,7 +21,7 @@ fact CardinalityConstraints{
 // Underconstraint. n.link could be empty so header=l1->n1, link=n1->n2
 // should not be allowed.
 pred Loop (This : List){
-    // Fix: 
+    // Bug:
     no This.header || one n:This.header.*link | n.link in n
 }
 

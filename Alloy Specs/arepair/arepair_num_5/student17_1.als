@@ -17,13 +17,13 @@ fact CardinalityConstraints {
 
 // Overconstraint.  Should allow no header
 pred Loop(This: List) {
-    // Fix: add "no This.header".
+    // Bug:
     one n: This.header.*link | n.link = n
 }
 
 // Overconstraint.  Should allow no n.link
 pred Sorted(This: List) {
-    // Fix: replace "n.elem < n.link.elem" with "some n.link => n.elem <= n.link.elem".
+    // Bug: 
     all n: This.header.*link | n.elem < n.link.elem
 }
 

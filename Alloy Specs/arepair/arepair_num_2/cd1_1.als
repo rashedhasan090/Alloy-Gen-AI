@@ -18,7 +18,7 @@ pred Acyclic() {
 pred AllExtObject() {
   // Each class other than Object is a sub-class of Object.
   // The body of the formula is wrong.
-  // Bug:
+  // Bug: 
   all c: Class - Object | c in c.*ext
 }
 

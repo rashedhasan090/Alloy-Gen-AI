@@ -20,7 +20,7 @@ pred Loop(This: List) {
     no This.header || one n: This.header.*link | n in n.^link
 }
 
-// Underconstraint.  Should consider link = n1 -> n2 without loop.
+// Bug  
 pred Sorted(This: List) {
     all n: This.header.*link | n.elem <= n.link.elem
 }
