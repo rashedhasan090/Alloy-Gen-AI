@@ -1,0 +1,11 @@
+The bug in the specification is in the completeOK predicate. The correct predicate should be:
+
+pred completeOK {
+ 	all n:Node | n.adj = Node - n
+}
+
+Then the corresponding assert completeRepaired should be updated accordingly:
+
+assert completeRepaired {
+    complete[] iff completeOK[]
+}

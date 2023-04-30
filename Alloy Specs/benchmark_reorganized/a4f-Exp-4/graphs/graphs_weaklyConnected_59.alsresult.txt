@@ -1,0 +1,7 @@
+The bug is in the "weaklyConnectedOK" predicate, where the union operator should be used instead of the intersection operator in the expression "n.*(adj+~adj)" to compute the transitive closure of the graph. The fixed predicate is:
+
+pred weaklyConnectedOK {
+    all n:Node | Node in n.*(adj+~adj)
+}
+
+The rest of the specification is correct.

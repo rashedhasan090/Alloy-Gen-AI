@@ -1,0 +1,6 @@
+The bug in the specification is in inv6, which states that every teacher has classes assigned. The correct assertion should state that every teacher has at least one class assigned. The corrected inv6 assertion is:
+
+/* Every teacher has at least one class assigned. */
+pred inv6 {
+  all t:Teacher | some t.Teaches 
+}

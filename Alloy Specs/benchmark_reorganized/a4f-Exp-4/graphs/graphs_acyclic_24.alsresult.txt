@@ -1,0 +1,7 @@
+The bug in the specification is in the `complete` predicate. The `---` symbol is used instead of `=`, causing a syntax error. The fixed code for the `complete` predicate is:
+
+```
+pred complete {
+  all n:Node | n.adj = Node
+}
+```

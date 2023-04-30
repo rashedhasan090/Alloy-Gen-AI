@@ -1,0 +1,7 @@
+The bug in the specification is in inv1 predicate. The correct predicate should be that each state has at least one transition, instead of at least some transition. The corrected code for inv1 predicate is:
+
+pred inv1 {
+    all s: State | some s.trans
+}
+
+The rest of the specification seems correct.

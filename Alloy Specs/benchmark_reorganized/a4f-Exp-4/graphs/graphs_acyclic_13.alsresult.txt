@@ -1,0 +1,9 @@
+The bug is in the `complete` predicate where `Node` should be replaced with `n.adj` to check that every node is adjacent to every other node. 
+
+Fixed code:
+
+```
+pred complete {
+  all n:Node | n.adj = Node - n
+}
+```

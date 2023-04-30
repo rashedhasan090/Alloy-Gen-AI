@@ -1,0 +1,9 @@
+The bug is in the inv13 predicate. It does not specify that only teachers tutor and only students are tutored. To fix it, add those conditions to the predicate as follows:
+
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+    all t : Teacher | t in Tutors
+    all s : Student | s in Tutors
+    no s : Teacher | s in Tutors
+    no t : Student | t in Tutors
+}

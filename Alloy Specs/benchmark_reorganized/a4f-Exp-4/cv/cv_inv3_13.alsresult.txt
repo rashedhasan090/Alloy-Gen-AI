@@ -1,0 +1,11 @@
+The bug in the specification is in inv3. The condition for common identifiers between two works added to a user's profile by the same source is incorrectly specified. It should check if the intersection of the two works' ids sets is non-empty, rather than simply if they have common identifiers. The fixed code is shown below:
+
+pred inv3_OK {
+    all w1, w2 : Work, u : User | w1 != w2 and (w1 + w2) in u.profile and (w1.source = w2.source) implies no w1.ids & w2.ids
+}
+
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+
+check inv3_Repaired expect 0

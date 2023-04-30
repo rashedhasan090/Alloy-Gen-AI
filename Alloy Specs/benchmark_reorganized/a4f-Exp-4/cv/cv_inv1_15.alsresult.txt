@@ -1,0 +1,8 @@
+The bug in the specification is in the inv1 predicate. It should assert that all works in User.visible are part of User.profile, rather than User.visible being part of User.profile. 
+
+Fixed code:
+```
+pred inv1 {
+   all u: User | u.visible in u.profile 
+}
+```

@@ -1,0 +1,6 @@
+The bug in the original specification is in the inv14 predicate. The correct version of that predicate is given below.
+
+/* Every student in a class is tutored by all the teachers assigned to that class. */
+pred inv14 {
+    all c:Class, s:Student | some t:Teacher | t.Teaches = c.Teaches & s in c.Groups[t]
+}

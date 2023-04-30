@@ -1,0 +1,5 @@
+The bug in the specification is in invariant inv4. It should check that the parts required by a component cannot be assembled in a later position, but the current implementation checks if they can be assembled in a previous position. The fixed code for inv4 is:
+
+pred inv4_OK {
+  all c:Component | c.parts.cposition in c.cposition.*next  
+}

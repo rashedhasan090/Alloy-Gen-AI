@@ -1,0 +1,6 @@
+The bug is in inv12 predicate. As per this predicate, every teacher is responsible for some groups, but it is not correctly defined. It should be updated as follows:
+
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+	all t:Teacher | some g:Group,c:Class | t->c->g in Groups 
+}

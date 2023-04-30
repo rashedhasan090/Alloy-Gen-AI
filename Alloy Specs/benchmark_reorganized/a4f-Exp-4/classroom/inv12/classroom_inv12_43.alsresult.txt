@@ -1,0 +1,8 @@
+The bug in the specification is in the predicate inv12. The predicate incorrectly states that for every pair of teachers, there exists a class and group such that one teacher teaches that class and the other teacher is assigned to that group. This is a weak condition and does not ensure that every teacher is responsible for some groups. The fixed code for inv12 is:
+
+/* Each teacher is responsible for some groups. */
+pred inv12_OK {
+ all t : Teacher | some (t.Teaches).Groups 
+}
+
+The fixed code satisfies the condition that every teacher is responsible for some groups. The PerfectOracle commands can be run to verify that all the predicates and assertions hold.

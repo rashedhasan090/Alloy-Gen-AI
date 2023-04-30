@@ -1,0 +1,7 @@
+The bug in the specification is in the "inv2" predicate, where the condition for a work to be added to a user's profile is not well defined. Specifically, it does not consider the case where a work is added to a user's profile by an external institution other than the source of the user.
+
+The fixed code for inv2 is as follows:
+
+pred inv2_OK {
+    all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i in w.source and i != u) 
+}

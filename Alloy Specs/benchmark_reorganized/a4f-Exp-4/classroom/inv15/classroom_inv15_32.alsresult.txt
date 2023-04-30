@@ -1,0 +1,5 @@
+The bug in the specification is in the predicate inv14. The implication t -> c in Teaches implies t -> s in Tutors should be reversed to s -> t in Tutors implies t -> c in Teaches. The fixed predicate inv14 is:
+
+pred inv14_OK {
+    all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and s -> t in Tutors implies t -> c in Teaches
+}

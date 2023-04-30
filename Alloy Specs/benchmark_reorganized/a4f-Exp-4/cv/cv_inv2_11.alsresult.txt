@@ -1,0 +1,9 @@
+The bug is in the `inv2` predicate. The quantification should be separated between the user and the work, instead of being combined in one statement. Additionally, the set of works in a user's profile should only include works with matching sources. The fixed code is:
+
+```
+pred inv2 {
+    all u: User, w: Work |
+        w in u.profile implies (u in w.source or some i: Institution | i in w.source)
+        and w.source in u.source
+}
+```

@@ -1,0 +1,10 @@
+The bug in this specification is in the `inv4` predicate. The correct predicate should state that every person is either a student or a teacher, but not both. The repaired predicate and its corresponding assert statement are as follows:
+
+```
+pred inv4_OK {
+  all p:Person | (p in Student) xor (p in Teacher)
+}
+assert inv4_Repaired {
+  inv4[] iff inv4_OK[]
+}
+```

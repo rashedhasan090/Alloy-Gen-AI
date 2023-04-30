@@ -1,0 +1,7 @@
+The bug in the specification is in the `noLoops` predicate. The correct predicate should be:
+
+```
+pred noLoops {
+    no a:Node | a in a.adj
+}
+```

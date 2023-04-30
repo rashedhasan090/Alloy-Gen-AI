@@ -1,0 +1,6 @@
+The bug is in inv12, where the quantified variable g:Group should be replaced with p:Person. The corrected version of inv12 is:
+
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+  all t:Teacher | (some p:Person ,c:Class| t->c in Teaches and c->p->(t.Groups)  
+}

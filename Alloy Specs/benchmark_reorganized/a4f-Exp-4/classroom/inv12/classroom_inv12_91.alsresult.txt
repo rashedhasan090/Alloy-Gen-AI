@@ -1,0 +1,5 @@
+The bug in the specification is in predicate "inv12". The predicate is intended to ensure that every teacher is responsible for some groups, but the way it is written actually checks that no teacher is responsible for any groups. The fixed predicate is:
+
+pred inv12_OK {
+  all t : Teacher | some (t.Teaches).Groups 
+}

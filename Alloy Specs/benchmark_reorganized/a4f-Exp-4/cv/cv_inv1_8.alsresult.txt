@@ -1,0 +1,7 @@
+The bug in the specification is in the inv1 predicate. The correct version of this predicate is:
+
+pred inv1 {
+  all u : User | u.visible in u.profile
+}
+
+The "some" quantifier is unnecessary and causes a syntax error.

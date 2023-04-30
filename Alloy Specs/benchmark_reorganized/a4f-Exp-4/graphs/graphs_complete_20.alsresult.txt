@@ -1,0 +1,7 @@
+The bug in the specification is in the `complete` predicate. The commented out line is incorrect and should be removed. The corrected `complete` predicate is as follows:
+
+```
+pred complete {
+  all n:Node | Node in n.*(adj+~adj) 
+}
+```

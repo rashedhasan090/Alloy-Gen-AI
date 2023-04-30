@@ -1,0 +1,5 @@
+The bug is in the inv1 predicate, which should state that all states have at least one transition. The fixed code for inv1 is:
+
+pred inv1 {
+    all s: State | some s.trans 
+}

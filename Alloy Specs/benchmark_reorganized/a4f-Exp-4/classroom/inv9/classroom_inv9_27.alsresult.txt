@@ -1,0 +1,5 @@
+The bug is in the pred inv9, where the condition for checking if no class has more than one teacher assigned is incorrect. The fixed predicate inv9_OK is:
+
+pred inv9_OK {
+  all c:Class | lone p:Person | p in Teachers.c implies p.Teaches = c
+}

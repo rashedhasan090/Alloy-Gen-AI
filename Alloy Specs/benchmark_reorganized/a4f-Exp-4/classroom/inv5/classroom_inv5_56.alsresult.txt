@@ -1,0 +1,6 @@
+The bug in the specification is in the predicate inv5. The correct predicate should state that some classes have at least one teacher assigned to them. The fixed code is provided below:
+
+/* There are some classes assigned to teachers. */
+pred inv5 {
+  some c : Class | Teacher.Teaches & c
+}

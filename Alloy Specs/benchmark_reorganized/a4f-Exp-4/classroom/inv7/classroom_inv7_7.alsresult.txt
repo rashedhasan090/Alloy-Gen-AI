@@ -1,0 +1,8 @@
+The bug in the original code is in the inv7 predicate. The correct version of inv7 is:
+
+/* Every class has teachers assigned. */
+pred inv7 {
+	all c:Class | Teaches.c in Teacher 
+}
+
+Note that the "Class in Teacher.Teaches" part has been replaced with "Teaches.c in Teacher".

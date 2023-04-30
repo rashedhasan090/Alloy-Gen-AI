@@ -1,0 +1,6 @@
+The bug in the specification is in inv15, which is missing the closure operator (^) in the expression for the transitive closure of the Teaches relation. This causes the assertion to fail as it does not enforce the requirement that the tutoring chain of every person eventually reaches a Teacher. The fixed code is as follows:
+
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15_OK {
+  all s : Person | some Teacher & ^Tutors.s 
+}

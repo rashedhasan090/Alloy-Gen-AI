@@ -1,0 +1,7 @@
+The bug is in inv14. The implication should be from some teacher assigned to the class to the student being tutored by that teacher, not the other way around. The fixed inv14 predicate is:
+
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14_OK {
+    all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies s -> t in Tutors
+}

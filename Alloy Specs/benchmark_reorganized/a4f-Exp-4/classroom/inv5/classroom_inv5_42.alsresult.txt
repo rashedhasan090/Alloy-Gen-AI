@@ -1,0 +1,8 @@
+The bug is in the specification of `inv5`. It is an empty predicate and therefore does not capture any constraints. To fix it, we need to specify a constraint that ensures that there are some classes assigned to teachers. The fixed `inv5` predicate is:
+
+```
+/* Some classes are assigned to teachers. */
+pred inv5 {
+  some Teacher.Teaches 
+}
+```

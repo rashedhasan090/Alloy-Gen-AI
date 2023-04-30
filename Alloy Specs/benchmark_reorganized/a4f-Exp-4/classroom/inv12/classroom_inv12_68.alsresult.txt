@@ -1,0 +1,6 @@
+The bug is in the predicate "inv12". Specifically, the implication in the predicate is wrong. The fixed code is:
+
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+  all t : Teacher | some (t.Teaches.Class).Groups 
+}

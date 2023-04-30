@@ -1,0 +1,6 @@
+The bug in the specification is in the inv6 predicate, which is empty and needs to be fixed to ensure that every teacher has classes assigned. The fixed predicate is:
+
+/* Every teacher has classes assigned. */
+pred inv6 {
+  Teacher in Teaches.Class 
+}

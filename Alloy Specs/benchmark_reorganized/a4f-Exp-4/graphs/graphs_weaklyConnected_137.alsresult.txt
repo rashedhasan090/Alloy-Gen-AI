@@ -1,0 +1,5 @@
+The bug in the specification is in the pred weaklyConnectedOK. The correct code for weaklyConnectedOK pred is as follows:
+
+pred weaklyConnectedOK {
+	all n:Node | Node in n.*(adj+~adj) + n 
+}

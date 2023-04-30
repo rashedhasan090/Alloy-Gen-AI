@@ -1,0 +1,6 @@
+The bug is in the inv5 predicate. The correct version is:
+
+/* All unprotected files are deleted. */
+pred inv5 {
+    not (File - Protected) in Trash
+}

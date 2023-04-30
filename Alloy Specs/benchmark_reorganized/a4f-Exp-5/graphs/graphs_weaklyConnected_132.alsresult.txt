@@ -1,0 +1,7 @@
+The bug in the specification is in the `weaklyConnected` predicate. The correct version of the predicate is:
+
+```
+pred weaklyConnected {
+   all x, y : Node | x in ^*(adj+~adj) and y in ^*(adj+~adj) implies x in ^adj.y and y in ^adj.x
+}
+```

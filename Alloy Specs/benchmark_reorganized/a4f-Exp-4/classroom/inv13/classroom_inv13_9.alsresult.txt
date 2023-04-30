@@ -1,0 +1,5 @@
+The bug in the specification is in inv13. The correct predicate should be:
+
+pred inv13_OK {
+  all s:Person, t:Teacher | s not in t.Tutors and t not in s.Tutors
+}

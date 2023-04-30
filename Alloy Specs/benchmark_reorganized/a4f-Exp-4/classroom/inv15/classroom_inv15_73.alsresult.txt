@@ -1,0 +1,6 @@
+The bug is in inv15. The predicate should state that every student's tutoring chain eventually reaches a teacher, not every person's tutoring chain. The fixed predicate is:
+
+/* The tutoring chain of every student eventually reaches a Teacher. */
+pred inv15_OK {
+  all s : Student | some Teacher & ^Tutors.s 
+}

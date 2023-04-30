@@ -1,0 +1,6 @@
+The bug in the specification is in the predicate inv8. The correct predicate should be:
+
+/* Teachers are assigned at most one class. */
+pred inv8 {
+	all t : Teacher | lone c : Class | c in t.Teaches 
+}

@@ -1,0 +1,5 @@
+The bug in the specification is in the definition of inv2. The condition "w.source in User or w.source in Institution" should be "w.source in User + Institution", meaning that the source of a work added to a user's profile must be either the user itself or some external institution. The fixed code is:
+
+pred inv2 {
+	all u : User, w : Work | u->w in profile implies (w.source in User + Institution)
+}

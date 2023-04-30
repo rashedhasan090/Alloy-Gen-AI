@@ -1,0 +1,8 @@
+The bug in the specification is in the "weaklyConnectedOK" predicate where '+' operator is used instead of '|' in the formula. The fixed code is as follows:
+
+pred weaklyConnectedOK {
+    all n:Node | Node in n.^adj + n.^~adj + n
+}
+assert weaklyConnectedRepaired {
+    weaklyConnected[]  iff weaklyConnectedOK[]
+}

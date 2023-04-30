@@ -1,0 +1,1 @@
+There is no bug in this specification. All the invariants and predicates are correctly defined and none of them produce any error when checked.

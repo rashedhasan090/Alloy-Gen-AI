@@ -1,0 +1,6 @@
+The bug in the specification is in inv5. The correct predicate should be:
+
+pred inv5 {
+    all s1, s2 : State, e : Event |
+        e in s1.trans implies e in s2.trans
+}

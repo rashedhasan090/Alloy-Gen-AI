@@ -1,0 +1,8 @@
+The bug in the specification is in the inv5 predicate. The correct predicate is:
+
+/*
+All states have the same events available.
+*/
+pred inv5 {
+  all s1: State, s2: State | s1.trans.Event = s2.trans.Event 
+}

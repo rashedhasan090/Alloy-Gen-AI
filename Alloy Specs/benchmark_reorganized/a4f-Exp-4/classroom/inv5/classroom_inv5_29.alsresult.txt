@@ -1,0 +1,6 @@
+The bug is in the inv5 predicate, which is empty. The fixed code for inv5 predicate is:
+
+/* Some classes are assigned to teachers. */
+pred inv5 {
+  some Teaches.Class 
+}

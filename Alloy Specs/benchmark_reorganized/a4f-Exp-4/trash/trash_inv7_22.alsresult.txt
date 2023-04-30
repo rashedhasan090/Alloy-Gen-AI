@@ -1,0 +1,6 @@
+The bug is in the predicate inv7. It should state that there exists no file f such that f's link is in Trash, instead of stating that for all files f, f's link is in Trash. Below is the fixed code for inv7:
+
+/* There is no deleted link. */
+pred inv7 {
+	no f:File | f.link in Trash 
+}

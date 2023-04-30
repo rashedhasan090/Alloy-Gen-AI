@@ -1,0 +1,8 @@
+The bug is in the predicate inv7 where it should be "no link.Trash" instead of "x not in Trash". The fixed inv7 predicate is:
+
+/* There is no deleted link. */
+pred inv7 {
+  no link . Trash
+}
+
+The other predicates and assertions remain the same.

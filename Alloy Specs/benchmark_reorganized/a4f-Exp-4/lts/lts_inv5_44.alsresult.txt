@@ -1,0 +1,8 @@
+The bug is in inv5 predicate. It should check that all events available in a state are the same for all states, not just for each individual state. The corrected predicate is:
+
+/*
+All states have the same events available.
+*/
+pred inv5 {
+  all e : Event | all s1, s2 : State | e in s1.trans.State iff e in s2.trans.State
+}

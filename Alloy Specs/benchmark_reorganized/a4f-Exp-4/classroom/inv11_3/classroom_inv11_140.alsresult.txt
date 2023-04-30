@@ -1,0 +1,6 @@
+The bug is in the inv11 predicate. The condition inside the implies should be negated. The fixed predicate is:
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c:Class, p:Person, g:Group | p->c not in Teaches implies c->p->g not in Groups 
+}

@@ -1,0 +1,6 @@
+The bug in the specification is in the predicate inv4, which does not specify that every teacher is also a person. This can cause the assertion in inv4 to be violated, allowing for a person that is neither a teacher nor a student to exist. The fixed code is as follows:
+
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+    all p:Person | p in Student or p in Teacher 
+}

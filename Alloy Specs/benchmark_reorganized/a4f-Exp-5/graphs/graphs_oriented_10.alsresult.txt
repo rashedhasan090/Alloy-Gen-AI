@@ -1,0 +1,7 @@
+/*
+The bug in the original specification is in the pred oriented. The implication should be reversed. It should be: if there is an edge from x to y and an edge from y to x, then x and y are not the same node. 
+*/
+
+pred oriented {
+	all x, y : Node | (x->y in adj and y->x in adj) implies x != y 
+}

@@ -1,0 +1,11 @@
+The bug in this specification is in the predicate inv14. The implication should be from "all students in a class are tutored by all the teachers assigned to that class" to "every student in a class is at least tutored by all the teachers assigned to that class." The repaired code for this predicate, along with its corresponding assert and check commands, is:
+
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14_OK {
+  all s : Person, c : Class, t : Teacher, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies s -> t in Tutors
+}
+assert inv14_Repaired {
+  inv14[] iff inv14_OK[]
+}
+check inv14_Repaired expect 0

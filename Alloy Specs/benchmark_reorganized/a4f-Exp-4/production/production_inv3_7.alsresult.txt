@@ -1,0 +1,5 @@
+The bug is in inv3_OK, where it should be "all c:Component, r:Robot | c in r.rposition" instead of "Component.cposition in Robot.rposition". The fixed code is:
+
+pred inv3_OK {
+	all c:Component, r:Robot | c in r.rposition
+}

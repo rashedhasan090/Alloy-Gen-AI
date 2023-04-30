@@ -1,0 +1,6 @@
+The bug is in the inv6 predicate. The correct predicate is:
+
+/* Every teacher has classes assigned. */
+pred inv6 {
+	all t: Teacher | some c: Class | c in t.Teaches
+}

@@ -1,0 +1,13 @@
+The bug is in the inv11 predicate. It is missing a condition to check if a class has any groups assigned to it before verifying if it has a teacher assigned to it. The fixed predicate is as follows:
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c:Class,s:Student,g:Group | c->s->g in Groups implies some t:Teacher | c->t->g in Groups   
+}
+
+should be:
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c:Class | (some c.Groups) implies some Teacher & Teaches.c 
+}

@@ -1,0 +1,6 @@
+The bug is in the predicate inv7 where it is written Class in Class.Teaches, it should be Teacher in Teaches.Class. The fixed code is:
+
+/* Every class has teachers assigned. */
+pred inv7 {
+	Teacher in Teaches.Class 
+}

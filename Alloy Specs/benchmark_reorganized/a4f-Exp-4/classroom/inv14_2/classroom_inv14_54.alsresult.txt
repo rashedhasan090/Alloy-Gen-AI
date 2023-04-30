@@ -1,0 +1,7 @@
+The bug in the specification is in the predicate inv14. The quantifier should be over the set of Teachers assigned to the class, not over all Teachers. The repaired code for predicate inv14 is:
+
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14_OK {
+  all s : Student, c : Class, g : Group | (c -> s -> g in Groups) implies all t : Teacher | t -> c in Teaches implies t -> s in Tutors 
+}

@@ -1,0 +1,7 @@
+The bug in the code is in inv4_OK predicate. The correct version of inv4_OK is given below:
+
+pred inv4_OK {
+  all c:Component | c.parts.cposition in c.cposition.*prev.rposition 
+}
+
+Here, rposition has been added after prev to correctly check if the parts required by a component can be assembled in a later position.

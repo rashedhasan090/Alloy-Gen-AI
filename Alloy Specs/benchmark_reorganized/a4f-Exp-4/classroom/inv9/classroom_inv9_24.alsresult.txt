@@ -1,0 +1,6 @@
+The bug is in inv9 predicate. The repaired code for inv9 is:
+
+/* No class has more than one teacher assigned. */
+pred inv9_OK {
+  all c:Class | lone (c.Teaches & Teacher) 
+}

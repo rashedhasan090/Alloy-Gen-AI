@@ -1,0 +1,6 @@
+The bug is in the incomplete predicate inv8. It needs to be completed to specify that every teacher is assigned at most one class. The fixed code is:
+
+/* Teachers are assigned at most one class. */
+pred inv8 {
+	all t: Teacher | lone t.Teaches 
+}

@@ -1,0 +1,12 @@
+The bug is in inv3 predicate which needs to be repaired. The repaired predicate and its associated assertion are as follows:
+
+/* No person is both a student and a teacher. */
+pred inv3 {
+	no Student & Teacher 
+}
+pred inv3_OK {
+  no Student & Teacher 
+}
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}

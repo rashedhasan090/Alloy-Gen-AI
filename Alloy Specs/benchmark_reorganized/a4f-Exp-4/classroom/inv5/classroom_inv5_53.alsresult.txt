@@ -1,0 +1,6 @@
+The bug in the specification is in predicate inv5. It should say "some Class.Teachers" instead of "Teacher in Class". The fixed code is:
+
+/* There are some classes assigned to teachers. */
+pred inv5 {
+ some Class.Teachers
+}

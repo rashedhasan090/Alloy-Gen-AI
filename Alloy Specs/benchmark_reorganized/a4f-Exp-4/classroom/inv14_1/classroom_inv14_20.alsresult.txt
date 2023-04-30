@@ -1,0 +1,5 @@
+The bug in this specification is in the predicate inv14. It is missing the condition that every student in a class should be tutored by at least one teacher assigned to that class. The fixed code is:
+
+pred inv14_OK {
+  all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors and s in c.Tutors
+}

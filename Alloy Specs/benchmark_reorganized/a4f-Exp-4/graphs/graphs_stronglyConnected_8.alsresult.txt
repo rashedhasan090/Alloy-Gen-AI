@@ -1,0 +1,7 @@
+The bug in the specification is in the pred stonglyConnectedOK - it only checks for the nodes reachable via outgoing edges but not for nodes reachable via incoming edges. The correct implementation is to use the symmetric closure operator `^.` to compute the reachable nodes in both directions. The fixed code for stonglyConnectedOK is as follows:
+
+pred stonglyConnectedOK {
+    all n:Node | Node in n.^(adj + ~adj)
+}
+
+With this fix, the specification should behave correctly as intended.

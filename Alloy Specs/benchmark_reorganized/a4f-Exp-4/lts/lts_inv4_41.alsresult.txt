@@ -1,0 +1,5 @@
+The bug in the original specification is in inv4. The correct fixed code for inv4 is:
+
+pred inv4 {
+	all x: Event | State in Init.*(x.(trans))
+}

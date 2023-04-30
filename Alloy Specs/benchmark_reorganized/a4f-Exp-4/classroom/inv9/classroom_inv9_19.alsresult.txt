@@ -1,0 +1,12 @@
+The bug is in the predicate inv9, where the expression "lone Teacher.Teaches" should be replaced with "lone c.Teacher.Teaches". The fixed code is:
+
+/* No class has more than a teacher assigned. */
+pred inv9 {
+    all c:Class | lone c.Teacher.Teaches:>c 
+} 
+
+And the repaired assertion is:
+
+assert inv9_Repaired {
+    inv9[] iff inv9_OK[]
+}

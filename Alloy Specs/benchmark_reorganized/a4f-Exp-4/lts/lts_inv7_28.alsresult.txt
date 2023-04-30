@@ -1,0 +1,5 @@
+The bug in the specification is in inv7. The predicate should ensure that for every state, there exists a path from that state to an initial state, not just that there exists at least one event transition. The fixed inv7 is:
+
+pred inv7 {
+  all s: State | some Init.(s.*trans) 
+}

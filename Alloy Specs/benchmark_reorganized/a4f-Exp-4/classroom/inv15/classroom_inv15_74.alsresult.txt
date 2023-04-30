@@ -1,0 +1,6 @@
+The bug is in the inv15 predicate. The predicate should state that for every person, their tutoring chain eventually reaches a teacher in their Tutors relation, rather than the Teacher relation. The fixed code for inv15 is:
+
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+  some t:Teacher | all p:Person | t in p.^Tutors 
+}

@@ -1,0 +1,5 @@
+The bug is in the inv9 predicate, where it should be "one t.Teaches & c" instead of "one t.Teaches:>c". Below is the fixed code:
+
+pred inv9 {
+  all c:Class,t:Teacher | one t.Teaches & c 
+}

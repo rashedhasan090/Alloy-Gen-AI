@@ -1,0 +1,8 @@
+The bug is in the predicate inv11. Its current statement says that "A class only has groups if it has a teacher assigned", but the correct statement should be "A class has groups only if it has a teacher assigned". To fix it, we need to switch the order of the implications in the predicate.
+
+Fixed code:
+
+/* A class has groups only if it has a teacher assigned. */
+pred inv11 {
+    all c : Class | some Groups.c implies some Teaches.c 
+}

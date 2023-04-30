@@ -1,0 +1,8 @@
+The bug in the specification is in the predicate inv11. The implication arrow is pointing in the wrong direction. It should be "if and only if" instead of "implies", as the predicate is stating that if a class has groups assigned, then it must have a teacher assigned too, and vice versa. 
+
+Fixed inv11 predicate: 
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11_OK {
+  all c : Class | (some c.Groups) iff some Teacher & Teaches.c 
+}

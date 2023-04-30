@@ -1,0 +1,8 @@
+The bug in the specification is in the predicate inv14. The implication in the predicate is the wrong way around. It should be "if a student is in a class, then they are tutored by all the teachers assigned to that class". The fixed predicate inv14_OK is provided below.
+
+/* Every student in a class is tutored by all the teachers assigned to that class. */
+pred inv14_OK {
+	all c:Class, s:Student |
+		(s in c.Groups.Person) implies
+			(all t:(c.Groups).(s.~Tutors) | t in s.^Tutors) 
+}

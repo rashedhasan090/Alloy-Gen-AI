@@ -1,0 +1,5 @@
+The bug in the specification is in inv4. The correct predicate is:
+
+pred inv4_OK {
+  all c:Component | c.parts.cposition in c.cposition.*prev  
+}

@@ -1,0 +1,6 @@
+The bug is in the predicate inv11, which should use the "in" operator instead of "->" to check if a teacher is assigned to a class. Here's the fixed code:
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c : Class,g:Group| some t:Teacher | (c -> t -> g) in Groups and t in c.Teaches
+}

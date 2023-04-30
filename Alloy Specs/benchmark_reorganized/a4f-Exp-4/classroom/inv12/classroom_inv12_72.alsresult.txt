@@ -1,0 +1,6 @@
+The bug is in the inv12 predicate, where the condition for a group to be assigned to a teacher is incorrect. The fixed code that repairs this error is:
+
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+	all t : Teacher | some g : Group | g in t.Teaches.Groups 
+}

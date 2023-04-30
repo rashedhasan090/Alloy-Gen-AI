@@ -1,0 +1,5 @@
+The bug is in the inv3_OK predicate. The correct predicate is:
+
+pred inv3_OK {
+    all w1, w2 : Work, u : User | w1 != w2 and (w1 + w2) in u.profile and (w1.source = w2.source) implies no i:Id | i in w1.ids and i in w2.ids 
+}

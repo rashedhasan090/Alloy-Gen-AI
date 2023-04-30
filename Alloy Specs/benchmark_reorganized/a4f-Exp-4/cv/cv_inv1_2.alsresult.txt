@@ -1,0 +1,5 @@
+The bug in the specification is in the inv1 predicate. The corrected code is:
+
+pred inv1 {
+  all w : Work | some (User<:visible) in w.source implies some w.(User<:profile)  
+}

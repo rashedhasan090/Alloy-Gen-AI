@@ -1,0 +1,5 @@
+The bug in the weaklyConnected predicate is that it does not correctly check for weak connectivity. The fixed predicate is provided below:
+
+pred weaklyConnected {
+  all n1,n2:Node | n1 in n2.^(adj+~adj) 
+}

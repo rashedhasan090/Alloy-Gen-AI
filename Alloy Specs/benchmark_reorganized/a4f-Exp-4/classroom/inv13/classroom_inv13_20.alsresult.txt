@@ -1,0 +1,5 @@
+The bug in the specification is in inv13. The correct predicate is:
+
+pred inv13_OK {
+  Tutors = Teacher -> Student  
+}

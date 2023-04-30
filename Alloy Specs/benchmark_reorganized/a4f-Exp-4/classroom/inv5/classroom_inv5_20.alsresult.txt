@@ -1,0 +1,6 @@
+The bug is in the inv5 predicate. It states that there are some classes assigned to teachers, but it does not specify which teachers. The fixed predicate should state that there are some teachers who teach at least one class. The fixed predicate is:
+
+/* There are some teachers that teach at least one class. */
+pred inv5 {
+    some t: Teacher | t.Teaches != none
+}

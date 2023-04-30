@@ -1,0 +1,7 @@
+The bug in the specification is in the inv2 predicate. The predicate should state that a user profile can only have works added by the user or some external institution. The original version of the predicate did not check that the owner of a work added it to their own profile, instead allowing any user in the work's source to add it to their profile. 
+
+Here is the fixed code for the inv2 predicate:
+
+pred inv2 {
+    all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i in w.source) 
+}

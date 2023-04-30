@@ -1,0 +1,1 @@
+The fixed specification is the same as the given one, as it already has all the necessary annotations and predicates that do not contain any errors.

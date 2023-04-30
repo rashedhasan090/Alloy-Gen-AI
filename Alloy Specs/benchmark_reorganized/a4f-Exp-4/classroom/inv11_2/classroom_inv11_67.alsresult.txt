@@ -1,0 +1,6 @@
+The bug in the specification is in the predicate inv11. The corrected predicate is as follows:
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c: Class | (some Groups.c) implies some Teaches.c 
+}

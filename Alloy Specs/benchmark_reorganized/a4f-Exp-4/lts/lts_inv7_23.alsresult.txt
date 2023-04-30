@@ -1,0 +1,10 @@
+The bug in the specification is in the predicate inv7. The predicate should ensure that from any reachable state (excluding the initial state), it is possible to return to an initial state through a sequence of transitions, not just a single transition. 
+
+The repaired predicate inv7_OK is provided below:
+
+pred inv7_OK {
+    let tr = { s1, s2 : State | some e : Event | s1->e->s2 in trans } |
+    all s : Init.^tr | some i : Init | i in s.^tr 
+} 
+
+Note that the "one -> one" in the original predicate has been replaced with "^" (transitive closure) to ensure that the predicate is checking for a path of transitions, not just a single transition.

@@ -1,0 +1,5 @@
+The bug is in the "complete" predicate. The correct implementation should be:
+
+pred complete {
+ 	all n:Node | n.adj = Node - n // every node is adjacent to all nodes other than itself
+}

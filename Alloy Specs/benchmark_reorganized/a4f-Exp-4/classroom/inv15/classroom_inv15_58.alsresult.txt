@@ -1,0 +1,6 @@
+The bug is in the inv15 predicate. The correct predicate should be:
+
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+	all s : Person | some Teacher & ^Tutors.s 
+}

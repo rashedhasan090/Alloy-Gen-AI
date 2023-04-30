@@ -1,0 +1,8 @@
+The bug in the specification is in the predicate inv7. The predicate should state that every class has at least one teacher assigned, but instead it says that every teacher is assigned to at least one class. 
+
+Here is the fixed code:
+
+/* Every class has at least one teacher assigned. */
+pred inv7 {
+  all c:Class | some Teacher & Teaches.c 
+}

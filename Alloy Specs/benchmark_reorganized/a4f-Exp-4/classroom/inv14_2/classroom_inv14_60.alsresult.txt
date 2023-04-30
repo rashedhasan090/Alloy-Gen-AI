@@ -1,0 +1,5 @@
+The bug in the specification is in inv14 predicate. The correct version of inv14 is provided below:
+
+pred inv14_OK {
+  all s : Student, c : Class, t : Teacher, g : Group | (c -> g in Groups) and t -> c in Teaches implies s -> g in t.Tutors 
+}

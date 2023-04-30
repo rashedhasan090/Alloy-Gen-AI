@@ -1,0 +1,5 @@
+The bug in the specification is in the predicate inv14, where the conjunction between the conditions is missing. The fixed code for the predicate is as follows:
+
+pred inv14_OK {
+  all c:Class, s:Student, g:Group, t:Teacher | (c->s->g in Groups and t->c in Teaches) implies t->s in Tutors 
+}

@@ -1,0 +1,5 @@
+The bug in the specification is in the inv1 predicate. It should use the subset operator "<=" instead of the element-of operator "|" to correctly state that all works visible in a user's curriculum must also be part of their profile. The fixed code is as follows:
+
+pred inv1 {
+  all u: User | u.visible <= u.profile
+}

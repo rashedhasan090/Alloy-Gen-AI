@@ -1,0 +1,4 @@
+The bug is in the invariant inv2. The correct version of inv2 is:
+pred inv2 {
+        all u : User | u.profile in (Work.:source).(u + Institution)
+}

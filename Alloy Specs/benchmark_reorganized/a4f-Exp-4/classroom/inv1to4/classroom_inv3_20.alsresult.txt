@@ -1,0 +1,5 @@
+The bug is in inv3 predicate. It should be "no Student & Teacher" instead of leaving it empty. The fixed code is as follows:
+
+pred inv3 {
+  no Student & no Teacher 
+}

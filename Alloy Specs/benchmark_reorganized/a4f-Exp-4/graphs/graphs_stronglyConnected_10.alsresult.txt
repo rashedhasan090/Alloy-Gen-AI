@@ -1,0 +1,5 @@
+The bug in the specification is in the pred stonglyConnected. The correct predicate should be:
+
+pred stonglyConnected {
+ 	all n:Node | Node in n.*(adj & ~adj) 
+}

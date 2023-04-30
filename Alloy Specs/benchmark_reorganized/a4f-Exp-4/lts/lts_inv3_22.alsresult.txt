@@ -1,0 +1,5 @@
+The bug in the specification is in the `inv3` predicate. In the original predicate, the usage of `e->s in s.trans` imposes that an event can only lead to a single state in a given state, which is incorrect. To fix this, we need to use the set membership operator `e->s in s.trans` instead. The fixed code is provided below:
+
+pred inv3 {
+    all s:State | lone e:Event | e->s in s.trans 
+}

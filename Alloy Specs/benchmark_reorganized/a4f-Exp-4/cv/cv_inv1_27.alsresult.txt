@@ -1,0 +1,5 @@
+The bug in the specification is that in inv1, the set comprehension should check for works visible to the user rather than works visible to the subset of users who have the User signature. The fixed code is as follows:
+
+pred inv1 {
+  all w : Work | some (User.visible).w implies some w.(User<:profile)
+}

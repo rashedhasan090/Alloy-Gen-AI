@@ -1,0 +1,7 @@
+The bug is in the inv5 predicate. It should check that for all states, they have the same events available instead of checking that each state has all events available. 
+
+Fixed inv5 predicate:
+
+pred inv5 {
+	all s:State, s1:State | s.trans.Event = s1.trans.Event 
+}

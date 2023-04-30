@@ -1,0 +1,6 @@
+The bug is in inv15_OK. It should be:
+```
+pred inv15_OK {
+  all s : Student | some Teacher & ^Tutors.s 
+}
+```

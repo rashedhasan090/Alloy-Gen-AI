@@ -1,0 +1,6 @@
+The bug in the specification is in pred inv11. The correct specification for pred inv11 is:
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+ all c : Class | (some c.Groups) implies some t : Teacher | t->c in Teaches 
+}

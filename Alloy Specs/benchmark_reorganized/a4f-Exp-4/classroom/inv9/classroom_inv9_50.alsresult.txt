@@ -1,0 +1,5 @@
+The bug is in inv9 which is missing a predicate. The fixed code is:
+
+pred inv9 {
+	all c:Class | lone t:Teacher | t.Teaches = c -> lone t
+}

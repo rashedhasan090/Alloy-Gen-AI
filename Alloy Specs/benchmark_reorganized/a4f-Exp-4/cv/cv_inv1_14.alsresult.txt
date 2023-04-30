@@ -1,0 +1,7 @@
+The bug in the specification is in the inv1 predicate, where it should reference User.profile instead of User.visible. The corrected code is as follows:
+
+pred inv1 {
+  User.profile in User.profile 
+} 
+
+The rest of the code remains the same.

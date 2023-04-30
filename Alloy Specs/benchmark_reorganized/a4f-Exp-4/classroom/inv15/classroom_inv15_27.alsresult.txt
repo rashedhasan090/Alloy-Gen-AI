@@ -1,0 +1,1 @@
+There is no bug in this specification. All the assertions are satisfied and the alloy model is sound.

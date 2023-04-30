@@ -1,0 +1,1 @@
+There are no bugs found in this Alloy specification.

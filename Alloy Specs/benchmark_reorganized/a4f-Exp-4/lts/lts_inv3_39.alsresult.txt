@@ -1,0 +1,5 @@
+The bug in the specification is in inv3_OK. The correct predicate should be:
+
+pred inv3_OK {
+	all s : State, e : Event | lone e.(s.trans) 
+}

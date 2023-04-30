@@ -1,0 +1,6 @@
+The bug is in inv9. The correct pred inv9_OK implementation should be: 
+
+/* No class has more than one teacher assigned. */
+pred inv9_OK {
+  all c:Class | lone t:Teacher | t -> c in Teaches
+}

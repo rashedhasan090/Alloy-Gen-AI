@@ -1,0 +1,6 @@
+The bug is in the pred inv7. The correct predicate should be:
+
+/* Every class has teachers assigned. */
+pred inv7 {
+	all c:Class | some t : Teacher | t -> c in Teaches
+}

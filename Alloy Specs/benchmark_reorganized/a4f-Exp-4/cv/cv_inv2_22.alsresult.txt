@@ -1,0 +1,7 @@
+The bug in the specification is in the definition of inv2. The corrected predicate should be:
+
+pred inv2_OK {
+	all u : User, w : Work | w in u.profile implies (u in w.source or some i : Institution | i = w.source) 
+}
+
+The "w.source" in the original predicate should be "i = w.source" to check if there exists some Institution that is the same as the source of the work.

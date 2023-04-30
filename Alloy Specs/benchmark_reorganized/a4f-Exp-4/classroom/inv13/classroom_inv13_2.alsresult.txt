@@ -1,0 +1,6 @@
+The bug in the specification is in inv13. The predicate is checking for a relation that is not defined in the signatures, and the correct condition for tutoring is not properly established. The fixed code for inv13 is:
+
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+	all t:Teacher | t.Teaches.Tutors in Teacher and t.Tutors in Student
+}

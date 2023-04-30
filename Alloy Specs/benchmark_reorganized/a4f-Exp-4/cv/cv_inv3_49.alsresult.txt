@@ -1,0 +1,5 @@
+The bug in the specification is in the third invariant (inv3). The condition of the implication should be that the works added to a profile by a given source can have common identifiers only if they are different works. The fixed code is:
+
+pred inv3_OK {
+	all w1, w2 : Work, u : User | w1 != w2 and (w1 + w2) in u.profile and (w1.source = w2.source) implies (w1.ids & w2.ids = none) 
+}

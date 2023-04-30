@@ -1,0 +1,5 @@
+The bug is in the inv5 predicate. The correct inv5 predicate is:
+
+pred inv5 {
+    all s, s1: State | s.trans.Event = s1.trans.Event
+}

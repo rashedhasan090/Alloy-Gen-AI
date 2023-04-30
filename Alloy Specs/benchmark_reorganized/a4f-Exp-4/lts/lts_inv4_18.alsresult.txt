@@ -1,0 +1,5 @@
+The bug in the specification is in inv4. The correct predicate should be:
+
+pred inv4 {
+  all s: State | some Init.(Init -> s in trans)
+}

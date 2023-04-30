@@ -1,0 +1,7 @@
+The bug in the code is in the pred weaklyConnectedOK. In the definition, the symmetric closure (~) is missing in the adjacency relation. The correct definition should be:
+
+pred weaklyConnectedOK {
+	all n:Node | Node in n.*((adj+~adj))
+}
+
+The rest of the code is correct.

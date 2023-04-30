@@ -1,0 +1,5 @@
+The bug in the specification is in the pred stonglyConnectedOK. The definition of stonglyConnectedOK should include both adj and ~adj. The fixed code is below:
+
+pred stonglyConnectedOK {
+	all n:Node | Node in n.(^adj + ^~adj)
+}

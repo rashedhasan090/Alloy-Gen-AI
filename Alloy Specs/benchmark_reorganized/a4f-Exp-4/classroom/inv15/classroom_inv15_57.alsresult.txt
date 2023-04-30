@@ -1,0 +1,6 @@
+The bug in the specification is in the predicate inv15. The predicate should state that the tutoring chain of every person eventually reaches a teacher or a student who tutors another student. This can be fixed by replacing the implication with an or statement. The fixed code is:
+
+/* The tutoring chain of every person eventually reaches a Teacher or a Student who tutors another student. */
+pred inv15_OK {
+  all s : Person | some Teacher & ^Tutors.s or some p: Student | p in s.Tutors and some q: Student | q in p.Tutors
+}

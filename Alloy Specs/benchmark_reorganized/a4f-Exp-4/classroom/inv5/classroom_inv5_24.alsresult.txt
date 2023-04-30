@@ -1,0 +1,6 @@
+There is a bug in the inv5 predicate. It states that "there are some classes assigned to teachers," but it should say "there are some teachers assigned to classes." The corrected predicate is:
+
+/* Some teachers are assigned to classes. */
+pred inv5 {
+ some t : Teacher | some c : Class | c in t.Teaches 
+}

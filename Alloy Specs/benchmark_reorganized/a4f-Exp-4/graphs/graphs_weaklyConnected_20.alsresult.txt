@@ -1,0 +1,7 @@
+The bug in the specification is in the predicate `weaklyConnectedOK`, where the relation between `n` and `adj` should be replaced by the union of `adj` and its symmetric closure `~adj`. The fixed code is:
+
+```
+pred weaklyConnectedOK {
+    all n:Node | Node in n.*(adj+~adj)
+}
+```

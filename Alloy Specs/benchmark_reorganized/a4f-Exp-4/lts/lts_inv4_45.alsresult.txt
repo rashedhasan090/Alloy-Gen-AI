@@ -1,0 +1,8 @@
+The bug was in the definition of `inv4` which required that all states in `Event.*(x.trans) + x` were in the set `State`. This could be violated if there was an event with no outgoing transitions. The fixed code for `inv4` checks that all states in `Event.*(x.trans)` are in the set `State` instead.
+
+Fixed `inv4`:
+```
+pred inv4_OK {
+    all x : Init | (Event.*(x.trans) - x) in State // all reachable states except x are in State
+}
+```

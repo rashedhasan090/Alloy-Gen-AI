@@ -1,0 +1,7 @@
+The bug in the specification is in the predicate inv3 where Component.cposition is compared with r.rposition without quantifiers. This comparison is ambiguous and should be replaced with an equality check between the positions. The corrected predicate inv3_OK is shown below:
+
+pred inv3_OK { // The position where a component is assembled must have at least one robot
+	some r:Robot | r.rposition = Component.cposition
+}
+
+The rest of the specification is correct.

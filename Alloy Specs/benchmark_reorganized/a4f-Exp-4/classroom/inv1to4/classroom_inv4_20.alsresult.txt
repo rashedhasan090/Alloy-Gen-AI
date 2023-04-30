@@ -1,0 +1,6 @@
+The bug is in inv4. The correct predicate is: 
+
+/* Every person is either a student or a teacher. */
+pred inv4 {
+    Person in (Student + Teacher) 
+}

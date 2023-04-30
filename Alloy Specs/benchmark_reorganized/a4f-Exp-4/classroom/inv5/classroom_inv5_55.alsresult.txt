@@ -1,0 +1,6 @@
+There is a missing '&' in pred inv5. The fixed code is:
+
+/* There are some classes assigned to teachers. */
+pred inv5 {
+ Teacher.Teaches & Teacher in Class 
+}

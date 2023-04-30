@@ -1,0 +1,5 @@
+The bug is in inv15: the quantified variable p2 is missing the type constraint that it must also be a Teacher. The repaired predicate should be:
+
+pred inv15_OK {
+  all p : Person | some p2 : Teacher | p -> p2 in Tutors
+}

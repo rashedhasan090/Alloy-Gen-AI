@@ -1,0 +1,10 @@
+The bug in this specification is in the `weaklyConnectedOK` predicate where the union operation is used instead of intersection. The correct code for this predicate is as follows:
+
+```
+pred weaklyConnectedOK {
+  all n: Node |
+    all m: Node |
+      some path: n.*(adj & ~adj) |
+        m in path
+}
+```

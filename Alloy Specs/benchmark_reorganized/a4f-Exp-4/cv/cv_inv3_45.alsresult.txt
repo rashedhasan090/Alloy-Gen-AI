@@ -1,0 +1,5 @@
+The bug in the specification is in the third invariant (inv3). It does not take into account the case where two works have different sources. The repaired inv3 predicate should check that if two works are added to a user's profile and have a common identifier, then they must have the same source. The repaired code is:
+
+pred inv3_OK {
+    all w1, w2 : Work, u : User | w1 != w2 and (w1 + w2) in u.profile implies (no w1.ids & w2.ids) or (w1.source=w2.source and w1.ids=w2.ids)
+}

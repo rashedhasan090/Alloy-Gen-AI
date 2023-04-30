@@ -1,0 +1,7 @@
+The bug in the weaklyConnected predicate is that it uses the wrong relation to compute the possible paths between nodes. The correct relation to use is the reflexive-transitive closure of the union between the adjacency relation and its symmetric closure. 
+
+Fixed weaklyConnected predicate:
+
+pred weaklyConnected {
+  all n, x :Node | some n2:Node | n in (n2.^(adj + ~adj)) + ~(~adj).x 
+}

@@ -1,0 +1,5 @@
+The bug in the specification is in inv1 which should be modified to:
+
+pred inv1 {
+	all s:State | some s.trans 
+}

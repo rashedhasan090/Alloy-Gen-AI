@@ -1,0 +1,9 @@
+The bug in the specification is in the definition of inv4, where the relation should be from c.cposition to (c.parts).cposition. The fixed code for inv4_OK and inv4_Repaired are as follows:
+
+pred inv4_OK {
+  all c:Component | c.parts.cposition in c.cposition.*prev
+}
+
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}

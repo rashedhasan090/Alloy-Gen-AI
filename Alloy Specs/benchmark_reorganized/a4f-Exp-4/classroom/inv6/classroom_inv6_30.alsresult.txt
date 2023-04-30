@@ -1,0 +1,6 @@
+The bug is in the inv6 predicate, which wrongly states that every teacher has classes assigned. The correct assertion should be that "some classes are assigned to teachers". The repaired predicate is:
+
+/* Some classes are assigned to teachers. */
+pred inv6_OK {
+  some Teacher.Teaches.Class 
+}

@@ -1,0 +1,5 @@
+The bug is in the definition of inv2, it should state that a user profile can only have works added by himself or some external institution. The fixed code is below:
+
+pred inv2 {
+	all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i = w.source) 
+}
