@@ -1,0 +1,3 @@
+pred inv11_OK {
+  all c : Class | (some c.Teaches) implies some p : Person | c->p in Groups and p in Teacher 
+}

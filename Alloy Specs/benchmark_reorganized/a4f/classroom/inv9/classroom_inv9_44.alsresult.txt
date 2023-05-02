@@ -1,0 +1,150 @@
+/* The registered persons. */
+sig Person  {
+	/* Each person tutors a set of persons. */
+	Tutors : set Person,
+	/* Each person teaches a set of classes. */
+	Teaches : set Class
+}
+/* The registered groups. */
+sig Group {}
+/* The registered classes. */
+sig Class  {
+	/* Each class has a set of persons assigned to a group. */
+	Groups : Person -> Group
+}
+/* Some persons are teachers. */
+sig Teacher extends Person  {}
+/* Some persons are students. */
+sig Student extends Person  {}
+/* Every person is a student. */
+pred inv1 {
+	Person in Student --correct
+}
+/* There are no teachers. */
+pred inv2 {
+	no Teacher --correct
+}
+/* No person is both a student and a teacher. */
+pred inv3 {
+	no Student & Teacher --correct
+}
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+	Person in (Student + Teacher) --correct
+}
+/* There are some classes assigned to teachers. */
+pred inv5 {
+	some Teacher.Teaches --correct
+}
+/* Every teacher has classes assigned. */
+pred inv6 {
+	Teacher in Teaches --correct
+}
+/* Every class has teachers assigned. */
+pred inv7 {
+	Class in Teacher.Teaches --correct
+}
+/* Teachers are assigned at most one class. */
+pred inv8 {
+	all t:Teacher | lone t.Teaches --correct
+}
+/* No class has more than one teacher assigned. */
+pred inv9 {
+	all c:Class | lone c.Teaches --correct
+}
+/* For every class, every student has a group assigned. */
+pred inv10 {
+	all c:Class, s:Student | some (c.Groups).s --correct
+}
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c : Class | (some c.Groups) implies some Teacher & Teaches.c --correct
+}
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+	all t : Teacher | some (t.Teaches).Groups --correct
+}
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+	all p:Person | p in Teacher.Tutors iff p in Teacher
+	all p:Person | p in Student.Tutors iff p in Student --correct
+}
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14 {
+	all c : Class, s : Student | s in (c.Groups).p implies p in c.Teaches.tutors --correct
+}
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+	all s : Person | some Teacher & ^Tutors.s
+}
+
+/* Repairing existing constraints */
+
+// repair inv8
+pred inv8fixed {
+    all c:Class | #c.Teaches <= 1
+}
+assert inv8_Repaired_fixed {
+    inv8[] iff inv8fixed[]
+}
+
+// repair inv9
+pred inv9fixed {
+    all c:Class, t:Teacher | lone c.Teaches & t in c.Teaches
+}
+assert inv9_Repaired_fixed {
+    inv9[] iff inv9fixed[]
+}
+
+// repair inv13
+pred inv13fixed {
+    Teacher.Tutors = Teacher
+    Student.Tutors = Student
+}
+assert inv13_Repaired_fixed {
+    inv13[] iff inv13fixed[]
+}
+
+/* PerfectOracleCommands */
+// check all repaired predicates and assert repaired predicates are equivalent to original ones
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0 
+check inv4_Repaired expect 0
+check inv5_Repaired expect 0
+check inv6_Repaired expect 0
+check inv7_Repaired expect 0
+check inv8_Repaired_fixed expect 0
+check inv9_Repaired_fixed expect 0
+check inv10_Repaired expect 0
+check inv11_Repaired expect 0
+check inv12_Repaired expect 0
+check inv13_Repaired_fixed expect 0
+check inv14_Repaired expect 0
+check inv15_Repaired expect 0
+
+// repair inv9 again
+pred inv9fixed2 {
+    all c:Class | lone c.Teaches
+}
+
+// check that inv9fixed2 is equivalent to inv9_Repaired_fixed
+assert inv9_Repaired_fixed_repaired {
+    inv9fixed2[] iff inv9_Repaired_fixed[]
+}
+
+// check that inv9fixed2 is equivalent to inv9
+assert inv9_Repaired_fixed_ok {
+    inv9fixed2[] iff inv9[]
+}
+
+// check that all repaired predicates are equivalent to the original ones
+run inv1_Repaired + inv2_Repaired + inv3_Repaired + inv4_Repaired + inv5_Repaired
+    + inv6_Repaired + inv7_Repaired + inv8_Repaired_fixed + inv9_Repaired_fixed_repaired
+    + inv10_Repaired + inv11_Repaired + inv12_Repaired + inv13_Repaired_fixed
+    + inv14_Repaired + inv15_Repaired expect {} for 15
+run inv1_Repaired + inv2_Repaired + inv3_Repaired + inv4_Repaired + inv5_Repaired
+    + inv6_Repaired + inv7_Repaired + inv8_Repaired_fixed + inv9_Repaired_fixed_ok
+    + inv10_Repaired + inv11_Repaired + inv12_Repaired + inv13_Repaired_fixed
+    + inv14_Repaired + inv15_Repaired expect {} for 15

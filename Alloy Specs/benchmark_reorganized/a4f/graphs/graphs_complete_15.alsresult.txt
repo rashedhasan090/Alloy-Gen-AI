@@ -1,0 +1,5 @@
+The bug in the specification is in the "complete" predicate. The correct predicate is commented out below:
+
+pred complete {
+ 	all n : Node | n.adj = (Node - n) 
+}

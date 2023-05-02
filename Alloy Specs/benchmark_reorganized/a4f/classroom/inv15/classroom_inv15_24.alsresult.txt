@@ -1,0 +1,6 @@
+The bug in this specification is in the predicate inv14. The correct predicate is:
+
+pred inv14 {
+	all s : Person, c : Class | (some Tutors.c & Teacher) implies
+		(s -> c.Groups).Person in Tutors.c & Teacher
+}

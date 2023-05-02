@@ -1,0 +1,11 @@
+The bug in the specification is in the third invariant (inv3). The implication should be changed to conjunction, and the quantifier should only bind the works that have the same source and same set of ids. The correct version of inv3 is:
+
+pred inv3 {
+    all w1, w2:Work, u:User | (w1.source = w2.source and w1.ids = w2.ids and w1 != w2) implies no ((w1 + w2) in u.profile)
+}
+
+And the repaired version of inv3 (inv3_OK) is:
+
+pred inv3_OK {
+    all w1, w2:Work, u:User | (w1.source = w2.source and w1.ids = w2.ids and w1 != w2) implies no w1.ids & w2.ids
+}

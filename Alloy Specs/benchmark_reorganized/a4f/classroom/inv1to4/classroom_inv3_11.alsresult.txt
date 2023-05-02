@@ -1,0 +1,138 @@
+/* The registered persons. */
+sig Person  {
+	/* Each person tutors a set of persons. */
+	Tutors : set Person,
+	/* Each person teaches a set of classes. */
+	Teaches : set Class
+}
+/* The registered groups. */
+sig Group {}
+/* The registered classes. */
+sig Class  {
+	/* Each class has a set of persons assigned to a group. */
+	Groups : Person -> Group
+}
+/* Some persons are teachers. */
+sig Teacher extends Person  {}
+/* Some persons are students. */
+sig Student extends Person  {}
+/* Every person is a student. */
+pred inv1 {
+	Person in Student --correct
+}
+/* There are no teachers. */
+pred inv2 {
+	no Teacher --correct
+}
+/* No person is both a student and a teacher. */
+pred inv3 {
+	all p : Person | (p not in Student) xor (p not in Teacher) --fixed
+}
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+	Person in (Student + Teacher) --correct
+}
+/* There are some classes assigned to teachers. */
+pred inv5 {
+	some Teacher.Teaches --correct
+}
+/* Every teacher has classes assigned. */
+pred inv6 {
+	Teacher in Teaches.Class --correct
+}
+/* Every class has teachers assigned. */
+pred inv7 {
+	Class in Teacher.Teaches --correct
+}
+/* Teachers are assigned at most one class. */
+pred inv8 {
+	all t:Teacher | lone t.Teaches --correct
+}
+/* No class has more than a teacher assigned. */
+pred inv9 {
+	all c:Class | lone Teaches.c & Teacher --correct
+}
+/* For every class, every student has a group assigned. */
+pred inv10 {
+	all c:Class, s:Student | some s.(c.Groups) --correct
+}
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c : Class | (some c.Groups) implies some Teacher & Teaches.c --correct
+}
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+	all t : Teacher | some (t.Teaches).Groups --correct
+}
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+	Tutors.Person in Teacher and Person.Tutors in Student --correct
+}
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14 {
+	all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+	all s : Person | some Teacher & ^Tutors.s --correct
+}
+
+/* Repairing assertion code */
+pred repair_assert(i: univ -> lone univ, j: univ -> lone univ, k: univ -> lone univ) {
+  all disj x,y: Person | ((x -> y) in i.i) implies ((x -> y) in j.j)
+  all disj x,y: Class | ((x -> y) in i.i) implies ((x -> y) in j.j)
+  all disj x,y: Person | ((x -> y) in j.j) implies ((x -> y) in k.k)
+  all disj x,y: Class | ((x -> y) in j.j) implies ((x -> y) in k.k)
+  all disj x,y: Person | ((x -> y) in i.i) implies ((x -> y) in k.k)
+  all disj x,y: Class | ((x -> y) in i.i) implies ((x -> y) in k.k)
+  all x: Person | (x in i.i) iff (x in j.j and x in k.k)
+  all x: Class | (x in i.i) iff (x in j.j and x in k.k)
+}
+/* Application to repair inv3 */
+pred repair_pred_1 {
+  // Create copies of original sigs
+  sig Person_repaired, Class_repaired, Group_repaired {
+    tutors_repaired: set Person_repaired,
+    teaches_repaired: set Class_repaired,
+    groups_repaired: Person_repaired -> Group_repaired
+  }
+  // Map original sigs to repaired sigs
+  one sig translation {
+    translation_person: Person -> Person_repaired,
+    translation_class: Class -> Class_repaired,
+    translation_group: Group -> Group_repaired
+  }
+  // Copy original facts to repaired sigs
+  fact {
+    all p: Person | {
+      translation.translation_person[p].tutors_repaired = p.Tutors
+      translation.translation_person[p].teaches_repaired = p.Teaches
+    }
+    all c: Class | {
+      translation.translation_class[c].groups_repaired = c.Groups
+    }
+  }
+  // Copy original data to repaired sigs
+  fact {
+    all p1, p2: Person | (p1 -> p2) in Class.Groups => 
+      (translation.translation_person[p1] -> translation.translation_group[Class.Groups[p1, p2]]) in 
+      translation.translation_class[Class].groups_repaired
+  }
+  // Add two disjoint sets that cover all Persons
+  fact {
+    Person = Teacher + Student
+    all p: Person | one { p in Teacher, p in Student }
+  }
+  // Repair inv3
+  fact {
+    all p: Person_repaired | (p in Student_repaired) xor (p in Teacher_repaired)
+  }
+}
+// Assert that inv3 is repaired
+assert inv3_Repaired {
+  repair_pred_1
+  repair_assert(inv3, repair_pred_1.translation_class.Groups_repaired, inv3_OK) 
+}
+// Check that inv3 holds iff inv3_OK holds
+check inv3_Repaired

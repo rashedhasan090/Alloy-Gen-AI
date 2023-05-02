@@ -1,0 +1,49 @@
+sig Node {
+    adj: set Node
+}
+
+pred undirected {
+    adj = ~adj
+}
+
+pred oriented {
+    no adj & ~adj
+}
+
+pred acyclic {
+    all a: Node | a not in a.^adj
+}
+
+pred complete {
+    all n: Node | n.adj = Node - n
+}
+
+pred noLoops {
+    no iden & adj
+}
+
+pred weaklyConnected {
+    all n: Node | Node in n.*(adj + ~adj)
+}
+
+pred stronglyConnected {
+    all n: Node | Node in n.^adj and n in n.^adj
+}
+
+pred transitive {
+    adj.adj in adj
+}
+
+pred check_all {
+    undirected and oriented and acyclic and complete and noLoops and
+        weaklyConnected and stronglyConnected and transitive
+}
+
+assert repaired {
+    check_all[] iff (undirected[] and oriented[] and acyclic[] and
+        complete[] and noLoops[] and weaklyConnected[] and 
+        stronglyConnected[] and transitive[])
+}
+
+run repaired for 5 Node, exactly 8 Node, 3 Graph
+check repaired for 5 Node, exactly 8 Node, 3 Graph

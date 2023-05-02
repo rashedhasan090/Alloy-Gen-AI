@@ -1,0 +1,5 @@
+The bug in this specification is in the weaklyConnected predicate. The correct implementation should include both adj and ~adj in the reflexive transitive closure. The fixed code is as follows:
+
+pred weaklyConnected {
+  all n:Node | Node in n.(^adj + ^~adj) 
+}

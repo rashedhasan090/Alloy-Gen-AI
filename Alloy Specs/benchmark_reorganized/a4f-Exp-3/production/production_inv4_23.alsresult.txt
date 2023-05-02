@@ -1,0 +1,53 @@
+open util/ordering[Position]
+sig Position {}
+sig Product {}
+sig Component extends Product {
+    parts : set Product,
+    cposition : one Position
+}
+sig Resource extends Product {}
+sig Robot {
+        rposition : one Position
+}
+// Fix inv3 by checking if there exists a robot at the position where a component is assembled
+pred inv3 {
+    all c:Component | some r:Robot | r.rposition = c.cposition
+}
+pred inv1_OK {
+    all c:Component | some c.parts 
+}
+// Fix inv2 by using the transitive closure operator instead of reflexive closure
+pred inv2 {
+    all c:Component | c not in c.^parts
+}
+pred inv3_OK {
+    Component.cposition in Robot.rposition 
+}
+// Fix inv4 by checking if the required parts are assembled in a *previous* position instead of a *later* position
+pred inv4 {
+    all c: Component, p: c.parts | p.cposition in c.cposition.*prev
+}
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+assert inv4_Repaired {
+    inv4[] iff inv4_OK[]
+}
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0
+check inv4_Repaired expect 0
+pred repair_pred_1 {
+    inv4[] iff inv4_OK[]
+}
+run repair_pred_1
+assert repair_assert_1 {
+    inv4[] iff inv4_OK[]
+}
+check repair_assert_1

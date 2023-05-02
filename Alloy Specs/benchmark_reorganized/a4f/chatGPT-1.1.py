@@ -3,7 +3,11 @@ import openai
 import retrying
 
 # Set OpenAI API key
-openai.api_key = "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"
+openai.api_key = "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"
+
+# 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
+
+# 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
 
 # Define retry strategy for internet connection issues
 @retrying.retry(wait_fixed=5000)

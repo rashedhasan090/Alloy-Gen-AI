@@ -3,7 +3,9 @@ import openai
 import retrying
 
 # Set OpenAI API key
-openai.api_key = "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"
+#openai.api_key = "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"
+openai.api_key = "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"
+
 
 # Define retry strategy for internet connection issues
 @retrying.retry(wait_fixed=5000)
@@ -36,7 +38,7 @@ for root, dirs, files in os.walk(dir_path):
 
             # Call chat completion API with retry mechanism
             try:
-                completion = call_chat_completion("gpt-3.5-turbo", [{"role": "user", "content": "Consider the following Alloy specification and its inline comments. There is a bug in this specification. Fix the bug so that it satisfies the assertions \n" + mc}])
+                completion = call_chat_completion("gpt-3.5-turbo", [{"role": "user", "content": "Consider the following Alloy specification and its inline comments. There is a bug in this specification. Please find the bug and fix it. only provide the entire fixed code without any additional explanation. Do not provide partial solutions. \n" + mc}])
                 file_object.write(completion['choices'][0]["message"]["content"])
             except retrying.RetryError:
                 print("Error: Could not connect to OpenAI API. Skipping file.")

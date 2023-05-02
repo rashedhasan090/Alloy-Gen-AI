@@ -1,0 +1,5 @@
+The bug in this specification is in the invariant inv1. The correct version is:
+
+pred inv1 {
+	all u:User | u.visible in u.profile
+}

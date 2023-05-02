@@ -1,0 +1,201 @@
+/* The registered persons. */
+sig Person {
+    /* Each person tutors a set of persons. */
+    Tutors: set Person,
+    /* Each person teaches a set of classes. */
+    Teaches: set Class
+}
+/* The registered groups. */
+sig Group {}
+/* The registered classes. */
+sig Class {
+    /* Each class has a set of persons assigned to a group. */
+    Groups: Person -> Group
+}
+/* Some persons are teachers. */
+sig Teacher extends Person {}
+/* Some persons are students. */
+sig Student extends Person {}
+/* Every person is a student. */
+pred inv1 {
+    Person in Student
+}
+/* There are no teachers. */
+pred inv2 {
+    no Teacher
+}
+/* No person is both a student and a teacher. */
+pred inv3 {
+    no Student & Teacher
+}
+/* Every person is either a student or a teacher. */
+pred inv4 {
+    all p: Person | p in Student or p in Teacher
+}
+/* There are some classes assigned to teachers. */
+pred inv5 {
+    some c: Class | c.Teaches in Teacher
+}
+/* Every teacher has classes assigned. */
+pred inv6 {
+    all t: Teacher | some c: Class | c.Teaches = t
+}
+/* Every class has teachers assigned. */
+pred inv7 {
+    all c: Class | some t: Teacher | c.Teaches = t
+}
+/* Teachers are assigned at most one class. */
+pred inv8 {
+    all t: Teacher | lone c: Class | c.Teaches = t
+}
+/* No class has more than one teacher assigned. */
+pred inv9 {
+    all c: Class | lone t: Teacher | c.Teaches = t
+}
+/* For every class, every student has a group assigned. */
+pred inv10 {
+    all c: Class, s: Student | some g: Group | c.Groups[s] = g
+}
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+    all c: Class | some t: Teacher | c.Teaches = t implies some g: Group | c.Groups.t = g
+}
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+    all t: Teacher | some c: Class, g: Group | c.Teaches = t and g in c.Groups.Tutors
+}
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+    all t: Teacher | t in Tutors.Person and all s: Student | s not in Tutors.t
+}
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14 {
+    all c: Class, s: Student | all t: c.Teaches | s in t.Tutors => c.Groups[s] in t.Groups
+}
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+    all s: Student | some t: Teacher | s in t.^Tutors
+}
+
+/* IFF PERFECT ORACLE */
+pred inv1_Repaired {
+    Person in Student
+}
+assert inv1_PerfectOracle {
+    inv1[] iff inv1_Repaired[]
+}
+
+pred inv2_Repaired {
+    no Teacher
+}
+assert inv2_PerfectOracle {
+    inv2[] iff inv2_Repaired[]
+}
+
+pred inv3_Repaired {
+    no Student & Teacher
+}
+assert inv3_PerfectOracle {
+    inv3[] iff inv3_Repaired[]
+}
+
+pred inv4_Repaired {
+    Person in (Student + Teacher)
+}
+assert inv4_PerfectOracle {
+    inv4[] iff inv4_Repaired[]
+}
+
+pred inv5_Repaired {
+    some c: Class | c.Teaches in Teacher
+}
+assert inv5_PerfectOracle {
+    inv5[] iff inv5_Repaired[]
+}
+
+pred inv6_Repaired {
+    all t: Teacher | some c: Class | c.Teaches = t
+}
+assert inv6_PerfectOracle {
+    inv6[] iff inv6_Repaired[]
+}
+
+pred inv7_Repaired {
+    all c: Class | some t: Teacher | c.Teaches = t
+}
+assert inv7_PerfectOracle {
+    inv7[] iff inv7_Repaired[]
+}
+
+pred inv8_Repaired {
+    all t: Teacher | lone c: Class | c.Teaches = t
+}
+assert inv8_PerfectOracle {
+    inv8[] iff inv8_Repaired[]
+}
+
+pred inv9_Repaired {
+    all c: Class | lone t: Teacher | c.Teaches = t
+}
+assert inv9_PerfectOracle {
+    inv9[] iff inv9_Repaired[]
+}
+
+pred inv10_Repaired {
+    all c: Class, s: Student | some g: Group | c.Groups[s] = g
+}
+assert inv10_PerfectOracle {
+    inv10[] iff inv10_Repaired[]
+}
+
+pred inv11_Repaired {
+    all c: Class | some t: Teacher | c.Teaches = t implies some g: Group | c.Groups[t] = g
+}
+assert inv11_PerfectOracle {
+    inv11[] iff inv11_Repaired[]
+}
+
+pred inv12_Repaired {
+    all t: Teacher | some c: Class, g: Group | c.Teaches = t and g in c.Groups.t
+}
+assert inv12_PerfectOracle {
+    inv12[] iff inv12_Repaired[]
+}
+
+pred inv13_Repaired {
+    all t: Teacher | t in Tutors.Person and all s: Student | s not in Tutors.t
+}
+assert inv13_PerfectOracle {
+    inv13[] iff inv13_Repaired[]
+}
+
+pred inv14_Repaired {
+    all c: Class, s: Student | all t: c.Teaches | s in t.Tutors => c.Groups[s] in t.Groups
+}
+assert inv14_PerfectOracle {
+    inv14[] iff inv14_Repaired[]
+}
+
+pred inv15_Repaired {
+    all s: Student | some t: Teacher | s in t.^Tutors
+}
+assert inv15_PerfectOracle {
+    inv15[] iff inv15_Repaired[]
+}
+
+check inv1_PerfectOracle expect 0
+check inv2_PerfectOracle expect 0
+check inv3_PerfectOracle expect 0
+check inv4_PerfectOracle expect 0
+check inv5_PerfectOracle expect 0
+check inv6_PerfectOracle expect 0
+check inv7_PerfectOracle expect 0
+check inv8_PerfectOracle expect 0
+check inv9_PerfectOracle expect 0
+check inv10_PerfectOracle expect 0
+check inv11_PerfectOracle expect 0
+check inv12_PerfectOracle expect 0
+check inv13_PerfectOracle expect 0
+check inv14_PerfectOracle expect 0
+check inv15_PerfectOracle expect 0

@@ -1,0 +1,114 @@
+/* Fixed specification */
+/* The registered persons. */
+sig Person {
+    /* Each person tutors a set of persons. */
+    Tutors: set Person,
+    /* Each person teaches a set of classes. */
+    Teaches: set Class
+}
+/* The registered groups. */
+sig Group {}
+/* The registered classes. */
+sig Class {
+    /* Each class has a set of persons assigned to a group. */
+    Groups: Person -> Group
+}
+/* Some persons are teachers. */
+sig Teacher extends Person {}
+/* Some persons are students. */
+sig Student extends Person {}
+/* Every person is a student or a teacher. */
+pred inv1 {
+    Person in Student + Teacher
+}
+/* There are no teachers assigned to any class. */
+pred inv2 {
+    all c: Class | no Teacher & Teaches.c
+}
+/* No person is both a student and a teacher. */
+pred inv3 {
+    no Student & Teacher
+}
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+    Person in (Student + Teacher)
+}
+/* There are some classes assigned to teachers. */
+pred inv5 {
+    some Teacher.Teaches
+}
+/* Every teacher has classes assigned. */
+pred inv6 {
+    Teacher = Teaches.Teacher
+}
+/* Every class has teachers assigned. */
+pred inv7 {
+    Class = Teacher.Teaches.Class
+}
+/* Teachers are assigned at most one class. */
+pred inv8 {
+    all t: Teacher | lone t.Teaches
+}
+/* No class has more than one teacher assigned. */
+pred inv9 {
+    all c: Class | lone t: Teacher | t -> c in Teaches
+}
+/* For every class, every student has a group assigned. */
+pred inv10 {
+    all c: Class, s: Student | some s.(c.Groups)
+}
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+    all c: Class | (some c.Groups) implies some t: Teacher | t -> c in Teaches
+}
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+    all t: Teacher | some (t.Teaches).Groups
+}
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+    Teacher in Person.^~Tutors and Student in Person.^Tutors
+}
+/* Every student in a class is at least tutored by all the teachers
+   assigned to that class. */
+pred inv14 {
+    all c: Class, g: Group, s: Student | c.Groups.s = g -> all t: Teacher | t -> s in (c -> g) -> Tutors
+}
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+    all s: Student | some t: Teacher | t in ^Tutors.s
+}
+
+/* Assertions */
+assert A1 { inv1 }
+assert A2 { inv2 }
+assert A3 { inv3 }
+assert A4 { inv4 }
+assert A5 { inv5 }
+assert A6 { inv6 }
+assert A7 { inv7 }
+assert A8 { inv8 }
+assert A9 { inv9 }
+assert A10 { inv10 }
+assert A11 { inv11 }
+assert A12 { inv12 }
+assert A13 { inv13 }
+assert A14 { inv14 }
+assert A15 { inv15 }
+
+/* Verification */
+check A1 expect 0
+check A2 expect 0
+check A3 expect 0
+check A4 expect 0
+check A5 expect 0
+check A6 expect 0
+check A7 expect 0
+check A8 expect 0
+check A9 expect 0
+check A10 expect 0
+check A11 expect 0
+check A12 expect 0
+check A13 expect 0
+check A14 expect 0
+check A15 expect 0

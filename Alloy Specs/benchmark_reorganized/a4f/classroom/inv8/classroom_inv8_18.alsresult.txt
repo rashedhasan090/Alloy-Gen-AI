@@ -1,0 +1,5 @@
+The bug in the specification is in inv8. The correct predicate should be "all t:Teacher | lone t.Teaches". The fixed code is:
+
+pred inv8 {
+	all t:Teacher | lone t.Teaches
+}

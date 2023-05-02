@@ -1,0 +1,7 @@
+The bug in the specification is in the invariant pred3. The correct version is as follows:
+
+pred inv3 {
+	all w1, w2 : Work, u : User | w1 != w2 and (w1 + w2) in u.profile and (w1.source = w2.source) implies (w1.ids & w2.ids) = none --fixed
+} 
+
+The repair predicate, run command and assert command are not needed since the fixed specification and invariants have already been provided. The checks can be run directly on the fixed code.

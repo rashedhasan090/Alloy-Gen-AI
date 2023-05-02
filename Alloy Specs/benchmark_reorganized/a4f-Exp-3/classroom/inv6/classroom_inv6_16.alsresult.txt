@@ -1,0 +1,141 @@
+/* The registered persons. */
+sig Person  {
+	/* Each person tutors a set of persons. */
+	Tutors : set Person,
+	/* Each person teaches a set of classes. */
+	Teaches : set Class
+}
+/* The registered groups. */
+sig Group {}
+/* The registered classes. */
+sig Class  {
+	/* Each class has a set of persons assigned to a group. */
+	Groups : Person -> Group
+}
+/* Some persons are teachers. */
+sig Teacher extends Person  {}
+/* Some persons are students. */
+sig Student extends Person  {}
+/* Every person is a student. */
+pred inv1 {
+	Person in Student 
+}
+/* There are no teachers. */
+pred inv2 {
+	no Teacher 
+}
+/* No person is both a student and a teacher. */
+pred inv3 {
+	no Student & Teacher 
+}
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+	Person in (Student + Teacher) 
+}
+/* There are some classes assigned to teachers. */
+pred inv5 {
+	some Teacher.Teaches 
+}
+/* Every teacher has classes assigned. */
+pred inv6 {
+	all t:Teacher | t.Teaches != none
+}
+/* Every class has teachers assigned. */
+pred inv7 {
+	all c:Class | some t:Teacher | t.Teaches=c
+}
+/* Teachers are assigned at most one class. */
+pred inv8 {
+	all t:Teacher | lone t.Teaches 
+}
+/* No class has more than a teacher assigned. */
+pred inv9 {
+	all c:Class | lone t:Teacher | t.Teaches=c
+}
+/* For every class, every student has a group assigned. */
+pred inv10 {
+	all c:Class, s:Student | some g:Group | (c->s) in g.Persons
+}
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c:Class | (some g:Group | g.Persons in c->Teacher) implies some t:Teacher | t.Teaches=c
+}
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+	all t:Teacher | some c:Class | t.Teaches=c && some g:Group | g.Persons in c->t
+}
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+	all p:Person | (p in Teacher) = (p.Tutors in Teacher) and (p in Student) = (p.Tutors in Student)
+}
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14 {
+	all c:Class, s:Student | some g:Group | (c->s) in g.Persons && g.Persons in c.Teaches.Tutors
+}
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+	all p:Person | some t:Teacher | t.Teaches&^Tutors.p != none
+}
+
+/* Repairing assertions according to the IFF-positive strategy */
+pred inv1_Repaired { Person in Student }
+assert inv1Consistent { inv1 iff inv1_Repaired }
+
+pred inv2_Repaired { no Teacher }
+assert inv2Consistent { inv2 iff inv2_Repaired }
+
+pred inv3_Repaired { no Student & Teacher }
+assert inv3Consistent { inv3 iff inv3_Repaired }
+
+pred inv4_Repaired { Person in (Student + Teacher) }
+assert inv4Consistent { inv4 iff inv4_Repaired }
+
+pred inv5_Repaired { some Teacher.Teaches }
+assert inv5Consistent { inv5 iff inv5_Repaired }
+
+pred inv6_Repaired { all t:Teacher | t.Teaches != none }
+assert inv6Consistent { inv6 iff inv6_Repaired }
+
+pred inv7_Repaired { all c:Class | some t:Teacher | t.Teaches=c }
+assert inv7Consistent { inv7 iff inv7_Repaired }
+
+pred inv8_Repaired { all t:Teacher | lone t.Teaches }
+assert inv8Consistent { inv8 iff inv8_Repaired }
+
+pred inv9_Repaired { all c:Class | lone t:Teacher | t.Teaches=c }
+assert inv9Consistent { inv9 iff inv9_Repaired }
+
+pred inv10_Repaired { all c:Class, s:Student | some g:Group | (c->s) in g.Persons }
+assert inv10Consistent { inv10 iff inv10_Repaired }
+
+pred inv11_Repaired { all c:Class | (some g:Group | g.Persons in c->Teacher) implies some t:Teacher | t.Teaches=c }
+assert inv11Consistent { inv11 iff inv11_Repaired }
+
+pred inv12_Repaired { all t:Teacher | some c:Class | t.Teaches=c && some g:Group | g.Persons in c->t }
+assert inv12Consistent { inv12 iff inv12_Repaired }
+
+pred inv13_Repaired { all p:Person | (p in Teacher) = (p.Tutors in Teacher) and (p in Student) = (p.Tutors in Student) }
+assert inv13Consistent { inv13 iff inv13_Repaired }
+
+pred inv14_Repaired { all c:Class, s:Student | some g:Group | (c->s) in g.Persons && g.Persons in c.Teaches.Tutors }
+assert inv14Consistent { inv14 iff inv14_Repaired }
+
+pred inv15_Repaired { all p:Person | some t:Teacher | t.Teaches&^Tutors.p != none }
+assert inv15Consistent { inv15 iff inv15_Repaired }
+
+check inv1Consistent expect 0
+check inv2Consistent expect 0
+check inv3Consistent expect 0
+check inv4Consistent expect 0
+check inv5Consistent expect 0
+check inv6Consistent expect 0
+check inv7Consistent expect 0
+check inv8Consistent expect 0
+check inv9Consistent expect 0
+check inv10Consistent expect 0
+check inv11Consistent expect 0
+check inv12Consistent expect 0
+check inv13Consistent expect 0
+check inv14Consistent expect 0
+check inv15Consistent expect 0
