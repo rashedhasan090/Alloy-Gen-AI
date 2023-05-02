@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/lts/lts_inv4_56.als at line 33 column 10:
+The name "s" cannot be found.

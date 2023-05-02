@@ -1,0 +1,2 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv1to4/classroom_inv3_22.als at line 30 column 5:
+This expression failed to be typechecked

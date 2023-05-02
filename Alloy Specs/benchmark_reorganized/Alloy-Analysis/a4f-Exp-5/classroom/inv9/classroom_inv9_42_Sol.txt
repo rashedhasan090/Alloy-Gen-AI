@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/classroom/inv9/classroom_inv9_42.als at line 53 column 66:
+~ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Class}

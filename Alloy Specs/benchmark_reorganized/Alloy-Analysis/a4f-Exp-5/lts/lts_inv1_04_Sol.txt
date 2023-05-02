@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/lts/lts_inv1_04.als at line 22 column 18:
+The name "IsState" cannot be found.

@@ -1,0 +1,14 @@
+pred inv11_OK_fixed {
+  all c : Class, g: Group | some t: Teacher | c->(Student & t.Teaches)->g in Groups implies t->c in Teaches 
+}
+assert inv11_Repaired_fixed {
+    inv11[] iff inv11_OK_fixed[]
+}
+
+------ PerfectOracleCommands
+check inv11_Repaired_fixed expect 0
+pred repair_pred_1{inv11[] iff inv11_OK_fixed[] }
+run repair_pred_1
+assert repair_assert_1{inv11[] iff inv11_OK_fixed[] }
+check repair_assert_1
+```

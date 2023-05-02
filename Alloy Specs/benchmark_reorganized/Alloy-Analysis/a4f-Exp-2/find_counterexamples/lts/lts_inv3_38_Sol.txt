@@ -1,0 +1,25 @@
+Command Check inv1_Repaired expect 0: (22:20:29)
+
+=========================================
+Command Check inv2_Repaired expect 0: (22:20:29)
+
+=========================================
+Command Check inv3_Repaired expect 0: (22:20:29)
+
+=========================================
+Command Check inv4_Repaired expect 0: (22:20:29)
+
+=========================================
+Command Check inv5_Repaired expect 0: (22:20:29)
+
+=========================================
+Command Check inv7_Repaired expect 0: (22:20:29)
+
+=========================================
+Command Run repair_pred_1: (22:20:29)
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+
+=========================================
+Command Check repair_assert_1: (22:20:29)
+
+=========================================

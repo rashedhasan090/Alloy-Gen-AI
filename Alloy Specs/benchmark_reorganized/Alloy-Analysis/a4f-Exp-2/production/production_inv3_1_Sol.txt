@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/production/production_inv3_1.als at line 40 column 26:
+The name "position" cannot be found.

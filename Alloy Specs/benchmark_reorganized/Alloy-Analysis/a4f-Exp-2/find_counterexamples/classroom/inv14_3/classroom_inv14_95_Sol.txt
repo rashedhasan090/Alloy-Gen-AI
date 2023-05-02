@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/classroom/inv14_3/classroom_inv14_95.als at line 73 column 31:
+This must be an integer expression.
+Instead, it has the following possible type(s):
+{PrimitiveBoolean}

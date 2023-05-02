@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/graphs/graphs_stronglyConnected_18.als at line 62 column 15:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Node}

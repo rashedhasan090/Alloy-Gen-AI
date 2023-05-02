@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv8/classroom_inv8_6.als at line 131 column 20:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Class}

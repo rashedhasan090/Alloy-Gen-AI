@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/graphs/graphs_stronglyConnected_1.als at line 30 column 31:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Node->this/Node}
+Right type = {univ}

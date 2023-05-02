@@ -1,0 +1,1 @@
+All the predicates and assertions are already repaired, so no changes are needed.

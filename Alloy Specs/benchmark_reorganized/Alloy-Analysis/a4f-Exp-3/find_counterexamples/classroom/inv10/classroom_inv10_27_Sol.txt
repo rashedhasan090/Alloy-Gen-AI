@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/classroom/inv10/classroom_inv10_27.als at line 27 column 8:
+
+This name is ambiguous due to multiple matches:
+sig this/Teacher
+field this/Class <: Teacher

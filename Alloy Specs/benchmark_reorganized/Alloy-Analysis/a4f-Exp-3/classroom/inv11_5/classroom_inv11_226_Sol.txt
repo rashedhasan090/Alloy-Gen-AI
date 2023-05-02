@@ -1,0 +1,8 @@
+Command Run repair_pred_1: (18:29:30)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (18:29:30)
+No Counterexample found
+
+=========================================

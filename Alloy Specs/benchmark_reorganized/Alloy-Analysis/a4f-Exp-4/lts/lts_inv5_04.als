@@ -1,0 +1,1 @@
+The fixed code is the same as the given code. There is no bug in the specification.

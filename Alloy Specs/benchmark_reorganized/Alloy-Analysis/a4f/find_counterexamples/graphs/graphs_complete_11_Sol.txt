@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/graphs/graphs_complete_11.als at line 48 column 1:
+The predicate/function "repaired" cannot be found.

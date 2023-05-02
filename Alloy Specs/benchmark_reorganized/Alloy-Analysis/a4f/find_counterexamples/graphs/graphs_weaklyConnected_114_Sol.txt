@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/graphs/graphs_weaklyConnected_114.als at line 40 column 18:
+The name "adJ" cannot be found.

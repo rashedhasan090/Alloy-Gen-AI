@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/lts/lts_inv3_43.als at line 3 column 10:
+The name "State" cannot be found.

@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/graphs/graphs_noloops_2.als at line 2 column 12:
+The name "adj" cannot be found.

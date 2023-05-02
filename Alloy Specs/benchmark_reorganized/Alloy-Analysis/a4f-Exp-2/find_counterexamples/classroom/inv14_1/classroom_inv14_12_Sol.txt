@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/classroom/inv14_1/classroom_inv14_12.als at line 74 column 42:
+The name "_" cannot be found.

@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/graphs/graphs_stronglyConnected_18.als at line 10 column 18:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {PrimitiveBoolean}
+Right type = {this/Node->this/Node}

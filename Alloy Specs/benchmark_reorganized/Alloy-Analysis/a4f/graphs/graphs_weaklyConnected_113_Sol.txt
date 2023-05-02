@@ -1,0 +1,40 @@
+Command Check undirectedRepaired: (19:57:44)
+No Counterexample found
+
+=========================================
+Command Check orientedRepaired: (19:57:44)
+No Counterexample found
+
+=========================================
+Command Check acyclicRepaired: (19:57:44)
+No Counterexample found
+
+=========================================
+Command Check completeRepaired: (19:57:44)
+No Counterexample found
+
+=========================================
+Command Check noLoopsRepaired: (19:57:44)
+No Counterexample found
+
+=========================================
+Command Check weaklyConnectedRepaired: (19:57:44)
+No Counterexample found
+
+=========================================
+Command Check stronglyConnectedRepaired: (19:57:44)
+No Counterexample found
+
+=========================================
+Command Check transitiveRepaired: (19:57:44)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (19:57:44)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (19:57:44)
+No Counterexample found
+
+=========================================

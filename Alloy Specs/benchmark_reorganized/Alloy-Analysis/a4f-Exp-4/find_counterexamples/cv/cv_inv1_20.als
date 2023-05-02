@@ -1,0 +1,1 @@
+There is no bug in the given Alloy specification, so it does not need to be fixed.

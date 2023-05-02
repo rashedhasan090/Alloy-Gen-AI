@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/classroom/inv14_4/classroom_inv14_103.als at line 80 column 1:
+Syntax error at the ` character.

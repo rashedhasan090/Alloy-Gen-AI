@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/trash/trash_inv1_7.als at line 36 column 11:
+& can be used only between 2 expressions of the same arity.
+Left type = {this/File->this/File}
+Right type = {this/Trash}

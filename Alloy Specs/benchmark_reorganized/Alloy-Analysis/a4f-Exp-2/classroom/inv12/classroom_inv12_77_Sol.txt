@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/classroom/inv12/classroom_inv12_77.als at line 83 column 16:
+The name "inv1_OK" cannot be found.

@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/lts/lts_inv7_22.als at line 54 column 49:
+The name "elems" cannot be found.

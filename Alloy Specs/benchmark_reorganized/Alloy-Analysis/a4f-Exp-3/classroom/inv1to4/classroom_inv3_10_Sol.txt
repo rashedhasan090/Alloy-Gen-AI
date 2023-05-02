@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/classroom/inv1to4/classroom_inv3_10.als at line 30 column 34:
+The name "xor" cannot be found.

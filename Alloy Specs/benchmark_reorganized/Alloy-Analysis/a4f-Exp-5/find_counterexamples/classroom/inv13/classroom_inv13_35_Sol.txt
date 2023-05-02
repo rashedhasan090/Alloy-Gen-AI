@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/classroom/inv13/classroom_inv13_35.als at line 2 column 3:
+The name "Teacher" cannot be found.

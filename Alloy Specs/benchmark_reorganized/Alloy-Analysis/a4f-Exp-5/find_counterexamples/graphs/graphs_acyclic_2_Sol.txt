@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/graphs/graphs_acyclic_2.als at line 38 column 2:
+This must be a set or relation.
+Instead, it has the following possible type(s):
+{PrimitiveBoolean}

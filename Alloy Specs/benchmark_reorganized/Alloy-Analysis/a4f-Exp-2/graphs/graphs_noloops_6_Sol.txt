@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/graphs/graphs_noloops_6.als at line 18 column 21:
+The name "this" cannot be found.

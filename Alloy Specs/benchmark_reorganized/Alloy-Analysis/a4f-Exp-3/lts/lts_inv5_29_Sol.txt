@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/lts/lts_inv5_29.als at line 48 column 19:
+The builtin disjoint[] predicate must be called with at least two arguments.

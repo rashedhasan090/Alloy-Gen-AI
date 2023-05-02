@@ -1,0 +1,13 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/production/production_inv4_23.als at line 22 column 54:
+Name cannot be resolved; possible incorrect function/predicate call; perhaps you used ( ) when you should have used [ ]
+
+This cannot be a correct call to fun integer/nexts.
+The parameters are
+  e: {Int}
+so the arguments cannot be empty.
+
+This cannot be a correct call to fun ordering/nexts.
+The parameters are
+  e: {this/Position}
+so the arguments cannot be empty.
+

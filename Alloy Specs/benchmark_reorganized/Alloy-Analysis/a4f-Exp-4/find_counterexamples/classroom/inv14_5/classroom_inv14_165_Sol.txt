@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/classroom/inv14_5/classroom_inv14_165.als at line 228 column 1:
+"inv9_Repaired" is already the name of an assertion in this module.

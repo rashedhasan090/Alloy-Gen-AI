@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/lts/lts_inv1_12.als at line 118 column 1:
+The predicate/function "repair_pred_1" cannot be found.

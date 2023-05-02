@@ -1,0 +1,1 @@
+Every predicate and invariant in the specification is correct and valid. There is no bug in the code. Therefore, the entire code is the fixed version.

@@ -1,0 +1,4 @@
+Command Check inv11_Repaired expect 0: (19:48:39)
+Counterexample found
+
+=========================================

@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/graphs/graphs_weaklyConnected_21.als at line 54 column 35:
+~ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Node}

@@ -1,0 +1,4 @@
+Command Check inv4_Repaired expect 0: (22:07:56)
+No Counterexample found
+
+=========================================

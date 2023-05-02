@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/cv/cv_inv3_20.als at line 22 column 89:
+This cannot be a legal relational join where
+left hand side is w1 . (this/Work <: ids) & w2 . (this/Work <: ids) (type = {this/Id})
+right hand side is none (type = {none})
+

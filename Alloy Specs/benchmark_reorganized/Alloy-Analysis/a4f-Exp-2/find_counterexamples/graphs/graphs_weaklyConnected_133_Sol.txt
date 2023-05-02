@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/graphs/graphs_weaklyConnected_133.als at line 146 column 5:
+
+This name is ambiguous due to multiple matches:
+pred this/weaklyConnected
+pred this/weaklyConnected

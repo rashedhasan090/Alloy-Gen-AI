@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv14_5/classroom_inv14_138.als at line 66 column 9:
+The name "c" cannot be found.

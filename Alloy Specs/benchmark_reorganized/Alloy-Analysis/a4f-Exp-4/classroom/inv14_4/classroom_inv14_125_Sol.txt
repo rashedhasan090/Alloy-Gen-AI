@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/classroom/inv14_4/classroom_inv14_125.als at line 3 column 9:
+The name "Student" cannot be found.

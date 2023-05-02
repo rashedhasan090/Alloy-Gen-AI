@@ -1,0 +1,9 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/classroom/inv12/classroom_inv12_80.als at line 18 column 2:
+Two overlapping signatures cannot have
+two fields with the same name "Teaches":
+
+1) one is in sig "this/Teacher"
+line 18, column 2, filename=/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/classroom/inv12/classroom_inv12_80.als
+
+2) the other is in sig "this/Person"
+line 6, column 2, filename=/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/classroom/inv12/classroom_inv12_80.als

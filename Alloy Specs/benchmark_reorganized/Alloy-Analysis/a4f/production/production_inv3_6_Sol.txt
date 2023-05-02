@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/production/production_inv3_6.als at line 22 column 58:
+The name "prev_r" cannot be found.

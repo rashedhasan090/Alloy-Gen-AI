@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/classroom/inv11_3/classroom_inv11_134.als at line 153 column 43:
+This must be a set or relation.
+Instead, it has the following possible type(s):
+{PrimitiveBoolean}

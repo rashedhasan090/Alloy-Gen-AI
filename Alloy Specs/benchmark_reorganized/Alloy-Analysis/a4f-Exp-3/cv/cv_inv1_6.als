@@ -1,0 +1,55 @@
+abstract sig Source {}
+
+sig User extends Source {
+    profile: set Work,
+    visible: set Work
+}
+
+sig Institution extends Source {}
+
+sig Id {}
+
+sig Work {
+    ids: some Id,
+    source: one Source
+}
+
+pred inv1 { 
+    all u: User | u.visible in u.profile // Fixed here, all visible works of a user must be part of its profile
+}
+
+pred inv2 { 
+    all u: User, w: Work | w in u.profile implies (u in w.source or some i: Institution | i = w.source) // Fixed here, used "=" instead of "in" to compare sources
+}
+
+pred inv3 {
+    all u: User, w1: Work, w2: Work | w1 != w2 and w1 in u.profile and w2 in u.profile and w1.source = w2.source implies no w1.ids & w2.ids // Fixed here, added the condition that both works w1 and w2 must be part of the same user's profile
+}
+
+pred inv1_OK {
+    all u: User | u.visible in u.profile
+}
+
+assert inv1_Repaired {
+    inv1[] iff inv1_OK[]
+}
+
+pred inv2_OK {
+    all u: User, w: Work | w in u.profile implies (u in w.source or some i: Institution | i = w.source)
+}
+
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+pred inv3_OK {
+    all u: User, w1: Work, w2: Work | w1 != w2 and w1 in u.profile and w2 in u.profile and w1.source = w2.source implies no w1.ids & w2.ids
+}
+
+assert inv3_Repaired {
+    inv3[] iff inv3_OK[]
+}
+
+check inv1_Repaired expect 0
+check inv2_Repaired expect 0
+check inv3_Repaired expect 0

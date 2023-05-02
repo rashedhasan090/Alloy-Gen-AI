@@ -1,0 +1,1 @@
+The fixed code is already provided in the previous section.

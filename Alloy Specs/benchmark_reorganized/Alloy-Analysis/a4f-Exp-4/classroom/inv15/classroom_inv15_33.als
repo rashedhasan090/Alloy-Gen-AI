@@ -1,0 +1,6 @@
+
+/* Every student in a class is at least tutored by one of the teachers
+ * assigned to that class. */
+pred inv14_OK {
+  all s : Person, c : Class | (c -> s -> _) in Groups implies some t : Teacher | t -> c in Teaches and t -> s in Tutors
+}

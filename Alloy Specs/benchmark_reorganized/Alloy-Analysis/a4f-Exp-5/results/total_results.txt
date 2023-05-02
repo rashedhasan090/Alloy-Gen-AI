@@ -1,0 +1,28 @@
+
+
+Search results for 'No Counterexample found' saved to no_counterexample_found.txt
+Total instances found: 729  (counter & no counter)
+
+Counterexample found in 218 files:
+
+
+Only No Counter example - 511 (729 - 218)
+
+Total files with 'Instance found': 374 (No Counterexample)
+
+overfit (No counterexample - instance) - 137 (511 - 374)
+
+
+
+Search results for 'Syntax error' saved to syntax_error.txt
+Total instances found: 706
+
+Search results for 'Type error' saved to type_error.txt
+Total instances found: 502
+
+
+(total 1937 = 218 + 511 + 706 + 502)
+
+Total blank files found: 1
+Blank files:
+classroom_inv4_5_Sol.txt

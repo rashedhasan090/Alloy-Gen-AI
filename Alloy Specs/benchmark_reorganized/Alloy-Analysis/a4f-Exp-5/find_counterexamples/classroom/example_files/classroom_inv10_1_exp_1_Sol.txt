@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/classroom/example_files/classroom_inv10_1_exp_1.als at line 2 column 9:
+The name "Class" cannot be found.

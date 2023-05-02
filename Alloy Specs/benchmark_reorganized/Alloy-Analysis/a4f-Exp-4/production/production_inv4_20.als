@@ -1,0 +1,36 @@
+open util/ordering[Position]
+sig Position {}
+sig Product {}
+sig Component extends Product {
+    parts : set Product,
+    cposition : one Position
+}
+sig Resource extends Product {}
+sig Robot {
+        rposition : one Position
+}
+pred inv1 {
+	all c:Component | some c.parts
+}
+pred inv2 {
+	all c:Component | c not in c.^parts
+}
+pred inv3 {
+	all r:Robot | one c:Component | c.cposition = r.rposition
+}
+pred inv4 {
+	all c:Component, r:Robot | (r.rposition.closes -- c.cposition).partOf.parts !in c.parts
+}
+pred inv3_fixed {
+	all r:Robot | one c:Component | c.cposition = r.rposition
+}
+assert inv3_Repaired {
+    inv3[] iff inv3_fixed[]
+}
+pred inv4_fixed {
+	all c:Component, r:Robot | (r.rposition.closes -- c.cposition).partOf.parts !in c.parts
+}
+assert inv4_Repaired {
+    inv4[] iff inv4_fixed[]
+}
+check inv1, inv2, inv3_Repaired, inv4_Repaired

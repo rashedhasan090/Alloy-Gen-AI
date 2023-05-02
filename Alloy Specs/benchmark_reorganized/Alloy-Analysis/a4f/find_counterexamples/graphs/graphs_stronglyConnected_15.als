@@ -1,0 +1,33 @@
+sig Node {
+    adj: set Node
+}
+pred undirected {
+    adj = ~adj
+}
+pred oriented {
+    no adj & adj = ~(adj + iden)
+}
+pred acyclic {
+    all a: Node | a not in a.^adj
+}
+pred complete {
+    all n: Node | n.adj = Node ---- n
+}
+pred noLoops {
+    no iden & adj
+}
+pred weaklyConnected {
+    all n, m: Node | Node in n.*(adj + ~adj).m
+}
+pred stronglyConnected {
+    all n: Node | n in n.*adj and n in n.~adj
+}
+pred transitive {
+    adj.adj in adj
+}
+pred areGraphPropertiesCorrect {
+    undirected[] and oriented[] and acyclic[] and complete[] and noLoops[] and weaklyConnected[] and stronglyConnected[] and transitive[]
+}
+assert perfectOracle {
+    areGraphPropertiesCorrect[]
+}

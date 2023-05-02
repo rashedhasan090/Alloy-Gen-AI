@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/classroom/inv13/classroom_inv13_13.als at line 53 column 34:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Teacher->this/Class->this/Person->this/Class}

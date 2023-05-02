@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv11_1/classroom_inv11_49.als at line 87 column 1:
+String literal cannot be followed by a legal identifier character.

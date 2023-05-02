@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/classroom/inv7/classroom_inv7_22.als at line 45 column 34:
+& can be used only between 2 expressions of the same arity.
+Left type = {this/Teacher}
+Right type = {this/Person->this/Person}

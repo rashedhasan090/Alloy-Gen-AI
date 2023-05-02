@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/classroom/example_files/classroom_inv10_1_exp_4.als at line 74 column 41:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {none}
+Right type = {PrimitiveBoolean}

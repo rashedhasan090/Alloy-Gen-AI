@@ -1,0 +1,40 @@
+Command Check undirectedRepaired expect 0: (22:25:52)
+Counterexample found
+
+=========================================
+Command Check orientedRepaired expect 0: (22:25:52)
+No Counterexample found
+
+=========================================
+Command Check acyclicRepaired expect 0: (22:25:52)
+No Counterexample found
+
+=========================================
+Command Check completeRepaired expect 0: (22:25:52)
+No Counterexample found
+
+=========================================
+Command Check noLoopsRepaired expect 0: (22:25:52)
+No Counterexample found
+
+=========================================
+Command Check weaklyConnectedRepaired expect 0: (22:25:52)
+No Counterexample found
+
+=========================================
+Command Check stonglyConnectedRepaired expect 0: (22:25:52)
+No Counterexample found
+
+=========================================
+Command Check transitiveRepaired expect 0: (22:25:52)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (22:25:52)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (22:25:52)
+Counterexample found
+
+=========================================

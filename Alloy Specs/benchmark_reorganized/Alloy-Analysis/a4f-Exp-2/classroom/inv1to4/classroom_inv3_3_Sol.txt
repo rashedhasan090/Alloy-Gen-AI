@@ -1,0 +1,4 @@
+Command Check inv3_Repaired expect 0: (22:08:02)
+No Counterexample found
+
+=========================================

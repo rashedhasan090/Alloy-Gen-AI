@@ -1,0 +1,1 @@
+There is no bug in this specification, so no fix is needed.

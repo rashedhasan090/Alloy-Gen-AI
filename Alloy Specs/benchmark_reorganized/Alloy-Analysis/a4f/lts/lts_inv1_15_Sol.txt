@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/lts/lts_inv1_15.als at line 111 column 2:
+The assertion "inv6" cannot be found.

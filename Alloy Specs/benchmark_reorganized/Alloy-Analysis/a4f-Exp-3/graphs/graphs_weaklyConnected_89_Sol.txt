@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/graphs/graphs_weaklyConnected_89.als at line 44 column 19:
+!= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node}
+Right type = {univ->univ}

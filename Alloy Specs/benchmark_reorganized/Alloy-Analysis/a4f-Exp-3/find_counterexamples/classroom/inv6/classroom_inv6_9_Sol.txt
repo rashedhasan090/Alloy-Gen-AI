@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/classroom/inv6/classroom_inv6_9.als at line 42 column 37:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Class}
+Right type = {this/Class->this/Class}

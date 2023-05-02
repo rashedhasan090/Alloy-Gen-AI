@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/classroom/inv6/classroom_inv6_29.als at line 43 column 36:
+This cannot be a legal relational join where
+left hand side is (this/Person <: Teaches) . t (type = {none})
+right hand side is this/Teacher (type = {this/Teacher})
+

@@ -1,0 +1,60 @@
+Command Check inv1_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv2_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv3_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv4_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv5_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv6_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv7_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv8_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv9_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv10_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv11_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv12_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv13_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv14_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================
+Command Check inv15_repaired expect 0: (19:17:07)
+No Counterexample found
+
+=========================================

@@ -1,0 +1,34 @@
+
+
+Search results for 'No Counterexample found' saved to no_counterexample_found.txt
+Total instances found: 630  (counter & no counter)
+
+Counterexample String found in 133 files:
+
+
+Only No Counter example - 497 (630 - 133)
+
+Total files with 'Instance found': 401 (No Counterexample)
+
+overfit ( No counterexample  - no instance found ) - 96
+
+
+Search results for 'Syntax error' saved to syntax_error.txt
+Total instances found: 637
+
+Search results for 'Type error' saved to type_error.txt
+Total instances found: 666
+
+
+(total 1933 = 133 + 494 + 637 + 666)
+
+remaining 5 files were inconsistent / no result / blank.
+
+
+Total blank files found: 5
+Blank files:
+classroom_inv4_18_Sol.txt
+classroom_inv9_61_Sol.txt
+classroom_inv6_26_Sol.txt
+classroom_inv11_247_Sol.txt
+classroom_inv5_46_Sol.txt

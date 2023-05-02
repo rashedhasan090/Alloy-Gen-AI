@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/cv/cv_inv3_5.als at line 22 column 45:
+The name "w1" cannot be found.

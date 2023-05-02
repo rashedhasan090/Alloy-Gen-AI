@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/production/production_inv2_12.als at line 15 column 11:
+& can be used only between 2 expressions of the same arity.
+Left type = {univ->univ}
+Right type = {this/Product}

@@ -1,0 +1,32 @@
+open util/ordering[Position]
+
+sig Position {}
+
+sig Product {}
+
+sig Component extends Product {
+    parts : set Product,
+    cposition : one Position
+}
+
+sig Resource extends Product {}
+
+sig Robot {
+        rposition : one Position
+}
+
+// Invariant stating that a component cannot be a part of itself
+pred inv2 { 
+  all c:Component | c not in c.parts
+}
+
+// Fixed invariant where the component's own parts are excluded from the set of possible parts 
+pred inv2_OK {
+    all c:Component | c.parts -- c = c.parts and c not in c.parts
+}
+
+assert inv2_Repaired {
+    inv2[] iff inv2_OK[]
+}
+
+check inv2_Repaired expect 0

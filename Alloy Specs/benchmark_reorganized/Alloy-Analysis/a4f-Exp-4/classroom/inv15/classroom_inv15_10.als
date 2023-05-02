@@ -1,0 +1,1 @@
+The fixed code is same as the original one. No bug was found.

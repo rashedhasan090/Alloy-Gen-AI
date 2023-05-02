@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv11_3/classroom_inv11_132.als at line 172 column 1:
+The predicate/function "inv1_Repaired" cannot be found.

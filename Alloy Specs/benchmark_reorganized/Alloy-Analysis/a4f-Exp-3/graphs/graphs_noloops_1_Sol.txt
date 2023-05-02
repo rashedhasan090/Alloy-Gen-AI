@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/graphs/graphs_noloops_1.als at line 47 column 14:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node->this/Node}
+Right type = {none}

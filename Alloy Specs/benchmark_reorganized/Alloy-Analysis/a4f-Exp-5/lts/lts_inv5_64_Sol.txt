@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/lts/lts_inv5_64.als at line 9 column 51:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/State->this/Event}
+Right type = {this/State->this/Event->this/State}

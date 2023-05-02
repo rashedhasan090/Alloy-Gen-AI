@@ -1,0 +1,5 @@
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all g:Group, c:Class | (some p:Person | c->p->g in Groups) implies some p:Teacher | p.Teaches = c
+}

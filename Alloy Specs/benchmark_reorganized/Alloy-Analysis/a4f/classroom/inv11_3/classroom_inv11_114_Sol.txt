@@ -1,0 +1,3 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv11_3/classroom_inv11_114.als at line 16 column 1:
+There are 21 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 

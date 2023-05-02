@@ -1,0 +1,9 @@
+
+pred inv5 {
+    all s: State, s1: State |
+        all e: Event |
+            (s.trans).(e) = s1 -> some e': Event |
+                (s1.trans).(e') = s
+}
+
+This ensures that for any two states, if a transition is possible from the first state to the second state via an event, then there must be a corresponding transition from the second state to the first state via another event.

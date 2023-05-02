@@ -1,0 +1,236 @@
+/* The registered persons. */
+sig Person  {
+	/* Each person tutors a set of persons. */
+	Tutors : set Person,
+	/* Each person teaches a set of classes. */
+	Teaches : set Class
+}
+/* The registered groups. */
+sig Group {}
+/* The registered classes. */
+sig Class  {
+	/* Each class has a set of persons assigned to a group. */
+	Groups : Person -> Group
+}
+/* Some persons are teachers. */
+sig Teacher extends Person  {}
+/* Some persons are students. */
+sig Student extends Person  {}
+/* Every person is a student. */
+pred inv1 {
+	Person in Student 
+}
+/* There are no teachers. */
+pred inv2 {
+	no Teacher 
+}
+/* No person is both a student and a teacher. */
+pred inv3 {
+	no Student & Teacher 
+}
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+	Person = Student + Teacher 
+}
+/* There are some classes assigned to teachers. */
+pred inv5 {
+	some Teacher.Teaches 
+}
+/* Every teacher has classes assigned. */
+pred inv6 {
+	Teacher in teaches.Class 
+}
+/* Every class has teachers assigned. */
+pred inv7 {
+	Class in Teacher.Teaches 
+}
+
+/* Teachers are assigned at most one class. */
+pred inv8 {
+	all t:Teacher | lone t.Teaches 
+}
+/* No class has more than one teacher assigned. */
+pred inv9 {
+	all c:Class | lone t : Teacher | t -> c in Teaches 
+}
+/* For every class, every student has a group assigned. */
+pred inv10 {
+	all c:Class, s:Student | some s.(c.Groups) 
+}
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c : Class | (some c.Groups) implies some Teacher & Teaches.c 
+}
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+	all t : Teacher | some t.Teaches.Groups 
+}
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+	all t : Teacher, s : Student | t.Tutors.s 
+}
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14 {
+	all s : Person, c : Class | (s in c.Groups.(Teacher.Tutors)) implies s.Tutors in Teacher 
+}
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+	all s : Person | some Teacher & ^Tutors.s
+}
+
+/*===================Repaired===================*/
+
+/* Every person is a student. */
+pred inv1_repaired{
+	Person in Student
+}
+
+/* There are no teachers. */
+pred inv2_repaired{
+	no Teacher
+}
+
+/* No person is both a student and a teacher. */
+pred inv3_repaired{
+	no s:Student & t:Teacher | s=t
+}
+
+/* No person is neither a student nor a teacher. */
+pred inv4_repaired{
+	Person = Student + Teacher
+}
+
+/* There are some classes assigned to teachers. */
+pred inv5_repaired{
+	some t : Teacher | t.Teaches != none
+}
+
+/* Every teacher has classes assigned. */
+pred inv6_repaired{
+	all t : Teacher | t.Teaches != none
+}
+
+/* Every class has teachers assigned. */
+pred inv7_repaired{
+	all c : Class | c.Teachers != none
+}
+
+/* Teachers are assigned at most one class. */
+pred inv8_repaired{
+	all t:Teacher | lone t.Teaches
+}
+
+/* No class has more than one teacher assigned. */
+pred inv9_repaired{
+	all c:Class | #(Teachers & c.Teaches) <= 1
+}
+
+/* For every class, every student has a group assigned. */
+pred inv10_repaired{
+	all c:Class, s:Student | some g:Group | g = c.Groups[s]
+}
+
+/* A class only has groups if it has a teacher assigned. */
+pred inv11_repaired{
+	all c:Class | (no g:Group | g in c.Groups) or some t:Teacher | t in c.Teachers
+}
+
+/* Each teacher is responsible for some groups. */
+pred inv12_repaired{
+	all t:Teacher | some c:Class, g:Group | g in c.Groups and t in c.Teachers | g = c.Groups[t]
+}
+
+/* Only teachers tutor, and only students are tutored. */
+pred inv13_repaired{
+	all t:Teacher , s:Student | s in t.Tutors
+}
+
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14_repaired{
+	all c:Class, s:Student | all t:Teacher | (t->c in Teaches) implies (s in c.Groups[t.Teaches] implies t in s.Tutors)
+}
+
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15_repaired{
+	all s:Person | some t:Teacher | t in ^s.Tutors
+}
+
+/* The original assertion inv1 is commented out
+ * assert inv1_repaired {
+    inv1[] iff inv1_repaired[]
+} */
+
+assert inv2_repaired {
+    inv2[] iff inv2_repaired[]
+}
+
+assert inv3_repaired {
+    inv3[] iff inv3_repaired[]
+}
+
+assert inv4_repaired {
+    inv4[] iff inv4_repaired[]
+}
+
+assert inv5_repaired {
+    inv5[] iff inv5_repaired[]
+}
+
+assert inv6_repaired {
+    inv6[] iff inv6_repaired[]
+}
+
+assert inv7_repaired {
+    inv7[] iff inv7_repaired[]
+}
+
+assert inv8_repaired {
+    inv8[] iff inv8_repaired[]
+}
+
+assert inv9_repaired {
+    inv9[] iff inv9_repaired[]
+}
+
+assert inv10_repaired {
+    inv10[] iff inv10_repaired[]
+}
+
+assert inv11_repaired {
+    inv11[] iff inv11_repaired[]
+}
+
+assert inv12_repaired {
+    inv12[] iff inv12_repaired[]
+}
+
+assert inv13_repaired {
+    inv13[] iff inv13_repaired[]
+}
+
+assert inv14_repaired {
+    inv14[] iff inv14_repaired[]
+}
+
+assert inv15_repaired {
+    inv15[] iff inv15_repaired[]
+}
+
+/* Check that all the original assertions still hold after the repairs. */
+check inv1_repaired expect 0
+check inv2_repaired expect 0
+check inv3_repaired expect 0
+check inv4_repaired expect 0
+check inv5_repaired expect 0
+check inv6_repaired expect 0
+check inv7_repaired expect 0
+check inv8_repaired expect 0
+check inv9_repaired expect 0
+check inv10_repaired expect 0
+check inv11_repaired expect 0
+check inv12_repaired expect 0
+check inv13_repaired expect 0
+check inv14_repaired expect 0
+check inv15_repaired expect 0

@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv11_4/classroom_inv11_155.als at line 57 column 43:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{none->none->none->none}

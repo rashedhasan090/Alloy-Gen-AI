@@ -1,0 +1,2 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/graphs/graphs_oriented_16.als at line 26 column 2:
+This expression failed to be typechecked

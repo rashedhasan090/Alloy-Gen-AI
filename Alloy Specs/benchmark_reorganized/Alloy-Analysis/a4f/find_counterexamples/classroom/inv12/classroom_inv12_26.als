@@ -1,0 +1,298 @@
+/* The registered persons. */
+sig Person  {
+	/* Each person tutors a set of persons. */
+	Tutors : set Person,
+	/* Each person teaches a set of classes. */
+	Teaches : set Class
+}
+/* The registered groups. */
+sig Group {}
+/* The registered classes. */
+sig Class  {
+	/* Each class has a set of persons assigned to a group. */
+	Groups : Person -> Group
+}
+/* Some persons are teachers. */
+sig Teacher extends Person  {}
+/* Some persons are students. */
+sig Student extends Person  {}
+/* Every person is a student. */
+pred inv1 {
+	Person in Student ----correct
+}
+/* There are no teachers. */
+pred inv2 {
+	no Teacher ----correct
+}
+/* No person is both a student and a teacher. */
+pred inv3 {
+	no Student & Teacher ----correct
+}
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+	Person in (Student + Teacher) ----correct
+}
+/* There are some classes assigned to teachers. */
+pred inv5 {
+	some Teacher.Teaches ----correct
+}
+/* Every teacher has classes assigned. */
+pred inv6 {
+	Teacher in Teaches.Class ----correct
+}
+/* Every class has teachers assigned. */
+pred inv7 {
+	Class in Teacher.Teaches ----correct
+}
+/* Teachers are assigned at most one class. */
+pred inv8 {
+	all t:Teacher | lone t.Teaches ----correct
+}
+/* No class has more than a teacher assigned. */
+pred inv9 {
+	all c:Class | lone Teaches.c & Teacher ----correct
+}
+/* For every class, every student has a group assigned. */
+pred inv10 {
+	all c:Class, s:Student | some s.(c.Groups) ----correct
+}
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c : Class | (some c.Groups) implies some Teacher & Teaches.c ----correct
+}
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+----	all t : Teacher | some (t.Teaches).Groups ----correct
+ all t : Teacher, g : Group | some c : Class | c -> t -> g in Groups  implies c in t.Teaches
+}
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+	Tutors.Person in Teacher and Person.Tutors in Student ----correct
+}
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14 {
+	all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+	all s : Person | some Teacher & ^Tutors.s
+}
+
+/* Repaired Assertions */
+
+pred inv1_repaired{
+  Person in Student
+}
+
+assert inv1_implies_repaired {
+    inv1 implies inv1_repaired
+}
+
+assert repaired_implies_inv1 {
+    inv1_repaired implies inv1
+}
+
+pred inv2_repaired{
+  no Teacher
+}
+
+assert inv2_implies_repaired {
+    inv2 implies inv2_repaired
+}
+
+assert repaired_implies_inv2 {
+    inv2_repaired implies inv2
+}
+
+pred inv3_repaired{
+  no Student & Teacher
+}
+
+assert inv3_implies_repaired {
+    inv3 implies inv3_repaired
+}
+
+assert repaired_implies_inv3 {
+    inv3_repaired implies inv3
+}
+
+pred inv4_repaired{
+  Person in (Student + Teacher)
+}
+
+assert inv4_implies_repaired {
+    inv4 implies inv4_repaired
+}
+
+assert repaired_implies_inv4 {
+    inv4_repaired implies inv4
+}
+
+pred inv5_repaired{
+  some Teacher.Teaches
+}
+
+assert inv5_implies_repaired {
+    inv5 implies inv5_repaired
+}
+
+assert repaired_implies_inv5 {
+    inv5_repaired implies inv5
+}
+
+pred inv6_repaired{
+  Teacher in Teaches.Class
+}
+
+assert inv6_implies_repaired {
+    inv6 implies inv6_repaired
+}
+
+assert repaired_implies_inv6 {
+    inv6_repaired implies inv6
+}
+
+pred inv7_repaired{
+  Class in Teacher.Teaches
+}
+
+assert inv7_implies_repaired {
+    inv7 implies inv7_repaired
+}
+
+assert repaired_implies_inv7 {
+    inv7_repaired implies inv7
+}
+
+pred inv8_repaired{
+  all t:Teacher | lone t.Teaches
+}
+
+assert inv8_implies_repaired {
+    inv8 implies inv8_repaired
+}
+
+assert repaired_implies_inv8 {
+    inv8_repaired implies inv8
+}
+
+pred inv9_repaired{
+  all c:Class | lone c.teaches & Teacher
+}
+
+assert inv9_implies_repaired {
+    inv9 implies inv9_repaired
+}
+
+assert repaired_implies_inv9 {
+    inv9_repaired implies inv9
+}
+
+pred inv10_repaired{
+   all c:Class, s:Student | some s.(c.Groups)
+}
+
+assert inv10_implies_repaired {
+    inv10 implies inv10_repaired
+}
+
+assert repaired_implies_inv10 {
+    inv10_repaired implies inv10
+}
+
+pred inv11_repaired{
+  all c : Class | (some c.Groups) implies some Teacher & Teaches.c
+}
+
+assert inv11_implies_repaired {
+    inv11 implies inv11_repaired
+}
+
+assert repaired_implies_inv11 {
+    inv11_repaired implies inv11
+}
+
+pred inv12_repaired{
+----	all t : Teacher | some (t.Teaches).Groups
+ all t : Teacher, g : Group | some c : Class | c -> t -> g in Groups  implies c in t.Teaches
+}
+
+assert inv12_implies_repaired {
+    inv12 implies inv12_repaired
+}
+
+assert repaired_implies_inv12 {
+    inv12_repaired implies inv12
+}
+
+pred inv13_repaired{
+  Tutors.Person in Teacher and Person.Tutors in Student
+}
+
+assert inv13_implies_repaired {
+    inv13 implies inv13_repaired
+}
+
+assert repaired_implies_inv13 {
+    inv13_repaired implies inv13
+}
+
+pred inv14_repaired{
+      all s : Person, c : Class, t : Person, g : Group | (c -> s -> g in Groups) and t -> c in Teaches implies t -> s in Tutors
+}
+
+assert inv14_implies_repaired {
+    inv14 implies inv14_repaired
+}
+
+assert repaired_implies_inv14 {
+    inv14_repaired implies inv14
+}
+
+pred inv15_repaired{
+  all s : Person | some Teacher & ^Tutors.s
+}
+
+assert inv15_implies_repaired {
+    inv15 implies inv15_repaired
+}
+
+assert repaired_implies_inv15 {
+    inv15_repaired implies inv15
+}
+
+run inv1_implies_repaired for exactly 1 Person, inv2_implies_repaired for exactly 1 Person,
+     inv3_implies_repaired for exactly 1 Person, inv4_implies_repaired for exactly 1 Person,
+     inv5_implies_repaired for exactly 1 Person, inv6_implies_repaired for exactly 1 Person,
+     inv7_implies_repaired for exactly 1 Person, inv8_implies_repaired for exactly 1 Person,
+     inv9_implies_repaired for exactly 1 Person, inv10_implies_repaired for exactly 1 Person,
+     inv11_implies_repaired for exactly 1 Person, inv12_implies_repaired for exactly 1 Person,
+     inv13_implies_repaired for exactly 1 Person, inv14_implies_repaired for exactly 1 Person,
+     inv15_implies_repaired for exactly 1 Person
+    
+run repaired_implies_inv1 for exactly 1 Person, repaired_implies_inv2 for exactly 1 Person,
+    repaired_implies_inv3 for exactly 1 Person, repaired_implies_inv4 for exactly 1 Person,
+    repaired_implies_inv5 for exactly 1 Person, repaired_implies_inv6 for exactly 1 Person,
+    repaired_implies_inv7 for exactly 1 Person, repaired_implies_inv8 for exactly 1 Person,
+    repaired_implies_inv9 for exactly 1 Person, repaired_implies_inv10 for exactly 1 Person,
+    repaired_implies_inv11 for exactly 1 Person, repaired_implies_inv12 for exactly 1 Person,
+    repaired_implies_inv13 for exactly 1 Person, repaired_implies_inv14 for exactly 1 Person,
+    repaired_implies_inv15 for exactly 1 Person
+
+/* Recheck all the assertions with repaired invariant */    
+check inv1_repaired expect 0
+check inv2_repaired expect 0
+check inv3_repaired expect 0
+check inv4_repaired expect 0
+check inv5_repaired expect 0
+check inv6_repaired expect 0
+check inv7_repaired expect 0
+check inv8_repaired expect 0
+check inv9_repaired expect 0
+check inv10_repaired expect 0
+check inv11_repaired expect 0
+check inv12_repaired expect 0
+check inv13_repaired expect 0
+check inv14_repaired expect 0
+check inv15_repaired expect 0

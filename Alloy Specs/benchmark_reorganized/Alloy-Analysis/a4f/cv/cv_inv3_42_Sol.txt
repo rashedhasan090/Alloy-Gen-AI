@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/cv/cv_inv3_42.als at line 19 column 107:
+The name "work" cannot be found.

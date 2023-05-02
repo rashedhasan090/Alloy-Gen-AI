@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/production/production_inv3_8.als at line 37 column 32:
+
+This name cannot be resolved; its relevant type does not intersect with any of the following candidates:
+fun integer/next
+fun ordering/next

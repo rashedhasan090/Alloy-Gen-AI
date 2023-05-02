@@ -1,0 +1,60 @@
+Command Check inv1_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv2_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv3_assert for 5: (18:23:20)
+No Counterexample found
+
+=========================================
+Command Check inv4_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv5_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv6_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv7_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv8_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv9_assert for 5: (18:23:20)
+No Counterexample found
+
+=========================================
+Command Check inv10_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv11_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv12_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv13_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================
+Command Check inv14_assert for 5: (18:23:20)
+No Counterexample found
+
+=========================================
+Command Check inv15_assert for 5: (18:23:20)
+Counterexample found
+
+=========================================

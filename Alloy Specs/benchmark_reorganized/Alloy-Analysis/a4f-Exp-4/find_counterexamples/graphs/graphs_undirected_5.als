@@ -1,0 +1,7 @@
+There is an error in the "completeOK" predicate. The correct code is:
+
+pred completeOK {
+    all n: Node | n.adj = Node -- n
+} 
+
+This predicate ensures that all nodes are connected to every other node except itself.

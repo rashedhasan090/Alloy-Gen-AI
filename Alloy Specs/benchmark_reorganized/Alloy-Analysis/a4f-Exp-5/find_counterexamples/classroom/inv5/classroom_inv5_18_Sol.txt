@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/classroom/inv5/classroom_inv5_18.als at line 112 column 5:
+The name "repair_pred_1" cannot be found.

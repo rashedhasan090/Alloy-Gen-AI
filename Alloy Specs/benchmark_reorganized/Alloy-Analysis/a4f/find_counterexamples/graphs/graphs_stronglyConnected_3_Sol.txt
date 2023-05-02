@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/graphs/graphs_stronglyConnected_3.als at line 139 column 44:
+The name "stronglyConnectedOK" cannot be found.

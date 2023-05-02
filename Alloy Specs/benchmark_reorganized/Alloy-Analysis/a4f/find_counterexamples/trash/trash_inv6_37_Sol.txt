@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/trash/trash_inv6_37.als at line 27 column 11:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/File}

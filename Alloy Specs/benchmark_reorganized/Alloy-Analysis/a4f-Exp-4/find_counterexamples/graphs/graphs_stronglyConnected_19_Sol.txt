@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/graphs/graphs_stronglyConnected_19.als at line 3 column 8:
+The name "Node" cannot be found.

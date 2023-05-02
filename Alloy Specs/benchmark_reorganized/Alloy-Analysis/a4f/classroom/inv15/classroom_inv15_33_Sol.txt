@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv15/classroom_inv15_33.als at line 41 column 10:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Teacher}
+Right type = {this/Person->this/Class}

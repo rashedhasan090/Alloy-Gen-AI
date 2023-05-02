@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/cv/cv_inv2_22.als at line 33 column 97:
+This cannot be a legal relational join where
+left hand side is i (type = {this/Institution})
+right hand side is this/Work (type = {this/Work})
+

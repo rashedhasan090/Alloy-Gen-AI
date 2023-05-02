@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-5/graphs/graphs_oriented_9.als at line 54 column 43:
+This cannot be a legal relational join where
+left hand side is n . * (this/Node <: adj) + ~ (this/Node <: adj) (type = {univ})
+right hand side is m (type = {this/Node})
+

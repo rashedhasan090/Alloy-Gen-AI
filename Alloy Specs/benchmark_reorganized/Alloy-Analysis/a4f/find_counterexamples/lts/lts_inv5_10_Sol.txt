@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/lts/lts_inv5_10.als at line 41 column 38:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {PrimitiveBoolean}
+Right type = {this/Event->this/State}

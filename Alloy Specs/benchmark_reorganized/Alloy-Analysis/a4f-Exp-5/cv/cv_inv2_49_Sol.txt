@@ -1,0 +1,20 @@
+Command Run repair_pred_1: (19:23:31)
+Instance found
+
+=========================================
+Command Check repaired_inv2: (19:23:31)
+No Counterexample found
+
+=========================================
+Command Check inv1_hold expect 0: (19:23:31)
+Counterexample found
+
+=========================================
+Command Check inv2_hold expect 0: (19:23:31)
+Counterexample found
+
+=========================================
+Command Check inv3_hold expect 0: (19:23:31)
+Counterexample found
+
+=========================================

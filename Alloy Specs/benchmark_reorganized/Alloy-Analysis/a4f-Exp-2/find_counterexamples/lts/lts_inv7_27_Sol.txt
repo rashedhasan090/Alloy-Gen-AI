@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/lts/lts_inv7_27.als at line 95 column 32:
+This cannot be a legal relational join where
+left hand side is e2 (type = {this/Event})
+right hand side is e1 . s . (this/State <: trans) (type = {this/State})
+

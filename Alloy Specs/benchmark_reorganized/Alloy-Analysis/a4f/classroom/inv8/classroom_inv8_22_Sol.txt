@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv8/classroom_inv8_22.als at line 84 column 5:
+"Person" is already the name of a sig/parameter in this module.

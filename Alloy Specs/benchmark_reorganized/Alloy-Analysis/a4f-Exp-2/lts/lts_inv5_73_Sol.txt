@@ -1,0 +1,3 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/lts/lts_inv5_73.als at line 41 column 45:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 

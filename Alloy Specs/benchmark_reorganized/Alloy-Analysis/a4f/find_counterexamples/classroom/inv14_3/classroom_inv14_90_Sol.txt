@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv14_3/classroom_inv14_90.als at line 145 column 11:
+The name "preds" cannot be found.

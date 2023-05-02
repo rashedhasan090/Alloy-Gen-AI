@@ -1,0 +1,18 @@
+Command Check inv1_Repaired expect 0: (19:22:41)
+
+=========================================
+Command Check inv2_Repaired expect 0: (19:22:41)
+
+=========================================
+Command Check inv3_Repaired expect 0: (19:22:41)
+
+=========================================
+Command Check inv4_Repaired expect 0: (19:22:41)
+
+=========================================
+Command Check inv5_Repaired expect 0: (19:22:41)
+
+=========================================
+Command Check inv7_Repaired expect 0: (19:22:41)
+
+=========================================

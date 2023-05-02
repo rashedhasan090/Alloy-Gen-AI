@@ -1,0 +1,11 @@
+
+/*
+The LTS is reversible, ie, from a reachable state it is always possible 
+to return to an initial state.
+*/
+pred inv7 {
+    all s1,s2:State, e1,e2:Event |
+    s1->e1->s2 in trans implies some s3:Init | s2->e2->s3 in trans 
+}
+
+Note that we added the "some s3:Init" condition, to ensure that the state we are returning to is an initial state.

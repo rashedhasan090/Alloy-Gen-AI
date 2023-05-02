@@ -1,0 +1,200 @@
+/* The registered persons. */
+sig Person  {
+	/* Each person tutors a set of persons. */
+	Tutors : set Person,
+	/* Each person teaches a set of classes. */
+	Teaches : set Class
+}
+/* The registered groups. */
+sig Group {}
+/* The registered classes. */
+sig Class  {
+	/* Each class has a set of persons assigned to a group. */
+	Groups : Person lone -> lone Group
+}
+/* Some persons are teachers. */
+sig Teacher extends Person  {}
+/* Some persons are students. */
+sig Student extends Person  {}
+/* Every person is a student. */
+pred inv1 {
+	Person in Student 
+}
+/* There are no teachers. */
+pred inv2 {
+	no Teacher 
+}
+/* No person is both a student and a teacher. */
+pred inv3 {
+	no Student & Teacher 
+}
+/* No person is neither a student nor a teacher. */
+pred inv4 {
+	Person in (Student + Teacher) 
+}
+/* There are some classes assigned to teachers. */
+pred inv5 {
+	some Teacher.Teaches 
+}
+/* Every teacher has classes assigned. */
+pred inv6 {
+	Teacher in Teaches.Class 
+}
+/* Every class has teachers assigned. */
+pred inv7 {
+	Class in Teacher.Teaches 
+}
+/* Teachers are assigned at most one class. */
+pred inv8 {
+	all t:Teacher | lone t.Teaches 
+}
+/* No class has more than a teacher assigned. */
+pred inv9 {
+	no disj c1,c2: Class | Teaches[c1]=Teaches[c2] and c1!=c2
+}
+/* For every class, every student has a group assigned. */
+pred inv10 {
+	all c:Class, s:Student | some s.(c.Groups) 
+}
+/* A class only has groups if it has a teacher assigned. */
+pred inv11 {
+	all c : Class | (some c.Groups) implies some Teacher & Teaches.c 
+}
+/* Each teacher is responsible for some groups. */
+pred inv12 {
+	all t : Teacher | some (t.Teaches).Groups 
+}
+/* Only teachers tutor, and only students are tutored. */
+pred inv13 {
+	all t: Teacher | t.Tutors in Teacher
+	all s: Student | s.Tutors in Student
+}
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14 {
+	all c:Class, s:Student |
+		let assigned_teachers = Teacher & Teaches.c |
+		let tutored_by_teacher = s.(assigned_teachers.Tutors) |
+		tutored_by_teacher = assigned_teachers
+}
+/* The tutoring chain of every person eventually reaches a Teacher. */
+pred inv15 {
+	all s : Person | some Teacher & ^Tutors.s
+}
+
+/* Repaired assertions */
+pred inv1_Repaired {
+  Person in Student 
+}
+pred inv2_Repaired {
+  no Teacher 
+}
+pred inv3_Repaired {
+  no Student & Teacher 
+}
+pred inv4_Repaired {
+ Person in (Student + Teacher) 
+}
+pred inv5_Repaired {
+  some Teacher.Teaches 
+}
+pred inv6_Repaired {
+  Teacher in Teaches.Class 
+}
+pred inv7_Repaired {
+  Class in Teacher.Teaches 
+}
+pred inv8_Repaired {
+  all t:Teacher | lone t.Teaches 
+}
+pred inv9_Repaired {
+	no disj c1,c2: Class | Teaches[c1]=Teaches[c2] and c1!=c2
+}
+pred inv10_Repaired {
+  all c:Class, s:Student | some s.(c.Groups) 
+}
+pred inv11_Repaired {
+  all c : Class | (some c.Groups) implies some Teacher & Teaches.c 
+}
+pred inv12_Repaired {
+ all t : Teacher | some (t.Teaches).Groups 
+}
+pred inv13_Repaired {
+	all t: Teacher | t.Tutors in Teacher
+	all s: Student | s.Tutors in Student
+}
+pred inv14_Repaired {
+	all c:Class, s:Student |
+		let assigned_teachers = Teacher & Teaches.c |
+		let tutored_by_teacher = s.(assigned_teachers.Tutors) |
+		tutored_by_teacher = assigned_teachers
+}
+pred inv15_Repaired {
+  all s : Person | some Teacher & ^Tutors.s 
+}
+/* Repaired assertions */
+
+/* Iff for repaired assertions */
+assert inv1_Repaired_Agrees {
+    inv1[] iff inv1_Repaired[]
+}
+assert inv2_Repaired_Agrees {
+    inv2[] iff inv2_Repaired[]
+}
+assert inv3_Repaired_Agrees {
+    inv3[] iff inv3_Repaired[]
+}
+assert inv4_Repaired_Agrees {
+    inv4[] iff inv4_Repaired[]
+}
+assert inv5_Repaired_Agrees {
+    inv5[] iff inv5_Repaired[]
+}
+assert inv6_Repaired_Agrees {
+    inv6[] iff inv6_Repaired[]
+}
+assert inv7_Repaired_Agrees {
+    inv7[] iff inv7_Repaired[]
+}
+assert inv8_Repaired_Agrees {
+    inv8[] iff inv8_Repaired[]
+}
+assert inv9_Repaired_Agrees {
+    inv9[] iff inv9_Repaired[]
+}
+assert inv10_Repaired_Agrees {
+    inv10[] iff inv10_Repaired[]
+}
+assert inv11_Repaired_Agrees {
+    inv11[] iff inv11_Repaired[]
+}
+assert inv12_Repaired_Agrees {
+    inv12[] iff inv12_Repaired[]
+}
+assert inv13_Repaired_Agrees {
+    inv13[] iff inv13_Repaired[]
+}
+assert inv14_Repaired_Agrees {
+    inv14[] iff inv14_Repaired[]
+}
+assert inv15_Repaired_Agrees {
+    inv15[] iff inv15_Repaired[]
+}
+/* Iff for repaired assertions */
+
+/* Check the assertions */
+check inv1_Repaired_Agrees
+check inv2_Repaired_Agrees
+check inv3_Repaired_Agrees
+check inv4_Repaired_Agrees
+check inv5_Repaired_Agrees
+check inv6_Repaired_Agrees
+check inv7_Repaired_Agrees
+check inv8_Repaired_Agrees
+check inv9_Repaired_Agrees
+check inv10_Repaired_Agrees
+check inv11_Repaired_Agrees
+check inv12_Repaired_Agrees
+check inv13_Repaired_Agrees
+check inv14_Repaired_Agrees
+check inv15_Repaired_Agrees

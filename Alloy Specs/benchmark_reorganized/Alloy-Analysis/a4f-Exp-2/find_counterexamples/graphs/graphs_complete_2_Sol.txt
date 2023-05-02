@@ -1,0 +1,31 @@
+Command Check undirectedRepaired: (22:26:17)
+
+=========================================
+Command Check orientedRepaired: (22:26:17)
+
+=========================================
+Command Check acyclicRepaired: (22:26:17)
+
+=========================================
+Command Check completeRepaired: (22:26:17)
+
+=========================================
+Command Check noLoopsRepaired: (22:26:17)
+
+=========================================
+Command Check weaklyConnectedRepaired: (22:26:17)
+
+=========================================
+Command Check stonglyConnectedRepaired: (22:26:17)
+
+=========================================
+Command Check transitiveRepaired: (22:26:17)
+
+=========================================
+Command Run repair_pred_1: (22:26:17)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (22:26:17)
+
+=========================================

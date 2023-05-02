@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-3/production/production_inv4_7.als at line 38 column 1:
+The assertion "invs" cannot be found.

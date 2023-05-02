@@ -1,0 +1,3 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv14_5/classroom_inv14_154.als at line 72 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 

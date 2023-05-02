@@ -1,0 +1,17 @@
+
+/*
+All states are reachable from an initial state.
+*/
+pred inv4 {
+  all s: State | some Init.(Event.^s)
+}
+/*
+Perfect Oracle Check and Repair
+*/
+pred inv4_OK {
+  all s: State | some Init.(Event.^s)
+}
+assert inv4_Repaired {
+  inv4[] iff inv4_OK[]
+}
+check inv4_Repaired expect 0 

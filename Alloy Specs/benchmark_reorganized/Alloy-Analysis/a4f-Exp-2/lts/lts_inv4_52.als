@@ -1,0 +1,89 @@
+/*
+A labeled transition system (LTS) is comprised by States, a sub--set
+of which are Initial, connected by transitions, here represented by 
+Events.
+*/
+sig State {
+        trans : Event -> State
+}
+sig Init in State {}
+sig Event {}
+/*
+The LTS does not contain deadlocks, ie, each state has at least a 
+transition.
+*/
+pred inv1 {
+	all s: State | some s.trans 
+}
+/*
+There is a single initial state.
+*/
+pred inv2 {
+	one Init 
+}
+/*
+The LTS is deterministic, ie, each state has at most a transition for each event.
+*/
+pred inv3 {
+	all s : State, e : Event | lone e.(s.trans)  
+}
+/*
+All states are reachable from an initial state.
+*/
+pred inv4 {
+	all x : Init | some y : State | y in x.^(trans.event)
+}
+/*
+All the states have the same events available.
+*/
+pred inv5 {
+	all s:State, s1:State | s.trans.event = s1.trans.event 
+}
+/*
+Each event is available in at least a state.
+*/
+pred inv6 {
+	all e:Event | some s1 : State | e in s1.trans.event 
+}
+/*
+The LTS is reversible, ie, from a reachable state, it is always possible 
+to return to an initial state.
+*/
+pred inv7 {
+	let tr = { s1, s2 : State | some e : Event | s1->e->s2 in trans } |
+	all s : Init.^tr | some i : Init | i in s.^tr 
+}
+
+/* ============ PERFECT ORACLE ===============*/
+assert inv1_OK {
+	all s: State | some s.trans 
+}
+assert inv2_OK {
+	one Init 
+}
+assert inv3_OK {
+	all s : State, e : Event | lone e.(s.trans) 
+}
+assert inv4_OK {
+	all x : Init | some y : State | y in x.^(trans.event)
+}
+assert inv5_OK {
+	all s:State, s1:State | s.trans.event = s1.trans.event 
+}
+assert inv6_OK {
+	all e:Event | some s1 : State | e in s1.trans.event 
+}
+assert inv7_OK {
+	let tr = { s1, s2 : State | some e : Event | s1->e->s2 in trans } |
+	all s : Init.^tr | some i : Init | i in s.^tr 
+}
+
+run { inv1; inv2; inv3; inv4; inv5; inv6; inv7 } for 5 but exactly 1 Init, 2 State, 2 Event, 3 Int, 1 seq, 1 String
+
+/* ======= Repairing inv4 predicate ============ */
+pred repair_inv4 { all x : Init | some y : State | y in x.^trans.event }
+assert repaired_inv4 {
+    inv4[] iff repair_inv4[]
+}
+check repaired_inv4
+```

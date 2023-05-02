@@ -1,0 +1,6 @@
+
+pred inv2 { // A user profile can only have works added by himself or some external institution
+	all u:User, w:Work | w in u.profile implies (u in w.source or some i:Institution | i in i.source & w.source)
+} 
+
+The other parts of the code are correct.

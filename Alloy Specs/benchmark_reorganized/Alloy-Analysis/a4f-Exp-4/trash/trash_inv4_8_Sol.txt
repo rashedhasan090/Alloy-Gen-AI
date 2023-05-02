@@ -1,0 +1,2 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-4/trash/trash_inv4_8.als at line 24 column 2:
+This expression failed to be typechecked

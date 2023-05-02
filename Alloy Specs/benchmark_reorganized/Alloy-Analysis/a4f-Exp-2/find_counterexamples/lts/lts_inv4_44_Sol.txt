@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/lts/lts_inv4_44.als at line 34 column 36:
+& can be used only between 2 expressions of the same arity.
+Left type = {this/Event}
+Right type = {this/State->this/Event->this/State}

@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f/classroom/inv1to4/classroom_inv3_23.als at line 29 column 2:
+The name "person" cannot be found.

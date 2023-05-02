@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/benchmark_reorganized/Alloy-Analysis/a4f-Exp-2/classroom/inv5/classroom_inv5_29.als at line 80 column 40:
+^ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Person}

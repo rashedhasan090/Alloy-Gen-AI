@@ -1,0 +1,8 @@
+
+/* Every student in a class is at least tutored by all the teachers
+ * assigned to that class. */
+pred inv14 {
+  all c:Class, s:Student | some g:Group | (c->s->g) in Groups implies all t:Teacher | t->c in Teaches implies t in s.^Tutors[g]
+} 
+
+The repaired version of inv14 has been provided in the fixed code.

@@ -1,0 +1,126 @@
+/* The set of files in the file system. */
+sig File {
+  	/* A file is potentially a link to other files. */
+	link : set File
+}
+/* The set of files in the trash. */
+sig Trash extends File {}
+/* The set of protected files. */
+sig Protected extends File {}
+/* The trash is empty. */
+pred inv1 {
+	no Trash 
+}
+/* All files are deleted. */
+pred inv2 {
+	File = Trash 
+}
+/* Some file is deleted. */
+pred inv3 {
+	some Trash 
+}
+/* Protected files cannot be deleted. */
+pred inv4 {
+	no Protected & Trash 
+}
+/* All unprotected files are deleted.. */
+pred inv5 {
+	File -- Protected = Trash 
+}
+/* A file links to at most one file. */
+pred inv6 {
+ 
+ all f : File | lone f.link
+}
+/* There is no deleted link. */
+pred inv7 {
+	no link.Trash 
+}
+/* There are no links. */
+pred inv8 {
+	no link 
+}
+/* A link does not link to another link. */
+pred inv9 {
+	all l : link | no l.link
+}
+/* If a link is deleted, so is the file it links to. */
+pred inv10 {
+	all t : Trash | no t.link & t not in Trash or t.link in Trash
+}
+/*======== IFF PERFECT ORACLE ===============*/
+pred inv1_ok {
+	no Trash 
+}
+assert inv1_repaired {
+    inv1[] iff inv1_ok[]
+}
+pred inv2_ok {
+	File = Trash 
+}
+assert inv2_repaired {
+    inv2[] iff inv2_ok[]
+}
+pred inv3_ok {
+	some Trash 
+}
+assert inv3_repaired {
+    inv3[] iff inv3_ok[]
+}
+pred inv4_ok {
+	no Protected & Trash 
+}
+assert inv4_repaired {
+    inv4[] iff inv4_ok[]
+}
+pred inv5_ok {
+	File -- Protected = Trash 
+}
+assert inv5_repaired {
+    inv5[] iff inv5_ok[]
+}
+pred inv6_ok {
+	all f : File | lone f.link
+}
+assert inv6_repaired {
+    inv6[] iff inv6_ok[]
+}
+pred inv7_ok {
+	no link.Trash 
+}
+assert inv7_repaired {
+    inv7[] iff inv7_ok[]
+}
+pred inv8_ok {
+	no link 
+}
+assert inv8_repaired {
+    inv8[] iff inv8_ok[]
+}
+pred inv9_ok {
+	all l : link | no l.link
+}
+assert inv9_repaired {
+    inv9[] iff inv9_ok[]
+}
+pred inv10_ok {
+	all t : Trash | no t.link & t not in Trash or t.link in Trash
+}
+assert inv10_repaired {
+    inv10[] iff inv10_ok[]
+}
+---- PerfectOracleCommands
+ check inv1_repaired expect 0
+ check inv2_repaired expect 0
+ check inv3_repaired expect 0 
+ check inv4_repaired expect 0
+ check inv5_repaired expect 0
+ check inv6_repaired expect 0
+ check inv7_repaired expect 0
+ check inv8_repaired expect 0
+ check inv9_repaired expect 0
+ check inv10_repaired expect 0
+pred repair_pred_1{inv6[] iff inv6_ok[] }
+run repair_pred_1
+assert repair_assert_1{inv6[] iff inv6_ok[] }
+check repair_assert_1

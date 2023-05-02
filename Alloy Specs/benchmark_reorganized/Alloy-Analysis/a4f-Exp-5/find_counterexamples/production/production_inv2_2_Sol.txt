@@ -1,0 +1,13 @@
+Command Check no_component_part_of_itself: (19:22:58)
+Counterexample found
+
+=========================================
+Command Check inv1_repaired: (19:22:58)
+
+=========================================
+Command Check inv3_repaired: (19:22:58)
+
+=========================================
+Command Check inv4_repaired: (19:22:58)
+
+=========================================
