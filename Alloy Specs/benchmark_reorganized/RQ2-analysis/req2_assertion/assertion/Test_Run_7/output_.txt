@@ -1,0 +1,191 @@
+Folder: 
+File: arr1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_7/arr1.als at line 17 column 97:
+There are 27 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq some sum this univ { ~ 
+
+
+Folder: 
+File: graphs_acyclic_1_Sol.txt
+Command Check undirectedRepaired expect 0: (18:28:55)
+No Counterexample found
+
+=========================================
+Command Check orientedRepaired expect 0: (18:28:55)
+No Counterexample found
+
+=========================================
+Command Check acyclicRepaired expect 0: (18:28:55)
+No Counterexample found
+
+=========================================
+Command Check completeRepaired expect 0: (18:28:55)
+No Counterexample found
+
+=========================================
+Command Check noLoopsRepaired expect 0: (18:28:55)
+No Counterexample found
+
+=========================================
+Command Check weaklyConnectedRepaired expect 0: (18:28:55)
+No Counterexample found
+
+=========================================
+Command Check stronglyConnectedRepaired expect 0: (18:28:55)
+No Counterexample found
+
+=========================================
+Command Check transitiveRepaired expect 0: (18:28:55)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:55)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (18:28:55)
+No Counterexample found
+
+=========================================
+
+
+Folder: 
+File: production_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_7/production_inv1_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+Folder: 
+File: student2_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_7/student2_1.als at line 54 column 12:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Boolean}
+Right type = {PrimitiveBoolean}
+
+
+Folder: 
+File: cv_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_7/cv_inv1_1.als at line 16 column 57:
+The name "this" cannot be found.
+
+
+Folder: 
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (18:28:54)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (18:28:54)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: output_.txt
+
+
+Folder: 
+File: lts_inv1_01_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_7/lts_inv1_01.als at line 36 column 11:
+The name "s1" cannot be found.
+
+
+Folder: 
+File: analyzed_files.txt
+bempl1.als
+production_inv1_1.als
+balancedBST1.als
+lts_inv1_01.als
+cv_inv1_1.als
+arr1.als
+student2_1.als
+cd1_1.als
+addr1.als
+trash_inv1_1.als
+graphs_acyclic_1.als
+
+
+Folder: 
+File: cd1_1_Sol.txt
+Command Check repair_assert_1: (18:28:53)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for 3: (18:28:53)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (18:28:51)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:51)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: trash_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv6_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv8_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv9_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Check inv10_Repaired expect 0: (18:28:54)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:54)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (18:28:54)
+No Counterexample found
+
+=========================================
+
+
+Folder: 
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_7/balancedBST1.als at line 57 column 63:
+The name "abs" cannot be found.
+
+

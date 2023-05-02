@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_9/cd1_1.als at line 33 column 1:
+The assertion "ClassHierarchy" cannot be found.

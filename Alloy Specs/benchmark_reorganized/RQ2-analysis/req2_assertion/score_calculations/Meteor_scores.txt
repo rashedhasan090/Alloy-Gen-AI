@@ -1,0 +1,31 @@
+Folder 1: Test_Run_1
+Score: 0.0
+
+Folder 2: Test_Run_2
+Score: 0.0
+
+Folder 3: Test_Run_3
+Score: 0.0
+
+Folder 4: Test_Run_4
+Score: 0.0
+
+Folder 5: Test_Run_5
+Score: 0.0
+
+Folder 6: Test_Run_6
+Score: 0.0
+
+Folder 7: Test_Run_7
+Score: 0.0
+
+Folder 8: Test_Run_8
+Score: 0.0
+
+Folder 9: Test_Run_9
+Score: 0.0
+
+Folder 10: Test_Run_10
+Score: 0.0
+
+Average Score: 0.05275863944015585

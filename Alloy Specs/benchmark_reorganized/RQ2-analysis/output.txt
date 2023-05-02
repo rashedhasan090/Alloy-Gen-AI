@@ -1,0 +1,48 @@
+File: bempl1.als
+Distances: [48, 63, 32, 41, 44, 43, 51, 32, 32, 32]
+Average Distance: 41.8
+
+
+
+File: production_inv1_1.als
+Distances: [128, 127, 88, 75, 79, 117, 75, 130, 124, 75]
+Average Distance: 101.8
+
+File: balancedBST1.als
+Distances: [77, 87, 85, 77, 78, 70, 69, 84, 72, 85]
+Average Distance: 78.4
+
+File: lts_inv1_01.als
+Distances: [143, 80, 99, 80, 108, 124, 149, 80, 95, 105]
+Average Distance: 106.3
+
+File: cv_inv1_1.als
+Distances: [38, 37, 84, 46, 43, 68, 80, 55, 64, 42]
+Average Distance: 55.7
+
+File: arr1.als
+Distances: [41, 33, 36, 41, 50, 51, 36, 41, 55, 41]
+Average Distance: 42.5
+
+
+
+File: student2_1.als
+Distances: [71, 67, 49, 67, 76, 47, 49, 65, 65, 49]
+Average Distance: 60.5
+
+File: cd1_1.als
+Distances: [48, 43, 42, 42, 43, 32, 50, 46, 39, 47]
+Average Distance: 43.2
+
+File: addr1.als
+Distances: [30, 25, 47, 24, 31, 24, 49, 66, 33, 44]
+Average Distance: 37.3
+
+File: trash_inv1_1.als
+Distances: [163, 155, 163, 155, 155, 163, 197, 177, 164, 172]
+Average Distance: 166.4
+
+File: graphs_acyclic_1.als
+Distances: [111, 206, 104, 239, 219, 201, 105, 205, 160, 209]
+Average Distance: 175.9
+

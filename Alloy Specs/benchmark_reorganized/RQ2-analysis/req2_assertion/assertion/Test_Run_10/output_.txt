@@ -1,0 +1,166 @@
+Folder: 
+File: arr1_Sol.txt
+Command Run NoConflict: (18:28:32)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (18:28:32)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:32)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: graphs_acyclic_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_10/graphs_acyclic_1.als at line 33 column 14:
+& can be used only between 2 expressions of the same arity.
+Left type = {this/Node}
+Right type = {this/Node->this/Node}
+
+
+Folder: 
+File: production_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_10/production_inv1_1.als at line 23 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+Folder: 
+File: student2_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_10/student2_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+Folder: 
+File: cv_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (18:28:32)
+java.lang.NullPointerException
+
+
+Folder: 
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (18:28:34)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: output_.txt
+
+
+Folder: 
+File: lts_inv1_01_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_10/lts_inv1_01.als at line 36 column 1:
+There are 17 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ fun iden none seq this univ { ~ 
+
+
+Folder: 
+File: analyzed_files.txt
+bempl1.als
+production_inv1_1.als
+balancedBST1.als
+lts_inv1_01.als
+cv_inv1_1.als
+arr1.als
+student2_1.als
+cd1_1.als
+addr1.als
+trash_inv1_1.als
+graphs_acyclic_1.als
+
+
+Folder: 
+File: cd1_1_Sol.txt
+Command Check repair_assert_1: (18:28:33)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:33)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (18:28:30)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:30)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: trash_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv6_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv8_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv9_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Check inv10_Repaired expect 0: (18:28:34)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:34)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (18:28:34)
+No Counterexample found
+
+=========================================
+
+
+Folder: 
+File: balancedBST1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_10/balancedBST1.als at line 42 column 4:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Node}
+
+

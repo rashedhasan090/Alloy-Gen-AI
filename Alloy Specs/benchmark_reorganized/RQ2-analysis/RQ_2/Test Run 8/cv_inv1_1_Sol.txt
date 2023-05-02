@@ -1,0 +1,5 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 8/cv_inv1_1.als at line 19 column 114:
+This cannot be a legal relational join where
+left hand side is i (type = {this/Institution})
+right hand side is this/Work (type = {this/Work})
+

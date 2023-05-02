@@ -1,0 +1,12 @@
+Overall Average Score: 0.7352395455042521
+
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_1: 0.5222544471422831
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_2: 0.7178782224655151
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_3: 0.7178782224655151
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_4: 0.7178782224655151
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_5: 0.8589391112327576
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_6: 0.7178782224655151
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_7: 0.7178782224655151
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_8: 0.7178782224655151
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_9: 0.9460543394088745
+/Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/req2_assertion/score_calculations/Test_Run_10: 0.7178782224655151

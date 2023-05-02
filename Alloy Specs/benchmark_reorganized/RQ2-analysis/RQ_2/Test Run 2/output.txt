@@ -1,0 +1,144 @@
+File: arr1_Sol.txt
+Command Run NoConflict: (04:52:03)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:03)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:03)
+Instance found
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/graphs_acyclic_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+File: production_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:01)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:01)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:01)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:01)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:01)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:01)
+No Counterexample found
+
+=========================================
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:03)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:03)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/cv_inv1_1.als at line 16 column 59:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Source}
+Right type = {this/User->this/Work}
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:04)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:04)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:02)
+Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:02)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:02)
+Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:00)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:00)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: output.txt
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/balancedBST1.als at line 39 column 25:
+There are 17 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ fun iden none seq this univ { ~ 
+
+

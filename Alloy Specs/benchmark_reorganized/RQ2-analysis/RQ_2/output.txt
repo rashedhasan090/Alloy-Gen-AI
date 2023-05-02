@@ -1,0 +1,1270 @@
+File: output.txt
+
+
+File: arr1_Sol.txt
+Command Run NoConflict: (04:51:57)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:51:57)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:57)
+Instance found
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 10/graphs_acyclic_1.als at line 30 column 42:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {PrimitiveBoolean}
+Right type = {this/Node}
+
+
+File: production_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:51:55)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:51:55)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:51:55)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:51:55)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:55)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:51:55)
+No Counterexample found
+
+=========================================
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:51:58)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:58)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:51:57)
+Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:51:57)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:51:57)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:57)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:51:57)
+Counterexample found
+
+=========================================
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:51:59)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:51:59)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 10/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:51:55)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:55)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 10/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 10/balancedBST1.als at line 66 column 3:
+There are 1 possible tokens that can appear here:
+] 
+
+
+File: arr1_Sol.txt
+Command Run NoConflict: (04:52:03)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:03)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:03)
+Instance found
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/graphs_acyclic_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+File: production_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:01)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:01)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:01)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:01)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:01)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:01)
+No Counterexample found
+
+=========================================
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:03)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:03)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/cv_inv1_1.als at line 16 column 59:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Source}
+Right type = {this/User->this/Work}
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:04)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:04)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:02)
+Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:52:02)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:02)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:02)
+Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:00)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:00)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 2/balancedBST1.als at line 39 column 25:
+There are 17 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ fun iden none seq this univ { ~ 
+
+
+File: arr1_Sol.txt
+Command Run NoConflict: (04:52:07)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:07)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:07)
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/graphs_acyclic_1.als at line 19 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: production_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:06)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:06)
+No Counterexample found
+
+=========================================
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:08)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:08)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/cv_inv1_1.als at line 16 column 51:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Work}
+Right type = {this/User->this/Work}
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:09)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:09)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/bempl1.als at line 21 column 30:
+!in can be used only between 2 expressions of the same arity.
+Left type = {this/Person}
+Right type = {this/Key->this/Person}
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/balancedBST1.als at line 42 column 23:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+
+
+File: arr1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 4/arr1.als at line 28 column 14:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+
+
+File: graphs_acyclic_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 4/graphs_acyclic_1.als at line 38 column 19:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: production_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 4/production_inv1_1.als at line 31 column 30:
+This cannot be a legal relational join where
+left hand side is c . (this/Component <: parts) (type = {this/Product})
+right hand side is c . (this/Component <: cposition) . * <integer/prev;ordering/prev;> (type = {univ})
+
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:12)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:12)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 4/cv_inv1_1.als at line 16 column 23:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Work}
+Right type = {this/User->this/Work}
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:13)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:13)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:11)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:11)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:11)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:11)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:52:11)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:52:11)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:11)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:11)
+No Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 4/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:10)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:10)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 4/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 4/balancedBST1.als at line 58 column 3:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+
+
+File: arr1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 3/arr1.als at line 27 column 14:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+
+
+File: graphs_acyclic_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 3/graphs_acyclic_1.als at line 35 column 1:
+There are 17 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ fun iden none seq this univ { ~ 
+
+
+File: production_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:15)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:15)
+Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:15)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:15)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:15)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:15)
+No Counterexample found
+
+=========================================
+
+
+File: student2_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 3/student2_1.als at line 24 column 39:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node}
+Right type = {PrimitiveBoolean}
+
+
+File: cv_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 3/cv_inv1_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:17)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:17)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 3/lts_inv1_01.als at line 109 column 1:
+Syntax error at the ` character.
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 3/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:14)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:14)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 3/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 3/balancedBST1.als at line 66 column 3:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: arr1_Sol.txt
+Command Run NoConflict: (04:52:19)
+
+=========================================
+Command Check repair_assert_1: (04:52:19)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:19)
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Command Check undirectedRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check orientedRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check acyclicRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check completeRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check noLoopsRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check weaklyConnectedRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check stonglyConnectedRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check transitiveRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:22)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:22)
+No Counterexample found
+
+=========================================
+
+
+File: production_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/production_inv1_1.als at line 22 column 52:
+* can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Position}
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:20)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:20)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/cv_inv1_1.als at line 14 column 22:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Work}
+Right type = {this/User->this/Work}
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:21)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:21)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/lts_inv1_01.als at line 29 column 33:
+This cannot be a legal relational join where
+left hand side is e (type = {this/Event})
+right hand side is s (type = {this/State})
+
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/cd1_1.als at line 20 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:18)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:18)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/trash_inv1_1.als at line 28 column 15:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Protected}
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/balancedBST1.als at line 67 column 3:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+
+
+File: arr1_Sol.txt
+Command Run NoConflict: (04:52:24)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:24)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:24)
+Instance found
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 1/graphs_acyclic_1.als at line 26 column 2:
+This must be a set or relation.
+Instead, it has the following possible type(s):
+{PrimitiveBoolean}
+
+
+File: production_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 1/production_inv1_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:25)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:25)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 1/cv_inv1_1.als at line 40 column 117:
+There are 27 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq some sum this univ { ~ 
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:26)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:26)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 1/lts_inv1_01.als at line 23 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 1/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:23)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:23)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 1/trash_inv1_1.als at line 43 column 11:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/File}
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 1/balancedBST1.als at line 58 column 3:
+There are 1 possible tokens that can appear here:
+] 
+
+
+File: arr1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 8/arr1.als at line 27 column 14:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+
+
+File: graphs_acyclic_1_Sol.txt
+Command Check undirectedRepaired expect 0: (04:52:31)
+No Counterexample found
+
+=========================================
+Command Check orientedRepaired expect 0: (04:52:31)
+No Counterexample found
+
+=========================================
+Command Check acyclicRepaired expect 0: (04:52:31)
+No Counterexample found
+
+=========================================
+Command Check completeRepaired expect 0: (04:52:31)
+No Counterexample found
+
+=========================================
+Command Check noLoopsRepaired expect 0: (04:52:31)
+No Counterexample found
+
+=========================================
+Command Check weaklyConnectedRepaired expect 0: (04:52:31)
+No Counterexample found
+
+=========================================
+Command Check stonglyConnectedRepaired expect 0: (04:52:31)
+No Counterexample found
+
+=========================================
+Command Check transitiveRepaired expect 0: (04:52:31)
+No Counterexample found
+
+=========================================
+
+
+File: production_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 8/production_inv1_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:29)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:29)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 8/cv_inv1_1.als at line 19 column 114:
+This cannot be a legal relational join where
+left hand side is i (type = {this/Institution})
+right hand side is this/Work (type = {this/Work})
+
+
+
+File: addr1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 8/addr1.als at line 11 column 49:
+^ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Book}
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:28)
+Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:28)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:28)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:28)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:52:28)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:52:28)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:28)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:28)
+Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 8/cd1_1.als at line 22 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:27)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:27)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 8/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 8/balancedBST1.als at line 40 column 3:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+
+
+File: arr1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/arr1.als at line 38 column 43:
+This must be an integer expression.
+Instead, it has the following possible type(s):
+{this/Element}
+
+
+File: graphs_acyclic_1_Sol.txt
+Command Check undirectedRepaired expect 0: (04:52:34)
+No Counterexample found
+
+=========================================
+Command Check orientedRepaired expect 0: (04:52:34)
+No Counterexample found
+
+=========================================
+Command Check acyclicRepaired expect 0: (04:52:34)
+No Counterexample found
+
+=========================================
+Command Check completeRepaired expect 0: (04:52:34)
+No Counterexample found
+
+=========================================
+Command Check noLoopsRepaired expect 0: (04:52:34)
+No Counterexample found
+
+=========================================
+Command Check weaklyConnectedRepaired expect 0: (04:52:34)
+No Counterexample found
+
+=========================================
+Command Check stonglyConnectedRepaired expect 0: (04:52:34)
+No Counterexample found
+
+=========================================
+Command Check transitiveRepaired expect 0: (04:52:34)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:34)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:34)
+No Counterexample found
+
+=========================================
+
+
+File: production_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/production_inv1_1.als at line 60 column 1:
+There are 17 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ fun iden none seq this univ { ~ 
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:33)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:33)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/cv_inv1_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+File: addr1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/addr1.als at line 21 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: lts_inv1_01_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/lts_inv1_01.als at line 16 column 23:
+The name "s'" cannot be found.
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/cd1_1.als at line 22 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:31)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:31)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/balancedBST1.als at line 67 column 3:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+
+
+File: arr1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 7/arr1.als at line 27 column 14:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+
+
+File: graphs_acyclic_1_Sol.txt
+Command Check undirectedRepaired expect 0: (04:52:39)
+No Counterexample found
+
+=========================================
+Command Check orientedRepaired expect 0: (04:52:39)
+No Counterexample found
+
+=========================================
+Command Check acyclicRepaired expect 0: (04:52:39)
+No Counterexample found
+
+=========================================
+Command Check completeRepaired expect 0: (04:52:39)
+No Counterexample found
+
+=========================================
+Command Check noLoopsRepaired expect 0: (04:52:39)
+No Counterexample found
+
+=========================================
+Command Check weaklyConnectedRepaired expect 0: (04:52:39)
+No Counterexample found
+
+=========================================
+Command Check stonglyConnectedRepaired expect 0: (04:52:39)
+No Counterexample found
+
+=========================================
+Command Check transitiveRepaired expect 0: (04:52:39)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:39)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:39)
+No Counterexample found
+
+=========================================
+
+
+File: production_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:35)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:35)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:35)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:35)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:35)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:35)
+No Counterexample found
+
+=========================================
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:37)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:37)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 7/cv_inv1_1.als at line 42 column 119:
+There are 27 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq some sum this univ { ~ 
+
+
+File: addr1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 7/addr1.als at line 17 column 27:
+The name "n" cannot be found.
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:36)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:36)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:36)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:36)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:52:36)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:52:36)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:36)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:36)
+No Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Command Run ClassHierarchy for 3: (04:52:38)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:38)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:38)
+Instance found
+
+=========================================
+
+
+File: bempl1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 7/bempl1.als at line 25 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 7/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 7/balancedBST1.als at line 58 column 3:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+
+

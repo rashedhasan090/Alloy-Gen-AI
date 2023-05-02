@@ -1,0 +1,24 @@
+Command Check inv1_Repaired expect 0: (04:52:15)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:15)
+Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:15)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:15)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:15)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:15)
+No Counterexample found
+
+=========================================

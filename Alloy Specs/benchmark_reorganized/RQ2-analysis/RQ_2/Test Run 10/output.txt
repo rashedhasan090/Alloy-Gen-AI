@@ -1,0 +1,153 @@
+File: arr1_Sol.txt
+Command Run NoConflict: (04:51:57)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:51:57)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:57)
+Instance found
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 10/graphs_acyclic_1.als at line 30 column 42:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {PrimitiveBoolean}
+Right type = {this/Node}
+
+
+File: production_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:51:55)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:51:55)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:51:55)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:51:55)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:55)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:51:55)
+No Counterexample found
+
+=========================================
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:51:58)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:58)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:51:57)
+Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:51:57)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:51:57)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:57)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:51:57)
+Counterexample found
+
+=========================================
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:51:59)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:51:59)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:51:56)
+No Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 10/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:51:55)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:51:55)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 10/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: output.txt
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 10/balancedBST1.als at line 66 column 3:
+There are 1 possible tokens that can appear here:
+] 
+
+

@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/production_inv1_1.als at line 22 column 52:
+* can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Position}

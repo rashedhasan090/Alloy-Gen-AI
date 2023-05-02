@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_8/balancedBST1.als at line 65 column 60:
+The name "abs" cannot be found.

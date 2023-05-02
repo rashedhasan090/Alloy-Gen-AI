@@ -1,0 +1,133 @@
+File: arr1_Sol.txt
+Command Run NoConflict: (04:52:19)
+
+=========================================
+Command Check repair_assert_1: (04:52:19)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:19)
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Command Check undirectedRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check orientedRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check acyclicRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check completeRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check noLoopsRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check weaklyConnectedRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check stonglyConnectedRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Check transitiveRepaired expect 0: (04:52:22)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:22)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:22)
+No Counterexample found
+
+=========================================
+
+
+File: production_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/production_inv1_1.als at line 22 column 52:
+* can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Position}
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:20)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:20)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/cv_inv1_1.als at line 14 column 22:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Work}
+Right type = {this/User->this/Work}
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:21)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:21)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/lts_inv1_01.als at line 29 column 33:
+This cannot be a legal relational join where
+left hand side is e (type = {this/Event})
+right hand side is s (type = {this/State})
+
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/cd1_1.als at line 20 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (04:52:18)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:18)
+Instance found
+
+=========================================
+
+
+File: trash_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/trash_inv1_1.als at line 28 column 15:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Protected}
+
+
+File: output.txt
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 6/balancedBST1.als at line 67 column 3:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+
+

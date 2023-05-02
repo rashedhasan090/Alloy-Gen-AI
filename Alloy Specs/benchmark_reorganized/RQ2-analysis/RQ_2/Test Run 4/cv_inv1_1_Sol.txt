@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 4/cv_inv1_1.als at line 16 column 23:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Work}
+Right type = {this/User->this/Work}

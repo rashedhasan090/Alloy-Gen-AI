@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_1/balancedBST1.als at line 33 column 6:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Node}

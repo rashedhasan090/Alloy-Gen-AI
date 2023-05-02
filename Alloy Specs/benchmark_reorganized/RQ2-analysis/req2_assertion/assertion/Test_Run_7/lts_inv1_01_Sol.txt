@@ -1,0 +1,2 @@
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_7/lts_inv1_01.als at line 36 column 11:
+The name "s1" cannot be found.

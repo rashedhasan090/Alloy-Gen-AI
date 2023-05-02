@@ -1,0 +1,191 @@
+Folder: 
+File: arr1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_5/arr1.als at line 27 column 14:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+
+
+Folder: 
+File: graphs_acyclic_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_5/graphs_acyclic_1.als at line 54 column 45:
+This cannot be a legal relational join where
+left hand side is n1 . * (this/Node <: adj) + ~ (this/Node <: adj) (type = {univ})
+right hand side is n2 . * (this/Node <: adj) + ~ (this/Node <: adj) (type = {univ})
+
+
+
+Folder: 
+File: production_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_5/production_inv1_1.als at line 1 column 1:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+
+
+Folder: 
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (18:28:16)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:16)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: cv_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_5/cv_inv1_1.als at line 42 column 119:
+There are 27 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq some sum this univ { ~ 
+
+
+Folder: 
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (18:28:18)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (18:28:18)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: output_.txt
+
+
+Folder: 
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (18:28:15)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (18:28:15)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (18:28:15)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (18:28:15)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (18:28:15)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (18:28:15)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:15)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (18:28:15)
+No Counterexample found
+
+=========================================
+
+
+Folder: 
+File: analyzed_files.txt
+bempl1.als
+production_inv1_1.als
+balancedBST1.als
+lts_inv1_01.als
+cv_inv1_1.als
+arr1.als
+student2_1.als
+cd1_1.als
+addr1.als
+trash_inv1_1.als
+graphs_acyclic_1.als
+
+
+Folder: 
+File: cd1_1_Sol.txt
+Command Check repair_assert_1: (18:28:17)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:17)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: bempl1_Sol.txt
+Command Check repair_assert_1: (18:28:14)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for 4 Person, 3 Room, 6 Key: (18:28:14)
+Instance found
+
+=========================================
+
+
+Folder: 
+File: trash_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (18:28:18)
+Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Check inv6_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Check inv8_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Check inv9_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Check inv10_Repaired expect 0: (18:28:18)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (18:28:18)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (18:28:18)
+Counterexample found
+
+=========================================
+
+
+Folder: 
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_5/balancedBST1.als at line 56 column 2:
+The name "card" cannot be found.
+
+

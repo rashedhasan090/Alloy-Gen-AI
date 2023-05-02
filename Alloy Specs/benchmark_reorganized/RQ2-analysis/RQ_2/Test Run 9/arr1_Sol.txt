@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 9/arr1.als at line 38 column 43:
+This must be an integer expression.
+Instead, it has the following possible type(s):
+{this/Element}

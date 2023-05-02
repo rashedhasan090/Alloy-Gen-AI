@@ -1,0 +1,4 @@
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/assertion/Test_Run_7/student2_1.als at line 54 column 12:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Boolean}
+Right type = {PrimitiveBoolean}

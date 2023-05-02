@@ -1,0 +1,131 @@
+File: arr1_Sol.txt
+Command Run NoConflict: (04:52:07)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:07)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:07)
+
+=========================================
+
+
+File: graphs_acyclic_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/graphs_acyclic_1.als at line 19 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: production_inv1_1_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:06)
+Instance found
+
+=========================================
+Command Check repair_assert_1: (04:52:06)
+No Counterexample found
+
+=========================================
+
+
+File: student2_1_Sol.txt
+Command Check repair_assert_1: (04:52:08)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1: (04:52:08)
+Instance found
+
+=========================================
+
+
+File: cv_inv1_1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/cv_inv1_1.als at line 16 column 51:
+in can be used only between 2 expressions of the same arity.
+Left type = {this/Work}
+Right type = {this/User->this/Work}
+
+
+File: addr1_Sol.txt
+Command Check repair_assert_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:09)
+Counterexample found
+
+=========================================
+Command Run repair_pred_1 for exactly 1 Address, exactly 2 Name, exactly 1 Book: (04:52:09)
+Instance found
+
+=========================================
+
+
+File: lts_inv1_01_Sol.txt
+Command Check inv1_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv2_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv3_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv4_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv5_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+Command Check inv7_Repaired expect 0: (04:52:06)
+No Counterexample found
+
+=========================================
+
+
+File: cd1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/cd1_1.als at line 17 column 1:
+There are 3 possible tokens that can appear here:
+,  { | 
+
+
+File: bempl1_Sol.txt
+Type error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/bempl1.als at line 21 column 30:
+!in can be used only between 2 expressions of the same arity.
+Left type = {this/Person}
+Right type = {this/Key->this/Person}
+
+
+File: trash_inv1_1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/trash_inv1_1.als at line 45 column 1:
+There are 1 possible tokens that can appear here:
+) 
+
+
+File: output.txt
+
+
+File: balancedBST1_Sol.txt
+Syntax error in /Users/rashedhasan/Downloads/atmprep-master/atmprep-master-2/RQ2-analysis/RQ_2/Test Run 5/balancedBST1.als at line 42 column 23:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+
+

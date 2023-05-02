@@ -1,0 +1,7 @@
+write a Python script to calculate the BLEU based semantic similarity metrics in the same script between source and 10 destination folders, the comparison should happen by the similarity of the name of the files.  the folders contain .als files.
+
+the source folder files have the string "Bug" in them, detect the next line (the line after which has bug in it).  find the same lines in the destination folder files and calculate similarity metrics. This files might not have  the string "Bug" in them but try to find by line number or any other strategy. your job is to match the same line in source and destination folder files.
+
+ find the average and save in a text file by each folder name.
+
+please provide me the entire code 
